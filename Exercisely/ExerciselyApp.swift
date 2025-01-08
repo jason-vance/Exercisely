@@ -25,7 +25,11 @@ struct ExerciselyApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationStack {
+                WorkoutView_List()
+            }
+            .foregroundStyle(Color.text)
+            .background(Color.background)
         }
         .modelContainer(sharedModelContainer)
     }
