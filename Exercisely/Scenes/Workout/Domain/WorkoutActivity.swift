@@ -18,7 +18,13 @@ extension Workout {
         var distance: Double?
         var time: TimeInterval?
         
-        init?(name: String, weight: Double? = nil, reps: Int? = nil, distance: Double? = nil, time: TimeInterval? = nil) {
+        init?(
+            name: String,
+            weight: Double? = nil,
+            reps: Int? = nil,
+            distance: Double? = nil,
+            time: TimeInterval? = nil
+        ) {
             if reps == nil && distance == nil && time == nil {
                 return nil
             }
@@ -30,7 +36,6 @@ extension Workout {
             self.distance = distance
             self.time = time
         }
-        
     }
 }
 

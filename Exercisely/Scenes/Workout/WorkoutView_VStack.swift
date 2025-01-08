@@ -47,7 +47,7 @@ struct WorkoutView_VStack: View {
                 .bold()
                 .overlay(alignment: .bottom) {
                     Rectangle()
-                        .frame(height: 1)
+                        .frame(height: .textFieldUnderlineHeight)
                         .foregroundStyle(Color.accentColor)
                 }
         }
@@ -62,7 +62,7 @@ struct WorkoutView_VStack: View {
                 .bold()
                 .overlay(alignment: .bottom) {
                     Rectangle()
-                        .frame(height: 1)
+                        .frame(height: .textFieldUnderlineHeight)
                         .foregroundStyle(Color.accentColor)
                 }
         }
@@ -98,8 +98,8 @@ struct WorkoutView_VStack: View {
         .font(.headline)
         .bold()
         .multilineTextAlignment(.leading)
-        .frame(height: 44)
-        .padding(.leading, 16)
+        .frame(height: .activityRowHeight)
+        .padding(.leading, .padding)
     }
     
     @ViewBuilder private func AddActivityButton(_ section: Workout.Section) -> some View {
@@ -109,21 +109,21 @@ struct WorkoutView_VStack: View {
             HStack {
                 Image(systemName: "plus.circle")
                     .resizable()
-                    .frame(width: 18, height: 18)
+                    .frame(width: .activityRowCircleSize, height: .activityRowCircleSize)
                 Text("Add Activity")
                 Spacer(minLength: 0)
             }
         }
         .foregroundStyle(Color.accent)
-        .frame(height: 44)
-        .padding(.leading, 32)
+        .frame(height: .activityRowHeight)
+        .padding(.leading, .activityRowLeadingPadding)
     }
     
     @ViewBuilder private func SingleWorkoutActivity(_ activity: Workout.Activity) -> some View {
         HStack {
             Image(systemName: "circle")
                 .resizable()
-                .frame(width: 18, height: 18)
+                .frame(width: .activityRowCircleSize, height: .activityRowCircleSize)
             if let reps = activity.reps {
                 Text("\(reps)")
             }
@@ -143,8 +143,8 @@ struct WorkoutView_VStack: View {
             Spacer(minLength: 0)
         }
         .foregroundStyle(Color.text)
-        .frame(height: 44)
-        .padding(.leading, 32)
+        .frame(height: .activityRowHeight)
+        .padding(.leading, .activityRowLeadingPadding)
     }
 }
 
