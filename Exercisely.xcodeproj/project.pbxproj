@@ -33,6 +33,7 @@
 		568CCA482D2E5F0000720096 /* Exceptions for "Exercisely" folder in "ExerciselyTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Domain/SimpleDate.swift,
 				Extensions/CGFloatExtensions.swift,
 				Extensions/DateExtensions.swift,
 				Scenes/Workout/Domain/Exercise.swift,

@@ -11,12 +11,12 @@ class Workout {
     
     let id: UUID
     var focus: Focus?
-    var date: Date
+    var date: SimpleDate
     var sections: [Section]
     
     init() {
         self.id = UUID()
-        self.date = Date()
+        self.date = .today
         self.sections = []
     }
     

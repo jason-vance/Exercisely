@@ -10,10 +10,10 @@ import SwiftUI
 struct WorkoutView: View {
     
     @State private var workoutFocusString: String = ""
-    @State private var date: Date = Date()
+    @State private var date: SimpleDate = .today
     @State private var workout: Workout = .sample
     
-    private func onChangeOf(date: Date) {
+    private func onChangeOf(date: SimpleDate) {
         //TODO: Pull up the new date's data
     }
     
@@ -57,7 +57,7 @@ struct WorkoutView: View {
         Button {
             
         } label: {
-            Text(date.toBasicUiString())
+            Text(date.formatted())
                 .foregroundStyle(Color.text)
                 .bold()
                 .overlay(alignment: .bottom) {
@@ -69,7 +69,10 @@ struct WorkoutView: View {
         .overlay{
             DatePicker(
                 "",
-                selection: $date,
+                selection: .init(
+                    get: { date.toDate() ?? .now },
+                    set: { date = SimpleDate(date: $0)! }
+                ),
                 displayedComponents: [.date]
             )
             .blendMode(.destinationOver) //MARK: use this extension to keep the clickable functionality
