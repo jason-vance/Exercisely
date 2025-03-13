@@ -15,14 +15,14 @@ extension Workout {
         var name: Name
         var weight: Weight?
         var reps: Reps?
-        var distance: Double?
+        var distance: Distance?
         var time: TimeInterval?
         
         init?(
             name: Name,
             weight: Weight? = nil,
             reps: Reps? = nil,
-            distance: Double? = nil,
+            distance: Distance? = nil,
             time: TimeInterval? = nil
         ) {
             if reps == nil && distance == nil && time == nil {
@@ -52,7 +52,7 @@ extension Workout.Exercise: Equatable {
 }
 
 extension Workout.Exercise {
-    static let sampleTreadmill: Workout.Exercise = .init(name: .sampleTreadmill, time: 300)!
+    static let sampleTreadmill: Workout.Exercise = .init(name: .sampleTreadmill, distance: .init(value: 1, unit: .kilometers), time: 300)!
     static let sampleYtw: Workout.Exercise = .init(name: .sampleYtw, reps: .init(5)!)!
     static let sampleArcherPress: Workout.Exercise = .init(name: .sampleArcherPress, reps: .init(10)!)!
     static let sampleTrxChestStretch: Workout.Exercise = .init(name: .sampleTrxChestStretch, reps: .init(5)!)!
@@ -61,7 +61,7 @@ extension Workout.Exercise {
     static let sampleKettlebellShoulderPress: Workout.Exercise = .init(name: .sampleKettlebellShoulderPress, weight: .kilograms(5), reps: .init(5)!)!
     static let sampleMachineShoulderPress: Workout.Exercise = .init(name: .sampleMachineShoulderPress, weight: .pounds(95), reps: .init(15)!)!
     static let sampleMachineUnderhandRow: Workout.Exercise = .init(name: .sampleMachineUnderhandRow, weight: .pounds(95), reps: .init(15)!)!
-    static let sampleHike: Workout.Exercise = .init(name: .sampleHike, distance: 1.5)!
+    static let sampleHike: Workout.Exercise = .init(name: .sampleHike, distance: .init(value: 1.5, unit: .miles))!
 }
 
 

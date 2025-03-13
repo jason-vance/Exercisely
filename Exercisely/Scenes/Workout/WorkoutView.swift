@@ -193,11 +193,10 @@ struct WorkoutView: View {
         .workoutExerciseDataItem()
     }
     
-    @ViewBuilder private func ExerciseDistance(_ distance: Double) -> some View {
+    @ViewBuilder private func ExerciseDistance(_ distance: Distance) -> some View {
         HStack(spacing: 2) {
             Image(systemName: "point.bottomleft.forward.to.arrow.triangle.scurvepath")
-            //TODO: Get formatted value from Workout.Exercise.Distance
-            Text("\(distance.formatted())mi")
+            Text("\(distance.formatted())")
         }
         .workoutExerciseDataItem()
     }
