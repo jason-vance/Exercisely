@@ -34,8 +34,10 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Domain/SimpleDate.swift,
+				Domain/Weight.swift,
 				Extensions/CGFloatExtensions.swift,
 				Extensions/DateExtensions.swift,
+				Extensions/DoubleExtensions.swift,
 				Scenes/Workout/Domain/ExerciseName.swift,
 				Scenes/Workout/Domain/Workout.swift,
 				Scenes/Workout/Domain/WorkoutActivity.swift,

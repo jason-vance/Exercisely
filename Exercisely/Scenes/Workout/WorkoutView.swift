@@ -185,11 +185,10 @@ struct WorkoutView: View {
         .workoutActivityDataItem()
     }
     
-    @ViewBuilder private func ActivityWeight(_ weight: Double) -> some View {
+    @ViewBuilder private func ActivityWeight(_ weight: Weight) -> some View {
         HStack(spacing: 2) {
             Image(systemName: "dumbbell")
-            //TODO: Get formatted value from Workout.Activity.Weight
-            Text("\(weight.formatted())lbs")
+            Text("\(weight.formatted())")
         }
         .workoutActivityDataItem()
     }

@@ -13,14 +13,14 @@ extension Workout {
         
         let id: UUID
         var exercise: ExerciseName
-        var weight: Double?
+        var weight: Weight?
         var reps: Int?
         var distance: Double?
         var time: TimeInterval?
         
         init?(
             exercise: ExerciseName,
-            weight: Double? = nil,
+            weight: Weight? = nil,
             reps: Int? = nil,
             distance: Double? = nil,
             time: TimeInterval? = nil
@@ -56,11 +56,11 @@ extension Workout.Activity {
     static let sampleYtw: Workout.Activity = .init(exercise: .sampleYtw, reps: 5)!
     static let sampleArcherPress: Workout.Activity = .init(exercise: .sampleArcherPress, reps: 10)!
     static let sampleTrxChestStretch: Workout.Activity = .init(exercise: .sampleTrxChestStretch, reps: 5)!
-    static let sampleTurkishGetUp: Workout.Activity = .init(exercise: .sampleTurkishGetUp, weight: 5, reps: 3)!
+    static let sampleTurkishGetUp: Workout.Activity = .init(exercise: .sampleTurkishGetUp, weight: .kilograms(5), reps: 3)!
     static let sampleShoulderTouches: Workout.Activity = .init(exercise: .sampleShouldersTouches, reps: 10)!
-    static let sampleKettlebellShoulderPress: Workout.Activity = .init(exercise: .sampleKettlebellShoulderPress, weight: 15, reps: 5)!
-    static let sampleMachineShoulderPress: Workout.Activity = .init(exercise: .sampleMachineShoulderPress, weight: 95, reps: 15)!
-    static let sampleMachineUnderhandRow: Workout.Activity = .init(exercise: .sampleMachineUnderhandRow, weight: 95, reps: 15)!
+    static let sampleKettlebellShoulderPress: Workout.Activity = .init(exercise: .sampleKettlebellShoulderPress, weight: .kilograms(5), reps: 5)!
+    static let sampleMachineShoulderPress: Workout.Activity = .init(exercise: .sampleMachineShoulderPress, weight: .pounds(95), reps: 15)!
+    static let sampleMachineUnderhandRow: Workout.Activity = .init(exercise: .sampleMachineUnderhandRow, weight: .pounds(95), reps: 15)!
     static let sampleHike: Workout.Activity = .init(exercise: .sampleHike, distance: 1.5)!
 }
 
