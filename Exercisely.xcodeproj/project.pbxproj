@@ -40,7 +40,6 @@
 				Scenes/Workout/Domain/Workout.swift,
 				Scenes/Workout/Domain/WorkoutFocus.swift,
 				Scenes/Workout/Domain/WorkoutSection.swift,
-				Scenes/Workout/WorkoutView_VStack.swift,
 			);
 			target = 568CCA202D2E5B3500720096 /* ExerciselyTests */;
 		};

@@ -14,6 +14,6 @@ extension CGFloat {
     static let textFieldUnderlineHeight: CGFloat = 1
     
     static let activityRowHeight: CGFloat = 44
-    static let activityRowLeadingPadding: CGFloat = .padding * 1.5
-    static let activityRowCircleSize: CGFloat = 18
+    static let activityRowBulletSize: CGFloat = 4
+    static let activityRowPlusCircleSize: CGFloat = 16
 }

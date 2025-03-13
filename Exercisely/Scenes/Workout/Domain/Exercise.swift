@@ -29,7 +29,7 @@ class Exercise {
     }
     
     func formatted() -> String {
-        value.capitalized
+        value
     }
 }
 

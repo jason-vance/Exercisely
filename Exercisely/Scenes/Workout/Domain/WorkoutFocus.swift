@@ -30,7 +30,7 @@ extension Workout {
         }
         
         func formatted() -> String {
-            value.capitalized
+            value
         }
     }
 }

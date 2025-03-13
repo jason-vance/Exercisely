@@ -31,7 +31,7 @@ extension Workout.Section: Identifiable { }
 
 extension Workout.Section {
     static var sampleWarmup: Workout.Section {
-        let section = Workout.Section(name: "Warmup")!
+        let section = Workout.Section(name: "Warm-Up")!
         
         section.append(activity: .sampleTreadmill)
         

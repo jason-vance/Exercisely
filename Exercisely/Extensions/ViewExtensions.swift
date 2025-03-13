@@ -10,6 +10,13 @@ import SwiftUI
 
 extension View {
     
+    func listDefaultModifiers() -> some View {
+        self
+            .listStyle(.grouped)
+            .scrollContentBackground(.hidden)
+            .background(Color.background)
+    }
+    
     func listRowNoChrome() -> some View {
         self
             .listRowBackground(Color.clear)
@@ -18,18 +25,22 @@ extension View {
     
     func workoutSectionHeader() -> some View {
         self
-            .font(.headline)
-            .bold()
+            .font(.title3)
+            .multilineTextAlignment(.leading)
+            .foregroundStyle(Color.text)
     }
     
     func workoutActivityRow() -> some View {
         self
+            .multilineTextAlignment(.leading)
+            .foregroundStyle(Color.text)
             .listRowNoChrome()
-            .padding(.leading, 30)
-            .listRowInsets(.init(top: 0,
-                                 leading: 12,
-                                 bottom: 0,
-                                 trailing: 12))
+    }
+    
+    func workoutActivityDataItem() -> some View {
+        self
+            .font(.caption)
+            .foregroundStyle(Color.text)
     }
     
     func workoutSetsCountOverlay(setsCount: Int, exerciseCount: Int) -> some View {

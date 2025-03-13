@@ -26,7 +26,7 @@ struct ExerciselyApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack {
-                WorkoutView_List()
+                WorkoutView()
             }
             .foregroundStyle(Color.text)
             .background(Color.background)
