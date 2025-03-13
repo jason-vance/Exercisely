@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SimpleDate {
+struct SimpleDate {
     
     public typealias RawValue = UInt32
     

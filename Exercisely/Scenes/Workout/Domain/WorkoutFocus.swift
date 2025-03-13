@@ -8,7 +8,7 @@
 import Foundation
 
 extension Workout {
-    class Focus {
+    struct Focus {
         
         static let minTextLength: Int = 1
         static let maxTextLength: Int = 32

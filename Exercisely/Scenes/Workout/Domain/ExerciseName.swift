@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ExerciseName {
+struct ExerciseName {
     
     static let minTextLength: Int = 1
     static let maxTextLength: Int = 64
