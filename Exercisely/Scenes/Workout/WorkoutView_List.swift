@@ -9,7 +9,7 @@ import SwiftUI
 
 struct WorkoutView_List: View {
     
-    @State private var workoutFocus: String = ""
+    @State private var workoutFocusString: String = ""
     @State private var date: Date = Date()
     
     private func onChangeOf(date: Date) {
@@ -21,28 +21,23 @@ struct WorkoutView_List: View {
             Section {
                 HStack(spacing: 6) {
                     Text("YTW")
-                    Text("1x5")
+                    Text("-")
+                    Text("5reps")
                 }
                 .workoutActivityRow()
                 HStack(spacing: 6) {
                     Text("Archer Press")
-                    Text("1x10")
+                    Text("-")
+                    Text("10reps")
                 }
                 .workoutActivityRow()
                 HStack(spacing: 6) {
                     Text("TRX Chest Stretch")
-                    Text("1x5")
+                    Text("-")
+                    Text("5reps")
                 }
                 .workoutActivityRow()
-                .overlay(alignment: .bottomLeading) {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: .infinity, style: .continuous)
-                            .stroke(style: .init(lineWidth: 1))
-                            .frame(width: 18, height: 108)
-                        Text("2x")
-                            .font(.caption)
-                    }
-                }
+                .workoutSetsCountOverlay(setsCount: 2, exerciseCount: 3)
                 Button {
 
                 } label: {
@@ -59,68 +54,46 @@ struct WorkoutView_List: View {
                 .foregroundStyle(Color.accent)
             } header: {
                 Text("Warm-up:")
-                    .font(.headline)
-                    .bold()
+                    .workoutSectionHeader()
             }
             Section {
                 HStack(spacing: 6) {
                     Text("Turkish Get-up")
-                    Text("1x3")
+                    Text("-")
+                    Text("3reps")
                     Text("5lbs")
                 }
                 .workoutActivityRow()
                 HStack(spacing: 6) {
                     Text("Shoulder Touches")
-                    Text("1x10")
+                    Text("-")
+                    Text("10reps")
                 }
                 .workoutActivityRow()
                 HStack(spacing: 6) {
                     Text("Kettlebell Shoulder Press")
-                    Text("1x5")
+                    Text("-")
+                    Text("5reps")
                     Text("15lbs")
                 }
                 .workoutActivityRow()
-                .overlay(alignment: .bottomLeading) {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: .infinity, style: .continuous)
-                            .stroke(style: .init(lineWidth: 1))
-                            .frame(width: 18, height: 108)
-                        Text("3x")
-                            .font(.caption)
-                    }
-                }
+                .workoutSetsCountOverlay(setsCount: 3, exerciseCount: 3)
                 HStack(spacing: 6) {
                     Text("Machine Shoulder Press")
-                    Text("3x15")
+                    Text("-")
+                    Text("15reps")
                     Text("95lbs")
                 }
                 .workoutActivityRow()
-                .overlay(alignment: .bottomLeading) {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: .infinity, style: .continuous)
-                            .stroke(style: .init(lineWidth: 1))
-                            .frame(width: 18, height: 18)
-                        Text("3x")
-                            .font(.caption)
-                            .hidden()
-                    }
-                }
+                .workoutSetsCountOverlay(setsCount: 3, exerciseCount: 1)
                 HStack(spacing: 6) {
                     Text("Machine Underhand Row")
-                    Text("3x15")
+                    Text("-")
+                    Text("15reps")
                     Text("95lbs")
                 }
                 .workoutActivityRow()
-                .overlay(alignment: .bottomLeading) {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: .infinity, style: .continuous)
-                            .stroke(style: .init(lineWidth: 1))
-                            .frame(width: 18, height: 18)
-                        Text("3x")
-                            .font(.caption)
-                            .hidden()
-                    }
-                }
+                .workoutSetsCountOverlay(setsCount: 3, exerciseCount: 1)
                 Button {
                     
                 } label: {
@@ -137,25 +110,16 @@ struct WorkoutView_List: View {
                 .foregroundStyle(Color.accent)
             } header: {
                 Text("Workout:")
-                    .font(.headline)
-                    .bold()
+                    .workoutSectionHeader()
             }
             Section {
                 HStack(spacing: 6) {
                     Text("Hike")
+                    Text("-")
                     Text("15mins")
                 }
                 .workoutActivityRow()
-                .overlay(alignment: .bottomLeading) {
-                    ZStack {
-                        RoundedRectangle(cornerRadius: .infinity, style: .continuous)
-                            .stroke(style: .init(lineWidth: 1))
-                            .frame(width: 18, height: 18)
-                        Text("3x")
-                            .font(.caption)
-                            .hidden()
-                    }
-                }
+                .workoutSetsCountOverlay(setsCount: 1, exerciseCount: 1)
                 Button {
                     
                 } label: {
@@ -172,28 +136,16 @@ struct WorkoutView_List: View {
                 .foregroundStyle(Color.accent)
             } header: {
                 Text("Cooldown:")
-                    .font(.headline)
-                    .bold()
+                    .workoutSectionHeader()
             }
-            Section {
-
-            } header: {
-                Button {
-                    
-                } label: {
-                    Text("Add Workout Section")
-                }
-                .foregroundStyle(Color.accent)
-                .font(.headline)
-                .bold()
-            }
+            AddWorkoutSection()
         }
         .listStyle(.grouped)
         .toolbar { Toolbar() }
     }
     
     @ToolbarContentBuilder private func Toolbar() -> some ToolbarContent {
-        ToolbarItem(placement: .topBarLeading) {
+        ToolbarItem(placement: .principal) {
             WorkoutCategoryField()
         }
         ToolbarItem(placement: .topBarTrailing) {
@@ -206,7 +158,7 @@ struct WorkoutView_List: View {
             Text("Focus:")
                 .foregroundStyle(Color.text)
                 .bold()
-            TextField(text: $workoutFocus, label: { Text(Workout.Focus.sample.value) })
+            TextField(text: $workoutFocusString, label: { Text(Workout.Focus.prompt.formatted()) })
                 .foregroundStyle(Color.text)
                 .bold()
                 .overlay(alignment: .bottom) {
@@ -240,6 +192,19 @@ struct WorkoutView_List: View {
             .onChange(of: date) { _, date in
                 onChangeOf(date: date)
             }
+        }
+    }
+    
+    @ViewBuilder private func AddWorkoutSection() -> some View {
+        Section {
+        } header: {
+            Button {
+                
+            } label: {
+                Text("Add Workout Section")
+            }
+            .foregroundStyle(Color.accent)
+            .workoutSectionHeader()
         }
     }
 }

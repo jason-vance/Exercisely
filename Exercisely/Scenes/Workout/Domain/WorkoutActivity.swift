@@ -12,14 +12,14 @@ extension Workout {
     class Activity {
         
         let id: UUID
-        var name: String
+        var exercise: Exercise
         var weight: Double?
         var reps: Int?
         var distance: Double?
         var time: TimeInterval?
         
         init?(
-            name: String,
+            exercise: Exercise,
             weight: Double? = nil,
             reps: Int? = nil,
             distance: Double? = nil,
@@ -30,7 +30,7 @@ extension Workout {
             }
             
             self.id = UUID()
-            self.name = name
+            self.exercise = exercise
             self.weight = weight
             self.reps = reps
             self.distance = distance
@@ -43,7 +43,7 @@ extension Workout.Activity: Identifiable { }
 
 extension Workout.Activity: Equatable {
     static func == (lhs: Workout.Activity, rhs: Workout.Activity) -> Bool {
-        lhs.name == rhs.name
+        lhs.exercise == rhs.exercise
         && lhs.weight == rhs.weight
         && lhs.reps == rhs.reps
         && lhs.distance == rhs.distance
@@ -52,15 +52,15 @@ extension Workout.Activity: Equatable {
 }
 
 extension Workout.Activity {
-    static let sampleTreadmill: Workout.Activity = .init(name: "Treadmill", time: 300)!
-    static let sampleYtw: Workout.Activity = .init(name: "YTW", reps: 5)!
-    static let sampleArcherPress: Workout.Activity = .init(name: "Archer Press", reps: 10)!
-    static let sampleTrxChestStretch: Workout.Activity = .init(name: "TRX Chest Stretch", reps: 5)!
-    static let sampleTurkishGetUp: Workout.Activity = .init(name: "Turkish Get-Up", weight: 5, reps: 3)!
-    static let sampleShoulderTouches: Workout.Activity = .init(name: "Shoulders Touches", reps: 10)!
-    static let sampleKettlebellShoulderPress: Workout.Activity = .init(name: "Kettlebell Shoulder Press", weight: 15, reps: 5)!
-    static let sampleMachineShoulderPress: Workout.Activity = .init(name: "Machine Shoulder Press", weight: 95, reps: 15)!
-    static let sampleMachineUnderhandRow: Workout.Activity = .init(name: "Machine Underhand Row", weight: 95, reps: 15)!
-    static let sampleHike: Workout.Activity = .init(name: "Hike", distance: 1.5)!
+    static let sampleTreadmill: Workout.Activity = .init(exercise: .sampleTreadmill, time: 300)!
+    static let sampleYtw: Workout.Activity = .init(exercise: .sampleYtw, reps: 5)!
+    static let sampleArcherPress: Workout.Activity = .init(exercise: .sampleArcherPress, reps: 10)!
+    static let sampleTrxChestStretch: Workout.Activity = .init(exercise: .sampleTrxChestStretch, reps: 5)!
+    static let sampleTurkishGetUp: Workout.Activity = .init(exercise: .sampleTurkishGetUp, weight: 5, reps: 3)!
+    static let sampleShoulderTouches: Workout.Activity = .init(exercise: .sampleShouldersTouches, reps: 10)!
+    static let sampleKettlebellShoulderPress: Workout.Activity = .init(exercise: .sampleKettlebellShoulderPress, weight: 15, reps: 5)!
+    static let sampleMachineShoulderPress: Workout.Activity = .init(exercise: .sampleMachineShoulderPress, weight: 95, reps: 15)!
+    static let sampleMachineUnderhandRow: Workout.Activity = .init(exercise: .sampleMachineUnderhandRow, weight: 95, reps: 15)!
+    static let sampleHike: Workout.Activity = .init(exercise: .sampleHike, distance: 1.5)!
 }
 

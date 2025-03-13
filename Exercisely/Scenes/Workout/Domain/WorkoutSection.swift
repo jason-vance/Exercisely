@@ -62,7 +62,8 @@ extension Workout.Section {
         section.append(activity: .sampleKettlebellShoulderPress)
         
         section.append(activity: .sampleMachineShoulderPress)
-        
+        section.append(activity: .sampleMachineShoulderPress)
+
         section.append(activity: .sampleMachineUnderhandRow)
         
         return section

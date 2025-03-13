@@ -12,8 +12,8 @@ extension Workout {
         
         static let minTextLength: Int = 1
         static let maxTextLength: Int = 32
-
-        let value: String
+        
+        private let value: String
         
         init?(_ value: String?) {
             guard let value = value else { return nil }
@@ -29,23 +29,29 @@ extension Workout {
             self.value = trimmedText
         }
         
-        static let prompt: Workout.Focus = .init("Legs, Core, Pushing, etc...")!
-        static let sample: Workout.Focus = .init("Legs")!
+        func formatted() -> String {
+            value.capitalized
+        }
     }
 }
 
 extension Workout.Focus: Identifiable {
-    var id: String { value }
+    var id: String { value.lowercased() }
 }
 
 extension Workout.Focus: Equatable {
     static func == (lhs: Workout.Focus, rhs: Workout.Focus) -> Bool {
-        lhs.value == rhs.value
+        lhs.value.lowercased() == rhs.value.lowercased()
     }
 }
 
 extension Workout.Focus: Hashable {
     func hash(into hasher: inout Hasher) {
-        hasher.combine(value)
+        hasher.combine(value.lowercased())
     }
+}
+
+extension Workout.Focus {
+    static let prompt: Workout.Focus = .init("Legs, Core, Pushing, etc...")!
+    static let sample: Workout.Focus = .init("Legs")!
 }

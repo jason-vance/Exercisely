@@ -42,7 +42,7 @@ struct WorkoutView_VStack: View {
             Text("Focus:")
                 .foregroundStyle(Color.text)
                 .bold()
-            TextField(text: $workoutFocus, label: { Text(Workout.Focus.prompt.value) })
+            TextField(text: $workoutFocus, label: { Text(Workout.Focus.prompt.formatted()) })
                 .foregroundStyle(Color.text)
                 .bold()
                 .overlay(alignment: .bottom) {
@@ -127,7 +127,7 @@ struct WorkoutView_VStack: View {
             if let reps = activity.reps {
                 Text("\(reps)")
             }
-            Text(activity.name)
+            Text(activity.exercise.formatted())
                 .multilineTextAlignment(.leading)
             if let weight = activity.weight {
                 Text("\(weight.formatted())lbs")

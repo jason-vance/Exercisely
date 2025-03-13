@@ -16,6 +16,12 @@ extension View {
             .listRowSeparator(.hidden)
     }
     
+    func workoutSectionHeader() -> some View {
+        self
+            .font(.headline)
+            .bold()
+    }
+    
     func workoutActivityRow() -> some View {
         self
             .listRowNoChrome()
@@ -24,6 +30,21 @@ extension View {
                                  leading: 12,
                                  bottom: 0,
                                  trailing: 12))
+    }
+    
+    func workoutSetsCountOverlay(setsCount: Int, exerciseCount: Int) -> some View {
+        self
+            .overlay(alignment: .bottomLeading) {
+                ZStack {
+                    RoundedRectangle(cornerRadius: .infinity, style: .continuous)
+                        .stroke(style: .init(lineWidth: 1))
+                        .frame(width: 18, height: 18 + (CGFloat(exerciseCount - 1) * 45))
+                    if setsCount > 1 {
+                        Text("\(setsCount)x")
+                            .font(.caption2)
+                    }
+                }
+            }
     }
 }
 
