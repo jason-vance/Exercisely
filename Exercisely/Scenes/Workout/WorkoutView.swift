@@ -177,7 +177,7 @@ struct WorkoutView: View {
         .workoutExerciseDataItem()
     }
     
-    @ViewBuilder private func ExerciseReps(_ reps: Int) -> some View {
+    @ViewBuilder private func ExerciseReps(_ reps: Workout.Exercise.Reps) -> some View {
         HStack(spacing: 2) {
             Image(systemName: "arrow.triangle.2.circlepath")
             Text("\(reps)reps")
