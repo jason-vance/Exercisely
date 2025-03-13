@@ -180,7 +180,7 @@ struct WorkoutView: View {
     @ViewBuilder private func ExerciseReps(_ reps: Workout.Exercise.Reps) -> some View {
         HStack(spacing: 2) {
             Image(systemName: "arrow.triangle.2.circlepath")
-            Text("\(reps)reps")
+            Text("\(reps.formatted())")
         }
         .workoutExerciseDataItem()
     }
@@ -201,11 +201,10 @@ struct WorkoutView: View {
         .workoutExerciseDataItem()
     }
     
-    @ViewBuilder private func ExerciseTime(_ time: TimeInterval) -> some View {
+    @ViewBuilder private func ExerciseTime(_ time: Workout.Exercise.Duration) -> some View {
         HStack(spacing: 2) {
             Image(systemName: "timer")
-            //TODO: Get formatted value from Workout.Exercise.Time
-            Text("\(time.formatted())secs")
+            Text("\(time.formatted())")
         }
         .workoutExerciseDataItem()
     }

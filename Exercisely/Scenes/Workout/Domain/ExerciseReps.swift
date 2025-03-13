@@ -16,6 +16,10 @@ extension Workout.Exercise {
             guard value > 0 else { return nil }
             self.value = value
         }
+        
+        func formatted() -> String {
+            "\(value)reps"
+        }
     }
 }
 
