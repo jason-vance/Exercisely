@@ -7,7 +7,6 @@
 
 import Foundation
 
-//TODO: Make ValueOf types
 extension Workout {
     class Section {
         
