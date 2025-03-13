@@ -18,12 +18,10 @@ struct WorkoutView: View {
     
     var workout: Workout? {
         if let workout = workouts.first(where: { $0.date == date }) {
-            print("Retrieved workout for \(date)")
             return workout
         }
         
         modelContext.insert(Workout(date: date))
-        print("Inserted new workout for \(date)")
         return nil
     }
 
@@ -60,11 +58,20 @@ struct WorkoutView: View {
                 axis: .vertical,
                 label: { Text(Workout.Focus.prompt.formatted()) }
             )
+            .bold()
             .workoutExerciseRow()
             .overlay(alignment: .bottom) {
                 Rectangle()
                     .frame(height: 1)
                     .foregroundStyle(Color.accentColor)
+            }
+            .onChange(of: workoutFocusString) { _, newValue in
+                if let workout = workout {
+                    workout.focus = .init(newValue)
+                }
+            }
+            .onChange(of: workout, initial: true) { _, newValue in
+                workoutFocusString = newValue?.focus?.formatted() ?? ""
             }
         } header: {
             SectionHeader("Focus")
