@@ -6,16 +6,20 @@
 //
 
 import Foundation
+import SwiftData
 
 extension Workout {
+    @Model
     class Section {
         
-        let id: UUID
+        //TODO: How do I identify these or order them?
         var name: String
+        
+        @Relationship(deleteRule: .cascade)
         var exercises: [Exercise]
         
+        
         init?(name: String) {
-            id = UUID()
             self.name = name
             self.exercises = []
         }

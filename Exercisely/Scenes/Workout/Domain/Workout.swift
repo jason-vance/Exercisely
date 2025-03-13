@@ -6,17 +6,27 @@
 //
 
 import Foundation
+import SwiftData
 
+@Model
 class Workout {
     
-    let id: UUID
     var focus: Focus?
-    var date: SimpleDate
+    
+    @Attribute(.unique)
+    private var dateInt: SimpleDate.RawValue
+
+    var date: SimpleDate {
+        get { SimpleDate(rawValue: dateInt)! }
+        set { dateInt = newValue.rawValue }
+    }
+
+    @Relationship(deleteRule: .cascade)
     var sections: [Section]
     
-    init() {
-        self.id = UUID()
-        self.date = .today
+    
+    init(date: SimpleDate = .today) {
+        self.dateInt = date.rawValue
         self.sections = []
     }
     

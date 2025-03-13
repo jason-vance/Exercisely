@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SimpleDate {
+final class SimpleDate {
     
     public typealias RawValue = UInt32
     
@@ -121,6 +121,8 @@ extension SimpleDate: Hashable {
         hasher.combine(rawValue)
     }
 }
+
+extension SimpleDate: Codable { }
 
 extension SimpleDate {
     enum SimpleDateFormat {

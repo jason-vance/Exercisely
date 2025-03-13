@@ -6,24 +6,40 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct WorkoutView: View {
     
+    @Environment(\.modelContext) private var modelContext
+    
     @State private var workoutFocusString: String = ""
     @State private var date: SimpleDate = .today
-    @State private var workout: Workout = .sample
+    @Query private var workouts: [Workout]
     
+    var workout: Workout? {
+        if let workout = workouts.first(where: { $0.date == date }) {
+            print("Retrieved workout for \(date)")
+            return workout
+        }
+        
+        modelContext.insert(Workout(date: date))
+        print("Inserted new workout for \(date)")
+        return nil
+    }
+
     private func onChangeOf(date: SimpleDate) {
         //TODO: Pull up the new date's data
     }
     
     var body: some View {
         List {
-            WorkoutFocusSection()
-            ForEach(workout.sections) { section in
-                WorkoutSection(section)
+            if let workout = workout {
+                WorkoutFocusSection()
+                ForEach(workout.sections) { section in
+                    WorkoutSection(section)
+                }
+                AddSectionToWorkoutButton()
             }
-            AddWorkoutSection()
         }
         .listDefaultModifiers()
         .toolbar { Toolbar() }
@@ -36,6 +52,7 @@ struct WorkoutView: View {
         }
     }
     
+    //TODO: warn the user if their focus is too long
     @ViewBuilder private func WorkoutFocusSection() -> some View {
         Section {
             TextField(
@@ -106,7 +123,7 @@ struct WorkoutView: View {
     
     @ViewBuilder private func AddExerciseButton(_ section: Workout.Section) -> some View {
         Button {
-
+            //TODO: Implement AddExerciseButton function
         } label: {
             HStack {
                 Image(systemName: "plus.circle")
@@ -210,11 +227,11 @@ struct WorkoutView: View {
         .workoutExerciseDataItem()
     }
     
-    @ViewBuilder private func AddWorkoutSection() -> some View {
+    @ViewBuilder private func AddSectionToWorkoutButton() -> some View {
         Section {
         } header: {
             Button {
-                
+                //TODO: Implement AddSectionToWorkoutButton function
             } label: {
                 Text("Add Workout Section")
             }

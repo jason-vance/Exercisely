@@ -32,7 +32,7 @@ extension Workout.Exercise {
             ]
         ]
         
-        enum Unit {
+        enum Unit: Codable {
             case seconds
             case minutes
             case hours
@@ -82,3 +82,5 @@ extension Workout.Exercise.Duration: Equatable {
         lhs.value == rhs.convert(to: lhs.unit)
     }
 }
+
+extension Workout.Exercise.Duration: Codable { }

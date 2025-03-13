@@ -6,11 +6,13 @@
 //
 
 import Foundation
+import SwiftData
 
 extension Workout {
+    @Model
     class Exercise {
         
-        let id: UUID
+        //TODO: How do I identify these or order them?
         var name: Name
         var weight: Weight?
         var reps: Reps?
@@ -28,7 +30,6 @@ extension Workout {
                 return nil
             }
             
-            self.id = UUID()
             self.name = name
             self.weight = weight
             self.reps = reps
@@ -70,7 +71,7 @@ enum ExerciseGroup {
 }
 
 extension ExerciseGroup: Identifiable {
-    var id: UUID {
+    var id: ObjectIdentifier {
         switch self {
         case .single(let exercise):
             return exercise.id

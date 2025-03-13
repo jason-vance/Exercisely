@@ -41,7 +41,7 @@ struct Distance {
         ]
     ]
     
-    enum Unit {
+    enum Unit: Codable {
         case feet
         case miles
         case meters
@@ -100,3 +100,5 @@ extension Distance: Equatable {
         lhs.value == rhs.convert(to: lhs.unit)
     }
 }
+
+extension Distance: Codable { }

@@ -51,6 +51,8 @@ extension Workout.Exercise.Name: Hashable {
     }
 }
 
+extension Workout.Exercise.Name: Codable { }
+
 extension Workout.Exercise.Name {
     static let prompt: Self = .init("Squats, Bench Press, etc...")!
     static let sampleDeadlift: Self = .init("Deadlift")!

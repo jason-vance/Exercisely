@@ -12,7 +12,7 @@ struct Weight {
     private static let lbsPerKg: Double = 2.20462
     private static let precision: Int = 3
     
-    enum Unit {
+    enum Unit: Codable {
         case pounds
         case kilograms
         
@@ -63,3 +63,5 @@ extension Weight: Equatable {
         lhs.value == rhs.convert(to: lhs.unit)
     }
 }
+
+extension Weight: Codable { }

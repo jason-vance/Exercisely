@@ -28,3 +28,5 @@ extension Workout.Exercise.Reps: Equatable {
         lhs.value == rhs.value
     }
 }
+
+extension Workout.Exercise.Reps: Codable { }
