@@ -19,6 +19,7 @@ struct WorkoutView: View {
     
     var body: some View {
         List {
+            WorkoutFocusSection()
             ForEach(workout.sections) { section in
                 WorkoutSection(section)
             }
@@ -26,30 +27,30 @@ struct WorkoutView: View {
         }
         .listDefaultModifiers()
         .toolbar { Toolbar() }
+        .toolbarTitleDisplayMode(.inline)
     }
     
     @ToolbarContentBuilder private func Toolbar() -> some ToolbarContent {
-        ToolbarItem(placement: .topBarLeading) {
-            WorkoutCategoryField()
-        }
-        ToolbarItem(placement: .topBarTrailing) {
+        ToolbarItem(placement: .primaryAction) {
             DateButton()
         }
     }
     
-    @ViewBuilder private func WorkoutCategoryField() -> some View {
-        HStack {
-            Text("Focus:")
-                .foregroundStyle(Color.text)
-                .bold()
-            TextField(text: $workoutFocusString, label: { Text(Workout.Focus.prompt.formatted()) })
-                .foregroundStyle(Color.text)
-                .bold()
-                .overlay(alignment: .bottom) {
-                    Rectangle()
-                        .frame(height: 1)
-                        .foregroundStyle(Color.accentColor)
-                }
+    @ViewBuilder private func WorkoutFocusSection() -> some View {
+        Section {
+            TextField(
+                text: $workoutFocusString,
+                axis: .vertical,
+                label: { Text(Workout.Focus.prompt.formatted()) }
+            )
+            .workoutExerciseRow()
+            .overlay(alignment: .bottom) {
+                Rectangle()
+                    .frame(height: 1)
+                    .foregroundStyle(Color.accentColor)
+            }
+        } header: {
+            SectionHeader("Focus")
         }
     }
     
