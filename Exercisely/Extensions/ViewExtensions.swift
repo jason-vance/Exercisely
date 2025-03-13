@@ -30,14 +30,14 @@ extension View {
             .foregroundStyle(Color.text)
     }
     
-    func workoutActivityRow() -> some View {
+    func workoutExerciseRow() -> some View {
         self
             .multilineTextAlignment(.leading)
             .foregroundStyle(Color.text)
             .listRowNoChrome()
     }
     
-    func workoutActivityDataItem() -> some View {
+    func workoutExerciseDataItem() -> some View {
         self
             .font(.caption)
             .foregroundStyle(Color.text)

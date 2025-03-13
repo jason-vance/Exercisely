@@ -13,16 +13,16 @@ extension Workout {
         
         let id: UUID
         var name: String
-        var activities: [Activity]
+        var exercises: [Exercise]
         
         init?(name: String) {
             id = UUID()
             self.name = name
-            self.activities = []
+            self.exercises = []
         }
         
-        func append(activity: Activity) {
-            activities.append(activity)
+        func append(exercise: Exercise) {
+            exercises.append(exercise)
         }
     }
 }
@@ -33,15 +33,15 @@ extension Workout.Section {
     static var sampleWarmup: Workout.Section {
         let section = Workout.Section(name: "Warm-Up")!
         
-        section.append(activity: .sampleTreadmill)
+        section.append(exercise: .sampleTreadmill)
         
-        section.append(activity: .sampleYtw)
-        section.append(activity: .sampleArcherPress)
-        section.append(activity: .sampleTrxChestStretch)
+        section.append(exercise: .sampleYtw)
+        section.append(exercise: .sampleArcherPress)
+        section.append(exercise: .sampleTrxChestStretch)
         
-        section.append(activity: .sampleYtw)
-        section.append(activity: .sampleArcherPress)
-        section.append(activity: .sampleTrxChestStretch)
+        section.append(exercise: .sampleYtw)
+        section.append(exercise: .sampleArcherPress)
+        section.append(exercise: .sampleTrxChestStretch)
         
         return section
     }
@@ -49,22 +49,22 @@ extension Workout.Section {
     static var sampleWorkout: Workout.Section {
         let section = Workout.Section(name: "Workout")!
         
-        section.append(activity: .sampleTurkishGetUp)
-        section.append(activity: .sampleShoulderTouches)
-        section.append(activity: .sampleKettlebellShoulderPress)
+        section.append(exercise: .sampleTurkishGetUp)
+        section.append(exercise: .sampleShoulderTouches)
+        section.append(exercise: .sampleKettlebellShoulderPress)
         
-        section.append(activity: .sampleTurkishGetUp)
-        section.append(activity: .sampleShoulderTouches)
-        section.append(activity: .sampleKettlebellShoulderPress)
+        section.append(exercise: .sampleTurkishGetUp)
+        section.append(exercise: .sampleShoulderTouches)
+        section.append(exercise: .sampleKettlebellShoulderPress)
         
-        section.append(activity: .sampleTurkishGetUp)
-        section.append(activity: .sampleShoulderTouches)
-        section.append(activity: .sampleKettlebellShoulderPress)
+        section.append(exercise: .sampleTurkishGetUp)
+        section.append(exercise: .sampleShoulderTouches)
+        section.append(exercise: .sampleKettlebellShoulderPress)
         
-        section.append(activity: .sampleMachineShoulderPress)
-        section.append(activity: .sampleMachineShoulderPress)
+        section.append(exercise: .sampleMachineShoulderPress)
+        section.append(exercise: .sampleMachineShoulderPress)
 
-        section.append(activity: .sampleMachineUnderhandRow)
+        section.append(exercise: .sampleMachineUnderhandRow)
         
         return section
     }
@@ -72,7 +72,7 @@ extension Workout.Section {
     static var sampleCooldown: Workout.Section {
         let section = Workout.Section(name: "Cooldown")!
         
-        section.append(activity: .sampleHike)
+        section.append(exercise: .sampleHike)
         
         return section
     }

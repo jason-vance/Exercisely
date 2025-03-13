@@ -40,7 +40,7 @@
 				Extensions/DoubleExtensions.swift,
 				Scenes/Workout/Domain/ExerciseName.swift,
 				Scenes/Workout/Domain/Workout.swift,
-				Scenes/Workout/Domain/WorkoutActivity.swift,
+				Scenes/Workout/Domain/WorkoutExercise.swift,
 				Scenes/Workout/Domain/WorkoutFocus.swift,
 				Scenes/Workout/Domain/WorkoutSection.swift,
 			);

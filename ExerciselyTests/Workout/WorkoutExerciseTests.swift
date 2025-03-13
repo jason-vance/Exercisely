@@ -1,5 +1,5 @@
 //
-//  WorkoutActivityTests.swift
+//  WorkoutExerciseTests.swift
 //  ExerciselyTests
 //
 //  Created by Jason Vance on 3/12/25.
@@ -7,10 +7,10 @@
 
 import Testing
 
-struct WorkoutActivityTests {
+struct WorkoutExerciseTests {
     
-    @Test func group_GroupsOneExerciseAsSingleWorkoutActivityGroup() async throws {
-        let groups = Workout.Activity.group(activities: [.sampleYtw])
+    @Test func group_GroupsOneExerciseAsSingleExerciseGroup() async throws {
+        let groups = Workout.Exercise.group(exercises: [.sampleYtw])
         
         #expect(groups.count == 1)
         guard let firstGroup = groups.first else {
@@ -26,8 +26,8 @@ struct WorkoutActivityTests {
         }
     }
     
-    @Test func group_GroupsSimpleSetAsSetWorkoutActivityGroup() async throws {
-        let groups = Workout.Activity.group(activities: [.sampleYtw, .sampleYtw, .sampleYtw])
+    @Test func group_GroupsSimpleSetAsSetExerciseGroup() async throws {
+        let groups = Workout.Exercise.group(exercises: [.sampleYtw, .sampleYtw, .sampleYtw])
         
         #expect(groups.count == 1)
         guard let firstGroup = groups.first else {
@@ -46,8 +46,8 @@ struct WorkoutActivityTests {
         }
     }
     
-    @Test func group_GroupsActivitiesByExercise() async throws {
-        let groups = Workout.Activity.group(activities: [
+    @Test func group_GroupsExercisesByName() async throws {
+        let groups = Workout.Exercise.group(exercises: [
             .sampleTreadmill,
             .sampleYtw, .sampleYtw,
             .sampleTrxChestStretch, .sampleTrxChestStretch,

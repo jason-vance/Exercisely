@@ -84,8 +84,8 @@ struct WorkoutView: View {
     
     @ViewBuilder private func WorkoutSection(_ section: Workout.Section) -> some View {
         Section {
-            ForEach(Workout.Activity.group(activities: section.activities)) { activity in
-                GroupedWorkoutActivity(activity)
+            ForEach(Workout.Exercise.group(exercises: section.exercises)) { exercise in
+                GroupedExercise(exercise)
             }
         } header: {
             SectionHeader(section.name)
@@ -117,98 +117,98 @@ struct WorkoutView: View {
         .foregroundStyle(Color.accent)
     }
     
-    @ViewBuilder private func GroupedWorkoutActivity(_ workoutActivityGroup: WorkoutActivityGroup) -> some View {
-        switch workoutActivityGroup {
-        case .single(let activity):
-            SingleWorkoutActivity(activity)
-        case .set(let activities):
-            SetWorkoutActivity(activities)
+    @ViewBuilder private func GroupedExercise(_ exerciseGroup: ExerciseGroup) -> some View {
+        switch exerciseGroup {
+        case .single(let exercise):
+            SingleExercise(exercise)
+        case .set(let exercises):
+            SetExercise(exercises)
         }
     }
     
-    @ViewBuilder private func SingleWorkoutActivity(_ activity: Workout.Activity) -> some View {
-        SetWorkoutActivity([activity])
+    @ViewBuilder private func SingleExercise(_ exercise: Workout.Exercise) -> some View {
+        SetExercise([exercise])
     }
     
-    @ViewBuilder private func SetWorkoutActivity(_ activities: [Workout.Activity]) -> some View {
-        if let activity = activities.first {
+    @ViewBuilder private func SetExercise(_ exercises: [Workout.Exercise]) -> some View {
+        if let exercise = exercises.first {
             VStack(spacing: 0) {
                 HStack {
                     Image(systemName: "circle.fill")
                         .resizable()
                         .frame(width: .activityRowBulletSize, height: .activityRowBulletSize)
-                    Text(activity.exercise.formatted())
+                    Text(exercise.name.formatted())
                         .multilineTextAlignment(.leading)
                     Spacer(minLength: 0)
                 }
                 .font(.headline)
                 HStack {
-                    let sets = activities.count
+                    let sets = exercises.count
                     if sets > 1 {
-                        ActivitySets(sets)
+                        ExerciseSets(sets)
                     }
-                    if let reps = activity.reps {
-                        ActivityReps(reps)
+                    if let reps = exercise.reps {
+                        ExerciseReps(reps)
                     }
-                    if let weight = activity.weight {
-                        ActivityWeight(weight)
+                    if let weight = exercise.weight {
+                        ExerciseWeight(weight)
                     }
-                    if let distance = activity.distance {
-                        ActivityDistance(distance)
+                    if let distance = exercise.distance {
+                        ExerciseDistance(distance)
                     }
-                    if let time = activity.time {
-                        ActivityTime(time)
+                    if let time = exercise.time {
+                        ExerciseTime(time)
                     }
                     Spacer(minLength: 0)
                 }
                 .padding(.leading, 12)
             }
-            .workoutActivityRow()
+            .workoutExerciseRow()
         } else {
             EmptyView()
         }
     }
     
-    @ViewBuilder private func ActivitySets(_ sets: Int) -> some View {
+    @ViewBuilder private func ExerciseSets(_ sets: Int) -> some View {
         HStack(spacing: 2) {
             Image(systemName: "square.stack.3d.up")
             Text("\(sets)sets")
         }
-        .workoutActivityDataItem()
+        .workoutExerciseDataItem()
     }
     
-    @ViewBuilder private func ActivityReps(_ reps: Int) -> some View {
+    @ViewBuilder private func ExerciseReps(_ reps: Int) -> some View {
         HStack(spacing: 2) {
             Image(systemName: "arrow.triangle.2.circlepath")
             Text("\(reps)reps")
         }
-        .workoutActivityDataItem()
+        .workoutExerciseDataItem()
     }
     
-    @ViewBuilder private func ActivityWeight(_ weight: Weight) -> some View {
+    @ViewBuilder private func ExerciseWeight(_ weight: Weight) -> some View {
         HStack(spacing: 2) {
             Image(systemName: "dumbbell")
             Text("\(weight.formatted())")
         }
-        .workoutActivityDataItem()
+        .workoutExerciseDataItem()
     }
     
-    @ViewBuilder private func ActivityDistance(_ distance: Double) -> some View {
+    @ViewBuilder private func ExerciseDistance(_ distance: Double) -> some View {
         HStack(spacing: 2) {
             Image(systemName: "point.bottomleft.forward.to.arrow.triangle.scurvepath")
-            //TODO: Get formatted value from Workout.Activity.Distance
+            //TODO: Get formatted value from Workout.Exercise.Distance
             Text("\(distance.formatted())mi")
         }
-        .workoutActivityDataItem()
+        .workoutExerciseDataItem()
     }
     
-    @ViewBuilder private func ActivityTime(_ time: TimeInterval) -> some View {
+    @ViewBuilder private func ExerciseTime(_ time: TimeInterval) -> some View {
         HStack(spacing: 2) {
             Image(systemName: "timer")
-            //TODO: Get formatted value from Workout.Activity.Time
+            //TODO: Get formatted value from Workout.Exercise.Time
             Text("\(time.formatted())secs")
         }
-        .workoutActivityDataItem()
+        .workoutExerciseDataItem()
     }
     
     @ViewBuilder private func AddWorkoutSection() -> some View {
