@@ -35,9 +35,9 @@
 			membershipExceptions = (
 				Extensions/CGFloatExtensions.swift,
 				Extensions/DateExtensions.swift,
-				Extensions/ViewExtensions.swift,
 				Scenes/Workout/Domain/Exercise.swift,
 				Scenes/Workout/Domain/Workout.swift,
+				Scenes/Workout/Domain/WorkoutActivity.swift,
 				Scenes/Workout/Domain/WorkoutFocus.swift,
 				Scenes/Workout/Domain/WorkoutSection.swift,
 			);

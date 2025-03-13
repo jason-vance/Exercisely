@@ -64,3 +64,60 @@ extension Workout.Activity {
     static let sampleHike: Workout.Activity = .init(exercise: .sampleHike, distance: 1.5)!
 }
 
+
+enum WorkoutActivityGroup {
+    case single(Workout.Activity)
+    case set([Workout.Activity])
+}
+
+extension WorkoutActivityGroup: Identifiable {
+    var id: UUID {
+        switch self {
+        case .single(let activity):
+            return activity.id
+        case .set(let activities):
+            return activities.first!.id
+        }
+    }
+}
+
+
+extension Workout.Activity {
+    fileprivate static func groupAsSingleOrSet(_ activities: [Workout.Activity], _ i: Int, _ currentSetLength: Int, _ groupedActivities: inout [WorkoutActivityGroup]) {
+        let setActivities = Array(activities[i..<(i + currentSetLength)])
+        
+        if setActivities.count == 1 {
+            groupedActivities += [.single(setActivities[0])]
+        } else {
+            groupedActivities += [.set(setActivities)]
+        }
+    }
+    
+    static func group(activities: [Workout.Activity]) -> [WorkoutActivityGroup] {
+        if activities.isEmpty {
+            return []
+        }
+        
+        var groupedActivities: [WorkoutActivityGroup] = []
+        
+        var currentExercise: Exercise = activities.first!.exercise
+        var i = 0
+        var currentSetLength = 0
+        
+        while i + currentSetLength < activities.count {
+            if activities[i + currentSetLength].exercise == currentExercise {
+                currentSetLength += 1
+            } else {
+                groupAsSingleOrSet(activities, i, currentSetLength, &groupedActivities)
+
+                currentExercise = activities[i + currentSetLength].exercise
+                i += currentSetLength
+                currentSetLength = 0
+            }
+        }
+        
+        groupAsSingleOrSet(activities, i, currentSetLength, &groupedActivities)
+
+        return groupedActivities
+    }
+}

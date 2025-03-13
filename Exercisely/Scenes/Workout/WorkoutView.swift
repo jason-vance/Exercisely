@@ -81,12 +81,13 @@ struct WorkoutView: View {
     
     @ViewBuilder private func WorkoutSection(_ section: Workout.Section) -> some View {
         Section {
-            ForEach(section.activities) { activity in
-                SingleWorkoutActivity(activity)
+            ForEach(Workout.Activity.group(activities: section.activities)) { activity in
+                GroupedWorkoutActivity(activity)
             }
-            AddExerciseButton(section)
         } header: {
             SectionHeader(section.name)
+        } footer: {
+            AddExerciseButton(section)
         }
     }
     
@@ -105,22 +106,27 @@ struct WorkoutView: View {
         } label: {
             HStack {
                 Image(systemName: "plus.circle")
-                    .resizable()
-                    .frame(width: .activityRowPlusCircleSize, height: .activityRowPlusCircleSize)
                 Text("Add Exercise")
-                    .font(.headline)
                 Spacer(minLength: 0)
             }
         }
+        .font(.headline)
         .foregroundStyle(Color.accent)
-        .workoutActivityRow()
+    }
+    
+    @ViewBuilder private func GroupedWorkoutActivity(_ workoutActivityGroup: WorkoutActivityGroup) -> some View {
+        switch workoutActivityGroup {
+        case .single(let activity):
+            SingleWorkoutActivity(activity)
+        case .set(let activities):
+            SetWorkoutActivity(activities)
+        }
     }
     
     @ViewBuilder private func SingleWorkoutActivity(_ activity: Workout.Activity) -> some View {
         SetWorkoutActivity([activity])
     }
     
-    //TODO: Make a ValueOf or enum that captures a set activity (and single activity)
     @ViewBuilder private func SetWorkoutActivity(_ activities: [Workout.Activity]) -> some View {
         if let activity = activities.first {
             VStack(spacing: 0) {
