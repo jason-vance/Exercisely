@@ -12,14 +12,14 @@ extension Workout {
     class Activity {
         
         let id: UUID
-        var exercise: Exercise
+        var exercise: ExerciseName
         var weight: Double?
         var reps: Int?
         var distance: Double?
         var time: TimeInterval?
         
         init?(
-            exercise: Exercise,
+            exercise: ExerciseName,
             weight: Double? = nil,
             reps: Int? = nil,
             distance: Double? = nil,
@@ -100,7 +100,7 @@ extension Workout.Activity {
         
         var groupedActivities: [WorkoutActivityGroup] = []
         
-        var currentExercise: Exercise = activities.first!.exercise
+        var currentExercise: ExerciseName = activities.first!.exercise
         var i = 0
         var currentSetLength = 0
         

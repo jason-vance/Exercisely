@@ -36,7 +36,7 @@
 				Domain/SimpleDate.swift,
 				Extensions/CGFloatExtensions.swift,
 				Extensions/DateExtensions.swift,
-				Scenes/Workout/Domain/Exercise.swift,
+				Scenes/Workout/Domain/ExerciseName.swift,
 				Scenes/Workout/Domain/Workout.swift,
 				Scenes/Workout/Domain/WorkoutActivity.swift,
 				Scenes/Workout/Domain/WorkoutFocus.swift,
