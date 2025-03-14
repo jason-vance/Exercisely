@@ -218,7 +218,7 @@ fileprivate extension View {
         ExerciseRepsEditView(
             reps: .init(
                 get: { reps },
-                set: { reps = $0; print("Reps: \($0?.formatted())") }
+                set: { reps = $0; print("Reps: \(String(describing: $0?.formatted()))") }
             )
         )
     }

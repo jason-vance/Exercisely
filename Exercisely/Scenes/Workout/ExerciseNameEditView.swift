@@ -138,7 +138,7 @@ struct ExerciseNameEditView: View {
         ExerciseNameEditView(
             name: .init(
                 get: { name },
-                set: { name = $0; print("Name: \($0?.formatted())") }
+                set: { name = $0; print("Name: \(String(describing: $0?.formatted()))") }
             )
         )
     }
