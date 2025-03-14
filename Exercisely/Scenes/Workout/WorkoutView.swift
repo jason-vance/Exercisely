@@ -71,9 +71,9 @@ struct WorkoutView: View {
         Section {
             TextField(
                 text: $workoutFocusString,
-                axis: .vertical,
                 label: { Text(Workout.Focus.prompt.formatted()) }
             )
+            .submitLabel(.done)
             .bold()
             .workoutExerciseRow()
             .overlay(alignment: .bottom) {
