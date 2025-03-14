@@ -18,7 +18,9 @@ struct WorkoutView: View {
     
     @State private var showSectionOptions: Workout.Section? = nil
     @State private var sectionToDelete: Workout.Section? = nil
-    
+    @State private var sectionToRename: Workout.Section? = nil
+    @State private var sectionRenameString: String = ""
+
     @State private var showAddSection: Bool = false
     @State private var newWorkoutSectionName: String = ""
     
@@ -42,6 +44,14 @@ struct WorkoutView: View {
         guard let sectionToDelete = sectionToDelete else { return }
         workout?.sections.removeAll(where: { $0.id == sectionToDelete.id })
         self.sectionToDelete = nil
+        showSectionOptions = nil
+    }
+    
+    private func renameSectionToRename() {
+        sectionToRename?.name = sectionRenameString
+        self.sectionToRename = nil
+        self.sectionRenameString = ""
+        showSectionOptions = nil
     }
     
     var body: some View {
@@ -60,12 +70,29 @@ struct WorkoutView: View {
         .animation(.snappy, value: showSectionOptions)
         .toolbar { Toolbar() }
         .toolbarTitleDisplayMode(.inline)
-        .alert("What do you want to name this workout section?", isPresented: $showAddSection) {
+        .alert(
+            "What do you want to name this workout section?",
+            isPresented: $showAddSection
+        ) {
             TextField(
                 text: $newWorkoutSectionName,
                 label: { Text("Warm-Up, Workout, etc...") }
             )
             Button("OK", action: addNewSectionToWorkout)
+            Button("Cancel", role: .cancel) { }
+        }
+        .alert(
+            "What do you want \"\(sectionToRename?.name ?? "")\" to be renamed to?",
+            isPresented: .init(
+                get: { sectionToRename != nil },
+                set: { isPresented in sectionToRename = isPresented ? sectionToRename : nil }
+            )
+        ) {
+            TextField(
+                text: $sectionRenameString,
+                label: { Text("Warm-Up, Workout, etc...") }
+            )
+            Button("OK", action: renameSectionToRename)
             Button("Cancel", role: .cancel) { }
         }
         .confirmationDialog(
@@ -152,15 +179,19 @@ struct WorkoutView: View {
                     showSectionOptions = showSectionOptions == section ? nil : section
                 } label: {
                     SectionHeader(section.name)
+                        .animation(.snappy, value: section.name)
+                        .contentTransition(.numericText())
                 }
                 Spacer(minLength: 0)
-                Button {
-                    sectionToDelete = section
+                Menu {
+                    Button("Rename", systemImage: "pencil") { sectionToRename = section }
+                    Button("Delete", systemImage: "trash", role: .destructive) { sectionToDelete = section }
                 } label: {
-                    Image(systemName: "minus.circle.fill")
+                    Image(systemName: "ellipsis.circle.fill")
                         .font(.headline)
-                        .foregroundStyle(Color.red)
+                        .foregroundStyle(Color.accent)
                 }
+                .textCase(.none)
                 .opacity(showSectionOptions == section ? 1 : 0)
                 .offset(x: showSectionOptions == section ? 0 : 50)
             }
