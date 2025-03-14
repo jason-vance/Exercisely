@@ -26,6 +26,18 @@ extension View {
             .background(Color.background)
     }
     
+    func buttonDefaultModifiers() -> some View {
+        self
+            .padding(.horizontal, .padding)
+            .padding(.vertical, .padding / 2)
+            .foregroundColor(Color.text)
+            .background {
+                RoundedRectangle(cornerRadius: .cornerRadiusDefault, style: .continuous)
+                    .stroke(style: .init(lineWidth: 1))
+                    .foregroundStyle(Color.accentColor)
+            }
+    }
+    
     func listRowNoChrome() -> some View {
         self
             .listRowBackground(Color.clear)

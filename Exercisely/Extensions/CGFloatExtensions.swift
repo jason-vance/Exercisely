@@ -16,4 +16,6 @@ extension CGFloat {
     static let activityRowHeight: CGFloat = 44
     static let activityRowBulletSize: CGFloat = 4
     static let activityRowPlusCircleSize: CGFloat = 16
+    
+    static let cornerRadiusDefault: CGFloat = 8
 }

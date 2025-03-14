@@ -108,15 +108,15 @@ struct AddExerciseView: View {
     
     @ViewBuilder private func NameField() -> some View {
         Section {
-            Button {
-                 
+            NavigationLinkNoChevron {
+                 ExerciseNameEditView(name: $name)
             } label: {
                 Text(name?.formatted() ?? Workout.Exercise.Name.prompt.formatted())
                     .opacity(name == nil ? 0.35 : 1)
+                    .bold()
+                    .underlined()
             }
-            .bold()
             .workoutExerciseRow()
-            .underlined()
         } header: {
             SectionHeader("Name")
         }
@@ -180,14 +180,6 @@ struct AddExerciseView: View {
         } header: {
             SectionHeader("Time")
         }
-    }
-    
-    @ViewBuilder private func SectionHeader(_ text: String) -> some View {
-        HStack(spacing: 0) {
-            Text(text)
-            Text(":")
-        }
-        .workoutSectionHeader()
     }
 }
 

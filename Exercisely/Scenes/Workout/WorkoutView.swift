@@ -12,9 +12,10 @@ struct WorkoutView: View {
     
     @Environment(\.modelContext) private var modelContext
     
+    @Query private var workouts: [Workout]
+    
     @State private var workoutFocusString: String = ""
     @State private var date: SimpleDate = .today
-    @Query private var workouts: [Workout]
     
     @State private var showSectionOptions: Workout.Section? = nil
     @State private var sectionToDelete: Workout.Section? = nil
@@ -202,14 +203,6 @@ struct WorkoutView: View {
         }
     }
     
-    @ViewBuilder private func SectionHeader(_ text: String) -> some View {
-        HStack(spacing: 0) {
-            Text(text)
-            Text(":")
-        }
-        .workoutSectionHeader()
-    }
-    
     @ViewBuilder private func AddExerciseButton(_ section: Workout.Section) -> some View {
         NavigationLink {
             AddExerciseView(workoutSection: section)
@@ -222,10 +215,6 @@ struct WorkoutView: View {
             .font(.headline)
             .foregroundStyle(Color.accent)
         }
-//        Button {
-//            sectionToAddExercise = section
-//        } label: {
-//        }
     }
     
     @ViewBuilder private func GroupedExercise(_ exerciseGroup: ExerciseGroup) -> some View {
