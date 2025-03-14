@@ -32,10 +32,17 @@ extension View {
             .padding(.vertical, .padding / 2)
             .foregroundColor(Color.text)
             .background {
-                RoundedRectangle(cornerRadius: .cornerRadiusDefault, style: .continuous)
+                RoundedRectangle(cornerRadius: .buttonCornerRadius, style: .continuous)
                     .stroke(style: .init(lineWidth: 1))
                     .foregroundStyle(Color.accentColor)
             }
+    }
+    
+    func fieldButton() -> some View {
+        self
+            .foregroundStyle(Color.text)
+            .bold()
+            .underlined()
     }
     
     func listRowNoChrome() -> some View {

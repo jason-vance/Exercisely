@@ -10,12 +10,12 @@ import SwiftData
 
 struct ExerciseNameEditView: View {
     
-    @Environment(\.dismiss) private var dismiss
+    @Environment(\.presentationMode) var presentation
     
     @Query private var exercises: [Workout.Exercise]
     
     @Binding var name: Workout.Exercise.Name?
-    
+
     @State private var nameString: String = ""
     
     init(name: Binding<Workout.Exercise.Name?>) {
@@ -41,7 +41,7 @@ struct ExerciseNameEditView: View {
         }
         
         self.name = name
-        dismiss()
+        presentation.wrappedValue.dismiss()
     }
     
     var body: some View {
@@ -77,7 +77,7 @@ struct ExerciseNameEditView: View {
     
     @ViewBuilder private func CancelButton() -> some View {
         Button {
-            dismiss()
+            presentation.wrappedValue.dismiss()
         } label: {
             Image(systemName: "xmark")
                 .foregroundStyle(Color.accentColor)

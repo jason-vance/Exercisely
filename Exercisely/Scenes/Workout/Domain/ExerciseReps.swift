@@ -17,6 +17,8 @@ extension Workout.Exercise {
             self.value = value
         }
         
+        var count: Int { value }
+        
         func formatted() -> String {
             "\(value)reps"
         }

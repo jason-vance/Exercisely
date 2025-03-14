@@ -9,10 +9,10 @@ import SwiftUI
 
 struct AddExerciseView: View {
     
-    @Environment(\.dismiss) private var dismiss
+    @Environment(\.presentationMode) var presentation
     
     @State var workoutSection: Workout.Section
-    
+
     @State private var name: Workout.Exercise.Name? = nil
     @State private var weight: Weight? = nil
     @State private var reps: Workout.Exercise.Reps? = nil
@@ -47,7 +47,7 @@ struct AddExerciseView: View {
         }
         
         workoutSection.append(exercise: exercise)
-        dismiss()
+        presentation.wrappedValue.dismiss()
     }
     
     var body: some View {
@@ -81,7 +81,7 @@ struct AddExerciseView: View {
     
     @ViewBuilder private func CancelButton() -> some View {
         Button {
-            dismiss()
+            presentation.wrappedValue.dismiss()
         } label: {
             Image(systemName: "xmark")
                 .foregroundStyle(Color.accentColor)
@@ -113,8 +113,7 @@ struct AddExerciseView: View {
             } label: {
                 Text(name?.formatted() ?? Workout.Exercise.Name.prompt.formatted())
                     .opacity(name == nil ? 0.35 : 1)
-                    .bold()
-                    .underlined()
+                    .fieldButton()
             }
             .workoutExerciseRow()
         } header: {
@@ -128,10 +127,9 @@ struct AddExerciseView: View {
                  
             } label: {
                 Text(weight?.formatted() ?? "N/A")
+                    .fieldButton()
             }
-            .bold()
             .workoutExerciseRow()
-            .underlined()
         } header: {
             SectionHeader("Weight")
         }
@@ -139,14 +137,13 @@ struct AddExerciseView: View {
     
     @ViewBuilder private func RepsField() -> some View {
         Section {
-            Button {
-                 
+            NavigationLinkNoChevron {
+                ExerciseRepsEditView(reps: $reps)
             } label: {
                 Text(reps?.formatted() ?? "N/A")
+                    .fieldButton()
             }
-            .bold()
             .workoutExerciseRow()
-            .underlined()
         } header: {
             SectionHeader("Reps")
         }
@@ -158,10 +155,9 @@ struct AddExerciseView: View {
                  
             } label: {
                 Text(distance?.formatted() ?? "N/A")
+                    .fieldButton()
             }
-            .bold()
             .workoutExerciseRow()
-            .underlined()
         } header: {
             SectionHeader("Distance")
         }
@@ -173,10 +169,9 @@ struct AddExerciseView: View {
                  
             } label: {
                 Text(time?.formatted() ?? "N/A")
+                    .fieldButton()
             }
-            .bold()
             .workoutExerciseRow()
-            .underlined()
         } header: {
             SectionHeader("Time")
         }

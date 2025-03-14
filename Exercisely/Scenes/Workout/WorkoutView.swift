@@ -109,14 +109,6 @@ struct WorkoutView: View {
             Button("Delete It!", role: .destructive, action: removeSectionFromWorkout)
             Button("Cancel", role: .cancel) { }
         }
-        .fullScreenCover(
-            isPresented: .init(
-                get: { sectionToAddExercise != nil },
-                set: { isPresented in sectionToAddExercise = isPresented ? sectionToAddExercise : nil }
-            )
-        ) {
-            AddExerciseView(workoutSection: sectionToAddExercise!)
-        }
     }
     
     @ToolbarContentBuilder private func Toolbar() -> some ToolbarContent {
@@ -133,9 +125,8 @@ struct WorkoutView: View {
                 label: { Text(Workout.Focus.prompt.formatted()) }
             )
             .submitLabel(.done)
-            .bold()
+            .fieldButton()
             .workoutExerciseRow()
-            .underlined()
             .onChange(of: workoutFocusString) { _, newValue in
                 if let workout = workout {
                     workout.focus = .init(newValue)
@@ -154,9 +145,7 @@ struct WorkoutView: View {
             
         } label: {
             Text(date.formatted())
-                .foregroundStyle(Color.text)
-                .bold()
-                .underlined()
+                .fieldButton()
         }
         .overlay{
             DatePicker(
