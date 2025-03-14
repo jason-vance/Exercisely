@@ -16,6 +16,9 @@ struct WorkoutView: View {
     @State private var date: SimpleDate = .today
     @Query private var workouts: [Workout]
     
+    @State private var showAddSection: Bool = false
+    @State private var newWorkoutSectionName: String = ""
+    
     var workout: Workout? {
         if let workout = workouts.first(where: { $0.date == date }) {
             return workout
@@ -24,24 +27,37 @@ struct WorkoutView: View {
         modelContext.insert(Workout(date: date))
         return nil
     }
-
-    private func onChangeOf(date: SimpleDate) {
-        //TODO: Pull up the new date's data
+    
+    private func addNewSectionToWorkout() {
+        let order = workout?.sections.max(by: { $0.order > $1.order })?.order ?? 0
+        workout?.append(section: .init(name: newWorkoutSectionName, order: order))
+        showAddSection = false
+        newWorkoutSectionName = ""
     }
     
     var body: some View {
         List {
             if let workout = workout {
                 WorkoutFocusSection()
-                ForEach(workout.sections) { section in
+                ForEach(workout.sections.sorted(by: { $0.order < $1.order })) { section in
                     WorkoutSection(section)
                 }
                 AddSectionToWorkoutButton()
             }
         }
         .listDefaultModifiers()
+        .animation(.snappy, value: workout)
+        .animation(.snappy, value: workout?.sections)
         .toolbar { Toolbar() }
         .toolbarTitleDisplayMode(.inline)
+        .alert("What do you want to name this workout section?", isPresented: $showAddSection) {
+            TextField(
+                text: $newWorkoutSectionName,
+                label: { Text("Warm-Up, Workout, etc...") }
+            )
+            Button("OK", action: addNewSectionToWorkout)
+            Button("Cancel", role: .cancel) { }
+        }
     }
     
     @ToolbarContentBuilder private func Toolbar() -> some ToolbarContent {
@@ -101,9 +117,6 @@ struct WorkoutView: View {
                 displayedComponents: [.date]
             )
             .blendMode(.destinationOver) //MARK: use this extension to keep the clickable functionality
-            .onChange(of: date) { _, date in
-                onChangeOf(date: date)
-            }
         }
     }
     
@@ -123,7 +136,6 @@ struct WorkoutView: View {
         HStack(spacing: 0) {
             Text(text)
             Text(":")
-            Spacer(minLength: 0)
         }
         .workoutSectionHeader()
     }
@@ -238,7 +250,7 @@ struct WorkoutView: View {
         Section {
         } header: {
             Button {
-                //TODO: Implement AddSectionToWorkoutButton function
+                showAddSection = true
             } label: {
                 Text("Add Workout Section")
             }
@@ -251,7 +263,7 @@ struct WorkoutView: View {
 #Preview {
     NavigationStack {
         WorkoutView()
-            .modelContainer(for: Item.self, inMemory: true)
+            .modelContainer(for: Workout.self, inMemory: true)
             .foregroundStyle(Color.text)
             .background(Color.background)
     }

@@ -11,7 +11,7 @@ extension Workout {
     struct Focus {
         
         static let minTextLength: Int = 1
-        static let maxTextLength: Int = 32
+        static let maxTextLength: Int = 200
         
         private let value: String
         
@@ -37,7 +37,7 @@ extension Workout {
 
 extension Workout.Focus {
     static let prompt: Workout.Focus = .init("Upper Body, Core, etc...")!
-    static let sample: Workout.Focus = .init("Legs")!
+    static let sample: Workout.Focus = .init("Lower Body")!
 }
 
 

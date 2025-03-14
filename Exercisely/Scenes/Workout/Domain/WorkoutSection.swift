@@ -12,15 +12,16 @@ extension Workout {
     @Model
     class Section {
         
-        //TODO: How do I identify these or order them?
         var name: String
+        var order: Int
         
         @Relationship(deleteRule: .cascade)
         var exercises: [Exercise]
         
         
-        init?(name: String) {
+        init(name: String, order: Int) {
             self.name = name
+            self.order = order
             self.exercises = []
         }
         
@@ -34,7 +35,7 @@ extension Workout.Section: Identifiable { }
 
 extension Workout.Section {
     static var sampleWarmup: Workout.Section {
-        let section = Workout.Section(name: "Warm-Up")!
+        let section = Workout.Section(name: "Warm-Up", order: 0)
         
         section.append(exercise: .sampleTreadmill)
         
@@ -50,7 +51,7 @@ extension Workout.Section {
     }
     
     static var sampleWorkout: Workout.Section {
-        let section = Workout.Section(name: "Workout")!
+        let section = Workout.Section(name: "Workout", order: 1)
         
         section.append(exercise: .sampleTurkishGetUp)
         section.append(exercise: .sampleShoulderTouches)
@@ -73,7 +74,7 @@ extension Workout.Section {
     }
     
     static var sampleCooldown: Workout.Section {
-        let section = Workout.Section(name: "Cooldown")!
+        let section = Workout.Section(name: "Cooldown", order: 2)
         
         section.append(exercise: .sampleHike)
         
