@@ -10,6 +10,15 @@ import SwiftUI
 
 extension View {
     
+    func underlined() -> some View {
+        self
+            .overlay(alignment: .bottom) {
+                Rectangle()
+                    .frame(height: 1)
+                    .foregroundStyle(Color.accentColor)
+            }
+    }
+    
     func listDefaultModifiers() -> some View {
         self
             .listStyle(.grouped)

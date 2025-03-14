@@ -24,6 +24,8 @@ struct WorkoutView: View {
     @State private var showAddSection: Bool = false
     @State private var newWorkoutSectionName: String = ""
     
+    @State private var sectionToAddExercise: Workout.Section? = nil
+    
     var workout: Workout? {
         if let workout = workouts.first(where: { $0.date == date }) {
             return workout
@@ -106,6 +108,14 @@ struct WorkoutView: View {
             Button("Delete It!", role: .destructive, action: removeSectionFromWorkout)
             Button("Cancel", role: .cancel) { }
         }
+        .fullScreenCover(
+            isPresented: .init(
+                get: { sectionToAddExercise != nil },
+                set: { isPresented in sectionToAddExercise = isPresented ? sectionToAddExercise : nil }
+            )
+        ) {
+            AddExerciseView(workoutSection: sectionToAddExercise!)
+        }
     }
     
     @ToolbarContentBuilder private func Toolbar() -> some ToolbarContent {
@@ -124,11 +134,7 @@ struct WorkoutView: View {
             .submitLabel(.done)
             .bold()
             .workoutExerciseRow()
-            .overlay(alignment: .bottom) {
-                Rectangle()
-                    .frame(height: 1)
-                    .foregroundStyle(Color.accentColor)
-            }
+            .underlined()
             .onChange(of: workoutFocusString) { _, newValue in
                 if let workout = workout {
                     workout.focus = .init(newValue)
@@ -149,11 +155,7 @@ struct WorkoutView: View {
             Text(date.formatted())
                 .foregroundStyle(Color.text)
                 .bold()
-                .overlay(alignment: .bottom) {
-                    Rectangle()
-                        .frame(height: 1)
-                        .foregroundStyle(Color.accentColor)
-                }
+                .underlined()
         }
         .overlay{
             DatePicker(
@@ -209,17 +211,21 @@ struct WorkoutView: View {
     }
     
     @ViewBuilder private func AddExerciseButton(_ section: Workout.Section) -> some View {
-        Button {
-            //TODO: Implement AddExerciseButton function
+        NavigationLink {
+            AddExerciseView(workoutSection: section)
         } label: {
             HStack {
                 Image(systemName: "plus.circle")
                 Text("Add Exercise")
                 Spacer(minLength: 0)
             }
+            .font(.headline)
+            .foregroundStyle(Color.accent)
         }
-        .font(.headline)
-        .foregroundStyle(Color.accent)
+//        Button {
+//            sectionToAddExercise = section
+//        } label: {
+//        }
     }
     
     @ViewBuilder private func GroupedExercise(_ exerciseGroup: ExerciseGroup) -> some View {
