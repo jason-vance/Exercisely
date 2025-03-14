@@ -16,6 +16,9 @@ struct WorkoutView: View {
     @State private var date: SimpleDate = .today
     @Query private var workouts: [Workout]
     
+    @State private var showSectionOptions: Workout.Section? = nil
+    @State private var sectionToDelete: Workout.Section? = nil
+    
     @State private var showAddSection: Bool = false
     @State private var newWorkoutSectionName: String = ""
     
@@ -35,6 +38,12 @@ struct WorkoutView: View {
         newWorkoutSectionName = ""
     }
     
+    private func removeSectionFromWorkout() {
+        guard let sectionToDelete = sectionToDelete else { return }
+        workout?.sections.removeAll(where: { $0.id == sectionToDelete.id })
+        self.sectionToDelete = nil
+    }
+    
     var body: some View {
         List {
             if let workout = workout {
@@ -48,6 +57,7 @@ struct WorkoutView: View {
         .listDefaultModifiers()
         .animation(.snappy, value: workout)
         .animation(.snappy, value: workout?.sections)
+        .animation(.snappy, value: showSectionOptions)
         .toolbar { Toolbar() }
         .toolbarTitleDisplayMode(.inline)
         .alert("What do you want to name this workout section?", isPresented: $showAddSection) {
@@ -56,6 +66,17 @@ struct WorkoutView: View {
                 label: { Text("Warm-Up, Workout, etc...") }
             )
             Button("OK", action: addNewSectionToWorkout)
+            Button("Cancel", role: .cancel) { }
+        }
+        .confirmationDialog(
+            "Are you sure you want to remove the \"\(sectionToDelete?.name ?? "")\" section and all of its exercises?",
+            isPresented: .init(
+                get: { sectionToDelete != nil },
+                set: { isPresented in sectionToDelete = isPresented ? sectionToDelete : nil }
+            ),
+            titleVisibility: .visible
+        ) {
+            Button("Delete It!", role: .destructive, action: removeSectionFromWorkout)
             Button("Cancel", role: .cancel) { }
         }
     }
@@ -126,7 +147,23 @@ struct WorkoutView: View {
                 GroupedExercise(exercise)
             }
         } header: {
-            SectionHeader(section.name)
+            HStack {
+                Button {
+                    showSectionOptions = showSectionOptions == section ? nil : section
+                } label: {
+                    SectionHeader(section.name)
+                }
+                Spacer(minLength: 0)
+                Button {
+                    sectionToDelete = section
+                } label: {
+                    Image(systemName: "minus.circle.fill")
+                        .font(.headline)
+                        .foregroundStyle(Color.red)
+                }
+                .opacity(showSectionOptions == section ? 1 : 0)
+                .offset(x: showSectionOptions == section ? 0 : 50)
+            }
         } footer: {
             AddExerciseButton(section)
         }
