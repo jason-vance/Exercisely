@@ -151,8 +151,8 @@ struct AddExerciseView: View {
     
     @ViewBuilder private func DistanceField() -> some View {
         Section {
-            Button {
-                 
+            NavigationLinkNoChevron {
+                ExerciseDistanceEditView(distance: $distance)
             } label: {
                 Text(distance?.formatted() ?? "N/A")
                     .fieldButton()
