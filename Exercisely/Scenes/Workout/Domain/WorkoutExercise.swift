@@ -18,13 +18,15 @@ extension Workout {
         var reps: Reps?
         var distance: Distance?
         var duration: Duration?
+        var order: Int
         
         init?(
             name: Name,
             weight: Weight? = nil,
             reps: Reps? = nil,
             distance: Distance? = nil,
-            duration: Duration? = nil
+            duration: Duration? = nil,
+            order: Int = 0
         ) {
             if reps == nil && distance == nil && duration == nil {
                 return nil
@@ -35,6 +37,7 @@ extension Workout {
             self.reps = reps
             self.distance = distance
             self.duration = duration
+            self.order = order
         }
     }
 }

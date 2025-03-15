@@ -33,6 +33,10 @@ class Workout {
     func append(section: Section) {
         sections.append(section)
     }
+    
+    var sortedSections: [Section] {
+        sections.sorted(by: { $0.order < $1.order })
+    }
 }
 
 extension Workout {

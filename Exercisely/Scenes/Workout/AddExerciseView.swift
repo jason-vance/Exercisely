@@ -25,12 +25,14 @@ struct AddExerciseView: View {
             return nil
         }
         
+        let order = workoutSection.exercises.max(by: { $0.order > $1.order })?.order ?? 0
         let exercise = Workout.Exercise(
             name: name,
             weight: weight,
             reps: reps,
             distance: distance,
-            duration: duration
+            duration: duration,
+            order: order + 1
         )
         
         guard let exercise = exercise else {

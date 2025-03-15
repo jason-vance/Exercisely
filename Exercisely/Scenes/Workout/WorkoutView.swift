@@ -38,7 +38,7 @@ struct WorkoutView: View {
     
     private func addNewSectionToWorkout() {
         let order = workout?.sections.max(by: { $0.order > $1.order })?.order ?? 0
-        workout?.append(section: .init(name: newWorkoutSectionName, order: order))
+        workout?.append(section: .init(name: newWorkoutSectionName, order: order + 1))
         showAddSection = false
         newWorkoutSectionName = ""
     }
@@ -61,7 +61,7 @@ struct WorkoutView: View {
         List {
             if let workout = workout {
                 WorkoutFocusSection()
-                ForEach(workout.sections.sorted(by: { $0.order < $1.order })) { section in
+                ForEach(workout.sortedSections) { section in
                     WorkoutSection(section)
                 }
                 AddSectionToWorkoutButton()
@@ -162,7 +162,7 @@ struct WorkoutView: View {
     
     @ViewBuilder private func WorkoutSection(_ section: Workout.Section) -> some View {
         Section {
-            ForEach(Workout.Exercise.group(exercises: section.exercises)) { exercise in
+            ForEach(Workout.Exercise.group(exercises: section.sortedExercises)) { exercise in
                 GroupedExercise(exercise)
             }
         } header: {

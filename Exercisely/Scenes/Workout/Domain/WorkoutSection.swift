@@ -28,6 +28,10 @@ extension Workout {
         func append(exercise: Exercise) {
             exercises.append(exercise)
         }
+        
+        var sortedExercises: [Exercise] {
+            exercises.sorted(by: { $0.order < $1.order })
+        }
     }
 }
 
