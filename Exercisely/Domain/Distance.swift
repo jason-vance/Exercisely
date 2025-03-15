@@ -64,24 +64,25 @@ struct Distance {
     let value: Double
     let unit: Unit
     
-    init(value: Double, unit: Unit) {
+    init?(value: Double, unit: Unit) {
+        guard value >= 0 else { return nil }
         self.value = value
         self.unit = unit
     }
     
-    static func feet(_ value: Double) -> Self {
+    static func feet(_ value: Double) -> Self? {
         .init(value: value, unit: .feet)
     }
     
-    static func miles(_ value: Double) -> Self {
+    static func miles(_ value: Double) -> Self? {
         .init(value: value, unit: .miles)
     }
     
-    static func meters(_ value: Double) -> Self {
+    static func meters(_ value: Double) -> Self? {
         .init(value: value, unit: .meters)
     }
     
-    static func kilometers(_ value: Double) -> Self {
+    static func kilometers(_ value: Double) -> Self? {
         .init(value: value, unit: .kilometers)
     }
     

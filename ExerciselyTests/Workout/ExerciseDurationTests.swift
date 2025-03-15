@@ -38,8 +38,8 @@ struct ExerciseDurationTests {
     }
     
     @Test func formatsCorrectly() {
-        #expect(Workout.Exercise.Duration(value: 10, unit: .minutes).formatted() == "10m")
-        #expect(Workout.Exercise.Duration(value: 1.5, unit: .hours).formatted() == "1.5h")
-        #expect(Workout.Exercise.Duration(value: 30, unit: .seconds).formatted() == "30s")
+        #expect(Workout.Exercise.Duration(value: 10, unit: .minutes)!.formatted() == "10m")
+        #expect(Workout.Exercise.Duration(value: 1.5, unit: .hours)!.formatted() == "1.5h")
+        #expect(Workout.Exercise.Duration(value: 30, unit: .seconds)!.formatted() == "30s")
     }
 }

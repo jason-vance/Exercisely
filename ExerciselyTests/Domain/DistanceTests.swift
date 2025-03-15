@@ -54,9 +54,9 @@ struct DistanceTests {
     }
     
     @Test func formatsCorrectly() {
-        #expect(Distance(value: 10, unit: .kilometers).formatted() == "10km")
-        #expect(Distance(value: 12.5, unit: .miles).formatted() == "12.5mi")
-        #expect(Distance(value: 15, unit: .meters).formatted() == "15m")
-        #expect(Distance(value: 17.5, unit: .feet).formatted() == "17.5ft")
+        #expect(Distance(value: 10, unit: .kilometers)!.formatted() == "10km")
+        #expect(Distance(value: 12.5, unit: .miles)!.formatted() == "12.5mi")
+        #expect(Distance(value: 15, unit: .meters)!.formatted() == "15m")
+        #expect(Distance(value: 17.5, unit: .feet)!.formatted() == "17.5ft")
     }
 }

@@ -46,23 +46,24 @@ extension Workout.Exercise {
             }
         }
         
-        private let value: Double
-        private let unit: Unit
+        let value: Double
+        let unit: Unit
         
-        init(value: Double, unit: Unit) {
+        init?(value: Double, unit: Unit) {
+            guard value >= 0 else { return nil }
             self.value = value
             self.unit = unit
         }
         
-        static func seconds(_ value: Double) -> Self {
+        static func seconds(_ value: Double) -> Self? {
             .init(value: value, unit: .seconds)
         }
         
-        static func minutes(_ value: Double) -> Self {
+        static func minutes(_ value: Double) -> Self? {
             .init(value: value, unit: .minutes)
         }
         
-        static func hours(_ value: Double) -> Self {
+        static func hours(_ value: Double) -> Self? {
             .init(value: value, unit: .hours)
         }
         
@@ -78,7 +79,7 @@ extension Workout.Exercise {
 }
 
 extension Workout.Exercise.Duration: Equatable {
-    static func == (lhs: Self, rhs: Self) -> Bool {
+    static func == (lhs: Workout.Exercise.Duration, rhs: Workout.Exercise.Duration) -> Bool {
         lhs.value == rhs.convert(to: lhs.unit)
     }
 }

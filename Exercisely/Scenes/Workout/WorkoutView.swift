@@ -245,8 +245,8 @@ struct WorkoutView: View {
                     if let distance = exercise.distance {
                         ExerciseDistance(distance)
                     }
-                    if let time = exercise.time {
-                        ExerciseTime(time)
+                    if let duration = exercise.duration {
+                        ExerciseDuration(duration)
                     }
                     Spacer(minLength: 0)
                 }
@@ -290,10 +290,10 @@ struct WorkoutView: View {
         .workoutExerciseDataItem()
     }
     
-    @ViewBuilder private func ExerciseTime(_ time: Workout.Exercise.Duration) -> some View {
+    @ViewBuilder private func ExerciseDuration(_ duration: Workout.Exercise.Duration) -> some View {
         HStack(spacing: 2) {
             Image(systemName: "timer")
-            Text("\(time.formatted())")
+            Text("\(duration.formatted())")
         }
         .workoutExerciseDataItem()
     }

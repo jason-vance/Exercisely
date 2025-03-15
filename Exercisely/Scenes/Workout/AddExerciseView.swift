@@ -17,7 +17,7 @@ struct AddExerciseView: View {
     @State private var weight: Weight? = nil
     @State private var reps: Workout.Exercise.Reps? = nil
     @State private var distance: Distance? = nil
-    @State private var time: Workout.Exercise.Duration? = nil
+    @State private var duration: Workout.Exercise.Duration? = nil
     
 
     private var exerciseToSave: Workout.Exercise? {
@@ -30,7 +30,7 @@ struct AddExerciseView: View {
             weight: weight,
             reps: reps,
             distance: distance,
-            time: time
+            duration: duration
         )
         
         guard let exercise = exercise else {
@@ -57,7 +57,7 @@ struct AddExerciseView: View {
             WeightField()
             RepsField()
             DistanceField()
-            TimeField()
+            DurationField()
         }
         .listDefaultModifiers()
         .toolbar { Toolbar() }
@@ -163,17 +163,17 @@ struct AddExerciseView: View {
         }
     }
     
-    @ViewBuilder private func TimeField() -> some View {
+    @ViewBuilder private func DurationField() -> some View {
         Section {
-            Button {
-                 
+            NavigationLinkNoChevron {
+                ExerciseDurationEditView(duration: $duration)
             } label: {
-                Text(time?.formatted() ?? "N/A")
+                Text(duration?.formatted() ?? "N/A")
                     .fieldButton()
             }
             .workoutExerciseRow()
         } header: {
-            SectionHeader("Time")
+            SectionHeader("Duration")
         }
     }
 }
