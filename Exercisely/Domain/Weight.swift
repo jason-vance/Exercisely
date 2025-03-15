@@ -24,8 +24,8 @@ struct Weight {
         }
     }
     
-    private let value: Double
-    private let unit: Unit
+    let value: Double
+    let unit: Unit
     
     init(value: Double, unit: Unit) {
         self.value = value

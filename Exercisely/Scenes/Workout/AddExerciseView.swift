@@ -123,8 +123,8 @@ struct AddExerciseView: View {
     
     @ViewBuilder private func WeightField() -> some View {
         Section {
-            Button {
-                 
+            NavigationLinkNoChevron {
+                ExerciseWeightEditView(weight: $weight)
             } label: {
                 Text(weight?.formatted() ?? "N/A")
                     .fieldButton()

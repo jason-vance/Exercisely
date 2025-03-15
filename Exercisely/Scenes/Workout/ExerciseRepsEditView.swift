@@ -205,7 +205,6 @@ fileprivate extension View {
         self
             .font(.title)
             .bold(isSuggestion)
-//            .frame(width: 96, height: 96)
             .foregroundColor(isSuggestion ? Color.background : Color.text)
     }
 }
