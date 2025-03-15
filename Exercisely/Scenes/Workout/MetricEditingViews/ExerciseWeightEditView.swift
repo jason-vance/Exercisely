@@ -47,8 +47,8 @@ struct ExerciseWeightEditView: View {
         .toolbarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden()
         .onChange(of: weight, initial: true) { _, newValue in
-            weightValueString = weight == nil ? "" : "\(weight!.value.formatted())"
-            weightUnit = weight?.unit ?? .pounds
+            weightValueString = newValue == nil ? "" : "\(newValue!.value.formatted())"
+            weightUnit = newValue?.unit ?? .pounds
         }
     }
     
@@ -171,7 +171,7 @@ struct ExerciseWeightEditView: View {
                     .stroke(style: .init(lineWidth: 1))
                     .foregroundColor(Color.accentColor)
                     .aspectRatio(1.0, contentMode: .fit)
-                Text("Lbs")
+                Text("lbs")
                     .keyboardButton()
             }
         }
@@ -186,7 +186,7 @@ struct ExerciseWeightEditView: View {
                     .stroke(style: .init(lineWidth: 1))
                     .foregroundColor(Color.accentColor)
                     .aspectRatio(1.0, contentMode: .fit)
-                Text("Kg")
+                Text("kg")
                     .keyboardButton()
             }
         }
