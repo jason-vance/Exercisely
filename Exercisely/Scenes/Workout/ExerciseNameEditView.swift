@@ -17,6 +17,7 @@ struct ExerciseNameEditView: View {
     @Binding var name: Workout.Exercise.Name?
 
     @State private var nameString: String = ""
+    @FocusState private var focus: Bool
     
     init(name: Binding<Workout.Exercise.Name?>) {
         self._name = name
@@ -101,9 +102,13 @@ struct ExerciseNameEditView: View {
                     label: { Text(Workout.Exercise.Name.prompt.formatted()) }
                 )
                 .submitLabel(.done)
+                .focused($focus)
                 .bold()
                 .workoutExerciseRow()
                 .underlined()
+                .onAppear {
+                    focus = true
+                }
             } header: {
                 SectionHeader("Name")
             }
