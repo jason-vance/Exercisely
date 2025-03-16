@@ -97,6 +97,24 @@ extension ExerciseGroup: Identifiable {
             return exercises.first!.id
         }
     }
+    
+    var name: String {
+        switch self {
+        case .single(let exercise):
+            return exercise.name.formatted()
+        case .set(let exercises):
+            return exercises.first?.name.formatted() ?? "Unnamed Set"
+        }
+    }
+    
+    var exercises: [Workout.Exercise] {
+        switch self {
+        case .single(let exercise):
+            return [exercise]
+        case .set(let exercises):
+            return exercises
+        }
+    }
 }
 
 
