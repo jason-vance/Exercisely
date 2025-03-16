@@ -80,4 +80,44 @@ struct WeightTests {
         ])
         #expect(x == "10lbs,-,10kg")
     }
+    
+    @Test
+    func subtractingSameUnits() {
+        let fivePounds = Weight(value: 5, unit: .pounds)
+        let twoPounds = fivePounds.subtracting(3)
+        #expect(twoPounds.value == 2)
+        
+        let threePounds = fivePounds.subtracting(twoPounds)
+        #expect(threePounds.value == 3)
+    }
+    
+    @Test
+    func subtractingDifferentUnits() {
+        let fivePounds = Weight(value: 5, unit: .pounds)
+        let fiveKg = Weight(value: 5, unit: .kilograms)
+
+        let towAndSomeKg = fiveKg.subtracting(fivePounds)
+        #expect(towAndSomeKg.value == 2.732)
+        #expect(towAndSomeKg.unit == .kilograms)
+    }
+    
+    @Test
+    func addingSameUnits() {
+        let fivePounds = Weight(value: 5, unit: .pounds)
+        let eightPounds = fivePounds.adding(3)
+        #expect(eightPounds.value == 8)
+        
+        let thirteenPounds = fivePounds.adding(eightPounds)
+        #expect(thirteenPounds.value == 13)
+    }
+    
+    @Test
+    func addingDifferentUnits() {
+        let fivePounds = Weight(value: 5, unit: .pounds)
+        let fiveKg = Weight(value: 5, unit: .kilograms)
+
+        let sevenAndSomeKg = fiveKg.adding(fivePounds)
+        #expect(sevenAndSomeKg.value == 7.268)
+        #expect(sevenAndSomeKg.unit == .kilograms)
+    }
 }

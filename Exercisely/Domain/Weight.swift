@@ -40,6 +40,24 @@ struct Weight {
         .init(value: value, unit: .kilograms)
     }
     
+    func subtracting(_ other: Weight) -> Weight {
+        let value = self.value - other.convert(to: self.unit).value
+        return .init(value: value, unit: self.unit)
+    }
+    
+    func subtracting(_ value: Double) -> Weight {
+        return .init(value: self.value - value, unit: self.unit)
+    }
+    
+    func adding(_ other: Weight) -> Weight {
+        let value = self.value + other.convert(to: self.unit).value
+        return .init(value: value, unit: self.unit)
+    }
+    
+    func adding(_ value: Double) -> Weight {
+        return .init(value: self.value + value, unit: self.unit)
+    }
+    
     func formatted() -> String {
         "\(value.formatted())\(unit.formatted())"
     }
@@ -62,7 +80,7 @@ struct Weight {
         }
     }
     
-    private func convert(to unit: Unit) -> Double {
+    private func convert(to unit: Unit) -> Weight {
         var convertedValue: Double = 0
         
         switch unit {
@@ -72,13 +90,13 @@ struct Weight {
             convertedValue = self.unit == .kilograms ? value : value / Self.lbsPerKg
         }
         
-        return convertedValue.rounded(to: Self.precision)
+        return .init(value: convertedValue.rounded(to: Self.precision), unit: unit)
     }
 }
 
 extension Weight: Equatable {
     static func == (lhs: Weight, rhs: Weight) -> Bool {
-        lhs.value == rhs.convert(to: lhs.unit)
+        lhs.value == rhs.convert(to: lhs.unit).value
     }
 }
 
