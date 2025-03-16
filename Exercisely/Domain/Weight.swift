@@ -72,6 +72,7 @@ struct Weight {
             return weights[0]?.formatted() ?? "????"
         } else {
             if allAreSameUnit {
+                //TODO: If first weight is nil, then units are "??", also other metrics
                 let valuesString = weights.map({ "\($0 == nil ? "-" : "\($0!.value.formatted())")" }).joined(separator: ",")
                 return "\(valuesString)\(weights[0]?.unit.formatted() ?? "??")"
             } else {

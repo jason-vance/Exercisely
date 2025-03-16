@@ -25,6 +25,14 @@ struct WorkoutView: View {
     @State private var showAddSection: Bool = false
     @State private var newWorkoutSectionName: String = ""
     
+    // .navigationDestination cannot be inside of a lazy container.
+    // So, I have to use these props to let ExerciseSetQuickAddControls
+    // reach back outside to the List in this view.
+    @State private var weightEditor: Binding<Weight?>? = nil
+    @State private var repsEditor: Binding<Workout.Exercise.Reps?>? = nil
+    @State private var distanceEditor: Binding<Distance?>? = nil
+    @State private var durationEditor: Binding<Workout.Exercise.Duration?>? = nil
+
     @State private var sectionToAddExercise: Workout.Section? = nil
     
     var workout: Workout? {
@@ -119,6 +127,50 @@ struct WorkoutView: View {
             Button("Delete It!", role: .destructive, action: removeSectionFromWorkout)
             Button("Cancel", role: .cancel) { }
         }
+        .navigationDestination(
+            isPresented: .init(
+                get: { weightEditor != nil },
+                set: { isPresented in weightEditor = isPresented ? weightEditor : nil }
+            )
+        ) {
+            ExerciseWeightEditView(weight: .init(
+                get: { weightEditor?.wrappedValue },
+                set: { weightEditor?.wrappedValue = $0 }
+            ))
+        }
+        .navigationDestination(
+            isPresented: .init(
+                get: { repsEditor != nil },
+                set: { isPresented in repsEditor = isPresented ? repsEditor : nil }
+            )
+        ) {
+            ExerciseRepsEditView(reps: .init(
+                get: { repsEditor?.wrappedValue },
+                set: { repsEditor?.wrappedValue = $0 }
+            ))
+        }
+        .navigationDestination(
+            isPresented: .init(
+                get: { distanceEditor != nil },
+                set: { isPresented in distanceEditor = isPresented ? distanceEditor : nil }
+            )
+        ) {
+            ExerciseDistanceEditView(distance: .init(
+                get: { distanceEditor?.wrappedValue },
+                set: { distanceEditor?.wrappedValue = $0 }
+            ))
+        }
+        .navigationDestination(
+            isPresented: .init(
+                get: { durationEditor != nil },
+                set: { isPresented in durationEditor = isPresented ? durationEditor : nil }
+            )
+        ) {
+            ExerciseDurationEditView(duration: .init(
+                get: { durationEditor?.wrappedValue },
+                set: { durationEditor?.wrappedValue = $0 }
+            ))
+        }
     }
     
     @ToolbarContentBuilder private func Toolbar() -> some ToolbarContent {
@@ -205,6 +257,20 @@ struct WorkoutView: View {
                 AddExerciseButton(section)
             }
         }
+    }
+    
+    @ViewBuilder private func ExerciseSetQuickAddControls(
+        for currentExercise: Workout.Exercise,
+        in section: Workout.Section
+    ) -> some View {
+        Exercisely.ExerciseSetQuickAddControls(
+            for: currentExercise,
+            in: section,
+            weightEditor: $weightEditor,
+            repsEditor: $repsEditor,
+            distanceEditor: $distanceEditor,
+            durationEditor: $durationEditor
+        )
     }
     
     @ViewBuilder private func AddExerciseButton(_ section: Workout.Section) -> some View {

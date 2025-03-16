@@ -17,12 +17,22 @@ struct ExerciseSetQuickAddControls: View {
     @State private var newSetDistance: Distance?
     @State private var newSetDuration: Workout.Exercise.Duration?
     
-    @State private var showWeightEditor: Bool = false
-    @State private var showRepsEditor: Bool = false
-    @State private var showDistanceEditor: Bool = false
-    @State private var showDurationEditor: Bool = false
+    // .navigationDestination cannot be inside of a lazy container.
+    // So, I have to use these props to reach back outside of the
+    // List on WorkoutView.
+    @Binding private var weightEditor: Binding<Weight?>?
+    @Binding private var repsEditor: Binding<Workout.Exercise.Reps?>?
+    @Binding private var distanceEditor: Binding<Distance?>?
+    @Binding private var durationEditor: Binding<Workout.Exercise.Duration?>?
 
-    init(for exercise: Workout.Exercise, in workoutSection: Workout.Section) {
+    init(
+        for exercise: Workout.Exercise,
+        in workoutSection: Workout.Section,
+        weightEditor: Binding<Binding<Weight?>?>,
+        repsEditor: Binding<Binding<Workout.Exercise.Reps?>?>,
+        distanceEditor: Binding<Binding<Distance?>?>,
+        durationEditor: Binding<Binding<Workout.Exercise.Duration?>?>
+    ) {
         self.workoutSection = workoutSection
         self.currentExercise = exercise
         
@@ -30,6 +40,11 @@ struct ExerciseSetQuickAddControls: View {
         self._newSetReps = .init(initialValue: exercise.reps)
         self._newSetDistance = .init(initialValue: exercise.distance)
         self._newSetDuration = .init(initialValue: exercise.duration)
+        
+        self._weightEditor = weightEditor
+        self._repsEditor = repsEditor
+        self._distanceEditor = distanceEditor
+        self._durationEditor = durationEditor
     }
     
     private var exerciseToSave: Workout.Exercise? {
@@ -68,18 +83,6 @@ struct ExerciseSetQuickAddControls: View {
             AddNewSetButton()
         }
         .workoutExerciseRow()
-        .navigationDestination(isPresented: $showWeightEditor) {
-            ExerciseWeightEditView(weight: $newSetWeight)
-        }
-        .navigationDestination(isPresented: $showRepsEditor) {
-            ExerciseRepsEditView(reps: $newSetReps)
-        }
-        .navigationDestination(isPresented: $showDistanceEditor) {
-            ExerciseDistanceEditView(distance: $newSetDistance)
-        }
-        .navigationDestination(isPresented: $showDurationEditor) {
-            ExerciseDurationEditView(duration: $newSetDuration)
-        }
     }
     
     @ViewBuilder private func WeightField() -> some View {
@@ -87,7 +90,10 @@ struct ExerciseSetQuickAddControls: View {
             Text("Weight")
                 .font(.caption2)
             Button {
-                showWeightEditor = true
+                weightEditor = .init(
+                    get: { newSetWeight },
+                    set: { newSetWeight = $0 }
+                )
             } label: {
                 Text(newSetWeight?.formatted() ?? "N/A")
                     .fieldButton()
@@ -101,7 +107,10 @@ struct ExerciseSetQuickAddControls: View {
             Text("Reps")
                 .font(.caption2)
             Button {
-                showRepsEditor = true
+                repsEditor = .init(
+                    get: { newSetReps },
+                    set: { newSetReps = $0 }
+                )
             } label: {
                 Text(newSetReps?.formatted() ?? "N/A")
                     .fieldButton()
@@ -115,7 +124,10 @@ struct ExerciseSetQuickAddControls: View {
             Text("Distance")
                 .font(.caption2)
             Button {
-                showDistanceEditor = true
+                distanceEditor = .init(
+                    get: { newSetDistance },
+                    set: { newSetDistance = $0 }
+                )
             } label: {
                 Text(newSetDistance?.formatted() ?? "N/A")
                     .fieldButton()
@@ -129,7 +141,10 @@ struct ExerciseSetQuickAddControls: View {
             Text("Duration")
                 .font(.caption2)
             Button {
-                showDurationEditor = true
+                durationEditor = .init(
+                    get: { newSetDuration },
+                    set: { newSetDuration = $0 }
+                )
             } label: {
                 Text(newSetDuration?.formatted() ?? "N/A")
                     .fieldButton()
@@ -168,7 +183,26 @@ fileprivate extension View {
     NavigationStack {
         List {
             WorkoutViewExerciseRow(.sampleVariableWeightAndRepSet, in: .sampleWorkout)
-            ExerciseSetQuickAddControls(for: .sampleMachineShoulderPress, in: .sampleWarmup)
+            ExerciseSetQuickAddControls(
+                for: .sampleMachineShoulderPress,
+                in: .sampleWarmup,
+                weightEditor: .init(
+                    get: { .init(get: { nil }, set: { _ in })},
+                    set: { _ in }
+                ),
+                repsEditor: .init(
+                    get: { .init(get: { nil }, set: { _ in })},
+                    set: { _ in }
+                ),
+                distanceEditor: .init(
+                    get: { .init(get: { nil }, set: { _ in })},
+                    set: { _ in }
+                ),
+                durationEditor: .init(
+                    get: { .init(get: { nil }, set: { _ in })},
+                    set: { _ in }
+                )
+            )
         }
         .listDefaultModifiers()
     }
