@@ -16,7 +16,7 @@ extension Workout {
         var order: Int
         
         @Relationship(deleteRule: .cascade)
-        var exercises: [Exercise]
+        private var exercises: [Exercise]
         
         
         init(name: String, order: Int = 0) {
@@ -29,6 +29,26 @@ extension Workout {
             let order = sortedExercises.last?.order ?? 0
             exercise.order = order + 1
             exercises.append(exercise)
+        }
+        
+        func insert(exercise: Exercise, after existingExercise: Exercise) {
+            let sortedExercises = self.sortedExercises
+            guard let index = sortedExercises.firstIndex(where: { $0.id == existingExercise.id }) else {
+                print("Could not find existing exercise to insert after")
+                return
+            }
+            
+            //Shift other exercises' order back one
+            for i in index + 1..<sortedExercises.count {
+                sortedExercises[i].order += 1
+            }
+            
+            exercise.order = existingExercise.order + 1
+            exercises.append(exercise)
+        }
+        
+        func remove(exercise: Exercise) {
+            exercises.removeAll { $0.id == exercise.id }
         }
         
         var sortedExercises: [Exercise] {

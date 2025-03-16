@@ -32,7 +32,7 @@ struct WorkoutViewExerciseRow: View {
     private func deleteExercise() {
         withAnimation(.snappy) {
             for exercise in exerciseGroup.exercises {
-                workoutSection.exercises.removeAll { $0.id == exercise.id }
+                workoutSection.remove(exercise: exercise)
             }
         }
     }
@@ -64,51 +64,38 @@ struct WorkoutViewExerciseRow: View {
     }
     
     @ViewBuilder private func SetExercise(_ exercises: [Workout.Exercise]) -> some View {
-        HStack {
-            Button {
-                showExerciseOptions.toggle()
-            } label: {
-                VStack(spacing: 0) {
-                    HStack {
-                        Bullet()
-                        Text(exerciseGroup.name)
-                            .multilineTextAlignment(.leading)
-                        Spacer(minLength: 0)
+        NavigationLinkNoChevron {
+            ExerciseGroupDetailView(for: exerciseGroup, in: workoutSection)
+        } label: {
+            VStack(spacing: 0) {
+                HStack {
+                    Bullet()
+                    Text(exerciseGroup.name)
+                        .multilineTextAlignment(.leading)
+                    Spacer(minLength: 0)
+                }
+                .font(.headline)
+                HStack {
+                    Bullet().hidden()
+                    let sets = exercises.count
+                    if sets > 1 {
+                        ExerciseSets(sets)
                     }
-                    .font(.headline)
-                    HStack {
-                        Bullet().hidden()
-                        let sets = exercises.count
-                        if sets > 1 {
-                            ExerciseSets(sets)
-                        }
-                        if !exercises.compactMap(\.reps).isEmpty {
-                            ExerciseReps(exercises.map(\.reps))
-                        }
-                        if !exercises.compactMap(\.weight).isEmpty {
-                            ExerciseWeight(exercises.map(\.weight))
-                        }
-                        if !exercises.compactMap(\.distance).isEmpty {
-                            ExerciseDistance(exercises.map(\.distance))
-                        }
-                        if !exercises.compactMap(\.duration).isEmpty {
-                            ExerciseDuration(exercises.map(\.duration))
-                        }
-                        Spacer(minLength: 0)
+                    if !exercises.compactMap(\.reps).isEmpty {
+                        ExerciseReps(exercises.map(\.reps))
                     }
+                    if !exercises.compactMap(\.weight).isEmpty {
+                        ExerciseWeight(exercises.map(\.weight))
+                    }
+                    if !exercises.compactMap(\.distance).isEmpty {
+                        ExerciseDistance(exercises.map(\.distance))
+                    }
+                    if !exercises.compactMap(\.duration).isEmpty {
+                        ExerciseDuration(exercises.map(\.duration))
+                    }
+                    Spacer(minLength: 0)
                 }
             }
-            Spacer(minLength: 0)
-            Menu {
-                Button("Delete", systemImage: "trash", role: .destructive) { showDeleteConfirmation = true }
-            } label: {
-                Image(systemName: "ellipsis.circle.fill")
-                    .font(.headline)
-                    .foregroundStyle(Color.accent)
-            }
-            .textCase(.none)
-            .opacity(showExerciseOptions ? 1 : 0)
-            .offset(x: showExerciseOptions ? 0 : 50)
         }
     }
     

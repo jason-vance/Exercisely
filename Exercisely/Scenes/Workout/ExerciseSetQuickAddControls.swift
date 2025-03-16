@@ -9,6 +9,11 @@ import SwiftUI
 
 struct ExerciseSetQuickAddControls: View {
     
+    enum Mode {
+        case add
+        case edit
+    }
+    
     private let workoutSection: Workout.Section
     private let currentExercise: Workout.Exercise
     
@@ -24,6 +29,9 @@ struct ExerciseSetQuickAddControls: View {
     @Binding private var repsEditor: Binding<Workout.Exercise.Reps?>?
     @Binding private var distanceEditor: Binding<Distance?>?
     @Binding private var durationEditor: Binding<Workout.Exercise.Duration?>?
+    
+    private var __mode: Mode = .add
+    @State private var mode: Mode = .add
 
     init(
         for exercise: Workout.Exercise,
@@ -47,6 +55,12 @@ struct ExerciseSetQuickAddControls: View {
         self._durationEditor = durationEditor
     }
     
+    public func mode(_ mode: Mode) -> ExerciseSetQuickAddControls {
+        var view = self
+        view.__mode = mode
+        return view
+    }
+    
     private var exerciseToSave: Workout.Exercise? {
         let exercise = Workout.Exercise(
             name: currentExercise.name,
@@ -65,13 +79,30 @@ struct ExerciseSetQuickAddControls: View {
     
     private var canSaveExercise: Bool { exerciseToSave != nil }
     
+    private var hasChanges: Bool {
+        currentExercise.weight != newSetWeight
+        || currentExercise.reps != newSetReps
+        || currentExercise.distance != newSetDistance
+        || currentExercise.duration != newSetDuration
+    }
+    
     private func saveExercise() {
         guard let exercise = exerciseToSave else {
             print("Failed to create Exercise to save")
             return
         }
         
-        workoutSection.append(exercise: exercise)
+        switch mode {
+        case .edit:
+            currentExercise.weight = newSetWeight
+            currentExercise.reps = newSetReps
+            currentExercise.distance = newSetDistance
+            currentExercise.duration = newSetDuration
+            break
+        case .add:
+            workoutSection.insert(exercise: exercise, after: currentExercise)
+            break
+        }
     }
     
     var body: some View {
@@ -85,6 +116,7 @@ struct ExerciseSetQuickAddControls: View {
             AddNewSetButton()
         }
         .workoutExerciseRow()
+        .onChange(of: __mode, initial: true) { _, mode in self.mode = mode }
     }
     
     @ViewBuilder private func WeightField() -> some View {
@@ -162,11 +194,13 @@ struct ExerciseSetQuickAddControls: View {
         Button {
             saveExercise()
         } label: {
-            Text("Add Set")
+            Text(mode == .add ? "Add" : "Save")
+                .lineLimit(1)
                 .buttonDefaultModifiers()
         }
         .buttonStyle(PlainButtonStyle())
         .disabled(!canSaveExercise)
+        .opacity(mode == .add || hasChanges ? 1 : 0)
     }
 }
 
@@ -209,6 +243,27 @@ fileprivate extension View {
                     set: { _ in }
                 )
             )
+            ExerciseSetQuickAddControls(
+                for: .sampleMachineShoulderPress,
+                in: .sampleWarmup,
+                weightEditor: .init(
+                    get: { .init(get: { nil }, set: { _ in })},
+                    set: { _ in }
+                ),
+                repsEditor: .init(
+                    get: { .init(get: { nil }, set: { _ in })},
+                    set: { _ in }
+                ),
+                distanceEditor: .init(
+                    get: { .init(get: { nil }, set: { _ in })},
+                    set: { _ in }
+                ),
+                durationEditor: .init(
+                    get: { .init(get: { nil }, set: { _ in })},
+                    set: { _ in }
+                )
+            )
+            .mode(.edit)
         }
         .listDefaultModifiers()
     }
