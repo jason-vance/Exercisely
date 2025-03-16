@@ -9,8 +9,9 @@ import SwiftUI
 
 struct WorkoutViewExerciseRow: View {
     
-    @State var workoutSection: Workout.Section
-    @State var exerciseGroup: ExerciseGroup
+    var workoutSection: Workout.Section
+    var exerciseGroup: ExerciseGroup
+    
     @State private var showExerciseOptions: Bool = false {
         didSet {
             if showExerciseOptions {
@@ -24,8 +25,8 @@ struct WorkoutViewExerciseRow: View {
     @State private var showDeleteConfirmation: Bool = false
     
     init(_ exerciseGroup: ExerciseGroup, in section: Workout.Section) {
-        self._exerciseGroup = .init(initialValue: exerciseGroup)
-        self._workoutSection = .init(initialValue: section)
+        self.workoutSection = section
+        self.exerciseGroup = exerciseGroup
     }
     
     private func deleteExercise() {
