@@ -90,6 +90,24 @@ struct Distance {
         "\(value.formatted())\(unit.formatted())"
     }
     
+    static func formatted(_ distances: [Distance?]) -> String {
+        guard !distances.compactMap(\.self).isEmpty else { return "??mi" }
+        guard distances.count > 1 else { return distances[0]?.formatted() ?? "???" }
+        
+        let allAreSameValue = Set(distances.map({ $0?.value })).count == 1
+        let allAreSameUnit = Set(distances.compactMap({ $0?.unit })).count == 1
+        if allAreSameValue && allAreSameUnit {
+            return distances[0]?.formatted() ?? "????"
+        } else {
+            if allAreSameUnit {
+                let valuesString = distances.map({ "\($0 == nil ? "-" : "\($0!.value.formatted())")" }).joined(separator: ",")
+                return "\(valuesString)\(distances[0]?.unit.formatted() ?? "??")"
+            } else {
+                return distances.map({ $0?.formatted() ?? "-" }).joined(separator: ",")
+            }
+        }
+    }
+    
     private func convert(to unit: Unit) -> Double {
         let convertedValue = value * Self.conversionTable[self.unit]![unit]!
         return convertedValue.rounded(to: Self.precision)

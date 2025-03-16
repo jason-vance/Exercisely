@@ -22,6 +22,19 @@ extension Workout.Exercise {
         func formatted() -> String {
             "\(value)reps"
         }
+        
+        static func formatted(_ reps: [Reps?]) -> String {
+            guard !reps.compactMap(\.self).isEmpty else { return "??reps" }
+            guard reps.count > 1 else { return reps[0]?.formatted() ?? "???" }
+            
+            let allAreSameValue = Set(reps.map({ $0?.value })).count == 1
+            if allAreSameValue {
+                return reps[0]?.formatted() ?? "????"
+            } else {
+                let valuesString = reps.map({ "\($0 == nil ? "-" : "\($0!.value)")" }).joined(separator: ",")
+                return "\(valuesString)reps"
+            }
+        }
     }
 }
 

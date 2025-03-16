@@ -42,4 +42,55 @@ struct ExerciseDurationTests {
         #expect(Workout.Exercise.Duration(value: 1.5, unit: .hours)!.formatted() == "1.5h")
         #expect(Workout.Exercise.Duration(value: 30, unit: .seconds)!.formatted() == "30s")
     }
+    
+    @Test
+    func classFormattedFormatsCorrectly() async throws {
+        var x = Workout.Exercise.Duration.formatted([
+            .init(value: 10, unit: .seconds),
+            .init(value: 10, unit: .seconds),
+            .init(value: 10, unit: .seconds),
+        ])
+        #expect(x == "10s")
+        
+        x = Workout.Exercise.Duration.formatted([
+            .init(value: 10, unit: .minutes),
+            .init(value: 12, unit: .minutes),
+            .init(value: 15, unit: .minutes),
+        ])
+        #expect(x == "10,12,15m")
+        
+        x = Workout.Exercise.Duration.formatted([
+            .init(value: 10, unit: .hours),
+            nil,
+            .init(value: 15, unit: .hours),
+        ])
+        #expect(x == "10,-,15h")
+        
+        x = Workout.Exercise.Duration.formatted([
+            .init(value: 10, unit: .seconds),
+            nil,
+            .init(value: 10, unit: .seconds),
+        ])
+        #expect(x == "10,-,10s")
+        
+        x = Workout.Exercise.Duration.formatted([
+            nil,
+            nil,
+            nil,
+        ])
+        #expect(x == "??s")
+        
+        x = Workout.Exercise.Duration.formatted([
+            .init(value: 10, unit: .hours),
+            .init(value: 10, unit: .minutes),
+        ])
+        #expect(x == "10h,10m")
+        
+        x = Workout.Exercise.Duration.formatted([
+            .init(value: 10, unit: .minutes),
+            nil,
+            .init(value: 10, unit: .seconds),
+        ])
+        #expect(x == "10m,-,10s")
+    }
 }

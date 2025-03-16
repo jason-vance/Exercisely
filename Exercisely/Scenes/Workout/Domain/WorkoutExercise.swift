@@ -73,6 +73,21 @@ enum ExerciseGroup {
     case set([Workout.Exercise])
 }
 
+extension ExerciseGroup {
+    static let sampleSingle: ExerciseGroup = .single(.sampleArcherPress)
+    static let sampleSimpleSet: ExerciseGroup = .set([.sampleTurkishGetUp, .sampleTurkishGetUp, .sampleTurkishGetUp])
+    static let sampleVariableWeightAndRepSet: ExerciseGroup = .set([
+        .init(name: .sampleMachineShoulderPress, weight: .pounds(50), reps: .init(12)!)!,
+        .init(name: .sampleMachineShoulderPress, weight: .pounds(60), reps: .init(10)!)!,
+        .init(name: .sampleMachineShoulderPress, weight: .pounds(70), reps: .init(8)!)!,
+    ])
+    static let sampleVariableDistanceAndDurationSet: ExerciseGroup = .set([
+        .init(name: .sampleTreadmill, distance: .meters(100), duration: .seconds(15)!)!,
+        .init(name: .sampleTreadmill, distance: .meters(110), duration: .seconds(20)!)!,
+        .init(name: .sampleTreadmill, distance: .meters(125), duration: .seconds(25)!)!,
+    ])
+}
+
 extension ExerciseGroup: Identifiable {
     var id: ObjectIdentifier {
         switch self {

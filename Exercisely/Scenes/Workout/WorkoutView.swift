@@ -163,7 +163,7 @@ struct WorkoutView: View {
     @ViewBuilder private func WorkoutSection(_ section: Workout.Section) -> some View {
         Section {
             ForEach(Workout.Exercise.group(exercises: section.sortedExercises)) { exercise in
-                GroupedExercise(exercise)
+                WorkoutViewExerciseRow(exercise: exercise)
             }
         } header: {
             HStack {
@@ -204,98 +204,6 @@ struct WorkoutView: View {
             .font(.headline)
             .foregroundStyle(Color.accent)
         }
-    }
-    
-    @ViewBuilder private func GroupedExercise(_ exerciseGroup: ExerciseGroup) -> some View {
-        switch exerciseGroup {
-        case .single(let exercise):
-            SingleExercise(exercise)
-        case .set(let exercises):
-            SetExercise(exercises)
-        }
-    }
-    
-    @ViewBuilder private func SingleExercise(_ exercise: Workout.Exercise) -> some View {
-        SetExercise([exercise])
-    }
-    
-    @ViewBuilder private func SetExercise(_ exercises: [Workout.Exercise]) -> some View {
-        if let exercise = exercises.first {
-            VStack(spacing: 0) {
-                HStack {
-                    Image(systemName: "circle.fill")
-                        .resizable()
-                        .frame(width: .activityRowBulletSize, height: .activityRowBulletSize)
-                    Text(exercise.name.formatted())
-                        .multilineTextAlignment(.leading)
-                    Spacer(minLength: 0)
-                }
-                .font(.headline)
-                HStack {
-                    let sets = exercises.count
-                    if sets > 1 {
-                        ExerciseSets(sets)
-                    }
-                    if let reps = exercise.reps {
-                        ExerciseReps(reps)
-                    }
-                    if let weight = exercise.weight {
-                        ExerciseWeight(weight)
-                    }
-                    if let distance = exercise.distance {
-                        ExerciseDistance(distance)
-                    }
-                    if let duration = exercise.duration {
-                        ExerciseDuration(duration)
-                    }
-                    Spacer(minLength: 0)
-                }
-                .padding(.leading, 12)
-            }
-            .workoutExerciseRow()
-        } else {
-            EmptyView()
-        }
-    }
-    
-    @ViewBuilder private func ExerciseSets(_ sets: Int) -> some View {
-        HStack(spacing: 2) {
-            Image(systemName: "square.stack.3d.up")
-            Text("\(sets)sets")
-        }
-        .workoutExerciseDataItem()
-    }
-    
-    @ViewBuilder private func ExerciseReps(_ reps: Workout.Exercise.Reps) -> some View {
-        HStack(spacing: 2) {
-            Image(systemName: "arrow.triangle.2.circlepath")
-            Text("\(reps.formatted())")
-        }
-        .workoutExerciseDataItem()
-    }
-    
-    @ViewBuilder private func ExerciseWeight(_ weight: Weight) -> some View {
-        HStack(spacing: 2) {
-            Image(systemName: "dumbbell")
-            Text("\(weight.formatted())")
-        }
-        .workoutExerciseDataItem()
-    }
-    
-    @ViewBuilder private func ExerciseDistance(_ distance: Distance) -> some View {
-        HStack(spacing: 2) {
-            Image(systemName: "point.bottomleft.forward.to.arrow.triangle.scurvepath")
-            Text("\(distance.formatted())")
-        }
-        .workoutExerciseDataItem()
-    }
-    
-    @ViewBuilder private func ExerciseDuration(_ duration: Workout.Exercise.Duration) -> some View {
-        HStack(spacing: 2) {
-            Image(systemName: "timer")
-            Text("\(duration.formatted())")
-        }
-        .workoutExerciseDataItem()
     }
     
     @ViewBuilder private func AddSectionToWorkoutButton() -> some View {

@@ -59,4 +59,55 @@ struct DistanceTests {
         #expect(Distance(value: 15, unit: .meters)!.formatted() == "15m")
         #expect(Distance(value: 17.5, unit: .feet)!.formatted() == "17.5ft")
     }
+    
+    @Test
+    func classFormattedFormatsCorrectly() async throws {
+        var x = Distance.formatted([
+            .init(value: 10, unit: .meters),
+            .init(value: 10, unit: .meters),
+            .init(value: 10, unit: .meters),
+        ])
+        #expect(x == "10m")
+        
+        x = Distance.formatted([
+            .init(value: 10, unit: .feet),
+            .init(value: 12, unit: .feet),
+            .init(value: 15, unit: .feet),
+        ])
+        #expect(x == "10,12,15ft")
+        
+        x = Distance.formatted([
+            .init(value: 10, unit: .miles),
+            nil,
+            .init(value: 15, unit: .miles),
+        ])
+        #expect(x == "10,-,15mi")
+        
+        x = Distance.formatted([
+            .init(value: 10, unit: .kilometers),
+            nil,
+            .init(value: 10, unit: .kilometers),
+        ])
+        #expect(x == "10,-,10km")
+        
+        x = Distance.formatted([
+            nil,
+            nil,
+            nil,
+        ])
+        #expect(x == "??mi")
+        
+        x = Distance.formatted([
+            .init(value: 10, unit: .miles),
+            .init(value: 10, unit: .kilometers),
+        ])
+        #expect(x == "10mi,10km")
+        
+        x = Distance.formatted([
+            .init(value: 10, unit: .feet),
+            nil,
+            .init(value: 10, unit: .meters),
+        ])
+        #expect(x == "10ft,-,10m")
+    }
 }

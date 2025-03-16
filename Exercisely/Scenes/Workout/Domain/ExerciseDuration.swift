@@ -71,6 +71,24 @@ extension Workout.Exercise {
             "\(value.formatted())\(unit.formatted())"
         }
         
+        static func formatted(_ durations: [Duration?]) -> String {
+            guard !durations.compactMap(\.self).isEmpty else { return "??s" }
+            guard durations.count > 1 else { return durations[0]?.formatted() ?? "???" }
+            
+            let allAreSameValue = Set(durations.map({ $0?.value })).count == 1
+            let allAreSameUnit = Set(durations.compactMap({ $0?.unit })).count == 1
+            if allAreSameValue && allAreSameUnit {
+                return durations[0]?.formatted() ?? "????"
+            } else {
+                if allAreSameUnit {
+                    let valuesString = durations.map({ "\($0 == nil ? "-" : "\($0!.value.formatted())")" }).joined(separator: ",")
+                    return "\(valuesString)\(durations[0]?.unit.formatted() ?? "??")"
+                } else {
+                    return durations.map({ $0?.formatted() ?? "-" }).joined(separator: ",")
+                }
+            }
+        }
+        
         private func convert(to unit: Unit) -> Double {
             let convertedValue = value * Self.conversionTable[self.unit]![unit]!
             return convertedValue.rounded(to: Self.precision)

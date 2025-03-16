@@ -44,6 +44,24 @@ struct Weight {
         "\(value.formatted())\(unit.formatted())"
     }
     
+    static func formatted(_ weights: [Weight?]) -> String {
+        guard !weights.compactMap(\.self).isEmpty else { return "??lbs" }
+        guard weights.count > 1 else { return weights[0]?.formatted() ?? "???" }
+        
+        let allAreSameValue = Set(weights.map({ $0?.value })).count == 1
+        let allAreSameUnit = Set(weights.compactMap({ $0?.unit })).count == 1
+        if allAreSameValue && allAreSameUnit {
+            return weights[0]?.formatted() ?? "????"
+        } else {
+            if allAreSameUnit {
+                let valuesString = weights.map({ "\($0 == nil ? "-" : "\($0!.value.formatted())")" }).joined(separator: ",")
+                return "\(valuesString)\(weights[0]?.unit.formatted() ?? "??")"
+            } else {
+                return weights.map({ $0?.formatted() ?? "-" }).joined(separator: ",")
+            }
+        }
+    }
+    
     private func convert(to unit: Unit) -> Double {
         var convertedValue: Double = 0
         
