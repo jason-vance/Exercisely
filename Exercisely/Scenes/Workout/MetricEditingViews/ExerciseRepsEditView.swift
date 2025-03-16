@@ -22,10 +22,6 @@ struct ExerciseRepsEditView: View {
         self._reps = reps
     }
     
-    private var isRepsInvalid: Bool {
-        Workout.Exercise.Reps(repsInt) == nil
-    }
-    
     private var suggestions: [Int] {
         var suggestions = exercises
             .compactMap { $0.reps?.count }
@@ -36,11 +32,7 @@ struct ExerciseRepsEditView: View {
     }
     
     private func saveExerciseReps() {
-        guard let reps = Workout.Exercise.Reps(repsInt) else {
-            print("Reps could not be created")
-            return
-        }
-        
+        let reps = Workout.Exercise.Reps(repsInt)
         self.reps = reps
         presentation.wrappedValue.dismiss()
     }
@@ -91,7 +83,6 @@ struct ExerciseRepsEditView: View {
             Image(systemName: "checkmark")
                 .foregroundStyle(Color.accentColor)
         }
-        .disabled(isRepsInvalid)
     }
     
     @ViewBuilder private func RepsField() -> some View {
