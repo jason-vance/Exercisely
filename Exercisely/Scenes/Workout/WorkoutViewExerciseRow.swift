@@ -9,11 +9,24 @@ import SwiftUI
 
 struct WorkoutViewExerciseRow: View {
     
-    @State var exercise: ExerciseGroup
+    @State var exerciseGroup: ExerciseGroup
+    @State private var showExerciseOptions: Bool = false {
+        didSet {
+            if showExerciseOptions {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    showExerciseOptions = false
+                }
+            }
+        }
+    }
+    
+    private func deleteExercise() {
+        //TODO: Implement deleteExercise
+    }
     
     var body: some View {
         VStack {
-            switch exercise {
+            switch exerciseGroup {
             case .single(let exercise):
                 SingleExercise(exercise)
             case .set(let exercises):
@@ -21,6 +34,7 @@ struct WorkoutViewExerciseRow: View {
             }
         }
         .workoutExerciseRow()
+        .animation(.snappy, value: showExerciseOptions)
     }
     
     @ViewBuilder private func SingleExercise(_ exercise: Workout.Exercise) -> some View {
@@ -29,34 +43,51 @@ struct WorkoutViewExerciseRow: View {
     
     @ViewBuilder private func SetExercise(_ exercises: [Workout.Exercise]) -> some View {
         if let exercise = exercises.first {
-            VStack(spacing: 0) {
-                HStack {
-                    Bullet()
-                    Text(exercise.name.formatted())
-                        .multilineTextAlignment(.leading)
-                    Spacer(minLength: 0)
+            HStack {
+                Button {
+                    showExerciseOptions.toggle()
+                } label: {
+                    VStack(spacing: 0) {
+                        HStack {
+                            Bullet()
+                            Text(exercise.name.formatted())
+                                .multilineTextAlignment(.leading)
+                            Spacer(minLength: 0)
+                        }
+                        .font(.headline)
+                        HStack {
+                            Bullet().hidden()
+                            let sets = exercises.count
+                            if sets > 1 {
+                                ExerciseSets(sets)
+                            }
+                            if !exercises.compactMap(\.reps).isEmpty {
+                                ExerciseReps(exercises.map(\.reps))
+                            }
+                            if !exercises.compactMap(\.weight).isEmpty {
+                                ExerciseWeight(exercises.map(\.weight))
+                            }
+                            if !exercises.compactMap(\.distance).isEmpty {
+                                ExerciseDistance(exercises.map(\.distance))
+                            }
+                            if !exercises.compactMap(\.duration).isEmpty {
+                                ExerciseDuration(exercises.map(\.duration))
+                            }
+                            Spacer(minLength: 0)
+                        }
+                    }
                 }
-                .font(.headline)
-                HStack {
-                    Bullet().hidden()
-                    let sets = exercises.count
-                    if sets > 1 {
-                        ExerciseSets(sets)
-                    }
-                    if !exercises.compactMap(\.reps).isEmpty {
-                        ExerciseReps(exercises.map(\.reps))
-                    }
-                    if !exercises.compactMap(\.weight).isEmpty {
-                        ExerciseWeight(exercises.map(\.weight))
-                    }
-                    if !exercises.compactMap(\.distance).isEmpty {
-                        ExerciseDistance(exercises.map(\.distance))
-                    }
-                    if !exercises.compactMap(\.duration).isEmpty {
-                        ExerciseDuration(exercises.map(\.duration))
-                    }
-                    Spacer(minLength: 0)
+                Spacer(minLength: 0)
+                Menu {
+                    Button("Delete", systemImage: "trash", role: .destructive) { deleteExercise() }
+                } label: {
+                    Image(systemName: "ellipsis.circle.fill")
+                        .font(.headline)
+                        .foregroundStyle(Color.accent)
                 }
+                .textCase(.none)
+                .opacity(showExerciseOptions ? 1 : 0)
+                .offset(x: showExerciseOptions ? 0 : 50)
             }
         } else {
             EmptyView()
@@ -118,10 +149,10 @@ struct WorkoutViewExerciseRow: View {
 
     List {
         Section {
-            WorkoutViewExerciseRow(exercise: single)
-            WorkoutViewExerciseRow(exercise: simpleSet)
-            WorkoutViewExerciseRow(exercise: complexSet1)
-            WorkoutViewExerciseRow(exercise: complexSet2)
+            WorkoutViewExerciseRow(exerciseGroup: single)
+            WorkoutViewExerciseRow(exerciseGroup: simpleSet)
+            WorkoutViewExerciseRow(exerciseGroup: complexSet1)
+            WorkoutViewExerciseRow(exerciseGroup: complexSet2)
         } header: {
             SectionHeader("Workout")
         }

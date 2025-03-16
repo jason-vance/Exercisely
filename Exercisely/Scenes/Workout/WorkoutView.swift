@@ -163,7 +163,7 @@ struct WorkoutView: View {
     @ViewBuilder private func WorkoutSection(_ section: Workout.Section) -> some View {
         Section {
             ForEach(Workout.Exercise.group(exercises: section.sortedExercises)) { exercise in
-                WorkoutViewExerciseRow(exercise: exercise)
+                WorkoutViewExerciseRow(exerciseGroup: exercise)
             }
         } header: {
             HStack {
