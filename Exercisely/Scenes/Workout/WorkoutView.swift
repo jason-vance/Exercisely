@@ -36,6 +36,14 @@ struct WorkoutView: View {
         return nil
     }
     
+    var currentSection: Workout.Section? {
+        workout?.sortedSections.last
+    }
+    
+    var currentExercise: Workout.Exercise? {
+        currentSection?.sortedExercises.last
+    }
+    
     private func addNewSectionToWorkout() {
         let order = workout?.sections.max(by: { $0.order > $1.order })?.order ?? 0
         workout?.append(section: .init(name: newWorkoutSectionName, order: order + 1))
@@ -188,7 +196,9 @@ struct WorkoutView: View {
                 .offset(x: showSectionOptions == section ? 0 : 50)
             }
         } footer: {
-            AddExerciseButton(section)
+            if currentSection == section {
+                AddExerciseButton(section)
+            }
         }
     }
     
