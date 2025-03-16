@@ -40,6 +40,10 @@ struct AddExerciseView: View {
         return exercise
     }
     
+    private var canSaveExercise: Bool { exerciseToSave != nil }
+    private var hasName: Bool { name != nil }
+    private var hasMetrics: Bool { reps != nil || distance != nil || duration != nil }
+
     private func saveExercise() {
         guard let exercise = exerciseToSave else {
             print("Failed to create Exercise to save")
@@ -114,6 +118,7 @@ struct AddExerciseView: View {
                 Text(name?.formatted() ?? Workout.Exercise.Name.prompt.formatted())
                     .opacity(name == nil ? 0.35 : 1)
                     .fieldButton()
+                    .underlined(canSaveExercise || hasName ? Color.accentColor : Color.red)
             }
             .workoutExerciseRow()
         } header: {
@@ -142,6 +147,7 @@ struct AddExerciseView: View {
             } label: {
                 Text(reps?.formatted() ?? "N/A")
                     .fieldButton()
+                    .underlined(canSaveExercise || hasMetrics ? Color.accentColor : Color.red)
             }
             .workoutExerciseRow()
         } header: {
@@ -156,6 +162,7 @@ struct AddExerciseView: View {
             } label: {
                 Text(distance?.formatted() ?? "N/A")
                     .fieldButton()
+                    .underlined(canSaveExercise || hasMetrics ? Color.accentColor : Color.red)
             }
             .workoutExerciseRow()
         } header: {
@@ -170,6 +177,7 @@ struct AddExerciseView: View {
             } label: {
                 Text(duration?.formatted() ?? "N/A")
                     .fieldButton()
+                    .underlined(canSaveExercise || hasMetrics ? Color.accentColor : Color.red)
             }
             .workoutExerciseRow()
         } header: {

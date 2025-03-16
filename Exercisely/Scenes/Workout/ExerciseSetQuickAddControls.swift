@@ -63,6 +63,8 @@ struct ExerciseSetQuickAddControls: View {
         return exercise
     }
     
+    private var canSaveExercise: Bool { exerciseToSave != nil }
+    
     private func saveExercise() {
         guard let exercise = exerciseToSave else {
             print("Failed to create Exercise to save")
@@ -114,6 +116,7 @@ struct ExerciseSetQuickAddControls: View {
             } label: {
                 Text(newSetReps?.formatted() ?? "N/A")
                     .fieldButton()
+                    .underlined(canSaveExercise ? Color.accentColor : Color.red)
             }
             .buttonStyle(PlainButtonStyle())
         }
@@ -131,6 +134,7 @@ struct ExerciseSetQuickAddControls: View {
             } label: {
                 Text(newSetDistance?.formatted() ?? "N/A")
                     .fieldButton()
+                    .underlined(canSaveExercise ? Color.accentColor : Color.red)
             }
             .buttonStyle(PlainButtonStyle())
         }
@@ -148,6 +152,7 @@ struct ExerciseSetQuickAddControls: View {
             } label: {
                 Text(newSetDuration?.formatted() ?? "N/A")
                     .fieldButton()
+                    .underlined(canSaveExercise ? Color.accentColor : Color.red)
             }
             .buttonStyle(PlainButtonStyle())
         }
@@ -161,6 +166,7 @@ struct ExerciseSetQuickAddControls: View {
                 .buttonDefaultModifiers()
         }
         .buttonStyle(PlainButtonStyle())
+        .disabled(!canSaveExercise)
     }
 }
 

@@ -10,12 +10,12 @@ import SwiftUI
 
 extension View {
     
-    func underlined() -> some View {
+    func underlined(_ color: Color = Color.accentColor) -> some View {
         self
             .overlay(alignment: .bottom) {
                 Rectangle()
                     .frame(height: 1)
-                    .foregroundStyle(Color.accentColor)
+                    .foregroundStyle(color)
             }
     }
     
