@@ -22,7 +22,7 @@ class Workout {
     }
 
     @Relationship(deleteRule: .cascade)
-    var sections: [Section]
+    private var sections: [Section]
     
     
     init(date: SimpleDate = .today) {
@@ -31,7 +31,13 @@ class Workout {
     }
     
     func append(section: Section) {
+        let order = sortedSections.last?.order ?? 0
+        section.order = order + 1
         sections.append(section)
+    }
+    
+    func remove(section: Section) {
+        sections.removeAll { $0.id == section.id }
     }
     
     var sortedSections: [Section] {

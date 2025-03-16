@@ -45,17 +45,20 @@ struct WorkoutView: View {
     }
     
     private func addNewSectionToWorkout() {
-        let order = workout?.sections.max(by: { $0.order > $1.order })?.order ?? 0
-        workout?.append(section: .init(name: newWorkoutSectionName, order: order + 1))
-        showAddSection = false
-        newWorkoutSectionName = ""
+        withAnimation(.snappy) {
+            workout?.append(section: .init(name: newWorkoutSectionName))
+            showAddSection = false
+            newWorkoutSectionName = ""
+        }
     }
     
     private func removeSectionFromWorkout() {
-        guard let sectionToDelete = sectionToDelete else { return }
-        workout?.sections.removeAll(where: { $0.id == sectionToDelete.id })
-        self.sectionToDelete = nil
-        showSectionOptions = nil
+        withAnimation(.snappy) {
+            guard let sectionToDelete = sectionToDelete else { return }
+            workout?.remove(section: sectionToDelete)
+            self.sectionToDelete = nil
+            showSectionOptions = nil
+        }
     }
     
     private func renameSectionToRename() {
@@ -77,7 +80,6 @@ struct WorkoutView: View {
         }
         .listDefaultModifiers()
         .animation(.snappy, value: workout)
-        .animation(.snappy, value: workout?.sections)
         .animation(.snappy, value: showSectionOptions)
         .toolbar { Toolbar() }
         .toolbarTitleDisplayMode(.inline)
@@ -170,8 +172,11 @@ struct WorkoutView: View {
     
     @ViewBuilder private func WorkoutSection(_ section: Workout.Section) -> some View {
         Section {
-            ForEach(Workout.Exercise.group(exercises: section.sortedExercises)) { exercise in
-                WorkoutViewExerciseRow(exercise, in: section)
+            ForEach(Workout.Exercise.group(exercises: section.sortedExercises)) { exerciseGroup in
+                WorkoutViewExerciseRow(exerciseGroup, in: section)
+                if let currentExercise, exerciseGroup.contains(currentExercise) {
+                    ExerciseSetQuickAddControls(for: currentExercise, in: section)
+                }
             }
         } header: {
             HStack {

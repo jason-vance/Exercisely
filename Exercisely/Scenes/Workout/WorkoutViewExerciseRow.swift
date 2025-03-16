@@ -9,8 +9,8 @@ import SwiftUI
 
 struct WorkoutViewExerciseRow: View {
     
-    var workoutSection: Workout.Section
-    var exerciseGroup: ExerciseGroup
+    private let workoutSection: Workout.Section
+    private let exerciseGroup: ExerciseGroup
     
     @State private var showExerciseOptions: Bool = false {
         didSet {
@@ -48,6 +48,7 @@ struct WorkoutViewExerciseRow: View {
         }
         .workoutExerciseRow()
         .animation(.snappy, value: showExerciseOptions)
+        .animation(.snappy, value: exerciseGroup.exercises)
         .confirmationDialog(
             "Are you sure you want to remove the \"\(exerciseGroup.name)\" exercise?",
             isPresented: $showDeleteConfirmation,
@@ -111,16 +112,11 @@ struct WorkoutViewExerciseRow: View {
         }
     }
     
-    @ViewBuilder func Bullet() -> some View {
-        Image(systemName: "circle.fill")
-            .resizable()
-            .frame(width: .activityRowBulletSize, height: .activityRowBulletSize)
-    }
-    
     @ViewBuilder private func ExerciseSets(_ sets: Int) -> some View {
         HStack(spacing: 2) {
             Image(systemName: "square.stack.3d.up")
             Text("\(sets)sets")
+                .contentTransition(.numericText())
         }
         .workoutExerciseDataItem()
     }
@@ -129,6 +125,7 @@ struct WorkoutViewExerciseRow: View {
         HStack(spacing: 2) {
             Image(systemName: "arrow.triangle.2.circlepath")
             Text("\(Workout.Exercise.Reps.formatted(reps))")
+                .contentTransition(.numericText())
         }
         .workoutExerciseDataItem()
     }
@@ -137,6 +134,7 @@ struct WorkoutViewExerciseRow: View {
         HStack(spacing: 2) {
             Image(systemName: "dumbbell")
             Text("\(Weight.formatted(weights))")
+                .contentTransition(.numericText())
         }
         .workoutExerciseDataItem()
     }
@@ -145,6 +143,7 @@ struct WorkoutViewExerciseRow: View {
         HStack(spacing: 2) {
             Image(systemName: "point.bottomleft.forward.to.arrow.triangle.scurvepath")
             Text("\(Distance.formatted(distances))")
+                .contentTransition(.numericText())
         }
         .workoutExerciseDataItem()
     }
@@ -153,6 +152,7 @@ struct WorkoutViewExerciseRow: View {
         HStack(spacing: 2) {
             Image(systemName: "timer")
             Text("\(Workout.Exercise.Duration.formatted(durations))")
+                .contentTransition(.numericText())
         }
         .workoutExerciseDataItem()
     }

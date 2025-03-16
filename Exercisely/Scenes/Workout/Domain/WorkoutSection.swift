@@ -19,13 +19,15 @@ extension Workout {
         var exercises: [Exercise]
         
         
-        init(name: String, order: Int) {
+        init(name: String, order: Int = 0) {
             self.name = name
             self.order = order
             self.exercises = []
         }
         
         func append(exercise: Exercise) {
+            let order = sortedExercises.last?.order ?? 0
+            exercise.order = order + 1
             exercises.append(exercise)
         }
         

@@ -12,7 +12,6 @@ extension Workout {
     @Model
     class Exercise {
         
-        //TODO: How do I identify these or order them?
         var name: Name
         var weight: Weight?
         var reps: Reps?
@@ -113,6 +112,15 @@ extension ExerciseGroup: Identifiable {
             return [exercise]
         case .set(let exercises):
             return exercises
+        }
+    }
+    
+    func contains(_ exercise: Workout.Exercise) -> Bool {
+        switch self {
+        case .single(let e):
+            return e.id == exercise.id
+        case .set(let e):
+            return e.contains(where: { $0.id == exercise.id })
         }
     }
 }
