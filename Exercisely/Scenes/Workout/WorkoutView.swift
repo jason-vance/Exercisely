@@ -17,7 +17,18 @@ struct WorkoutView: View {
     @State private var workoutFocusString: String = ""
     @State private var date: SimpleDate = .today
     
-    @State private var showSectionOptions: Workout.Section? = nil
+    @State private var showSectionOptions: Workout.Section? = nil {
+        didSet {
+            if showSectionOptions != nil {
+                let sectionOptionsToHide = showSectionOptions
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    if self.showSectionOptions == sectionOptionsToHide {
+                        showSectionOptions = nil
+                    }
+                }
+            }
+        }
+    }
     @State private var sectionToDelete: Workout.Section? = nil
     @State private var sectionToRename: Workout.Section? = nil
     @State private var sectionRenameString: String = ""
