@@ -28,9 +28,9 @@ extension View {
     
     func buttonDefaultModifiers() -> some View {
         self
+            .foregroundColor(Color.text)
             .padding(.horizontal, .padding)
             .padding(.vertical, .padding / 2)
-            .foregroundColor(Color.text)
             .background {
                 RoundedRectangle(cornerRadius: .buttonCornerRadius, style: .continuous)
                     .stroke(style: .init(lineWidth: 1))

@@ -112,9 +112,10 @@ struct ExerciseSetQuickAddControls: View {
             RepsField()
             DistanceField()
             DurationField()
-            Spacer(minLength: 0)
+            Spacer()
             AddNewSetButton()
         }
+        .padding()
         .workoutExerciseRow()
         .onChange(of: __mode, initial: true) { _, mode in self.mode = mode }
     }
@@ -195,6 +196,7 @@ struct ExerciseSetQuickAddControls: View {
             saveExercise()
         } label: {
             Text(mode == .add ? "Add" : "Save")
+                .font(.footnote)
                 .lineLimit(1)
                 .buttonDefaultModifiers()
         }
