@@ -71,6 +71,8 @@ extension Workout.Exercise {
 enum ExerciseGroup {
     case single(Workout.Exercise)
     case set([Workout.Exercise])
+    //TODO: Add superset
+    //TODO: Add dropset
 }
 
 extension ExerciseGroup {

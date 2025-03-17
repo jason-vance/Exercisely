@@ -65,7 +65,7 @@ struct Distance {
     let unit: Unit
     
     init?(value: Double, unit: Unit) {
-        guard value >= 0 else { return nil }
+        guard value > 0 else { return nil }
         self.value = value
         self.unit = unit
     }
@@ -84,6 +84,24 @@ struct Distance {
     
     static func kilometers(_ value: Double) -> Self? {
         .init(value: value, unit: .kilometers)
+    }
+    
+    func subtracting(_ other: Distance) -> Distance? {
+        let value = self.value - other.convert(to: self.unit).value
+        return subtracting(value)
+    }
+    
+    func subtracting(_ value: Double) -> Distance? {
+        .init(value: self.value - value, unit: self.unit)
+    }
+    
+    func adding(_ other: Distance) -> Distance {
+        let value = self.value + other.convert(to: self.unit).value
+        return adding(value)
+    }
+    
+    func adding(_ value: Double) -> Distance {
+        return .init(value: self.value + value, unit: self.unit)!
     }
     
     func formatted() -> String {
@@ -108,15 +126,15 @@ struct Distance {
         }
     }
     
-    private func convert(to unit: Unit) -> Double {
+    private func convert(to unit: Unit) -> Distance {
         let convertedValue = value * Self.conversionTable[self.unit]![unit]!
-        return convertedValue.rounded(to: Self.precision)
+        return .init(value: convertedValue.rounded(to: Self.precision), unit: unit)!
     }
 }
 
 extension Distance: Equatable {
     static func == (lhs: Distance, rhs: Distance) -> Bool {
-        lhs.value == rhs.convert(to: lhs.unit)
+        lhs.value == rhs.convert(to: lhs.unit).value
     }
 }
 

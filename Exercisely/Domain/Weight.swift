@@ -42,7 +42,7 @@ struct Weight {
     
     func subtracting(_ other: Weight) -> Weight {
         let value = self.value - other.convert(to: self.unit).value
-        return .init(value: value, unit: self.unit)
+        return subtracting(value)
     }
     
     func subtracting(_ value: Double) -> Weight {
@@ -51,7 +51,7 @@ struct Weight {
     
     func adding(_ other: Weight) -> Weight {
         let value = self.value + other.convert(to: self.unit).value
-        return .init(value: value, unit: self.unit)
+        return adding(value)
     }
     
     func adding(_ value: Double) -> Weight {

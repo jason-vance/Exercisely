@@ -19,6 +19,22 @@ extension Workout.Exercise {
         
         var count: Int { value }
         
+        func subtracting(_ other: Reps) -> Reps? {
+            return subtracting(other.value)
+        }
+        
+        func subtracting(_ value: Int) -> Reps? {
+            .init(self.value - value)
+        }
+        
+        func adding(_ other: Reps) -> Reps {
+            return adding(other.value)
+        }
+        
+        func adding(_ value: Int) -> Reps {
+            .init(self.value + value)!
+        }
+        
         func formatted() -> String {
             "\(value)reps"
         }

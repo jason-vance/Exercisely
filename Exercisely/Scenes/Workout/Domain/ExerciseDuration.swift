@@ -50,7 +50,7 @@ extension Workout.Exercise {
         let unit: Unit
         
         init?(value: Double, unit: Unit) {
-            guard value >= 0 else { return nil }
+            guard value > 0 else { return nil }
             self.value = value
             self.unit = unit
         }
@@ -65,6 +65,24 @@ extension Workout.Exercise {
         
         static func hours(_ value: Double) -> Self? {
             .init(value: value, unit: .hours)
+        }
+        
+        func subtracting(_ other: Duration) -> Duration? {
+            let value = self.value - other.convert(to: self.unit).value
+            return subtracting(value)
+        }
+        
+        func subtracting(_ value: Double) -> Duration? {
+            .init(value: self.value - value, unit: self.unit)
+        }
+        
+        func adding(_ other: Duration) -> Duration {
+            let value = self.value + other.convert(to: self.unit).value
+            return adding(value)
+        }
+        
+        func adding(_ value: Double) -> Duration {
+            return .init(value: self.value + value, unit: self.unit)!
         }
         
         func formatted() -> String {
@@ -89,16 +107,16 @@ extension Workout.Exercise {
             }
         }
         
-        private func convert(to unit: Unit) -> Double {
+        private func convert(to unit: Unit) -> Duration {
             let convertedValue = value * Self.conversionTable[self.unit]![unit]!
-            return convertedValue.rounded(to: Self.precision)
+            return .init(value: convertedValue.rounded(to: Self.precision), unit: unit)!
         }
     }
 }
 
 extension Workout.Exercise.Duration: Equatable {
     static func == (lhs: Workout.Exercise.Duration, rhs: Workout.Exercise.Duration) -> Bool {
-        lhs.value == rhs.convert(to: lhs.unit)
+        lhs.value == rhs.convert(to: lhs.unit).value
     }
 }
 

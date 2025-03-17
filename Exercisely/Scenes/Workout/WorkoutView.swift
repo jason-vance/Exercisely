@@ -36,6 +36,42 @@ struct WorkoutView: View {
     @State private var showAddSection: Bool = false
     @State private var newWorkoutSectionName: String = ""
     
+    // .navigationDestination cannot be inside of a lazy container.
+    // So, I have to use these props to let ExerciseSetQuickAddControls
+    // reach back outside to the List in this view.
+    @State private var weightEditor: Binding<Weight?>? = nil
+    @State private var repsEditor: Binding<Workout.Exercise.Reps?>? = nil
+    @State private var distanceEditor: Binding<Distance?>? = nil
+    @State private var durationEditor: Binding<Workout.Exercise.Duration?>? = nil
+    
+    private var showWeightEditor: Binding<Bool> {
+        .init(
+            get: { weightEditor != nil },
+            set: { isPresented in weightEditor = isPresented ? weightEditor : nil }
+        )
+    }
+    
+    private var showRepsEditor: Binding<Bool> {
+        .init(
+            get: { repsEditor != nil },
+            set: { isPresented in repsEditor = isPresented ? repsEditor : nil }
+        )
+    }
+    
+    private var showDistanceEditor: Binding<Bool> {
+        .init(
+            get: { distanceEditor != nil },
+            set: { isPresented in distanceEditor = isPresented ? distanceEditor : nil }
+        )
+    }
+    
+    private var showDurationEditor: Binding<Bool> {
+        .init(
+            get: { durationEditor != nil },
+            set: { isPresented in durationEditor = isPresented ? durationEditor : nil }
+        )
+    }
+
     var workout: Workout? {
         if let workout = workouts.first(where: { $0.date == date }) {
             return workout
@@ -128,6 +164,30 @@ struct WorkoutView: View {
             Button("Delete It!", role: .destructive, action: removeSectionFromWorkout)
             Button("Cancel", role: .cancel) { }
         }
+        .navigationDestination(isPresented: showWeightEditor) {
+            ExerciseWeightEditView(weight: .init(
+                get: { weightEditor?.wrappedValue },
+                set: { weightEditor?.wrappedValue = $0 }
+            ))
+        }
+        .navigationDestination(isPresented: showRepsEditor) {
+            ExerciseRepsEditView(reps: .init(
+                get: { repsEditor?.wrappedValue },
+                set: { repsEditor?.wrappedValue = $0 }
+            ))
+        }
+        .navigationDestination(isPresented: showDistanceEditor) {
+            ExerciseDistanceEditView(distance: .init(
+                get: { distanceEditor?.wrappedValue },
+                set: { distanceEditor?.wrappedValue = $0 }
+            ))
+        }
+        .navigationDestination(isPresented: showDurationEditor) {
+            ExerciseDurationEditView(duration: .init(
+                get: { durationEditor?.wrappedValue },
+                set: { durationEditor?.wrappedValue = $0 }
+            ))
+        }
     }
     
     @ToolbarContentBuilder private func Toolbar() -> some ToolbarContent {
@@ -186,7 +246,13 @@ struct WorkoutView: View {
                 WorkoutViewExerciseRow(exerciseGroup, in: section)
             }
             if currentSection == section {
-                WorkoutViewNewExerciseSection(workoutSection: section)
+                WorkoutViewNewExerciseSection(
+                    workoutSection: section,
+                    weightEditor: $weightEditor,
+                    repsEditor: $repsEditor,
+                    distanceEditor: $distanceEditor,
+                    durationEditor: $durationEditor
+                )
             }
         } header: {
             HStack {
