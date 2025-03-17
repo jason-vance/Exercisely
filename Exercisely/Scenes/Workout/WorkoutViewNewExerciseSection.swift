@@ -9,8 +9,46 @@ import SwiftUI
 
 struct WorkoutViewNewExerciseSection: View {
     
+    private enum AddType: CaseIterable {
+        case exercise
+        case set
+        case superset
+        case dropset
+        
+        var title: String {
+            switch self {
+            case .exercise:
+                return "New Exercise"
+            case .set:
+                return "New Set"
+            case .superset:
+                return "Continue Superset"
+            case .dropset:
+                return "Continue Dropset"
+            }
+        }
+        
+        func actionTitle(workoutSection: Workout.Section, previousExercise: Workout.Exercise?) -> String {
+            switch self {
+            case .exercise:
+                return "Add to \"\(workoutSection.name)\""
+            case .set:
+                return "Add Set to \"\(previousExercise?.name.formatted() ?? "Exercise")\""
+            case .superset:
+                return "Add to Superset"
+            case .dropset:
+                return "Add to Dropset"
+            }
+            
+        }
+    }
+    
+    //TODO: I should probably get this via query, so that things can update
     let workoutSection: Workout.Section
+    
+    @State private var addType: AddType = .set
 
+    //TODO: If name changes, then change addType to something other than 'set'
     @State private var name: Workout.Exercise.Name? = nil
     @State private var weight: Weight? = nil
     @State private var reps: Workout.Exercise.Reps? = nil
@@ -53,25 +91,60 @@ struct WorkoutViewNewExerciseSection: View {
         }
     }
     
+    private var previousExercise: Workout.Exercise? {
+        workoutSection.sortedExercises.last
+    }
+    
+    private func onUpdate(addType: AddType) {
+        //TODO: Set up intial state for each case
+        switch addType {
+        case .set:
+            if let setExercise = workoutSection.sortedExercises.last {
+                self.name = setExercise.name
+                self.weight = setExercise.weight
+                self.reps = setExercise.reps
+                self.distance = setExercise.distance
+                self.duration = setExercise.duration
+            }
+            break
+        default:
+            break
+        }
+    }
+    
+    private func onUpdate(previousExercise: Workout.Exercise?) {
+        //If there is no previousExercise, we can only add to the workout section
+        if previousExercise == nil {
+            addType = .exercise
+        }
+    }
+    
     var body: some View {
         Section {
+            AddTypeMenu()
             NameField()
             WeightField()
             RepsField()
             DistanceField()
             DurationField()
             AddExerciseButton()
-        } header: {
-            HStack {
-                Text("New Exercise")
-                Spacer()
-            }
-                .font(.subheadline)
-                .bold()
-                .workoutExerciseRow()
-                .underlined(Color.text.opacity(0.5))
         }
         .foregroundStyle(Color.text)
+        .onChange(of: addType, initial: true) { _, addType in onUpdate(addType: addType) }
+        .onChange(of: previousExercise, initial: true) { _, previousExercise in onUpdate(previousExercise: previousExercise) }
+    }
+    
+    @ViewBuilder private func AddTypeMenu() -> some View {
+        Menu {
+            ForEach(AddType.allCases, id: \.self) { addType in
+                Button(addType.title) { self.addType = addType }
+            }
+        } label: {
+            Text(addType.title)
+                .fieldButton()
+        }
+        .workoutExerciseRow()
+        .disabled(previousExercise == nil)
     }
     
     @ViewBuilder private func NameField() -> some View {
@@ -89,6 +162,7 @@ struct WorkoutViewNewExerciseSection: View {
             }
         }
         .workoutExerciseRow()
+        .disabled(addType == .set)
     }
     
     @ViewBuilder private func WeightField() -> some View {
@@ -160,8 +234,11 @@ struct WorkoutViewNewExerciseSection: View {
             Button {
                 saveExercise()
             } label: {
-                Text("Add to \(workoutSection.name)")
-                    .buttonDefaultModifiers()
+                Text(addType.actionTitle(
+                    workoutSection: workoutSection,
+                    previousExercise: previousExercise
+                ))
+                .buttonDefaultModifiers()
             }
             .disabled(exerciseToSave == nil)
         }

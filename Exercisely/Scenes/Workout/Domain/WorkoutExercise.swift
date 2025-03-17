@@ -17,6 +17,7 @@ extension Workout {
         var reps: Reps?
         var distance: Distance?
         var duration: Duration?
+        //TODO: Add rest property
         var order: Int
         
         init?(

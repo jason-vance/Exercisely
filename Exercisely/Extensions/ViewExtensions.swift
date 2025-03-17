@@ -37,6 +37,7 @@ extension View {
     
     func buttonDefaultModifiers() -> some View {
         self
+            .font(.subheadline)
             .foregroundColor(Color.text)
             .padding(.horizontal, .padding)
             .padding(.vertical, .padding / 2)
