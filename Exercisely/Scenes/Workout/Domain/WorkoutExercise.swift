@@ -88,7 +88,7 @@ extension ExerciseGroup {
 }
 
 extension ExerciseGroup: Identifiable {
-    var id: ObjectIdentifier {
+    var id: Workout.Exercise.ID {
         switch self {
         case .single(let exercise):
             return exercise.id
@@ -116,11 +116,15 @@ extension ExerciseGroup: Identifiable {
     }
     
     func contains(_ exercise: Workout.Exercise) -> Bool {
+        contains(exercise.id)
+    }
+    
+    func contains(_ exerciseId: Workout.Exercise.ID) -> Bool {
         switch self {
         case .single(let e):
-            return e.id == exercise.id
+            return e.id == exerciseId
         case .set(let e):
-            return e.contains(where: { $0.id == exercise.id })
+            return e.contains(where: { $0.id == exerciseId })
         }
     }
 }

@@ -54,6 +54,10 @@ extension Workout {
         var sortedExercises: [Exercise] {
             exercises.sorted(by: { $0.order < $1.order })
         }
+        
+        var groupedExercises: [ExerciseGroup] {
+            Workout.Exercise.group(exercises: sortedExercises)
+        }
     }
 }
 

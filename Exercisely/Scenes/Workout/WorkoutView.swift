@@ -236,7 +236,7 @@ struct WorkoutView: View {
 //    TODO: Add ability to reorder exercises
     @ViewBuilder private func WorkoutSection(_ section: Workout.Section) -> some View {
         Section {
-            ForEach(Workout.Exercise.group(exercises: section.sortedExercises)) { exerciseGroup in
+            ForEach(section.groupedExercises) { exerciseGroup in
                 WorkoutViewExerciseRow(exerciseGroup, in: section)
                 if let currentExercise, exerciseGroup.contains(currentExercise) {
                     ExerciseSetQuickAddControls(for: currentExercise, in: section)

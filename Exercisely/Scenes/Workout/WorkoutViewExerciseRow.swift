@@ -65,7 +65,7 @@ struct WorkoutViewExerciseRow: View {
     
     @ViewBuilder private func SetExercise(_ exercises: [Workout.Exercise]) -> some View {
         NavigationLinkNoChevron {
-            ExerciseGroupDetailView(for: exerciseGroup, in: workoutSection)
+            ExerciseGroupDetailView(for: exerciseGroup, in: workoutSection.id)
         } label: {
             VStack(spacing: 0) {
                 HStack {

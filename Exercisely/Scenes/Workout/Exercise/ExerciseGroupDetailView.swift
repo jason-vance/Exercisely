@@ -6,13 +6,24 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ExerciseGroupDetailView: View {
     
     @Environment(\.presentationMode) var presentation
     
-    private let workoutSection: Workout.Section
-    private let exerciseGroup: ExerciseGroup
+    private let workoutSectionId: Workout.Section.ID
+    private let exerciseId: Workout.Exercise.ID
+    
+    @Query private var workoutSections: [Workout.Section]
+    
+    private var workoutSection: Workout.Section? {
+        workoutSections.first(where: { $0.id == workoutSectionId })
+    }
+    
+    private var exerciseGroup: ExerciseGroup? {
+        workoutSection?.groupedExercises.first(where: { $0.contains(exerciseId) })
+    }
     
     // .navigationDestination cannot be inside of a lazy container.
     // So, I have to use these props to let ExerciseSetQuickAddControls
@@ -22,27 +33,31 @@ struct ExerciseGroupDetailView: View {
     @State private var distanceEditor: Binding<Distance?>? = nil
     @State private var durationEditor: Binding<Workout.Exercise.Duration?>? = nil
     
-    init(for exerciseGroup: ExerciseGroup, in workoutSection: Workout.Section) {
-        self.exerciseGroup = exerciseGroup
-        self.workoutSection = workoutSection
+    init(for exerciseGroup: ExerciseGroup, in workoutSectionId: Workout.Section.ID) {
+        self.exerciseId = exerciseGroup.id
+        self.workoutSectionId = workoutSectionId
     }
     
     var body: some View {
         List {
-            WorkoutViewExerciseRow(exerciseGroup, in: workoutSection)
-            ForEach(exerciseGroup.exercises.indices, id: \.self) { index in
-                let exercise = exerciseGroup.exercises[index]
-                ExerciseRow(exercise, at: index)
-            }
-            if let lastExercise = exerciseGroup.exercises.last {
-                AddExerciseRow(lastExercise)
+            if let exerciseGroup = exerciseGroup  {
+                if let workoutSection = workoutSection {
+                    WorkoutViewExerciseRow(exerciseGroup, in: workoutSection)
+                }
+                ForEach(exerciseGroup.exercises.indices, id: \.self) { index in
+                    let exercise = exerciseGroup.exercises[index]
+                    ExerciseRow(exercise, at: index)
+                }
+                if let lastExercise = exerciseGroup.exercises.last {
+                    AddExerciseRow(lastExercise)
+                }
             }
         }
         .listDefaultModifiers()
         .toolbar { Toolbar() }
         .toolbarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden()
-        .animation(.snappy, value: exerciseGroup.exercises)
+        .animation(.snappy, value: exerciseGroup?.exercises)
         .navigationDestination(
             isPresented: .init(
                 get: { weightEditor != nil },
@@ -91,7 +106,7 @@ struct ExerciseGroupDetailView: View {
     
     @ToolbarContentBuilder private func Toolbar() -> some ToolbarContent {
         ToolbarItem(placement: .principal) {
-            Text(exerciseGroup.name)
+            Text(exerciseGroup?.name ?? "Exercise Detail")
                 .bold(true)
                 .foregroundStyle(Color.text)
         }
@@ -122,26 +137,30 @@ struct ExerciseGroupDetailView: View {
     }
     
     @ViewBuilder private func ExerciseRow(_ exercise: Workout.Exercise, at index: Int) -> some View {
-        HStack(spacing: 0) {
-            Image(systemName: "\(index + 1).circle")
-            ExerciseSetQuickAddControls(
-                for: exercise,
-                in: workoutSection
-            )
+        if let workoutSection = workoutSection {
+            HStack(spacing: 0) {
+                Image(systemName: "\(index + 1).circle")
+                ExerciseSetQuickAddControls(
+                    for: exercise,
+                    in: workoutSection
+                )
+            }
+            .workoutExerciseRow()
         }
-        .workoutExerciseRow()
     }
     
     @ViewBuilder private func AddExerciseRow(_ exercise: Workout.Exercise) -> some View {
-        HStack(spacing: 0) {
-            Image(systemName: "circle.dotted")
-            ExerciseSetQuickAddControls(
-                for: exercise,
-                in: workoutSection,
-                mode: .add
-            )
+        if let workoutSection = workoutSection {
+            HStack(spacing: 0) {
+                Image(systemName: "circle.dotted")
+                ExerciseSetQuickAddControls(
+                    for: exercise,
+                    in: workoutSection,
+                    mode: .add
+                )
+            }
+            .workoutExerciseRow()
         }
-        .workoutExerciseRow()
     }
     
     @ViewBuilder private func ExerciseSetQuickAddControls(
@@ -165,7 +184,7 @@ struct ExerciseGroupDetailView: View {
     NavigationStack {
         ExerciseGroupDetailView(
             for: .sampleVariableWeightAndRepSet,
-            in: .sampleWorkout
+            in: Workout.Section.sampleWorkout.id
         )
     }
 }
