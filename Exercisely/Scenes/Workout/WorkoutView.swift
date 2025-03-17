@@ -44,8 +44,6 @@ struct WorkoutView: View {
     @State private var distanceEditor: Binding<Distance?>? = nil
     @State private var durationEditor: Binding<Workout.Exercise.Duration?>? = nil
 
-    @State private var sectionToAddExercise: Workout.Section? = nil
-    
     var workout: Workout? {
         if let workout = workouts.first(where: { $0.date == date }) {
             return workout
@@ -242,6 +240,9 @@ struct WorkoutView: View {
                     ExerciseSetQuickAddControls(for: currentExercise, in: section)
                 }
             }
+            if currentSection == section {
+                WorkoutViewNewExerciseSection(workoutSection: section)
+            }
         } header: {
             HStack {
                 Button {
@@ -269,10 +270,6 @@ struct WorkoutView: View {
                 .opacity(showSectionOptions == section ? 1 : 0)
                 .offset(x: showSectionOptions == section ? 0 : 50)
             }
-        } footer: {
-            if currentSection == section {
-                AddExerciseButton(section)
-            }
         }
     }
     
@@ -289,21 +286,7 @@ struct WorkoutView: View {
             durationEditor: $durationEditor
         )
     }
-    
-    @ViewBuilder private func AddExerciseButton(_ section: Workout.Section) -> some View {
-        NavigationLink {
-            AddExerciseView(workoutSection: section)
-        } label: {
-            HStack {
-                Image(systemName: "plus.circle")
-                Text("Add Exercise")
-                Spacer(minLength: 0)
-            }
-            .font(.headline)
-            .foregroundStyle(Color.accent)
-        }
-    }
-    
+        
     @ViewBuilder private func AddSectionToWorkoutButton() -> some View {
         Section {
         } header: {

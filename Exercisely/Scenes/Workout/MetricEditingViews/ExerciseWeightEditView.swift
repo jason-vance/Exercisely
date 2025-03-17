@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+//TODO: Change 'lbs', 'kg', and '-' button to text color like reps's 10,12,15,18 buttons
 struct ExerciseWeightEditView: View {
     
     @Environment(\.presentationMode) var presentation

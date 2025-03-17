@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+//TODO: Do I still need this?
 struct AddExerciseView: View {
     
     @Environment(\.presentationMode) var presentation

@@ -19,6 +19,15 @@ extension View {
             }
     }
     
+    func overlined(_ color: Color = Color.accentColor) -> some View {
+        self
+            .overlay(alignment: .top) {
+                Rectangle()
+                    .frame(height: 1)
+                    .foregroundStyle(color)
+            }
+    }
+    
     func listDefaultModifiers() -> some View {
         self
             .listStyle(.grouped)

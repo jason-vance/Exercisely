@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+//TODO: Change units button to text color like reps's 10,12,15,18 buttons
+//TODO: Maybe put n/a button on bottom right and change the style, see other metric edit screens
 struct ExerciseDistanceEditView: View {
     
     @Environment(\.presentationMode) var presentation

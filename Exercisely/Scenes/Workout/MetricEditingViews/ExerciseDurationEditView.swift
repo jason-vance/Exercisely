@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+//TODO: Change units menu to text color like reps's 10,12,15,18 buttons
+//TODO: Change units menu to individual buttons
 struct ExerciseDurationEditView: View {
     
     @Environment(\.presentationMode) var presentation
