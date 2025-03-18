@@ -79,6 +79,12 @@ struct WeightTests {
             .init(value: 10, unit: .kilograms),
         ])
         #expect(x == "10lbs,-,10kg")
+        
+        x = Weight.formatted([
+            nil,
+            .init(value: 10, unit: .kilograms),
+        ])
+        #expect(x == "-,10kg")
     }
     
     @Test
@@ -86,9 +92,11 @@ struct WeightTests {
         let fivePounds = Weight(value: 5, unit: .pounds)
         let twoPounds = fivePounds.subtracting(3)
         #expect(twoPounds.value == 2)
-        
+        #expect(twoPounds.unit == .pounds)
+
         let threePounds = fivePounds.subtracting(twoPounds)
         #expect(threePounds.value == 3)
+        #expect(threePounds.unit == .pounds)
     }
     
     @Test
@@ -106,9 +114,11 @@ struct WeightTests {
         let fivePounds = Weight(value: 5, unit: .pounds)
         let eightPounds = fivePounds.adding(3)
         #expect(eightPounds.value == 8)
-        
+        #expect(eightPounds.unit == .pounds)
+
         let thirteenPounds = fivePounds.adding(eightPounds)
         #expect(thirteenPounds.value == 13)
+        #expect(thirteenPounds.unit == .pounds)
     }
     
     @Test

@@ -24,13 +24,13 @@ struct WorkoutViewNewExerciseSection: View {
         var title: String {
             switch self {
             case .exercise:
-                return "New Exercise"
+                return "Start New Exercise"
             case .set:
-                return "New Set"
+                return "Add a Set"
             case .superset:
                 return "Continue Superset"
             case .dropset:
-                return "Continue Dropset"
+                return "Add a Dropset"
             }
         }
         
@@ -107,6 +107,8 @@ struct WorkoutViewNewExerciseSection: View {
         }
     }
     
+    //TODO: Maybe add a default value to rest (and settings for it)
+    // ^^ So users don't accidentally create a drop set
     private func initializeFields() {
         switch addType {
         case .exercise:

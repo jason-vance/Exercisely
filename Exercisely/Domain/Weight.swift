@@ -41,8 +41,8 @@ struct Weight {
     }
     
     func subtracting(_ other: Weight) -> Weight {
-        let value = self.value - other.convert(to: self.unit).value
-        return subtracting(value)
+        let converted = other.convert(to: self.unit)
+        return subtracting(converted.value)
     }
     
     func subtracting(_ value: Double) -> Weight {
@@ -50,8 +50,7 @@ struct Weight {
     }
     
     func adding(_ other: Weight) -> Weight {
-        let value = self.value + other.convert(to: self.unit).value
-        return adding(value)
+        return adding(other.convert(to: self.unit).value)
     }
     
     func adding(_ value: Double) -> Weight {
@@ -72,9 +71,8 @@ struct Weight {
             return weights[0]?.formatted() ?? "????"
         } else {
             if allAreSameUnit {
-                //TODO: If first weight is nil, then units are "??", also other metrics
                 let valuesString = weights.map({ "\($0 == nil ? "-" : "\($0!.value.formatted())")" }).joined(separator: ",")
-                return "\(valuesString)\(weights[0]?.unit.formatted() ?? "??")"
+                return "\(valuesString)\(weights.compactMap(\.self)[0]?.unit.formatted() ?? "??")"
             } else {
                 return weights.map({ $0?.formatted() ?? "-" }).joined(separator: ",")
             }
@@ -91,7 +89,7 @@ struct Weight {
             convertedValue = self.unit == .kilograms ? value : value / Self.lbsPerKg
         }
         
-        return .init(value: convertedValue.rounded(to: Self.precision), unit: unit)
+        return Weight(value: convertedValue.rounded(to: Self.precision), unit: unit)
     }
 }
 

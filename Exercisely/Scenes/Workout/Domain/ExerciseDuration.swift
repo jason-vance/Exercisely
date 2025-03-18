@@ -12,7 +12,7 @@ extension Workout.Exercise {
         
         private static let secsPerMin: Double = 60
         private static let minsPerHour: Double = 60
-        private static let precision: Int = 4
+        private static let precision: Int = 3
         
         private static let conversionTable: Dictionary<Unit, Dictionary<Unit, Double>> = [
             .seconds: [
@@ -68,8 +68,10 @@ extension Workout.Exercise {
         }
         
         func subtracting(_ other: Duration) -> Duration? {
-            let value = self.value - other.convert(to: self.unit).value
-            return subtracting(value)
+            guard let converted = other.convert(to: self.unit) else {
+                return self
+            }
+            return subtracting(converted.value)
         }
         
         func subtracting(_ value: Double) -> Duration? {
@@ -77,8 +79,10 @@ extension Workout.Exercise {
         }
         
         func adding(_ other: Duration) -> Duration {
-            let value = self.value + other.convert(to: self.unit).value
-            return adding(value)
+            guard let converted = other.convert(to: self.unit) else {
+                return self
+            }
+            return adding(converted.value)
         }
         
         func adding(_ value: Double) -> Duration {
@@ -100,23 +104,26 @@ extension Workout.Exercise {
             } else {
                 if allAreSameUnit {
                     let valuesString = durations.map({ "\($0 == nil ? "-" : "\($0!.value.formatted())")" }).joined(separator: ",")
-                    return "\(valuesString)\(durations[0]?.unit.formatted() ?? "??")"
+                    return "\(valuesString)\(durations.compactMap(\.self)[0]?.unit.formatted() ?? "??")"
                 } else {
                     return durations.map({ $0?.formatted() ?? "-" }).joined(separator: ",")
                 }
             }
         }
         
-        private func convert(to unit: Unit) -> Duration {
+        private func convert(to unit: Unit) -> Duration? {
             let convertedValue = value * Self.conversionTable[self.unit]![unit]!
-            return .init(value: convertedValue.rounded(to: Self.precision), unit: unit)!
+            return .init(value: convertedValue.rounded(to: Self.precision), unit: unit)
         }
     }
 }
 
 extension Workout.Exercise.Duration: Equatable {
     static func == (lhs: Workout.Exercise.Duration, rhs: Workout.Exercise.Duration) -> Bool {
-        lhs.value == rhs.convert(to: lhs.unit).value
+        guard let converted = rhs.convert(to: lhs.unit) else {
+            return false
+        }
+        return lhs.value == converted.value
     }
 }
 

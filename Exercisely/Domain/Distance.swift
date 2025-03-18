@@ -12,7 +12,7 @@ struct Distance {
     private static let feetPerMeter: Double = 3.28084
     private static let feetPerMile: Double = 5280
     private static let metersPerKm: Double = 1000
-    private static let precision: Int = 4
+    private static let precision: Int = 3
     
     private static let conversionTable: Dictionary<Unit, Dictionary<Unit, Double>> = [
         .feet: [
@@ -87,8 +87,10 @@ struct Distance {
     }
     
     func subtracting(_ other: Distance) -> Distance? {
-        let value = self.value - other.convert(to: self.unit).value
-        return subtracting(value)
+        guard let converted = other.convert(to: self.unit) else {
+            return self
+        }
+        return subtracting(converted.value)
     }
     
     func subtracting(_ value: Double) -> Distance? {
@@ -96,8 +98,10 @@ struct Distance {
     }
     
     func adding(_ other: Distance) -> Distance {
-        let value = self.value + other.convert(to: self.unit).value
-        return adding(value)
+        guard let converted = other.convert(to: self.unit) else {
+            return self
+        }
+        return adding(converted.value)
     }
     
     func adding(_ value: Double) -> Distance {
@@ -119,22 +123,25 @@ struct Distance {
         } else {
             if allAreSameUnit {
                 let valuesString = distances.map({ "\($0 == nil ? "-" : "\($0!.value.formatted())")" }).joined(separator: ",")
-                return "\(valuesString)\(distances[0]?.unit.formatted() ?? "??")"
+                return "\(valuesString)\(distances.compactMap(\.self)[0]?.unit.formatted() ?? "??")"
             } else {
                 return distances.map({ $0?.formatted() ?? "-" }).joined(separator: ",")
             }
         }
     }
     
-    private func convert(to unit: Unit) -> Distance {
+    private func convert(to unit: Unit) -> Distance? {
         let convertedValue = value * Self.conversionTable[self.unit]![unit]!
-        return .init(value: convertedValue.rounded(to: Self.precision), unit: unit)!
+        return .init(value: convertedValue.rounded(to: Self.precision), unit: unit)
     }
 }
 
 extension Distance: Equatable {
     static func == (lhs: Distance, rhs: Distance) -> Bool {
-        lhs.value == rhs.convert(to: lhs.unit).value
+        guard let converted = rhs.convert(to: lhs.unit) else {
+            return false
+        }
+        return lhs.value == converted.value
     }
 }
 

@@ -92,5 +92,55 @@ struct ExerciseDurationTests {
             .init(value: 10, unit: .seconds),
         ])
         #expect(x == "10m,-,10s")
+        
+        x = Workout.Exercise.Duration.formatted([
+            nil,
+            .init(value: 10, unit: .seconds),
+        ])
+        #expect(x == "-,10s")
+    }
+    
+    @Test
+    func subtractingSameUnits() {
+        let fiveMins = Workout.Exercise.Duration(value: 5, unit: .minutes)!
+        let twoMins = fiveMins.subtracting(3)!
+        #expect(twoMins.value == 2)
+        #expect(twoMins.unit == .minutes)
+
+        let threeMins = fiveMins.subtracting(twoMins)!
+        #expect(threeMins.value == 3)
+        #expect(threeMins.unit == .minutes)
+    }
+    
+    @Test
+    func subtractingDifferentUnits() {
+        let fiveMins = Workout.Exercise.Duration(value: 5, unit: .minutes)!
+        let fiveSecs = Workout.Exercise.Duration(value: 5, unit: .seconds)!
+
+        let fourAndSomeMins = fiveMins.subtracting(fiveSecs)!
+        #expect(fourAndSomeMins.value == 4.917)
+        #expect(fourAndSomeMins.unit == .minutes)
+    }
+    
+    @Test
+    func addingSameUnits() {
+        let fiveMins = Workout.Exercise.Duration(value: 5, unit: .minutes)!
+        let eightMins = fiveMins.adding(3)
+        #expect(eightMins.value == 8)
+        #expect(eightMins.unit == .minutes)
+
+        let thirteenMins = fiveMins.adding(eightMins)
+        #expect(thirteenMins.value == 13)
+        #expect(thirteenMins.unit == .minutes)
+    }
+    
+    @Test
+    func addingDifferentUnits() {
+        let fiveMins = Workout.Exercise.Duration(value: 5, unit: .minutes)!
+        let fiveSecs = Workout.Exercise.Duration(value: 5, unit: .seconds)!
+
+        let fiveAndSomeMins = fiveMins.adding(fiveSecs)
+        #expect(fiveAndSomeMins.value == 5.083)
+        #expect(fiveAndSomeMins.unit == .minutes)
     }
 }

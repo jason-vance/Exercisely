@@ -53,6 +53,12 @@ struct ExerciseRepsTests {
         
         x = Workout.Exercise.Reps.formatted([
             nil,
+            .init(10),
+        ])
+        #expect(x == "-,10reps")
+        
+        x = Workout.Exercise.Reps.formatted([
+            nil,
             nil,
             nil,
         ])
