@@ -129,7 +129,7 @@ struct ExerciseGroupDetailView: View {
     
     @ViewBuilder private func MenuButton() -> some View {
         Menu {
-
+            //TODO: Add delete functionality
         } label: {
             Image(systemName: "ellipsis")
                 .foregroundStyle(Color.accentColor)
