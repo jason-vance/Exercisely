@@ -143,4 +143,20 @@ struct ExerciseDurationTests {
         #expect(fiveAndSomeMins.value == 5.083)
         #expect(fiveAndSomeMins.unit == .minutes)
     }
+    
+    @Test
+    func comparingSameUnits() {
+        let fiveMins = Workout.Exercise.Duration(value: 5, unit: .minutes)!
+        let twoMins = Workout.Exercise.Duration(value: 2, unit: .minutes)!
+        #expect(twoMins < fiveMins)
+        #expect(fiveMins > twoMins)
+    }
+    
+    @Test
+    func comparingDifferentUnits() {
+        let fiveMins = Workout.Exercise.Duration(value: 5, unit: .minutes)!
+        let fiveSecs = Workout.Exercise.Duration(value: 5, unit: .seconds)!
+        #expect(fiveSecs < fiveMins)
+        #expect(fiveMins > fiveSecs)
+    }
 }

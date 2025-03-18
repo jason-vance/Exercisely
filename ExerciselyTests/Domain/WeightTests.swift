@@ -130,4 +130,20 @@ struct WeightTests {
         #expect(sevenAndSomeKg.value == 7.268)
         #expect(sevenAndSomeKg.unit == .kilograms)
     }
+    
+    @Test
+    func comparingSameUnits() {
+        let fivePounds = Weight(value: 5, unit: .pounds)
+        let eightPounds = Weight(value: 8, unit: .pounds)
+        #expect(fivePounds < eightPounds)
+        #expect(eightPounds > fivePounds)
+    }
+    
+    @Test
+    func comparingDifferentUnits() {
+        let fivePounds = Weight(value: 5, unit: .pounds)
+        let fiveKg = Weight(value: 5, unit: .kilograms)
+        #expect(fivePounds < fiveKg)
+        #expect(fiveKg > fivePounds)
+    }
 }

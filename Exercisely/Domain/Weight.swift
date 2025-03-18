@@ -93,6 +93,12 @@ struct Weight {
     }
 }
 
+extension Weight: Comparable {
+    public static func < (lhs: Weight, rhs: Weight) -> Bool {
+        lhs.value < rhs.convert(to: lhs.unit).value
+    }
+}
+
 extension Weight: Equatable {
     static func == (lhs: Weight, rhs: Weight) -> Bool {
         lhs.value == rhs.convert(to: lhs.unit).value

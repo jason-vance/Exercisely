@@ -42,6 +42,8 @@ struct WorkoutViewExerciseRow: View {
             switch exerciseGroup {
             case .set(let exercises):
                 SetExercise(exercises)
+            case .dropSet(let exercises):
+                DropSetExercise(exercises)
             }
         }
         .workoutExerciseRow()
@@ -57,8 +59,9 @@ struct WorkoutViewExerciseRow: View {
         }
     }
     
-    @ViewBuilder private func SingleExercise(_ exercise: Workout.Exercise) -> some View {
-        SetExercise([exercise])
+    @ViewBuilder private func DropSetExercise(_ exercises: [Workout.Exercise]) -> some View {
+        //TODO: Fill this out prettily
+        Text("Drop Set \"\(exerciseGroup.name)\"")
     }
     
     @ViewBuilder private func SetExercise(_ exercises: [Workout.Exercise]) -> some View {

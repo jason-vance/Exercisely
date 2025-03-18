@@ -9,7 +9,8 @@ import Testing
 
 struct WorkoutExerciseTests {
     
-    @Test func group_GroupsOneExerciseAsSet() async throws {
+    @Test
+    func group_GroupsOneExerciseAsSet() async throws {
         let groups = ExerciseGroup.group(exercises: [.sampleYtw])
         
         #expect(groups.count == 1)
@@ -23,11 +24,12 @@ struct WorkoutExerciseTests {
             #expect(exercises.count == 1)
             #expect(exercises[0] == .sampleYtw)
         default:
-            Issue.record("`firstGroup` should be `.single(.sampleYtw)`, but was something else.")
+            Issue.record("`firstGroup` should be `.set([.sampleYtw])`, but was something else.")
         }
     }
     
-    @Test func group_GroupsSimpleSetAsSet() async throws {
+    @Test
+    func group_GroupsSimpleSetAsSet() async throws {
         let groups = ExerciseGroup.group(exercises: [.sampleYtw, .sampleYtw, .sampleYtw])
         
         #expect(groups.count == 1)
@@ -47,8 +49,47 @@ struct WorkoutExerciseTests {
         }
     }
     
-    @Test func group_GroupsExercisesByName() async throws {
-        let groups = ExerciseGroup.group(exercises: [
+    @Test
+    func group_GroupsSimpleDropSetAsDropset() {
+        let groups = ExerciseGroup.group(exercises: ExerciseGroup.sampleDropSet.exercises)
+        
+        #expect(groups.count == 1)
+        guard let firstGroup = groups.first else {
+            Issue.record("`groups` should not be empty.")
+            return
+        }
+        
+        switch firstGroup {
+        case .dropSet(let exercises):
+            #expect(exercises.count == 3)
+            #expect(exercises[0].name == .sampleMachineShoulderPress)
+        default:
+            Issue.record("`firstGroup` should be `.dropSet`, but was `\(firstGroup)`.")
+        }
+    }
+    
+    @Test
+    func group_TakesRestIntoAccountWhenDecidingOnDropSet() {
+        let groups = ExerciseGroup.group(exercises: ExerciseGroup.sampleFakeDropSetButItHasRests.exercises)
+        
+        #expect(groups.count == 1)
+        guard let firstGroup = groups.first else {
+            Issue.record("`groups` should not be empty.")
+            return
+        }
+        
+        switch firstGroup {
+        case .set(let exercises):
+            #expect(exercises.count == 3)
+            #expect(exercises[0].name == .sampleMachineShoulderPress)
+        default:
+            Issue.record("`firstGroup` should be `.set`, but was `\(firstGroup)`.")
+        }
+    }
+    
+    @Test
+    func group_GroupsExercisesByName() async throws {
+        var exercises: [Workout.Exercise] = [
             .sampleTreadmill,
             .sampleYtw, .sampleYtw,
             .sampleTrxChestStretch, .sampleTrxChestStretch,
@@ -56,9 +97,12 @@ struct WorkoutExerciseTests {
             .sampleShoulderTouches,
             .sampleTurkishGetUp, .sampleTurkishGetUp, .sampleTurkishGetUp,
             .sampleTreadmill
-        ])
+        ]
+        exercises.append(contentsOf: ExerciseGroup.sampleDropSet.exercises)
         
-        #expect(groups.count == 7)
+        var groups = ExerciseGroup.group(exercises: exercises)
+        
+        #expect(groups.count == 8)
 
         let treadmillGroup = groups[0]
         switch treadmillGroup {
@@ -66,7 +110,7 @@ struct WorkoutExerciseTests {
             #expect(exercises.count == 1)
             #expect(exercises[0] == .sampleTreadmill)
         default:
-            Issue.record("`treadmillGroup` should be `.single(.sampleTreadmill)`, but was something else.")
+            Issue.record("`treadmillGroup` should be `.single(.sampleTreadmill)`, but was `\(treadmillGroup)`.")
         }
         
         let ytwGroup = groups[1]
@@ -77,7 +121,7 @@ struct WorkoutExerciseTests {
                 #expect(activity == .sampleYtw)
             }
         default:
-            Issue.record("`ytwGroup` should be `.set([.sampleYtw, .sampleYtw])`, but was something else.")
+            Issue.record("`ytwGroup` should be `.set([.sampleYtw, .sampleYtw])`, but was `\(ytwGroup)`.")
         }
         
         let trxGroup = groups[2]
@@ -88,7 +132,7 @@ struct WorkoutExerciseTests {
                 #expect(activity == .sampleTrxChestStretch)
             }
         default:
-            Issue.record("`trxGroup` should be `.set([.sampleTrxChestStretch, .sampleTrxChestStretch])`, but was something else.")
+            Issue.record("`trxGroup` should be `.set([.sampleTrxChestStretch, .sampleTrxChestStretch])`, but was `\(trxGroup)`.")
         }
         
         let hikeGroup = groups[3]
@@ -97,7 +141,7 @@ struct WorkoutExerciseTests {
             #expect(exercises.count == 1)
             #expect(exercises[0] == .sampleHike)
         default:
-            Issue.record("`hikeGroup` should be `.single(.sampleHike)`, but was something else.")
+            Issue.record("`hikeGroup` should be `.single(.sampleHike)`, but was `\(hikeGroup)`.")
         }
         
         let shoulderTouchGroup = groups[4]
@@ -106,7 +150,7 @@ struct WorkoutExerciseTests {
             #expect(exercises.count == 1)
             #expect(exercises[0] == .sampleShoulderTouches)
         default:
-            Issue.record("`shoulderTouchGroup` should be `.single(.sampleShoulderTouches)`, but was something else.")
+            Issue.record("`shoulderTouchGroup` should be `.single(.sampleShoulderTouches)`, but was `\(shoulderTouchGroup)`.")
         }
         
         let turkishGroup = groups[5]
@@ -117,7 +161,7 @@ struct WorkoutExerciseTests {
                 #expect(activity == .sampleTurkishGetUp)
             }
         default:
-            Issue.record("`turkishGroup` should be `.set([.sampleTurkishGetUp, .sampleTurkishGetUp, .sampleTurkishGetUp])`, but was something else.")
+            Issue.record("`turkishGroup` should be `.set([.sampleTurkishGetUp, .sampleTurkishGetUp, .sampleTurkishGetUp])`, but was `\(turkishGroup)`.")
         }
         
         let treadmill2Group = groups[6]
@@ -126,7 +170,16 @@ struct WorkoutExerciseTests {
             #expect(exercises.count == 1)
             #expect(exercises[0] == .sampleTreadmill)
         default:
-            Issue.record("`treadmill2Group` should be `.single(.sampleTreadmill)`, but was something else.")
+            Issue.record("`treadmill2Group` should be `.single(.sampleTreadmill)`, but was `\(treadmill2Group)`.")
+        }
+        
+        let dropSetGroup = groups[7]
+        switch dropSetGroup {
+        case .dropSet(let exercises):
+            #expect(exercises.count == 3)
+            #expect(exercises[0].name == Workout.Exercise.sampleMachineShoulderPress.name)
+        default:
+            Issue.record("`firstGroup` should be `.dropSet`, but was `\(dropSetGroup)`.")
         }
     }
 
