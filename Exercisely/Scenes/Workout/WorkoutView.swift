@@ -85,6 +85,8 @@ struct WorkoutView: View {
         workout?.sortedSections.last
     }
     
+    //TODO: Maybe change this to something that the user selects
+    // ^^ Might make it easier to put previous exercise inserting onto one screen
     var currentExercise: Workout.Exercise? {
         currentSection?.sortedExercises.last
     }

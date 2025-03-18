@@ -53,7 +53,6 @@ struct WorkoutViewNewExerciseSection: View {
     
     @State private var addType: AddType? = nil
 
-    //TODO: If name changes, then change addType to something other than 'set'
     @State private var name: Workout.Exercise.Name? = nil
     @State private var weight: Weight? = nil
     @State private var reps: Workout.Exercise.Reps? = nil
@@ -208,7 +207,7 @@ struct WorkoutViewNewExerciseSection: View {
             }
         }
         .workoutExerciseRow()
-        .disabled(addType == .set)
+        .disabled(addType != .exercise)
     }
     
     //TODO: Add settings to change these stepper values
