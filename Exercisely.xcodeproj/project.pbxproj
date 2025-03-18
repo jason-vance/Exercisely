@@ -40,6 +40,7 @@
 				Extensions/DateExtensions.swift,
 				Extensions/DoubleExtensions.swift,
 				Scenes/Workout/Domain/ExerciseDuration.swift,
+				Scenes/Workout/Domain/ExerciseGroup.swift,
 				Scenes/Workout/Domain/ExerciseName.swift,
 				Scenes/Workout/Domain/ExerciseReps.swift,
 				Scenes/Workout/Domain/Workout.swift,

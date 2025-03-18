@@ -9,8 +9,8 @@ import Testing
 
 struct WorkoutExerciseTests {
     
-    @Test func group_GroupsOneExerciseAsSingleExerciseGroup() async throws {
-        let groups = Workout.Exercise.group(exercises: [.sampleYtw])
+    @Test func group_GroupsOneExerciseAsSet() async throws {
+        let groups = ExerciseGroup.group(exercises: [.sampleYtw])
         
         #expect(groups.count == 1)
         guard let firstGroup = groups.first else {
@@ -19,15 +19,16 @@ struct WorkoutExerciseTests {
         }
         
         switch firstGroup {
-        case .single(let activity):
-            #expect(activity == .sampleYtw)
+        case .set(let exercises):
+            #expect(exercises.count == 1)
+            #expect(exercises[0] == .sampleYtw)
         default:
             Issue.record("`firstGroup` should be `.single(.sampleYtw)`, but was something else.")
         }
     }
     
-    @Test func group_GroupsSimpleSetAsSetExerciseGroup() async throws {
-        let groups = Workout.Exercise.group(exercises: [.sampleYtw, .sampleYtw, .sampleYtw])
+    @Test func group_GroupsSimpleSetAsSet() async throws {
+        let groups = ExerciseGroup.group(exercises: [.sampleYtw, .sampleYtw, .sampleYtw])
         
         #expect(groups.count == 1)
         guard let firstGroup = groups.first else {
@@ -47,7 +48,7 @@ struct WorkoutExerciseTests {
     }
     
     @Test func group_GroupsExercisesByName() async throws {
-        let groups = Workout.Exercise.group(exercises: [
+        let groups = ExerciseGroup.group(exercises: [
             .sampleTreadmill,
             .sampleYtw, .sampleYtw,
             .sampleTrxChestStretch, .sampleTrxChestStretch,
@@ -61,8 +62,9 @@ struct WorkoutExerciseTests {
 
         let treadmillGroup = groups[0]
         switch treadmillGroup {
-        case .single(let activity):
-            #expect(activity == .sampleTreadmill)
+        case .set(let exercises):
+            #expect(exercises.count == 1)
+            #expect(exercises[0] == .sampleTreadmill)
         default:
             Issue.record("`treadmillGroup` should be `.single(.sampleTreadmill)`, but was something else.")
         }
@@ -91,16 +93,18 @@ struct WorkoutExerciseTests {
         
         let hikeGroup = groups[3]
         switch hikeGroup {
-        case .single(let activity):
-            #expect(activity == .sampleHike)
+        case .set(let exercises):
+            #expect(exercises.count == 1)
+            #expect(exercises[0] == .sampleHike)
         default:
             Issue.record("`hikeGroup` should be `.single(.sampleHike)`, but was something else.")
         }
         
         let shoulderTouchGroup = groups[4]
         switch shoulderTouchGroup {
-        case .single(let activity):
-            #expect(activity == .sampleShoulderTouches)
+        case .set(let exercises):
+            #expect(exercises.count == 1)
+            #expect(exercises[0] == .sampleShoulderTouches)
         default:
             Issue.record("`shoulderTouchGroup` should be `.single(.sampleShoulderTouches)`, but was something else.")
         }
@@ -118,8 +122,9 @@ struct WorkoutExerciseTests {
         
         let treadmill2Group = groups[6]
         switch treadmill2Group {
-        case .single(let activity):
-            #expect(activity == .sampleTreadmill)
+        case .set(let exercises):
+            #expect(exercises.count == 1)
+            #expect(exercises[0] == .sampleTreadmill)
         default:
             Issue.record("`treadmill2Group` should be `.single(.sampleTreadmill)`, but was something else.")
         }

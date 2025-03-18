@@ -56,7 +56,7 @@ extension Workout {
         }
         
         var groupedExercises: [ExerciseGroup] {
-            Workout.Exercise.group(exercises: sortedExercises)
+            ExerciseGroup.group(exercises: sortedExercises)
         }
     }
 }
