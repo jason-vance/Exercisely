@@ -125,9 +125,10 @@ struct ExerciseRepsEditView: View {
                 NumberButton(suggestions[2], isSuggestion: true)
             }
             HStack(spacing: .padding) {
-                ClearButton()
-                NumberButton(0)
                 BackspaceButton()
+                NumberButton(0)
+                NumberButton(0)
+                    .hidden()
                 NumberButton(suggestions[3], isSuggestion: true)
             }
         }
@@ -156,21 +157,6 @@ struct ExerciseRepsEditView: View {
                 }
                 Text("\(number)")
                     .keyboardButton(isSuggestion: isSuggestion)
-            }
-        }
-    }
-    
-    @ViewBuilder private func ClearButton() -> some View {
-        Button {
-            repsInt = 0
-        } label: {
-            ZStack {
-                Circle()
-                    .stroke(style: .init(lineWidth: 1))
-                    .foregroundColor(Color.accentColor)
-                    .aspectRatio(1.0, contentMode: .fit)
-                Text("N/A")
-                    .keyboardButton()
             }
         }
     }

@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-//TODO: Change 'lbs', 'kg', and '-' button to text color like reps's 10,12,15,18 buttons
 struct ExerciseWeightEditView: View {
     
     @Environment(\.presentationMode) var presentation
@@ -124,25 +123,26 @@ struct ExerciseWeightEditView: View {
                 NumberButton(1)
                 NumberButton(2)
                 NumberButton(3)
-                PoundsButton()
+                UnitButton(.pounds)
             }
             HStack(spacing: .padding) {
                 NumberButton(4)
                 NumberButton(5)
                 NumberButton(6)
-                KilogramsButton()
+                UnitButton(.kilograms)
             }
             HStack(spacing: .padding) {
                 NumberButton(7)
                 NumberButton(8)
                 NumberButton(9)
-                NegativeButton()
+                SignButton()
             }
             HStack(spacing: .padding) {
-                ClearButton()
+                BackspaceButton()
                 NumberButton(0)
                 DotButton()
-                BackspaceButton()
+                DotButton()
+                    .hidden()
             }
         }
         .padding()
@@ -163,37 +163,21 @@ struct ExerciseWeightEditView: View {
         }
     }
     
-    @ViewBuilder private func PoundsButton() -> some View {
+    @ViewBuilder private func UnitButton(_ unit: Weight.Unit) -> some View {
         Button {
-            weightUnit = .pounds
+            weightUnit = unit
         } label: {
             ZStack {
                 Circle()
-                    .stroke(style: .init(lineWidth: 1))
-                    .foregroundColor(Color.accentColor)
+                    .foregroundColor(Color.text)
                     .aspectRatio(1.0, contentMode: .fit)
-                Text("lbs")
-                    .keyboardButton()
+                Text("\(unit.formatted())")
+                    .keyboardButton(isSuggestion: true)
             }
         }
     }
     
-    @ViewBuilder private func KilogramsButton() -> some View {
-        Button {
-            weightUnit = .kilograms
-        } label: {
-            ZStack {
-                Circle()
-                    .stroke(style: .init(lineWidth: 1))
-                    .foregroundColor(Color.accentColor)
-                    .aspectRatio(1.0, contentMode: .fit)
-                Text("kg")
-                    .keyboardButton()
-            }
-        }
-    }
-    
-    @ViewBuilder private func NegativeButton() -> some View {
+    @ViewBuilder private func SignButton() -> some View {
         Button {
             if weightValueString.first == "-" {
                 weightValueString.remove(at: weightValueString.startIndex)
@@ -203,11 +187,10 @@ struct ExerciseWeightEditView: View {
         } label: {
             ZStack {
                 Circle()
-                    .stroke(style: .init(lineWidth: 1))
-                    .foregroundColor(Color.accentColor)
+                    .foregroundColor(Color.text)
                     .aspectRatio(1.0, contentMode: .fit)
                 Text(weightValueString.first == "-" ? "+" : "-")
-                    .keyboardButton()
+                    .keyboardButton(isSuggestion: true)
             }
         }
     }
@@ -224,21 +207,6 @@ struct ExerciseWeightEditView: View {
                     .foregroundColor(Color.accentColor)
                     .aspectRatio(1.0, contentMode: .fit)
                 Text(".")
-                    .keyboardButton()
-            }
-        }
-    }
-    
-    @ViewBuilder private func ClearButton() -> some View {
-        Button {
-            weightValueString = ""
-        } label: {
-            ZStack {
-                Circle()
-                    .stroke(style: .init(lineWidth: 1))
-                    .foregroundColor(Color.accentColor)
-                    .aspectRatio(1.0, contentMode: .fit)
-                Text("N/A")
                     .keyboardButton()
             }
         }

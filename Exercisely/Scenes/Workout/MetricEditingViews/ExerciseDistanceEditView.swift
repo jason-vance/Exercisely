@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-//TODO: Change units button to text color like reps's 10,12,15,18 buttons
-//TODO: Maybe put n/a button on bottom right and change the style, see other metric edit screens
 struct ExerciseDistanceEditView: View {
     
     @Environment(\.presentationMode) var presentation
@@ -112,27 +110,25 @@ struct ExerciseDistanceEditView: View {
                 NumberButton(1)
                 NumberButton(2)
                 NumberButton(3)
-                UnitsButton()
+                UnitButton(.miles)
             }
             HStack(spacing: .padding) {
                 NumberButton(4)
                 NumberButton(5)
                 NumberButton(6)
-                UnitsButton()
-                    .hidden()
+                UnitButton(.kilometers)
             }
             HStack(spacing: .padding) {
                 NumberButton(7)
                 NumberButton(8)
                 NumberButton(9)
-                UnitsButton()
-                    .hidden()
+                UnitButton(.meters)
             }
             HStack(spacing: .padding) {
-                ClearButton()
+                BackspaceButton()
                 NumberButton(0)
                 DotButton()
-                BackspaceButton()
+                UnitButton(.feet)
             }
         }
         .padding()
@@ -153,20 +149,16 @@ struct ExerciseDistanceEditView: View {
         }
     }
     
-    @ViewBuilder private func UnitsButton() -> some View {
-        Menu {
-            Button("Miles") { distanceUnit = .miles }
-            Button("Kilometers") { distanceUnit = .kilometers }
-            Button("Feet") { distanceUnit = .feet }
-            Button("Meters") { distanceUnit = .meters }
+    @ViewBuilder private func UnitButton(_ unit: Distance.Unit) -> some View {
+        Button {
+            distanceUnit = unit
         } label: {
             ZStack {
                 Circle()
-                    .stroke(style: .init(lineWidth: 1))
-                    .foregroundColor(Color.accentColor)
+                    .foregroundColor(Color.text)
                     .aspectRatio(1.0, contentMode: .fit)
-                Text(distanceUnit.formatted())
-                    .keyboardButton()
+                Text("\(unit.formatted())")
+                    .keyboardButton(isSuggestion: true)
             }
         }
     }
@@ -183,21 +175,6 @@ struct ExerciseDistanceEditView: View {
                     .foregroundColor(Color.accentColor)
                     .aspectRatio(1.0, contentMode: .fit)
                 Text(".")
-                    .keyboardButton()
-            }
-        }
-    }
-    
-    @ViewBuilder private func ClearButton() -> some View {
-        Button {
-            distanceValueString = ""
-        } label: {
-            ZStack {
-                Circle()
-                    .stroke(style: .init(lineWidth: 1))
-                    .foregroundColor(Color.accentColor)
-                    .aspectRatio(1.0, contentMode: .fit)
-                Text("N/A")
                     .keyboardButton()
             }
         }

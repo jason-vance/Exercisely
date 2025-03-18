@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-//TODO: Change units menu to text color like reps's 10,12,15,18 buttons
-//TODO: Change units menu to individual buttons
 struct ExerciseDurationEditView: View {
     
     @Environment(\.presentationMode) var presentation
@@ -109,30 +107,29 @@ struct ExerciseDurationEditView: View {
     @ViewBuilder private func Keyboard() -> some View {
         VStack(spacing: .padding) {
             HStack(spacing: .padding) {
-                NumberButton(1)
-                NumberButton(2)
-                NumberButton(3)
-                UnitsButton()
+                NumberButton(7)
+                NumberButton(8)
+                NumberButton(9)
+                UnitButton(.hours)
             }
             HStack(spacing: .padding) {
                 NumberButton(4)
                 NumberButton(5)
                 NumberButton(6)
-                UnitsButton()
-                    .hidden()
+                UnitButton(.minutes)
             }
             HStack(spacing: .padding) {
-                NumberButton(7)
-                NumberButton(8)
-                NumberButton(9)
-                UnitsButton()
-                    .hidden()
+                NumberButton(1)
+                NumberButton(2)
+                NumberButton(3)
+                UnitButton(.seconds)
             }
             HStack(spacing: .padding) {
-                ClearButton()
+                BackspaceButton()
                 NumberButton(0)
                 DotButton()
-                BackspaceButton()
+                DotButton()
+                    .hidden()
             }
         }
         .padding()
@@ -153,19 +150,16 @@ struct ExerciseDurationEditView: View {
         }
     }
     
-    @ViewBuilder private func UnitsButton() -> some View {
-        Menu {
-            Button("Seconds") { durationUnit = .seconds }
-            Button("Minutes") { durationUnit = .minutes }
-            Button("Hours") { durationUnit = .hours }
+    @ViewBuilder private func UnitButton(_ unit: Workout.Exercise.Duration.Unit) -> some View {
+        Button {
+            durationUnit = unit
         } label: {
             ZStack {
                 Circle()
-                    .stroke(style: .init(lineWidth: 1))
-                    .foregroundColor(Color.accentColor)
+                    .foregroundColor(Color.text)
                     .aspectRatio(1.0, contentMode: .fit)
-                Text(durationUnit.formatted())
-                    .keyboardButton()
+                Text("\(unit.formatted())")
+                    .keyboardButton(isSuggestion: true)
             }
         }
     }
@@ -182,21 +176,6 @@ struct ExerciseDurationEditView: View {
                     .foregroundColor(Color.accentColor)
                     .aspectRatio(1.0, contentMode: .fit)
                 Text(".")
-                    .keyboardButton()
-            }
-        }
-    }
-    
-    @ViewBuilder private func ClearButton() -> some View {
-        Button {
-            durationValueString = ""
-        } label: {
-            ZStack {
-                Circle()
-                    .stroke(style: .init(lineWidth: 1))
-                    .foregroundColor(Color.accentColor)
-                    .aspectRatio(1.0, contentMode: .fit)
-                Text("N/A")
                     .keyboardButton()
             }
         }
