@@ -40,8 +40,6 @@ struct WorkoutViewExerciseRow: View {
     var body: some View {
         VStack {
             switch exerciseGroup {
-            case .single(let exercise):
-                SingleExercise(exercise)
             case .set(let exercises):
                 SetExercise(exercises)
             }

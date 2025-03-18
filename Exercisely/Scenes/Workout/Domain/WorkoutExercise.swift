@@ -67,15 +67,13 @@ extension Workout.Exercise {
 
 
 enum ExerciseGroup {
-    //TODO: Remove .single (use .set with just one exercise)
-    case single(Workout.Exercise)
     case set([Workout.Exercise])
     //TODO: Add superset
     //TODO: Add dropset
 }
 
 extension ExerciseGroup {
-    static let sampleSingle: ExerciseGroup = .single(.sampleArcherPress)
+    static let sampleSingle: ExerciseGroup = .set([.sampleArcherPress])
     static let sampleSimpleSet: ExerciseGroup = .set([.sampleTurkishGetUp, .sampleTurkishGetUp, .sampleTurkishGetUp])
     static let sampleVariableWeightAndRepSet: ExerciseGroup = .set([
         .init(name: .sampleMachineShoulderPress, weight: .pounds(50), reps: .init(12)!)!,
@@ -92,8 +90,6 @@ extension ExerciseGroup {
 extension ExerciseGroup: Identifiable {
     var id: Workout.Exercise.ID {
         switch self {
-        case .single(let exercise):
-            return exercise.id
         case .set(let exercises):
             return exercises.first!.id
         }
@@ -101,8 +97,6 @@ extension ExerciseGroup: Identifiable {
     
     var name: String {
         switch self {
-        case .single(let exercise):
-            return exercise.name.formatted()
         case .set(let exercises):
             return exercises.first?.name.formatted() ?? "Unnamed Set"
         }
@@ -110,8 +104,6 @@ extension ExerciseGroup: Identifiable {
     
     var exercises: [Workout.Exercise] {
         switch self {
-        case .single(let exercise):
-            return [exercise]
         case .set(let exercises):
             return exercises
         }
@@ -123,8 +115,6 @@ extension ExerciseGroup: Identifiable {
     
     func contains(_ exerciseId: Workout.Exercise.ID) -> Bool {
         switch self {
-        case .single(let e):
-            return e.id == exerciseId
         case .set(let e):
             return e.contains(where: { $0.id == exerciseId })
         }
@@ -133,20 +123,17 @@ extension ExerciseGroup: Identifiable {
 
 
 extension Workout.Exercise {
-    fileprivate static func groupAsSingleOrSet(_ exercises: [Workout.Exercise], _ i: Int, _ currentSetLength: Int, _ groupedExercises: inout [ExerciseGroup]) {
+    fileprivate static func groupAsSet(
+        _ exercises: [Workout.Exercise],
+        _ i: Int, _ currentSetLength: Int,
+        _ groupedExercises: inout [ExerciseGroup]
+    ) {
         let setExercises = Array(exercises[i..<(i + currentSetLength)])
-        
-        if setExercises.count == 1 {
-            groupedExercises += [.single(setExercises[0])]
-        } else {
-            groupedExercises += [.set(setExercises)]
-        }
+        groupedExercises += [.set(setExercises)]
     }
     
     static func group(exercises: [Workout.Exercise]) -> [ExerciseGroup] {
-        if exercises.isEmpty {
-            return []
-        }
+        if exercises.isEmpty { return [] }
         
         var groupedExercises: [ExerciseGroup] = []
         
@@ -158,7 +145,7 @@ extension Workout.Exercise {
             if exercises[i + currentSetLength].name == currentExercise {
                 currentSetLength += 1
             } else {
-                groupAsSingleOrSet(exercises, i, currentSetLength, &groupedExercises)
+                groupAsSet(exercises, i, currentSetLength, &groupedExercises)
 
                 currentExercise = exercises[i + currentSetLength].name
                 i += currentSetLength
@@ -166,7 +153,7 @@ extension Workout.Exercise {
             }
         }
         
-        groupAsSingleOrSet(exercises, i, currentSetLength, &groupedExercises)
+        groupAsSet(exercises, i, currentSetLength, &groupedExercises)
 
         return groupedExercises
     }
