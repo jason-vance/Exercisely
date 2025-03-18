@@ -93,6 +93,9 @@ struct WorkoutViewExerciseRow: View {
                     if !exercises.compactMap(\.duration).isEmpty {
                         ExerciseDuration(exercises.map(\.duration))
                     }
+                    if !exercises.compactMap(\.rest).isEmpty {
+                        ExerciseRest(exercises.map(\.rest))
+                    }
                     Spacer(minLength: 0)
                 }
             }
@@ -139,6 +142,15 @@ struct WorkoutViewExerciseRow: View {
         HStack(spacing: 2) {
             Image(systemName: "timer")
             Text("\(Workout.Exercise.Duration.formatted(durations))")
+                .contentTransition(.numericText())
+        }
+        .workoutExerciseDataItem()
+    }
+    
+    @ViewBuilder private func ExerciseRest(_ durations: [Workout.Exercise.Duration?]) -> some View {
+        HStack(spacing: 2) {
+            Image(systemName: "hourglass")
+            Text("\(Workout.Exercise.Duration.formatted(durations)) rest")
                 .contentTransition(.numericText())
         }
         .workoutExerciseDataItem()

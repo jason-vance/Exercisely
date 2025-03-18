@@ -17,7 +17,7 @@ extension Workout {
         var reps: Reps?
         var distance: Distance?
         var duration: Duration?
-        //TODO: Add rest property
+        var rest: Duration?
         var order: Int
         
         init?(
@@ -26,6 +26,7 @@ extension Workout {
             reps: Reps? = nil,
             distance: Distance? = nil,
             duration: Duration? = nil,
+            rest: Duration? = nil,
             order: Int = 0
         ) {
             if reps == nil && distance == nil && duration == nil {
@@ -37,6 +38,7 @@ extension Workout {
             self.reps = reps
             self.distance = distance
             self.duration = duration
+            self.rest = rest
             self.order = order
         }
     }
@@ -46,11 +48,7 @@ extension Workout.Exercise: Identifiable { }
 
 extension Workout.Exercise: Equatable {
     static func == (lhs: Workout.Exercise, rhs: Workout.Exercise) -> Bool {
-        lhs.name == rhs.name
-        && lhs.weight == rhs.weight
-        && lhs.reps == rhs.reps
-        && lhs.distance == rhs.distance
-        && lhs.duration == rhs.duration
+        lhs.id == rhs.id
     }
 }
 
@@ -69,6 +67,7 @@ extension Workout.Exercise {
 
 
 enum ExerciseGroup {
+    //TODO: Remove .single (use .set with just one exercise)
     case single(Workout.Exercise)
     case set([Workout.Exercise])
     //TODO: Add superset

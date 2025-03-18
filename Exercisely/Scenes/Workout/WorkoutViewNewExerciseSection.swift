@@ -13,6 +13,7 @@ struct WorkoutViewNewExerciseSection: View {
     private let repsStepValue: Int = 1
     private let distanceStepValue: Double = 1
     private let durationStepValue: Double = 5
+    private let restStepValue: Double = 5
 
     private enum AddType: CaseIterable {
         case exercise
@@ -58,7 +59,8 @@ struct WorkoutViewNewExerciseSection: View {
     @State private var reps: Workout.Exercise.Reps? = nil
     @State private var distance: Distance? = nil
     @State private var duration: Workout.Exercise.Duration? = nil
-    
+    @State private var rest: Workout.Exercise.Duration? = nil
+
     // .navigationDestination cannot be inside of a lazy container.
     // So, I have to use these props to reach back outside of the
     // List on WorkoutView.
@@ -66,7 +68,6 @@ struct WorkoutViewNewExerciseSection: View {
     @Binding var repsEditor: Binding<Workout.Exercise.Reps?>?
     @Binding var distanceEditor: Binding<Distance?>?
     @Binding var durationEditor: Binding<Workout.Exercise.Duration?>?
-    
     
     private var exerciseToSave: Workout.Exercise? {
         guard let name = name else {
@@ -78,7 +79,8 @@ struct WorkoutViewNewExerciseSection: View {
             weight: weight,
             reps: reps,
             distance: distance,
-            duration: duration
+            duration: duration,
+            rest: rest
         )
         
         guard let exercise = exercise else {
@@ -105,7 +107,6 @@ struct WorkoutViewNewExerciseSection: View {
         }
     }
     
-    //TODO: Add rest to these
     private func initializeFields() {
         switch addType {
         case .exercise:
@@ -114,6 +115,7 @@ struct WorkoutViewNewExerciseSection: View {
             reps = nil
             distance = nil
             duration = nil
+            rest = nil
             break
         case .set:
             if let setExercise = workoutSection.sortedExercises.last {
@@ -122,6 +124,7 @@ struct WorkoutViewNewExerciseSection: View {
                 self.reps = setExercise.reps
                 self.distance = setExercise.distance
                 self.duration = setExercise.duration
+                self.rest = setExercise.rest
             }
             break
         case .superset:
@@ -134,6 +137,7 @@ struct WorkoutViewNewExerciseSection: View {
                 self.reps = setExercise.reps?.subtracting(repsStepValue)
                 self.distance = setExercise.distance?.subtracting(distanceStepValue)
                 self.duration = setExercise.duration?.subtracting(durationStepValue)
+                self.rest = nil
             }
             break
         case .none:
@@ -165,6 +169,7 @@ struct WorkoutViewNewExerciseSection: View {
             RepsField()
             DistanceField()
             DurationField()
+            RestField()
             AddExerciseButton()
         }
         .foregroundStyle(Color.text)
@@ -172,6 +177,7 @@ struct WorkoutViewNewExerciseSection: View {
         .animation(.snappy, value: reps)
         .animation(.snappy, value: distance)
         .animation(.snappy, value: duration)
+        .animation(.snappy, value: rest)
         .onChange(of: addType, initial: true) { onChangeAddType(old: $0, new: $1) }
         .onChange(of: previousExercise, initial: true) { _, previousExercise in onUpdate(previousExercise: previousExercise) }
         .onAppear { addType = addType == nil ? .set : addType}
@@ -330,6 +336,40 @@ struct WorkoutViewNewExerciseSection: View {
                     .underlined(canSaveExercise || hasMetrics ? Color.accentColor : Color.red)
             }
             .buttonStyle(PlainButtonStyle())
+        }
+        .workoutExerciseRow()
+    }
+    
+    //TODO: Should I add tooltips to each of these fields to explain exactly what they are
+    // ^^ In case its confusing to users
+    @ViewBuilder private func RestField() -> some View {
+        HStack {
+            Text("Rest")
+                .fieldLabel()
+            Spacer()
+            if rest != nil {
+                HStack {
+                    Button("-\(restStepValue.formatted())") {
+                        rest = rest?.subtracting(restStepValue)
+                    }
+                    .buttonDefaultModifiers()
+                    .buttonStyle(PlainButtonStyle())
+                    Button("+\(restStepValue.formatted())") {
+                        rest = rest?.adding(restStepValue)
+                    }
+                    .buttonDefaultModifiers()
+                    .buttonStyle(PlainButtonStyle())
+                }
+            }
+            Button {
+                durationEditor = $rest
+            } label: {
+                Text(rest?.formatted() ?? "N/A")
+                    .fieldButton()
+                    .underlined()
+            }
+            .buttonStyle(PlainButtonStyle())
+            .disabled(addType == .dropset)
         }
         .workoutExerciseRow()
     }
