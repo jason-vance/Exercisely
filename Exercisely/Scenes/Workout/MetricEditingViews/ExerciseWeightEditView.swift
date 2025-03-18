@@ -16,8 +16,6 @@ struct ExerciseWeightEditView: View {
     @State private var weightValueString: String = ""
     @State private var weightUnit: Weight.Unit = .pounds
     
-    @State private var dotPressed: Bool = false
-
     init(weight: Binding<Weight?>) {
         self._weight = weight
     }

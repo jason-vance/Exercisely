@@ -43,7 +43,8 @@ struct WorkoutView: View {
     @State private var repsEditor: Binding<Workout.Exercise.Reps?>? = nil
     @State private var distanceEditor: Binding<Distance?>? = nil
     @State private var durationEditor: Binding<Workout.Exercise.Duration?>? = nil
-    
+    @State private var restEditor: Binding<Workout.Exercise.Duration?>? = nil
+
     private var showWeightEditor: Binding<Bool> {
         .init(
             get: { weightEditor != nil },
@@ -69,6 +70,13 @@ struct WorkoutView: View {
         .init(
             get: { durationEditor != nil },
             set: { isPresented in durationEditor = isPresented ? durationEditor : nil }
+        )
+    }
+    
+    private var showRestEditor: Binding<Bool> {
+        .init(
+            get: { restEditor != nil },
+            set: { isPresented in restEditor = isPresented ? restEditor : nil }
         )
     }
 
@@ -188,7 +196,13 @@ struct WorkoutView: View {
             ExerciseDurationEditView(duration: .init(
                 get: { durationEditor?.wrappedValue },
                 set: { durationEditor?.wrappedValue = $0 }
-            ))
+            ), mode: .duration)
+        }
+        .navigationDestination(isPresented: showRestEditor) {
+            ExerciseDurationEditView(duration: .init(
+                get: { restEditor?.wrappedValue },
+                set: { restEditor?.wrappedValue = $0 }
+            ), mode: .rest)
         }
     }
     
@@ -253,7 +267,8 @@ struct WorkoutView: View {
                     weightEditor: $weightEditor,
                     repsEditor: $repsEditor,
                     distanceEditor: $distanceEditor,
-                    durationEditor: $durationEditor
+                    durationEditor: $durationEditor,
+                    restEditor: $restEditor
                 )
             }
         } header: {

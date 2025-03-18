@@ -174,7 +174,7 @@ struct AddExerciseView: View {
     @ViewBuilder private func DurationField() -> some View {
         Section {
             NavigationLinkNoChevron {
-                ExerciseDurationEditView(duration: $duration)
+                ExerciseDurationEditView(duration: $duration, mode: .duration)
             } label: {
                 Text(duration?.formatted() ?? "N/A")
                     .fieldButton()

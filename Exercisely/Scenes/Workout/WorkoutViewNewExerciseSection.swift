@@ -68,7 +68,8 @@ struct WorkoutViewNewExerciseSection: View {
     @Binding var repsEditor: Binding<Workout.Exercise.Reps?>?
     @Binding var distanceEditor: Binding<Distance?>?
     @Binding var durationEditor: Binding<Workout.Exercise.Duration?>?
-    
+    @Binding var restEditor: Binding<Workout.Exercise.Duration?>?
+
     private var exerciseToSave: Workout.Exercise? {
         guard let name = name else {
             return nil
@@ -364,7 +365,7 @@ struct WorkoutViewNewExerciseSection: View {
                 }
             }
             Button {
-                durationEditor = $rest
+                restEditor = $rest
             } label: {
                 Text(rest?.formatted() ?? "N/A")
                     .fieldButton()
@@ -422,6 +423,10 @@ fileprivate extension View {
                         set: { _ in }
                     ),
                     durationEditor: .init(
+                        get: { .init(get: { nil }, set: { _ in })},
+                        set: { _ in }
+                    ),
+                    restEditor: .init(
                         get: { .init(get: { nil }, set: { _ in })},
                         set: { _ in }
                     )

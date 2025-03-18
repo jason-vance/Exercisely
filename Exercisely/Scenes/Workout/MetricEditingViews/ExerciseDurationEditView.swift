@@ -9,17 +9,22 @@ import SwiftUI
 
 struct ExerciseDurationEditView: View {
     
+    enum Mode {
+        case duration
+        case rest
+    }
+    
     @Environment(\.presentationMode) var presentation
         
     @Binding var duration: Workout.Exercise.Duration?
+    @State var mode: Mode
 
     @State private var durationValueString: String = ""
     @State private var durationUnit: Workout.Exercise.Duration.Unit = .seconds
     
-    @State private var dotPressed: Bool = false
-
-    init(duration: Binding<Workout.Exercise.Duration?>) {
+    init(duration: Binding<Workout.Exercise.Duration?>, mode: Mode) {
         self._duration = duration
+        self._mode = .init(initialValue: mode)
     }
     
     private var durationValue: Double? {
@@ -54,7 +59,7 @@ struct ExerciseDurationEditView: View {
     
     @ToolbarContentBuilder private func Toolbar() -> some ToolbarContent {
         ToolbarItem(placement: .principal) {
-            Text("Exercise Duration")
+            Text(mode == .duration ? "Exercise Duration" : "Rest Between Sets")
                 .bold(true)
                 .foregroundStyle(Color.text)
         }
@@ -100,7 +105,7 @@ struct ExerciseDurationEditView: View {
             .bold()
             .workoutExerciseRow()
         } header: {
-            SectionHeader("Duration")
+            SectionHeader(mode == .duration ? "Duration" : "Rest")
         }
     }
     
@@ -216,7 +221,8 @@ fileprivate extension View {
             duration: .init(
                 get: { duration },
                 set: { duration = $0; print("Duration: \(String(describing: $0?.formatted()))") }
-            )
+            ),
+            mode: .duration
         )
     }
 }

@@ -16,8 +16,6 @@ struct ExerciseDistanceEditView: View {
     @State private var distanceValueString: String = ""
     @State private var distanceUnit: Distance.Unit = .miles
     
-    @State private var dotPressed: Bool = false
-
     init(distance: Binding<Distance?>) {
         self._distance = distance
     }

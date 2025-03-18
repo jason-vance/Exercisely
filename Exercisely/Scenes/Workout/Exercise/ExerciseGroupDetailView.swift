@@ -100,7 +100,7 @@ struct ExerciseGroupDetailView: View {
             ExerciseDurationEditView(duration: .init(
                 get: { durationEditor?.wrappedValue },
                 set: { durationEditor?.wrappedValue = $0 }
-            ))
+            ), mode: .duration)
         }
     }
     
