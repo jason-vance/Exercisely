@@ -176,7 +176,7 @@ extension ExerciseGroup {
         .init(name: .sampleMachineShoulderPress, weight: .pounds(30), reps: .init(9))!,
     ])
     
-    static let sampleFakeDropSetButItHasRests: ExerciseGroup = .dropSet([
+    static let sampleFakeDropSetButItHasRests: ExerciseGroup = .set([
         .init(name: .sampleMachineShoulderPress, weight: .pounds(50), reps: .init(10), rest: .init(value: 90, unit: .seconds))!,
         .init(name: .sampleMachineShoulderPress, weight: .pounds(40), reps: .init(11), rest: .init(value: 90, unit: .seconds))!,
         .init(name: .sampleMachineShoulderPress, weight: .pounds(30), reps: .init(9))!,

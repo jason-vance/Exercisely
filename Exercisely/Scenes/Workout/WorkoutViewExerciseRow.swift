@@ -60,8 +60,19 @@ struct WorkoutViewExerciseRow: View {
     }
     
     @ViewBuilder private func DropSetExercise(_ exercises: [Workout.Exercise]) -> some View {
-        //TODO: Fill this out prettily
-        Text("Drop Set \"\(exerciseGroup.name)\"")
+        NavigationLinkNoChevron {
+            ExerciseGroupDetailView(for: exerciseGroup, in: workoutSection.id)
+        } label: {
+            VStack(spacing: 0) {
+                ExerciseGroupName(exerciseGroup)
+                HStack {
+                    Bullet().hidden()
+                    let drops = exercises.count - 1
+                    ExerciseDrops(drops)
+                    CommonMetrics(exercises)
+                }
+            }
+        }
     }
     
     @ViewBuilder private func SetExercise(_ exercises: [Workout.Exercise]) -> some View {
@@ -69,38 +80,36 @@ struct WorkoutViewExerciseRow: View {
             ExerciseGroupDetailView(for: exerciseGroup, in: workoutSection.id)
         } label: {
             VStack(spacing: 0) {
-                HStack {
-                    Bullet()
-                    Text(exerciseGroup.name)
-                        .multilineTextAlignment(.leading)
-                    Spacer(minLength: 0)
-                }
-                .font(.headline)
+                ExerciseGroupName(exerciseGroup)
                 HStack {
                     Bullet().hidden()
                     let sets = exercises.count
                     if sets > 1 {
                         ExerciseSets(sets)
                     }
-                    if !exercises.compactMap(\.reps).isEmpty {
-                        ExerciseReps(exercises.map(\.reps))
-                    }
-                    if !exercises.compactMap(\.weight).isEmpty {
-                        ExerciseWeight(exercises.map(\.weight))
-                    }
-                    if !exercises.compactMap(\.distance).isEmpty {
-                        ExerciseDistance(exercises.map(\.distance))
-                    }
-                    if !exercises.compactMap(\.duration).isEmpty {
-                        ExerciseDuration(exercises.map(\.duration))
-                    }
-                    if !exercises.compactMap(\.rest).isEmpty {
-                        ExerciseRest(exercises.map(\.rest))
-                    }
-                    Spacer(minLength: 0)
+                    CommonMetrics(exercises)
                 }
             }
         }
+    }
+    
+    @ViewBuilder private func ExerciseGroupName(_ exerciseGroup: ExerciseGroup) -> some View {
+        HStack {
+            Bullet()
+            Text(exerciseGroup.name)
+                .multilineTextAlignment(.leading)
+            Spacer(minLength: 0)
+        }
+        .font(.headline)
+    }
+    
+    @ViewBuilder private func ExerciseDrops(_ drops: Int) -> some View {
+        HStack(spacing: 2) {
+            Image(systemName: "arrow.down.to.line.compact")
+            Text("\(drops)drops")
+                .contentTransition(.numericText())
+        }
+        .workoutExerciseDataItem()
     }
     
     @ViewBuilder private func ExerciseSets(_ sets: Int) -> some View {
@@ -110,6 +119,25 @@ struct WorkoutViewExerciseRow: View {
                 .contentTransition(.numericText())
         }
         .workoutExerciseDataItem()
+    }
+    
+    @ViewBuilder private func CommonMetrics(_ exercises: [Workout.Exercise]) -> some View {
+        if !exercises.compactMap(\.reps).isEmpty {
+            ExerciseReps(exercises.map(\.reps))
+        }
+        if !exercises.compactMap(\.weight).isEmpty {
+            ExerciseWeight(exercises.map(\.weight))
+        }
+        if !exercises.compactMap(\.distance).isEmpty {
+            ExerciseDistance(exercises.map(\.distance))
+        }
+        if !exercises.compactMap(\.duration).isEmpty {
+            ExerciseDuration(exercises.map(\.duration))
+        }
+        if !exercises.compactMap(\.rest).isEmpty {
+            ExerciseRest(exercises.map(\.rest))
+        }
+        Spacer(minLength: 0)
     }
     
     @ViewBuilder private func ExerciseReps(_ reps: [Workout.Exercise.Reps?]) -> some View {
@@ -148,6 +176,7 @@ struct WorkoutViewExerciseRow: View {
         .workoutExerciseDataItem()
     }
     
+    //TODO: Tweak the formatting for rest, I don't want to see something like "90,90,-s"
     @ViewBuilder private func ExerciseRest(_ durations: [Workout.Exercise.Duration?]) -> some View {
         HStack(spacing: 2) {
             Image(systemName: "hourglass")
@@ -163,6 +192,8 @@ struct WorkoutViewExerciseRow: View {
     let simpleSet = ExerciseGroup.sampleSimpleSet
     let complexSet1 = ExerciseGroup.sampleVariableWeightAndRepSet
     let complexSet2 = ExerciseGroup.sampleVariableDistanceAndDurationSet
+    let complexSetWithRest = ExerciseGroup.sampleFakeDropSetButItHasRests
+    let dropSet = ExerciseGroup.sampleDropSet
 
     List {
         Section {
@@ -170,6 +201,8 @@ struct WorkoutViewExerciseRow: View {
             WorkoutViewExerciseRow(simpleSet, in: .sampleWorkout)
             WorkoutViewExerciseRow(complexSet1, in: .sampleWorkout)
             WorkoutViewExerciseRow(complexSet2, in: .sampleWorkout)
+            WorkoutViewExerciseRow(complexSetWithRest, in: .sampleWorkout)
+            WorkoutViewExerciseRow(dropSet, in: .sampleWorkout)
         } header: {
             SectionHeader("Workout")
         }
