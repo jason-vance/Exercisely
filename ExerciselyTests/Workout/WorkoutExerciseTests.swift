@@ -50,7 +50,7 @@ struct WorkoutExerciseTests {
     }
     
     @Test
-    func group_GroupsSimpleDropSetAsDropset() {
+    func group_GroupsSimpleDropSetAsDropSet() {
         let groups = ExerciseGroup.group(exercises: ExerciseGroup.sampleDropSet.exercises)
         
         #expect(groups.count == 1)
@@ -88,6 +88,26 @@ struct WorkoutExerciseTests {
     }
     
     @Test
+    func group_GroupsSimpleSupersetAsSuperset() {
+        let groups = ExerciseGroup.group(exercises: ExerciseGroup.sampleSuperset.exercises)
+        
+        #expect(groups.count == 1)
+        guard let firstGroup = groups.first else {
+            Issue.record("`groups` should not be empty.")
+            return
+        }
+        
+        switch firstGroup {
+        case .superset(let exercises):
+            #expect(exercises.count == 6)
+            #expect(exercises[0].name == .sampleBenchPress)
+            #expect(exercises[1].name == .samplePushUps)
+        default:
+            Issue.record("`firstGroup` should be `.superset`, but was `\(firstGroup)`.")
+        }
+    }
+    
+    @Test
     func group_GroupsExercisesByName() async throws {
         var exercises: [Workout.Exercise] = [
             .sampleTreadmill,
@@ -99,10 +119,11 @@ struct WorkoutExerciseTests {
             .sampleTreadmill
         ]
         exercises.append(contentsOf: ExerciseGroup.sampleDropSet.exercises)
+        exercises.append(contentsOf: ExerciseGroup.sampleSuperset.exercises)
+
+        let groups = ExerciseGroup.group(exercises: exercises)
         
-        var groups = ExerciseGroup.group(exercises: exercises)
-        
-        #expect(groups.count == 8)
+        #expect(groups.count == 9)
 
         let treadmillGroup = groups[0]
         switch treadmillGroup {

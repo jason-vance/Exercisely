@@ -10,7 +10,7 @@ import Foundation
 enum ExerciseGroup {
     case set([Workout.Exercise])
     case dropSet([Workout.Exercise])
-    //TODO: MVP: Add superset
+    case superset([Workout.Exercise])
 }
 
 extension ExerciseGroup: Identifiable {
@@ -19,6 +19,8 @@ extension ExerciseGroup: Identifiable {
         case .set(let exercises):
             return exercises.first!.id
         case .dropSet(let exercises):
+            return exercises.first!.id
+        case .superset(let exercises):
             return exercises.first!.id
         }
     }
@@ -29,6 +31,8 @@ extension ExerciseGroup: Identifiable {
             return exercises.first?.name.formatted() ?? "Unnamed Set"
         case .dropSet(let exercises):
             return exercises.first?.name.formatted() ?? "Unnamed Drop Set"
+        case .superset(let exercises):
+            return "Superset of \(exercises.count) Exercises"
         }
     }
     
@@ -37,6 +41,8 @@ extension ExerciseGroup: Identifiable {
         case .set(let exercises):
             return exercises
         case .dropSet(let exercises):
+            return exercises
+        case .superset(let exercises):
             return exercises
         }
     }
@@ -50,6 +56,8 @@ extension ExerciseGroup: Identifiable {
         case .set(let exercises):
             return exercises.contains(where: { $0.id == exerciseId })
         case .dropSet(let exercises):
+            return exercises.contains(where: { $0.id == exerciseId })
+        case .superset(let exercises):
             return exercises.contains(where: { $0.id == exerciseId })
         }
     }
@@ -140,6 +148,49 @@ extension ExerciseGroup {
         return insertDropSetIntoGroupedExercises(&i, &groupedExercises)
     }
     
+    fileprivate static func groupAsSuperset(
+        _ exercises: [Workout.Exercise],
+        _ i: inout Int,
+        _ groupedExercises: inout [ExerciseGroup]
+    ) -> Bool {
+        guard i < exercises.count else { return false }
+        
+        let isRepeating: ([Workout.Exercise], Int) -> Bool = { sequence, from in
+            guard sequence.count > 1 else { return false }
+            guard from + sequence.count <= exercises.count else { return false }
+            
+            let repeatExercises = Array(exercises[from..<(from + sequence.count)])
+            return sequence.map(\.name) == repeatExercises.map(\.name)
+        }
+        
+        var currentSupersetSequence: [Workout.Exercise] = []
+        var sequenceLength = 2
+        
+        while i + sequenceLength < exercises.count {
+            currentSupersetSequence = Array(exercises[i..<(i + sequenceLength)])
+            
+            var supersetExercises: [Workout.Exercise] = currentSupersetSequence
+            var repeatCount = 0
+            
+            while isRepeating(currentSupersetSequence, i + supersetExercises.count) {
+                let start = i + supersetExercises.count
+                let end = start + currentSupersetSequence.count
+                supersetExercises.append(contentsOf: Array(exercises[start..<end]))
+                repeatCount += 1
+            }
+            
+            if repeatCount > 0 {
+                groupedExercises.append(.superset(supersetExercises))
+                i += supersetExercises.count
+                return true
+            }
+            
+            sequenceLength += 1
+        }
+        
+        return false
+    }
+    
     static func group(exercises: [Workout.Exercise]) -> [ExerciseGroup] {
         if exercises.isEmpty { return [] }
         
@@ -149,6 +200,7 @@ extension ExerciseGroup {
         
         while i < exercises.count {
             if groupAsDropSet(exercises, &i, &groupedExercises) { continue }
+            if groupAsSuperset(exercises, &i, &groupedExercises) { continue }
             groupAsSet(exercises, &i, &groupedExercises)
         }
 
@@ -177,8 +229,18 @@ extension ExerciseGroup {
     ])
     
     static let sampleFakeDropSetButItHasRests: ExerciseGroup = .set([
-        .init(name: .sampleMachineShoulderPress, weight: .pounds(50), reps: .init(10), rest: .init(value: 90, unit: .seconds))!,
-        .init(name: .sampleMachineShoulderPress, weight: .pounds(40), reps: .init(11), rest: .init(value: 90, unit: .seconds))!,
+        .init(name: .sampleMachineShoulderPress, weight: .pounds(50), reps: .init(10), rest: .seconds(90))!,
+        .init(name: .sampleMachineShoulderPress, weight: .pounds(40), reps: .init(11), rest: .seconds(90))!,
         .init(name: .sampleMachineShoulderPress, weight: .pounds(30), reps: .init(9))!,
     ])
+    
+    static let sampleSuperset: ExerciseGroup = .superset([
+        .init(name: .sampleBenchPress, weight: .pounds(135), reps: .init(5))!,
+        .init(name: .samplePushUps, reps: .init(10), rest: .seconds(90))!,
+        .init(name: .sampleBenchPress, weight: .pounds(135), reps: .init(5))!,
+        .init(name: .samplePushUps, reps: .init(10), rest: .seconds(90))!,
+        .init(name: .sampleBenchPress, weight: .pounds(135), reps: .init(5))!,
+        .init(name: .samplePushUps, reps: .init(10), rest: .seconds(90))!,
+    ])
+        
 }

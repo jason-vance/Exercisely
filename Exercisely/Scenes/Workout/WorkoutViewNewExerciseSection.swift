@@ -186,9 +186,7 @@ struct WorkoutViewNewExerciseSection: View {
     // ^^ And .startNewExercise for usability, but maybe let the user know that the superset will not appear how they want
     private var availableAddTypeOptions: [AddType] {
         switch currentExerciseGroup {
-        //TODO: MVP: Change to `case .set, .superset:`
-        // ^^ when the currentExerciseGroup is a superset, then it is also in a stoppable place
-        case .set:
+        case .set, .superset:
             [ .continueSet, .startNewExercise, .startDropSet, .startSuperset ]
         case .dropSet:
             [ .continueDropSet, .startNewExercise, .startSuperset]

@@ -66,4 +66,6 @@ extension Workout.Exercise.Name {
     static let sampleMachineShoulderPress: Self = .init("Machine Shoulder Press")!
     static let sampleMachineUnderhandRow: Self = .init("Machine Underhand Row")!
     static let sampleHike: Self = .init("Hike")!
+    static let sampleBenchPress: Self = .init("Bench Press")!
+    static let samplePushUps: Self = .init("Push-Ups")!
 }

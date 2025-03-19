@@ -44,6 +44,8 @@ struct WorkoutViewExerciseRow: View {
                 SetExercise(exercises)
             case .dropSet(let exercises):
                 DropSetExercise(exercises)
+            case .superset(let exercises):
+                SupersetExercise(exercises)
             }
         }
         .workoutExerciseRow()
@@ -57,6 +59,11 @@ struct WorkoutViewExerciseRow: View {
             Button("Delete It!", role: .destructive, action: deleteExercise)
             Button("Cancel", role: .cancel) { }
         }
+    }
+    
+    @ViewBuilder private func SupersetExercise(_ exercises: [Workout.Exercise]) -> some View {
+        //TODO: Fill SupersetExercise out
+        Text("Some Superset")
     }
     
     @ViewBuilder private func DropSetExercise(_ exercises: [Workout.Exercise]) -> some View {
