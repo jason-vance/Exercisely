@@ -10,6 +10,11 @@ import Foundation
 extension Workout.Exercise {
     struct Duration {
         
+        enum FormatOptions {
+            case regular
+            case rest
+        }
+        
         private static let secsPerMin: Double = 60
         private static let minsPerHour: Double = 60
         private static let precision: Int = 3
@@ -93,9 +98,18 @@ extension Workout.Exercise {
             "\(value.formatted())\(unit.formatted())"
         }
         
-        static func formatted(_ durations: [Duration?]) -> String {
+        static func formatted(_ durations: [Duration?], options: FormatOptions = .regular) -> String {
             guard !durations.compactMap(\.self).isEmpty else { return "??s" }
             guard durations.count > 1 else { return durations[0]?.formatted() ?? "???" }
+            
+            var durations = durations
+            if options == .rest {
+                var last = durations.last!
+                while last == nil {
+                    durations.removeLast()
+                    last = durations.last!
+                }
+            }
             
             let allAreSameValue = Set(durations.map({ $0?.value })).count == 1
             let allAreSameUnit = Set(durations.compactMap({ $0?.unit })).count == 1

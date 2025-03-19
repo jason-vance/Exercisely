@@ -98,6 +98,14 @@ struct ExerciseDurationTests {
             .init(value: 10, unit: .seconds),
         ])
         #expect(x == "-,10s")
+        
+        //I don't want to see something like "90,90,-s rest"
+        x = Workout.Exercise.Duration.formatted([
+            .init(value: 90, unit: .seconds),
+            .init(value: 90, unit: .seconds),
+            nil
+        ], options: .rest)
+        #expect(x == "90s")
     }
     
     @Test
