@@ -255,7 +255,7 @@ struct WorkoutView: View {
         }
     }
     
-//    TODO: Add ability to reorder exercises
+    //TODO: Add ability to reorder exercises
     @ViewBuilder private func WorkoutSection(_ section: Workout.Section) -> some View {
         Section {
             ForEach(section.groupedExercises) { exerciseGroup in

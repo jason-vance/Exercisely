@@ -9,6 +9,10 @@ import SwiftUI
 
 struct WorkoutViewNewExerciseSection: View {
     
+    private var defaultRest: Workout.Exercise.Duration {
+        .init(value: 90, unit: .seconds)!
+    }
+    
     private let weightStepValue: Double = 5
     private let repsStepValue: Int = 1
     private let distanceStepValue: Double = 1
@@ -108,8 +112,7 @@ struct WorkoutViewNewExerciseSection: View {
         }
     }
     
-    //TODO: Maybe add a default value to rest (and settings for it)
-    // ^^ So users don't accidentally create a drop set
+    //TODO: Make a setting for default rest value
     private func initializeFields() {
         switch addType {
         case .exercise:
@@ -118,7 +121,7 @@ struct WorkoutViewNewExerciseSection: View {
             reps = nil
             distance = nil
             duration = nil
-            rest = nil
+            rest = defaultRest // So users don't accidentally start a drop set
             break
         case .set:
             if let setExercise = workoutSection.sortedExercises.last {

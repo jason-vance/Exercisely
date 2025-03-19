@@ -28,7 +28,7 @@ extension ExerciseGroup: Identifiable {
         case .set(let exercises):
             return exercises.first?.name.formatted() ?? "Unnamed Set"
         case .dropSet(let exercises):
-            return exercises.first?.name.formatted() ?? "Unnamed Set"
+            return exercises.first?.name.formatted() ?? "Unnamed Drop Set"
         }
     }
     
