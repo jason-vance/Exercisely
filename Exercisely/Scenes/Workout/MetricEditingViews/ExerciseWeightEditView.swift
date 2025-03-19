@@ -98,7 +98,9 @@ struct ExerciseWeightEditView: View {
             .bold()
             .overlay(alignment: .bottom) {
                 Group {
-                    if weightValueString.first == "-" {
+                    if weightValueString == "0" {
+                        Text("A Body Weight Exercise")
+                    } else if weightValueString.first == "-" {
                         Text("An Assisted Exercise")
                     } else if !weightValueString.isEmpty {
                         Text("A Weighted Exercise")
