@@ -123,6 +123,7 @@ struct WorkoutView: View {
         showSectionOptions = nil
     }
     
+    //TODO: Scroll to botton when exercise is added
     var body: some View {
         List {
             if let workout = workout {
@@ -270,7 +271,7 @@ struct WorkoutView: View {
             }
             if currentSection == section {
                 WorkoutViewNewExerciseSection(
-                    workoutSection: section,
+                    workoutSectionId: section.id,
                     weightEditor: $weightEditor,
                     repsEditor: $repsEditor,
                     distanceEditor: $distanceEditor,

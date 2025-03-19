@@ -13,7 +13,8 @@ import SwiftData
 struct ExerciselyApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Workout.self
+            Workout.self,
+            WorkoutViewNewExerciseSection.PendingSuperset.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 

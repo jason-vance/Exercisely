@@ -6,8 +6,45 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct WorkoutViewNewExerciseSection: View {
+    
+    @Environment(\.modelContext) private var modelContext
+    
+    @Model
+    class PendingSuperset {
+        private(set) var exercises: [Workout.Exercise]
+        
+        init(exercises: [Workout.Exercise]) {
+            self.exercises = exercises
+        }
+        
+        var sequenceEstablished: Bool {
+            Set(exercises.map(\.name)).count < exercises.map(\.name).count
+        }
+        
+        var sequenceLength: Int? {
+            guard sequenceEstablished else { return nil }
+            return Set(exercises.map(\.name)).count
+        }
+        
+        func append(_ exercise: Workout.Exercise) {
+            exercises.append(exercise)
+        }
+        
+        //TODO: Return the first exercise if sequenceLength == nil && orderedExercises.count > 1
+        var expectedNextExercise: Workout.Exercise? {
+            guard let sequenceLength = sequenceLength else { return nil }
+            let orderedExercises = exercises.sorted(by: { $0.order < $1.order })
+            print("sequenceLength: \(sequenceLength)")
+            print("exercises.count: \(exercises.count)")
+            for exercise in orderedExercises {
+                print("\(exercise.name.formatted()): \(exercise.order)")
+            }
+            return orderedExercises[orderedExercises.count - sequenceLength]
+        }
+    }
     
     private var defaultRest: Workout.Exercise.Duration {
         .init(value: 90, unit: .seconds)!
@@ -32,7 +69,7 @@ struct WorkoutViewNewExerciseSection: View {
             case .startNewExercise:
                 return "Start New Exercise"
             case .continueSet:
-                return "Add to Set"
+                return "Add a Set"
             case .startSuperset:
                 return "Start New Superset"
             case .continueSuperset:
@@ -40,7 +77,7 @@ struct WorkoutViewNewExerciseSection: View {
             case .startDropSet:
                 return "Start New Drop Set"
             case .continueDropSet:
-                return "Add to Drop Set"
+                return "Add a Drop Set"
             }
         }
         
@@ -57,13 +94,16 @@ struct WorkoutViewNewExerciseSection: View {
             case .startDropSet:
                 return "Start Drop Set"
             case .continueDropSet:
-                return "Add to Drop Set"
+                return "Add Drop Set"
             }
         }
     }
     
-    //TODO: I should probably get this via query, so that things can update
-    let workoutSection: Workout.Section
+    let workoutSectionId: Workout.Section.ID
+    @Query private var workoutSections: [Workout.Section]
+    private var workoutSection: Workout.Section? {
+        workoutSections.first(where: { $0.id == workoutSectionId })
+    }
     
     @State private var addType: AddType? = nil
 
@@ -73,7 +113,7 @@ struct WorkoutViewNewExerciseSection: View {
     @State private var distance: Distance? = nil
     @State private var duration: Workout.Exercise.Duration? = nil
     @State private var rest: Workout.Exercise.Duration? = nil
-
+    
     // .navigationDestination cannot be inside of a lazy container.
     // So, I have to use these props to reach back outside of the
     // List on WorkoutView.
@@ -102,6 +142,22 @@ struct WorkoutViewNewExerciseSection: View {
     private var canSaveExercise: Bool { exerciseToSave != nil }
     private var hasName: Bool { name != nil }
     private var hasMetrics: Bool { reps != nil || distance != nil || duration != nil }
+    
+    private func handleSupersetTracking(exercise: Workout.Exercise) {
+        switch addType {
+        case .startSuperset:
+            modelContext.insert(PendingSuperset(exercises: [exercise]))
+            break
+        case .continueSuperset:
+            pendingSuperset?.append(exercise)
+            break
+        default:
+            for pendingSuperset in pendingSupersets {
+                modelContext.delete(pendingSuperset)
+            }
+            break
+        }
+    }
 
     private func saveExercise() {
         guard let exercise = exerciseToSave else {
@@ -109,11 +165,10 @@ struct WorkoutViewNewExerciseSection: View {
             return
         }
         
-        print("rest: \(exercise.rest?.formatted() ?? "nil")")
-        
         withAnimation(.snappy) {
-            workoutSection.append(exercise: exercise)
-            initializeFields()
+            workoutSection?.append(exercise: exercise)
+            handleSupersetTracking(exercise: exercise)
+                        
             addType = {
                 switch addType {
                 case .startSuperset, .continueSuperset:
@@ -124,13 +179,14 @@ struct WorkoutViewNewExerciseSection: View {
                     return .continueSet
                 }
             }()
+            initializeFields()
         }
     }
     
     //TODO: Make a setting for default rest value
     private func initializeFields() {
         switch addType {
-        case .startNewExercise, .startSuperset:
+        case .startNewExercise:
             name = nil
             weight = nil
             reps = nil
@@ -139,17 +195,34 @@ struct WorkoutViewNewExerciseSection: View {
             rest = defaultRest // So users don't accidentally start a drop set
             break
         case .continueSet:
-            if let setExercise = workoutSection.sortedExercises.last {
+            if let setExercise = workoutSection?.sortedExercises.last {
                 self.name = setExercise.name
                 self.weight = setExercise.weight
                 self.reps = setExercise.reps
                 self.distance = setExercise.distance
                 self.duration = setExercise.duration
-                self.rest = setExercise.rest
+                self.rest = setExercise.rest ?? defaultRest
             }
             break
+        case .startSuperset:
+            name = nil
+            weight = nil
+            reps = nil
+            distance = nil
+            duration = nil
+            rest = nil
+            break
         case .continueSuperset:
-            //TODO: MVP: Find the next exercise in the superset and fill in the fields
+            let sequenceEstablished = pendingSuperset?.sequenceEstablished ?? false
+            let setExercise = pendingSuperset?.expectedNextExercise
+            
+            self.name = sequenceEstablished ? setExercise?.name : nil
+            self.weight = sequenceEstablished ? setExercise?.weight : nil
+            self.reps = sequenceEstablished ? setExercise?.reps : nil
+            self.distance = sequenceEstablished ? setExercise?.distance : nil
+            self.duration = sequenceEstablished ? setExercise?.duration : nil
+            self.rest = sequenceEstablished ? setExercise?.rest : nil
+
             break
         case .startDropSet:
             name = nil
@@ -160,7 +233,7 @@ struct WorkoutViewNewExerciseSection: View {
             rest = nil
             break
         case .continueDropSet:
-            if let setExercise = workoutSection.sortedExercises.last {
+            if let setExercise = workoutSection?.sortedExercises.last {
                 self.name = setExercise.name
                 self.weight = setExercise.weight?.subtracting(weightStepValue)
                 self.reps = setExercise.reps?.subtracting(repsStepValue)
@@ -175,28 +248,48 @@ struct WorkoutViewNewExerciseSection: View {
     }
     
     private var previousExercise: Workout.Exercise? {
-        workoutSection.sortedExercises.last
+        workoutSection?.sortedExercises.last
     }
     
     private var currentExerciseGroup: ExerciseGroup? {
-        workoutSection.groupedExercises.last
+        workoutSection?.groupedExercises.last
     }
     
-    //TODO: When the user is currently in the middle of a superset, then the only option should be .continueSuperset
-    // ^^ And .startNewExercise for usability, but maybe let the user know that the superset will not appear how they want
+    @Query private var pendingSupersets: [PendingSuperset]
+    private var pendingSuperset: PendingSuperset? {
+        if let pendingSuperset = pendingSupersets.first {
+            return pendingSuperset
+        } else {
+            return nil
+        }
+    }
+    
     private var availableAddTypeOptions: [AddType] {
         switch currentExerciseGroup {
-        case .set, .superset:
-            [ .continueSet, .startNewExercise, .startDropSet, .startSuperset ]
+        case .set:
+            if pendingSuperset != nil {
+                [ .continueSuperset, .startNewExercise, .startDropSet, .startSuperset ]
+            } else {
+                [ .continueSet, .continueDropSet, .startNewExercise, .startDropSet, .startSuperset ]
+            }
         case .dropSet:
-            [ .continueDropSet, .startNewExercise, .startSuperset]
-        case nil:
+            [ .continueDropSet, .startNewExercise, .startDropSet, .startSuperset ]
+        case .superset:
+            [ .continueSuperset, .startNewExercise, .startDropSet, .startSuperset ]
+        case .none:
             [ .startNewExercise, .startDropSet, .startSuperset ]
         }
     }
     
     private var isNameFieldDisabled: Bool {
-        [ AddType.continueSet, AddType.continueDropSet, AddType.continueSuperset ].contains(addType)
+        switch addType {
+        case .startNewExercise, .startDropSet, .startSuperset, .none:
+        return false
+        case .continueSet, .continueDropSet:
+        return true
+        case .continueSuperset:
+        return pendingSuperset != nil && pendingSuperset!.sequenceEstablished
+        }
     }
     
     private var isRestFieldDisabled: Bool {
@@ -208,10 +301,22 @@ struct WorkoutViewNewExerciseSection: View {
         initializeFields()
     }
     
-    private func onUpdate(previousExercise: Workout.Exercise?) {
-        //If there is no previousExercise, we can only add to the workout section
-        if previousExercise == nil {
+    private func onChangePreviousExercise(old: Workout.Exercise?, new: Workout.Exercise?) {
+        guard old !== new || addType == nil else { return }
+        guard let exerciseGroup = currentExerciseGroup, let new = new else {
             addType = .startNewExercise
+            return
+        }
+
+        if let pendingSuperset = pendingSuperset, pendingSuperset.exercises.contains(new) {
+            addType = .continueSuperset
+        } else {
+            switch exerciseGroup {
+            case .dropSet:
+                addType = .continueDropSet
+            default:
+                addType = addType == nil ? .continueSet : addType
+            }
         }
     }
     
@@ -227,18 +332,15 @@ struct WorkoutViewNewExerciseSection: View {
             AddExerciseButton()
         }
         .foregroundStyle(Color.text)
-        .animation(.snappy, value: addType)
         .animation(.snappy, value: weight)
         .animation(.snappy, value: reps)
         .animation(.snappy, value: distance)
         .animation(.snappy, value: duration)
         .animation(.snappy, value: rest)
         .onChange(of: addType, initial: true) { onChangeAddType(old: $0, new: $1) }
-        .onChange(of: previousExercise, initial: true) { _, previousExercise in onUpdate(previousExercise: previousExercise) }
-        .onAppear { addType = addType == nil ? .continueSet : addType}
+        .onChange(of: previousExercise, initial: true) { onChangePreviousExercise(old: $0, new: $1) }
     }
     
-    //TODO: MVP: Disable addTypes when appropriate
     @ViewBuilder private func AddTypeMenu() -> some View {
         if let addType = addType {
             Menu {
@@ -250,7 +352,6 @@ struct WorkoutViewNewExerciseSection: View {
                     .fieldButton()
             }
             .workoutExerciseRow()
-            .disabled(previousExercise == nil)
         }
     }
     
@@ -431,17 +532,18 @@ struct WorkoutViewNewExerciseSection: View {
     }
     
     @ViewBuilder private func AddExerciseButton() -> some View {
-        if let addType = addType {
+        if let addType = addType, let workoutSection = workoutSection {
             HStack {
                 Spacer()
                 Button {
                     saveExercise()
                 } label: {
                     Text(addType.actionTitle(workoutSection: workoutSection))
-                    .buttonDefaultModifiers()
-                    .contentTransition(.numericText())
+                        .buttonDefaultModifiers()
+                        .contentTransition(.numericText())
                 }
                 .disabled(exerciseToSave == nil)
+                .animation(.snappy, value: addType)
             }
             .workoutExerciseRow()
         }
@@ -460,7 +562,7 @@ fileprivate extension View {
         List {
             Section {
                 WorkoutViewNewExerciseSection(
-                    workoutSection: .sampleWorkout,
+                    workoutSectionId: Workout.Section.sampleWorkout.id,
                     weightEditor: .init(
                         get: { .init(get: { nil }, set: { _ in })},
                         set: { _ in }
