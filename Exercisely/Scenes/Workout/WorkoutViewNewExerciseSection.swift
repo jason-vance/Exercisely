@@ -33,15 +33,15 @@ struct WorkoutViewNewExerciseSection: View {
             exercises.append(exercise)
         }
         
-        //TODO: Return the first exercise if sequenceLength == nil && orderedExercises.count > 1
         var expectedNextExercise: Workout.Exercise? {
-            guard let sequenceLength = sequenceLength else { return nil }
             let orderedExercises = exercises.sorted(by: { $0.order < $1.order })
-            print("sequenceLength: \(sequenceLength)")
-            print("exercises.count: \(exercises.count)")
-            for exercise in orderedExercises {
-                print("\(exercise.name.formatted()): \(exercise.order)")
+            guard let sequenceLength = sequenceLength else {
+                if orderedExercises.count > 1 {
+                    return orderedExercises.first
+                }
+                return nil
             }
+            
             return orderedExercises[orderedExercises.count - sequenceLength]
         }
     }
@@ -146,6 +146,9 @@ struct WorkoutViewNewExerciseSection: View {
     private func handleSupersetTracking(exercise: Workout.Exercise) {
         switch addType {
         case .startSuperset:
+            for pendingSuperset in pendingSupersets {
+                modelContext.delete(pendingSuperset)
+            }
             modelContext.insert(PendingSuperset(exercises: [exercise]))
             break
         case .continueSuperset:
@@ -195,15 +198,16 @@ struct WorkoutViewNewExerciseSection: View {
             rest = defaultRest // So users don't accidentally start a drop set
             break
         case .continueSet:
-            if let setExercise = workoutSection?.sortedExercises.last {
-                self.name = setExercise.name
-                self.weight = setExercise.weight
-                self.reps = setExercise.reps
-                self.distance = setExercise.distance
-                self.duration = setExercise.duration
-                self.rest = setExercise.rest ?? defaultRest
-            }
-            break
+            let setExercise = workoutSection?.sortedExercises.last
+                
+            self.name = setExercise?.name
+            self.weight = setExercise?.weight
+            self.reps = setExercise?.reps
+            self.distance = setExercise?.distance
+            self.duration = setExercise?.duration
+            self.rest = setExercise?.rest ?? defaultRest
+
+                break
         case .startSuperset:
             name = nil
             weight = nil
@@ -213,16 +217,15 @@ struct WorkoutViewNewExerciseSection: View {
             rest = nil
             break
         case .continueSuperset:
-            let sequenceEstablished = pendingSuperset?.sequenceEstablished ?? false
             let setExercise = pendingSuperset?.expectedNextExercise
             
-            self.name = sequenceEstablished ? setExercise?.name : nil
-            self.weight = sequenceEstablished ? setExercise?.weight : nil
-            self.reps = sequenceEstablished ? setExercise?.reps : nil
-            self.distance = sequenceEstablished ? setExercise?.distance : nil
-            self.duration = sequenceEstablished ? setExercise?.duration : nil
-            self.rest = sequenceEstablished ? setExercise?.rest : nil
-
+            self.name = setExercise?.name
+            self.weight = setExercise?.weight
+            self.reps = setExercise?.reps
+            self.distance = setExercise?.distance
+            self.duration = setExercise?.duration
+            self.rest = setExercise?.rest
+            
             break
         case .startDropSet:
             name = nil
@@ -233,14 +236,15 @@ struct WorkoutViewNewExerciseSection: View {
             rest = nil
             break
         case .continueDropSet:
-            if let setExercise = workoutSection?.sortedExercises.last {
-                self.name = setExercise.name
-                self.weight = setExercise.weight?.subtracting(weightStepValue)
-                self.reps = setExercise.reps?.subtracting(repsStepValue)
-                self.distance = setExercise.distance
-                self.duration = setExercise.duration
-                self.rest = nil
-            }
+            let setExercise = workoutSection?.sortedExercises.last
+            
+            self.name = setExercise?.name
+            self.weight = setExercise?.weight?.subtracting(weightStepValue)
+            self.reps = setExercise?.reps?.subtracting(repsStepValue)
+            self.distance = setExercise?.distance
+            self.duration = setExercise?.duration
+            self.rest = nil
+            
             break
         case .none:
             break
