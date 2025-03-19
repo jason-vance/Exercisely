@@ -20,36 +20,45 @@ struct WorkoutViewNewExerciseSection: View {
     private let restStepValue: Double = 5
 
     private enum AddType: CaseIterable {
-        case exercise
-        case set
-        case superset
-        case dropset
-        
-        var title: String {
+        case startNewExercise
+        case continueSet
+        case startSuperset
+        case continueSuperset
+        case startDropSet
+        case continueDropSet
+
+        var menuTitle: String {
             switch self {
-            case .exercise:
+            case .startNewExercise:
                 return "Start New Exercise"
-            case .set:
-                return "Add a Set"
-            case .superset:
-                return "Continue Superset"
-            case .dropset:
-                return "Add a Dropset"
+            case .continueSet:
+                return "Add to Set"
+            case .startSuperset:
+                return "Start New Superset"
+            case .continueSuperset:
+                return "Add to Superset"
+            case .startDropSet:
+                return "Start New Drop Set"
+            case .continueDropSet:
+                return "Add to Drop Set"
             }
         }
         
-        func actionTitle(workoutSection: Workout.Section, previousExercise: Workout.Exercise?) -> String {
+        func actionTitle(workoutSection: Workout.Section) -> String {
             switch self {
-            case .exercise:
+            case .startNewExercise:
                 return "Add to \"\(workoutSection.name)\""
-            case .set:
-                return "Add Set to \"\(previousExercise?.name.formatted() ?? "Exercise")\""
-            case .superset:
+            case .continueSet:
+                return "Add Set"
+            case .startSuperset:
+                return "Start Superset"
+            case .continueSuperset:
                 return "Add to Superset"
-            case .dropset:
-                return "Add to Dropset"
+            case .startDropSet:
+                return "Start Drop Set"
+            case .continueDropSet:
+                return "Add to Drop Set"
             }
-            
         }
     }
     
@@ -87,11 +96,6 @@ struct WorkoutViewNewExerciseSection: View {
             duration: duration,
             rest: rest
         )
-        
-        guard let exercise = exercise else {
-            return nil
-        }
-        
         return exercise
     }
     
@@ -105,17 +109,28 @@ struct WorkoutViewNewExerciseSection: View {
             return
         }
         
+        print("rest: \(exercise.rest?.formatted() ?? "nil")")
+        
         withAnimation(.snappy) {
             workoutSection.append(exercise: exercise)
             initializeFields()
-            addType = addType == .exercise ? .set : addType
+            addType = {
+                switch addType {
+                case .startSuperset, .continueSuperset:
+                    return .continueSuperset
+                case .startDropSet, .continueDropSet:
+                    return .continueDropSet
+                default:
+                    return .continueSet
+                }
+            }()
         }
     }
     
     //TODO: Make a setting for default rest value
     private func initializeFields() {
         switch addType {
-        case .exercise:
+        case .startNewExercise, .startSuperset:
             name = nil
             weight = nil
             reps = nil
@@ -123,7 +138,7 @@ struct WorkoutViewNewExerciseSection: View {
             duration = nil
             rest = defaultRest // So users don't accidentally start a drop set
             break
-        case .set:
+        case .continueSet:
             if let setExercise = workoutSection.sortedExercises.last {
                 self.name = setExercise.name
                 self.weight = setExercise.weight
@@ -133,16 +148,24 @@ struct WorkoutViewNewExerciseSection: View {
                 self.rest = setExercise.rest
             }
             break
-        case .superset:
+        case .continueSuperset:
             //TODO: MVP: Find the next exercise in the superset and fill in the fields
             break
-        case .dropset:
+        case .startDropSet:
+            name = nil
+            weight = nil
+            reps = nil
+            distance = nil
+            duration = nil
+            rest = nil
+            break
+        case .continueDropSet:
             if let setExercise = workoutSection.sortedExercises.last {
                 self.name = setExercise.name
                 self.weight = setExercise.weight?.subtracting(weightStepValue)
                 self.reps = setExercise.reps?.subtracting(repsStepValue)
-                self.distance = setExercise.distance?.subtracting(distanceStepValue)
-                self.duration = setExercise.duration?.subtracting(durationStepValue)
+                self.distance = setExercise.distance
+                self.duration = setExercise.duration
                 self.rest = nil
             }
             break
@@ -155,6 +178,33 @@ struct WorkoutViewNewExerciseSection: View {
         workoutSection.sortedExercises.last
     }
     
+    private var currentExerciseGroup: ExerciseGroup? {
+        workoutSection.groupedExercises.last
+    }
+    
+    //TODO: When the user is currently in the middle of a superset, then the only option should be .continueSuperset
+    // ^^ And .startNewExercise for usability, but maybe let the user know that the superset will not appear how they want
+    private var availableAddTypeOptions: [AddType] {
+        switch currentExerciseGroup {
+        //TODO: MVP: Change to `case .set, .superset:`
+        // ^^ when the currentExerciseGroup is a superset, then it is also in a stoppable place
+        case .set:
+            [ .continueSet, .startNewExercise, .startDropSet, .startSuperset ]
+        case .dropSet:
+            [ .continueDropSet, .startNewExercise, .startSuperset]
+        case nil:
+            [ .startNewExercise, .startDropSet, .startSuperset ]
+        }
+    }
+    
+    private var isNameFieldDisabled: Bool {
+        [ AddType.continueSet, AddType.continueDropSet, AddType.continueSuperset ].contains(addType)
+    }
+    
+    private var isRestFieldDisabled: Bool {
+        [ AddType.startDropSet, AddType.continueDropSet ].contains(addType)
+    }
+    
     private func onChangeAddType(old: AddType?, new: AddType?) {
         guard old != new else { return }
         initializeFields()
@@ -163,7 +213,7 @@ struct WorkoutViewNewExerciseSection: View {
     private func onUpdate(previousExercise: Workout.Exercise?) {
         //If there is no previousExercise, we can only add to the workout section
         if previousExercise == nil {
-            addType = .exercise
+            addType = .startNewExercise
         }
     }
     
@@ -179,6 +229,7 @@ struct WorkoutViewNewExerciseSection: View {
             AddExerciseButton()
         }
         .foregroundStyle(Color.text)
+        .animation(.snappy, value: addType)
         .animation(.snappy, value: weight)
         .animation(.snappy, value: reps)
         .animation(.snappy, value: distance)
@@ -186,17 +237,18 @@ struct WorkoutViewNewExerciseSection: View {
         .animation(.snappy, value: rest)
         .onChange(of: addType, initial: true) { onChangeAddType(old: $0, new: $1) }
         .onChange(of: previousExercise, initial: true) { _, previousExercise in onUpdate(previousExercise: previousExercise) }
-        .onAppear { addType = addType == nil ? .set : addType}
+        .onAppear { addType = addType == nil ? .continueSet : addType}
     }
     
+    //TODO: MVP: Disable addTypes when appropriate
     @ViewBuilder private func AddTypeMenu() -> some View {
         if let addType = addType {
             Menu {
-                ForEach(AddType.allCases, id: \.self) { addType in
-                    Button(addType.title) { self.addType = addType }
+                ForEach(availableAddTypeOptions, id: \.self) { addType in
+                    Button(addType.menuTitle) { self.addType = addType }
                 }
             } label: {
-                Text(addType.title)
+                Text(addType.menuTitle)
                     .fieldButton()
             }
             .workoutExerciseRow()
@@ -219,7 +271,7 @@ struct WorkoutViewNewExerciseSection: View {
             }
         }
         .workoutExerciseRow()
-        .disabled(addType != .exercise)
+        .disabled(isNameFieldDisabled)
     }
     
     //TODO: Add settings to change these stepper values
@@ -375,7 +427,7 @@ struct WorkoutViewNewExerciseSection: View {
                     .underlined()
             }
             .buttonStyle(PlainButtonStyle())
-            .disabled(addType == .dropset)
+            .disabled(isRestFieldDisabled)
         }
         .workoutExerciseRow()
     }
@@ -387,11 +439,9 @@ struct WorkoutViewNewExerciseSection: View {
                 Button {
                     saveExercise()
                 } label: {
-                    Text(addType.actionTitle(
-                        workoutSection: workoutSection,
-                        previousExercise: previousExercise
-                    ))
+                    Text(addType.actionTitle(workoutSection: workoutSection))
                     .buttonDefaultModifiers()
+                    .contentTransition(.numericText())
                 }
                 .disabled(exerciseToSave == nil)
             }
