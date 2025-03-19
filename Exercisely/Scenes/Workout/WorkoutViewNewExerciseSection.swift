@@ -134,7 +134,7 @@ struct WorkoutViewNewExerciseSection: View {
             }
             break
         case .superset:
-            //TODO: Find the next exercise in the superset and fill in the fields
+            //TODO: MVP: Find the next exercise in the superset and fill in the fields
             break
         case .dropset:
             if let setExercise = workoutSection.sortedExercises.last {

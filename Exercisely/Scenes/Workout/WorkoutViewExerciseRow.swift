@@ -176,7 +176,7 @@ struct WorkoutViewExerciseRow: View {
         .workoutExerciseDataItem()
     }
     
-    //TODO: Tweak the formatting for rest, I don't want to see something like "90,90,-s"
+    //TODO: MVP: Tweak the formatting for rest, I don't want to see something like "90,90,-s"
     @ViewBuilder private func ExerciseRest(_ durations: [Workout.Exercise.Duration?]) -> some View {
         HStack(spacing: 2) {
             Image(systemName: "hourglass")

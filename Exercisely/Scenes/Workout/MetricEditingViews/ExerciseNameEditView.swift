@@ -97,15 +97,22 @@ struct ExerciseNameEditView: View {
     
     @ViewBuilder private func NameField() -> some View {
             Section {
-                TextField(
-                    text: $nameString,
-                    label: { Text(Workout.Exercise.Name.prompt.formatted()) }
-                )
-                .submitLabel(.done)
-                .focused($focus)
-                .bold()
+                VStack {
+                    TextField(
+                        text: $nameString,
+                        label: { Text(Workout.Exercise.Name.prompt.formatted()) }
+                    )
+                    .submitLabel(.done)
+                    .focused($focus)
+                    .fieldButton()
+                    
+                    let isTooLong = nameString.count > Workout.Exercise.Name.maxTextLength
+                    FieldCaption(
+                        "\(isTooLong ? "Too long" : "") \(nameString.count)/\(Workout.Exercise.Name.maxTextLength)",
+                        isError: isTooLong
+                    )
+                }
                 .workoutExerciseRow()
-                .underlined()
                 .onAppear {
                     focus = true
                 }

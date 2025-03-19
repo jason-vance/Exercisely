@@ -10,7 +10,7 @@ import Foundation
 enum ExerciseGroup {
     case set([Workout.Exercise])
     case dropSet([Workout.Exercise])
-    //TODO: Add superset
+    //TODO: MVP: Add superset
 }
 
 extension ExerciseGroup: Identifiable {

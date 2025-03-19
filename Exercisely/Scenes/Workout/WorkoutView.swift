@@ -93,7 +93,7 @@ struct WorkoutView: View {
         workout?.sortedSections.last
     }
     
-    //TODO: Maybe change this to something that the user selects
+    //TODO: MVP: Maybe change this to something that the user selects
     // ^^ Might make it easier to put previous exercise inserting onto one screen
     var currentExercise: Workout.Exercise? {
         currentSection?.sortedExercises.last
@@ -212,15 +212,22 @@ struct WorkoutView: View {
         }
     }
     
-    //TODO: warn the user if their focus is too long
     @ViewBuilder private func WorkoutFocusSection() -> some View {
         Section {
-            TextField(
-                text: $workoutFocusString,
-                label: { Text(Workout.Focus.prompt.formatted()) }
-            )
-            .submitLabel(.done)
-            .fieldButton()
+            VStack {
+                TextField(
+                    text: $workoutFocusString,
+                    label: { Text(Workout.Focus.prompt.formatted()) }
+                )
+                .submitLabel(.done)
+                .fieldButton()
+                
+                let isTooLong = workoutFocusString.count > Workout.Focus.maxTextLength
+                FieldCaption(
+                    "\(isTooLong ? "Too long" : "") \(workoutFocusString.count)/\(Workout.Focus.maxTextLength)",
+                    isError: isTooLong
+                )
+            }
             .workoutExerciseRow()
             .onChange(of: workoutFocusString) { _, newValue in
                 if let workout = workout {
