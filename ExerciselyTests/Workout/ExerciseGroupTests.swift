@@ -1,5 +1,5 @@
 //
-//  WorkoutExerciseTests.swift
+//  ExerciseGroupTests.swift
 //  ExerciselyTests
 //
 //  Created by Jason Vance on 3/12/25.
@@ -7,11 +7,11 @@
 
 import Testing
 
-struct WorkoutExerciseTests {
+struct ExerciseGroupTests {
     
     @Test
     func group_GroupsOneExerciseAsSet() async throws {
-        let groups = ExerciseGroup.group(exercises: [.sampleYtw])
+        let groups = ExerciseGroup.group(exercises: ExerciseGroup.sampleSingle.exercises)
         
         #expect(groups.count == 1)
         guard let firstGroup = groups.first else {
@@ -22,16 +22,16 @@ struct WorkoutExerciseTests {
         switch firstGroup {
         case .set(let exercises):
             #expect(exercises.count == 1)
-            #expect(exercises[0] == .sampleYtw)
+            #expect(exercises[0] == .sampleArcherPress)
         default:
-            Issue.record("`firstGroup` should be `.set([.sampleYtw])`, but was something else.")
+            Issue.record("`firstGroup` should be `.set([.sampleYtw])`, but was `\(firstGroup)`.")
         }
     }
     
     @Test
     func group_GroupsSimpleSetAsSet() async throws {
-        let groups = ExerciseGroup.group(exercises: [.sampleYtw, .sampleYtw, .sampleYtw])
-        
+        let groups = ExerciseGroup.group(exercises: ExerciseGroup.sampleSimpleSet.exercises)
+
         #expect(groups.count == 1)
         guard let firstGroup = groups.first else {
             Issue.record("`groups` should not be empty.")
@@ -40,12 +40,12 @@ struct WorkoutExerciseTests {
         
         switch firstGroup {
         case .set(let activities):
-            #expect(activities.count == 3)
+            #expect(activities.count == 4)
             for activity in activities {
-                #expect(activity == .sampleYtw)
+                #expect(activity == .sampleTurkishGetUp)
             }
         default:
-            Issue.record("`firstGroup` should be `.set([.sampleYtw, .sampleYtw, .sampleYtw])`, but was something else.")
+            Issue.record("`firstGroup` should be `.set([.sampleYtw, .sampleYtw, .sampleYtw])`, but was `\(firstGroup)`.")
         }
     }
     
@@ -98,8 +98,9 @@ struct WorkoutExerciseTests {
         }
         
         switch firstGroup {
-        case .superset(let exercises):
+        case .superset(let exercises, let sequenceLength):
             #expect(exercises.count == 6)
+            #expect(sequenceLength == 2)
             #expect(exercises[0].name == .sampleBenchPress)
             #expect(exercises[1].name == .samplePushUps)
         default:
@@ -200,7 +201,18 @@ struct WorkoutExerciseTests {
             #expect(exercises.count == 3)
             #expect(exercises[0].name == Workout.Exercise.sampleMachineShoulderPress.name)
         default:
-            Issue.record("`firstGroup` should be `.dropSet`, but was `\(dropSetGroup)`.")
+            Issue.record("`dropSetGroup` should be `.dropSet`, but was `\(dropSetGroup)`.")
+        }
+        
+        let supersetGroup = groups[8]
+        switch supersetGroup {
+        case .superset(let exercises, let sequenceLength):
+            #expect(exercises.count == 6)
+            #expect(sequenceLength == 2)
+            #expect(exercises[0].name == .sampleBenchPress)
+            #expect(exercises[1].name == .samplePushUps)
+        default:
+            Issue.record("`supersetGroup` should be `.superset`, but was `\(supersetGroup)`.")
         }
     }
 

@@ -168,9 +168,12 @@ extension ExerciseGroup {
         
         while i + sequenceLength < exercises.count {
             currentSupersetSequence = Array(exercises[i..<(i + sequenceLength)])
+            if Set(currentSupersetSequence.map(\.name)).count == 1 {
+                return false
+            }
             
             var supersetExercises: [Workout.Exercise] = currentSupersetSequence
-            var repeatCount = 0
+            var repeatCount = 1
             
             while isRepeating(currentSupersetSequence, i + supersetExercises.count) {
                 let start = i + supersetExercises.count
@@ -179,7 +182,7 @@ extension ExerciseGroup {
                 repeatCount += 1
             }
             
-            if repeatCount > 0 {
+            if repeatCount > 1 {
                 groupedExercises.append(.superset(supersetExercises, supersetExercises.count / repeatCount))
                 i += supersetExercises.count
                 return true
@@ -210,7 +213,7 @@ extension ExerciseGroup {
 
 extension ExerciseGroup {
     static let sampleSingle: ExerciseGroup = .set([.sampleArcherPress])
-    static let sampleSimpleSet: ExerciseGroup = .set([.sampleTurkishGetUp, .sampleTurkishGetUp, .sampleTurkishGetUp])
+    static let sampleSimpleSet: ExerciseGroup = .set([.sampleTurkishGetUp, .sampleTurkishGetUp, .sampleTurkishGetUp, .sampleTurkishGetUp])
     static let sampleVariableWeightAndRepSet: ExerciseGroup = .set([
         .init(name: .sampleMachineShoulderPress, weight: .pounds(50), reps: .init(12))!,
         .init(name: .sampleMachineShoulderPress, weight: .pounds(60), reps: .init(10))!,
