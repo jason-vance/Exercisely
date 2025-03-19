@@ -300,11 +300,6 @@ struct WorkoutView: View {
                 }
                 Spacer(minLength: 0)
                 Menu {
-                    NavigationLink {
-                        AddExerciseView(workoutSection: section)
-                    } label: {
-                        LabeledContent("Add Exercise") { Image(systemName: "plus.circle") }
-                    }
                     Button("Rename", systemImage: "pencil") { sectionToRename = section }
                     Button("Delete", systemImage: "trash", role: .destructive) { sectionToDelete = section }
                 } label: {
