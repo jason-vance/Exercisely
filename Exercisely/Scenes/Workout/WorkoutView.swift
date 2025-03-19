@@ -10,6 +10,8 @@ import SwiftData
 
 struct WorkoutView: View {
     
+    private let newExerciseSectionId: String = "newExerciseSectionId"
+    
     @Environment(\.modelContext) private var modelContext
     
     @Query private var workouts: [Workout]
@@ -123,18 +125,25 @@ struct WorkoutView: View {
         showSectionOptions = nil
     }
     
-    //TODO: Scroll to botton when exercise is added
+    private func scrollToNewExerciseSection(_ proxy: ScrollViewProxy) {
+        proxy.scrollTo(newExerciseSectionId, anchor: .top)
+    }
+    
     var body: some View {
-        List {
-            if let workout = workout {
-                WorkoutFocusSection()
-                ForEach(workout.sortedSections) { section in
-                    WorkoutSection(section)
+        ScrollViewReader { proxy in
+            List {
+                if let workout = workout {
+                    WorkoutFocusSection()
+                    ForEach(workout.sortedSections) { section in
+                        WorkoutSection(section)
+                    }
+                    AddSectionToWorkoutButton()
                 }
-                AddSectionToWorkoutButton()
             }
+            .listDefaultModifiers()
+            .onAppear { scrollToNewExerciseSection(proxy) }
+            .onChange(of: currentExercise) { scrollToNewExerciseSection(proxy) }
         }
-        .listDefaultModifiers()
         .animation(.snappy, value: workout)
         .animation(.snappy, value: showSectionOptions)
         .toolbar { Toolbar() }
@@ -278,6 +287,7 @@ struct WorkoutView: View {
                     durationEditor: $durationEditor,
                     restEditor: $restEditor
                 )
+                .id(newExerciseSectionId)
             }
         } header: {
             HStack {
