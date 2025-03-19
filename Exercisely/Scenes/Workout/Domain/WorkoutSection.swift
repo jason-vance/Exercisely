@@ -48,7 +48,11 @@ extension Workout {
         }
         
         func remove(exercise: Exercise) {
-            exercises.removeAll { $0.id == exercise.id }
+            removeAll(exercises: [exercise])
+        }
+        
+        func removeAll(exercises: [Exercise]) {
+            self.exercises.removeAll { exercises.map(\.id).contains($0.id) }
         }
         
         var sortedExercises: [Exercise] {

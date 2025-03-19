@@ -34,6 +34,8 @@ struct WorkoutView: View {
     @State private var sectionToDelete: Workout.Section? = nil
     @State private var sectionToRename: Workout.Section? = nil
     @State private var sectionRenameString: String = ""
+    
+    @State private var exerciseGroupsToDelete: [ExerciseGroup] = []
 
     @State private var showAddSection: Bool = false
     @State private var newWorkoutSectionName: String = ""
@@ -123,6 +125,16 @@ struct WorkoutView: View {
         self.sectionToRename = nil
         self.sectionRenameString = ""
         showSectionOptions = nil
+    }
+    
+    private func deleteExerciseGroups(_ offsets: IndexSet, in section: Workout.Section) {
+        for offset in offsets {
+            let group = section.groupedExercises[offset]
+            
+            for section in workout?.sortedSections ?? [] {
+                section.removeAll(exercises: group.exercises)
+            }
+        }
     }
     
     private func scrollToNewExerciseSection(_ proxy: ScrollViewProxy) {
@@ -278,6 +290,7 @@ struct WorkoutView: View {
             ForEach(section.groupedExercises) { exerciseGroup in
                 WorkoutViewExerciseRow(exerciseGroup, in: section)
             }
+            .onDelete { deleteExerciseGroups($0, in: section) }
             if currentSection == section {
                 WorkoutViewNewExerciseSection(
                     workoutSectionId: section.id,
