@@ -44,8 +44,8 @@ struct WorkoutViewExerciseRow: View {
                 SetExercise(exercises)
             case .dropSet(let exercises):
                 DropSetExercise(exercises)
-            case .superset(let exercises):
-                SupersetExercise(exercises)
+            case .superset(let exercises, let sequenceLength):
+                SupersetExercise(exercises, sequenceLength: sequenceLength)
             }
         }
         .workoutExerciseRow()
@@ -61,9 +61,33 @@ struct WorkoutViewExerciseRow: View {
         }
     }
     
-    @ViewBuilder private func SupersetExercise(_ exercises: [Workout.Exercise]) -> some View {
-        //TODO: Fill SupersetExercise out
-        Text("Some Superset")
+    @ViewBuilder private func SupersetExercise(_ exercises: [Workout.Exercise], sequenceLength: Int) -> some View {
+        NavigationLinkNoChevron {
+            ExerciseGroupDetailView(for: exerciseGroup, in: workoutSection.id)
+        } label: {
+            VStack(spacing: 0) {
+                ExerciseGroupName(exerciseGroup)
+                ForEach(0..<sequenceLength, id: \.self) { i in
+                    let exercises = Array(exercises.suffix(from: i)).every(nth: sequenceLength)
+                    let set = ExerciseGroup.set(exercises)
+                    VStack(spacing: 0) {
+                        HStack {
+                            Bullet().hidden()
+                            ExerciseGroupName(set)
+                        }
+                        HStack {
+                            Bullet().hidden()
+                            Bullet().hidden()
+                            let sets = exercises.count
+                            if sets > 1 {
+                                ExerciseSets(sets)
+                            }
+                            CommonMetrics(exercises)
+                        }
+                    }
+                }
+            }
+        }
     }
     
     @ViewBuilder private func DropSetExercise(_ exercises: [Workout.Exercise]) -> some View {
@@ -200,15 +224,17 @@ struct WorkoutViewExerciseRow: View {
     let complexSet2 = ExerciseGroup.sampleVariableDistanceAndDurationSet
     let complexSetWithRest = ExerciseGroup.sampleFakeDropSetButItHasRests
     let dropSet = ExerciseGroup.sampleDropSet
+    let superset = ExerciseGroup.sampleSuperset
 
     List {
         Section {
-            WorkoutViewExerciseRow(single, in: .sampleWorkout)
             WorkoutViewExerciseRow(simpleSet, in: .sampleWorkout)
             WorkoutViewExerciseRow(complexSet1, in: .sampleWorkout)
             WorkoutViewExerciseRow(complexSet2, in: .sampleWorkout)
             WorkoutViewExerciseRow(complexSetWithRest, in: .sampleWorkout)
             WorkoutViewExerciseRow(dropSet, in: .sampleWorkout)
+            WorkoutViewExerciseRow(superset, in: .sampleWorkout)
+            WorkoutViewExerciseRow(single, in: .sampleWorkout)
         } header: {
             SectionHeader("Workout")
         }

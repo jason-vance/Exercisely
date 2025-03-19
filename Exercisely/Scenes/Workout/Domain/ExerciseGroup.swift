@@ -10,7 +10,7 @@ import Foundation
 enum ExerciseGroup {
     case set([Workout.Exercise])
     case dropSet([Workout.Exercise])
-    case superset([Workout.Exercise])
+    case superset([Workout.Exercise], Int)
 }
 
 extension ExerciseGroup: Identifiable {
@@ -20,7 +20,7 @@ extension ExerciseGroup: Identifiable {
             return exercises.first!.id
         case .dropSet(let exercises):
             return exercises.first!.id
-        case .superset(let exercises):
+        case .superset(let exercises, _):
             return exercises.first!.id
         }
     }
@@ -31,8 +31,8 @@ extension ExerciseGroup: Identifiable {
             return exercises.first?.name.formatted() ?? "Unnamed Set"
         case .dropSet(let exercises):
             return exercises.first?.name.formatted() ?? "Unnamed Drop Set"
-        case .superset(let exercises):
-            return "Superset of \(exercises.count) Exercises"
+        case .superset( _, let sequenceLength):
+            return "Superset of \(sequenceLength) Exercises"
         }
     }
     
@@ -42,7 +42,7 @@ extension ExerciseGroup: Identifiable {
             return exercises
         case .dropSet(let exercises):
             return exercises
-        case .superset(let exercises):
+        case .superset(let exercises, _):
             return exercises
         }
     }
@@ -57,7 +57,7 @@ extension ExerciseGroup: Identifiable {
             return exercises.contains(where: { $0.id == exerciseId })
         case .dropSet(let exercises):
             return exercises.contains(where: { $0.id == exerciseId })
-        case .superset(let exercises):
+        case .superset(let exercises, _):
             return exercises.contains(where: { $0.id == exerciseId })
         }
     }
@@ -180,7 +180,7 @@ extension ExerciseGroup {
             }
             
             if repeatCount > 0 {
-                groupedExercises.append(.superset(supersetExercises))
+                groupedExercises.append(.superset(supersetExercises, supersetExercises.count / repeatCount))
                 i += supersetExercises.count
                 return true
             }
@@ -241,6 +241,6 @@ extension ExerciseGroup {
         .init(name: .samplePushUps, reps: .init(10), rest: .seconds(90))!,
         .init(name: .sampleBenchPress, weight: .pounds(135), reps: .init(5))!,
         .init(name: .samplePushUps, reps: .init(10), rest: .seconds(90))!,
-    ])
+    ], 2)
         
 }

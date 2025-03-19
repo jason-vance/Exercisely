@@ -36,6 +36,7 @@
 				Domain/Distance.swift,
 				Domain/SimpleDate.swift,
 				Domain/Weight.swift,
+				Extensions/ArrayExtensions.swift,
 				Extensions/CGFloatExtensions.swift,
 				Extensions/DateExtensions.swift,
 				Extensions/DoubleExtensions.swift,
