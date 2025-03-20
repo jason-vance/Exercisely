@@ -377,6 +377,7 @@ struct WorkoutViewNewExerciseSection: View {
         .disabled(isNameFieldDisabled)
     }
     
+    //TODO: Is there a way to share this view code (see ExerciseDetailView)
     //TODO: Add settings to change these stepper values
     @ViewBuilder private func WeightField() -> some View {
         HStack {
