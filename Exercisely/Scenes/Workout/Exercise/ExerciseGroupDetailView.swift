@@ -70,6 +70,11 @@ struct ExerciseGroupDetailView: View {
     
     private func deleteExercises(_ exercises: [Workout.Exercise]) {
         workoutSection?.removeAll(exercises: exercises)
+        
+        let justDeletedTheLastExerciseInTheGroup = workoutSection != nil && exerciseGroup == nil
+        if justDeletedTheLastExerciseInTheGroup {
+            presentation.wrappedValue.dismiss()
+        }
     }
     
     init(for exerciseGroup: ExerciseGroup, in workoutSectionId: Workout.Section.ID) {
