@@ -59,6 +59,19 @@ struct ExerciseGroupDetailView: View {
         }
     }
     
+    private func deleteExercises(_ offsets: IndexSet, in exerciseGroup: ExerciseGroup) {
+        var exercises: [Workout.Exercise] = []
+        for offset in offsets {
+            exercises += [exerciseGroup.exercises[offset]]
+        }
+        
+        deleteExercises(exercises)
+    }
+    
+    private func deleteExercises(_ exercises: [Workout.Exercise]) {
+        workoutSection?.removeAll(exercises: exercises)
+    }
+    
     init(for exerciseGroup: ExerciseGroup, in workoutSectionId: Workout.Section.ID) {
         self.exerciseId = exerciseGroup.id
         self.workoutSectionId = workoutSectionId
@@ -74,7 +87,15 @@ struct ExerciseGroupDetailView: View {
                 ForEach(exerciseGroup.exercises.indices, id: \.self) { index in
                     let exercise = exerciseGroup.exercises[index]
                     ExerciseRow(exercise, at: index)
+                        .contextMenu {
+                            Button(role: .destructive) {
+                                deleteExercises([exercise])
+                            } label: {
+                                LabeledContent("Delete") { Image(systemName: "trash") }
+                            }
+                        }
                 }
+                .onDelete { deleteExercises($0, in: exerciseGroup)}
                 if let lastExercise = exerciseGroup.exercises.last {
                     AddExerciseRow(lastExercise)
                 }
