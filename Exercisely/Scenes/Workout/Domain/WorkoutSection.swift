@@ -88,15 +88,15 @@ extension Workout.Section {
         let section = Workout.Section(name: "Workout", order: 1)
         
         section.append(exercise: .sampleTurkishGetUp)
-        section.append(exercise: .sampleShoulderTouches)
-        section.append(exercise: .sampleKettlebellShoulderPress)
-        
         section.append(exercise: .sampleTurkishGetUp)
-        section.append(exercise: .sampleShoulderTouches)
-        section.append(exercise: .sampleKettlebellShoulderPress)
-        
         section.append(exercise: .sampleTurkishGetUp)
+        
         section.append(exercise: .sampleShoulderTouches)
+        section.append(exercise: .sampleShoulderTouches)
+        section.append(exercise: .sampleShoulderTouches)
+
+        section.append(exercise: .sampleKettlebellShoulderPress)
+        section.append(exercise: .sampleKettlebellShoulderPress)
         section.append(exercise: .sampleKettlebellShoulderPress)
         
         section.append(exercise: .sampleMachineShoulderPress)

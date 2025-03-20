@@ -17,9 +17,9 @@ struct ExerciseGroupDetailView: View {
     private let exerciseId: Workout.Exercise.ID
     
     @Query private var workoutSections: [Workout.Section]
-    
     private var workoutSection: Workout.Section? {
-        workoutSections.first(where: { $0.id == workoutSectionId })
+        let rv = workoutSections.first(where: { $0.id == workoutSectionId })
+        return rv
     }
     
     private var exerciseGroup: ExerciseGroup? {
@@ -33,13 +33,29 @@ struct ExerciseGroupDetailView: View {
     @State private var repsEditor: Binding<Workout.Exercise.Reps?>? = nil
     @State private var distanceEditor: Binding<Distance?>? = nil
     @State private var durationEditor: Binding<Workout.Exercise.Duration?>? = nil
-    
+    @State private var restEditor: Binding<Workout.Exercise.Duration?>? = nil
+
     @State private var showDeleteConfirmation: Bool = false
     
     private func deleteExerciseGroup() {
         if let workoutSection = workoutSection, let exerciseGroup = exerciseGroup {
             workoutSection.removeAll(exercises: exerciseGroup.exercises)
             presentation.wrappedValue.dismiss()
+        }
+    }
+    
+    private func addSet(copying exercise: Workout.Exercise) {
+        if let newSet = Workout.Exercise(
+            name: exercise.name,
+            weight: exercise.weight,
+            reps: exercise.reps,
+            distance: exercise.distance,
+            duration: exercise.duration,
+            rest: exercise.rest
+        ) {
+            workoutSection?.insert(exercise: newSet, after: exercise)
+        } else {
+            print("Couldn't create new exercise")
         }
     }
     
@@ -53,6 +69,7 @@ struct ExerciseGroupDetailView: View {
             if let exerciseGroup = exerciseGroup  {
                 if let workoutSection = workoutSection {
                     WorkoutViewExerciseRow(exerciseGroup, in: workoutSection)
+                        .disabled(true)
                 }
                 ForEach(exerciseGroup.exercises.indices, id: \.self) { index in
                     let exercise = exerciseGroup.exercises[index]
@@ -158,54 +175,41 @@ struct ExerciseGroupDetailView: View {
     }
     
     @ViewBuilder private func ExerciseRow(_ exercise: Workout.Exercise, at index: Int) -> some View {
-        if let workoutSection = workoutSection {
-            HStack(spacing: 0) {
-                Image(systemName: "\(index + 1).circle")
-                ExerciseSetQuickAddControls(
-                    for: exercise,
-                    in: workoutSection
-                )
-            }
-            .workoutExerciseRow()
+        HStack {
+            Image(systemName: "\(index + 1).circle")
+            ExerciseRowCommonMetrics([exercise])
         }
+        .workoutExerciseRow()
     }
     
     @ViewBuilder private func AddExerciseRow(_ exercise: Workout.Exercise) -> some View {
-        if let workoutSection = workoutSection {
-            HStack(spacing: 0) {
-                Image(systemName: "circle.dotted")
-                ExerciseSetQuickAddControls(
-                    for: exercise,
-                    in: workoutSection,
-                    mode: .add
-                )
+        Button {
+            addSet(copying: exercise)
+        } label: {
+            HStack {
+                Image(systemName: "plus.circle")
+                    .foregroundStyle(Color.accentColor)
+                ExerciseRowCommonMetrics([exercise])
             }
-            .workoutExerciseRow()
         }
-    }
-    
-    @ViewBuilder private func ExerciseSetQuickAddControls(
-        for currentExercise: Workout.Exercise,
-        in section: Workout.Section,
-        mode: Exercisely.ExerciseSetQuickAddControls.Mode = .edit
-    ) -> some View {
-        Exercisely.ExerciseSetQuickAddControls(
-            for: currentExercise,
-            in: section,
-            weightEditor: $weightEditor,
-            repsEditor: $repsEditor,
-            distanceEditor: $distanceEditor,
-            durationEditor: $durationEditor
-        )
-        .mode(mode)
+        .workoutExerciseRow()
     }
 }
 
 #Preview {
     NavigationStack {
         ExerciseGroupDetailView(
-            for: .sampleVariableWeightAndRepSet,
+            for: Workout.Section.sampleWorkout.groupedExercises[0],
             in: Workout.Section.sampleWorkout.id
         )
+    }
+    .modelContainer(for: Workout.self, inMemory: true) { result in
+        switch result {
+        case .success(let modelContainer):
+            let context = modelContainer.mainContext
+            context.insert(Workout.Section.sampleWorkout)
+        case .failure(let error):
+            print("Error: \(error)")
+        }
     }
 }

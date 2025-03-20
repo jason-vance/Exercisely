@@ -48,6 +48,7 @@
 				Scenes/Workout/Domain/WorkoutExercise.swift,
 				Scenes/Workout/Domain/WorkoutFocus.swift,
 				Scenes/Workout/Domain/WorkoutSection.swift,
+				Scenes/Workout/ExerciseRowCommonMetrics.swift,
 			);
 			target = 568CCA202D2E5B3500720096 /* ExerciselyTests */;
 		};
