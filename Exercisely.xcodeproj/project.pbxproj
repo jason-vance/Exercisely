@@ -30,6 +30,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		56287B6F2D8CD5DD00A669FF /* Exceptions for "Exercisely" folder in "Exercisely" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 568CCA0E2D2E5B3400720096 /* Exercisely */;
+		};
 		568CCA482D2E5F0000720096 /* Exceptions for "Exercisely" folder in "ExerciselyTests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -58,6 +65,7 @@
 		568CCA112D2E5B3400720096 /* Exercisely */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
+				56287B6F2D8CD5DD00A669FF /* Exceptions for "Exercisely" folder in "Exercisely" target */,
 				568CCA482D2E5F0000720096 /* Exceptions for "Exercisely" folder in "ExerciselyTests" target */,
 			);
 			path = Exercisely;
@@ -427,6 +435,7 @@
 				DEVELOPMENT_TEAM = QTXW6735S3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Exercisely/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -457,6 +466,7 @@
 				DEVELOPMENT_TEAM = QTXW6735S3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Exercisely/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
