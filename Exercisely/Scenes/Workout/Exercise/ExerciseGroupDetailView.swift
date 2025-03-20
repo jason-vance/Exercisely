@@ -8,6 +8,7 @@
 import SwiftUI
 import SwiftData
 
+//TODO: MVP: Add ability to edit exercises in an ExerciseGroup
 struct ExerciseGroupDetailView: View {
     
     @Environment(\.presentationMode) var presentation
@@ -32,6 +33,15 @@ struct ExerciseGroupDetailView: View {
     @State private var repsEditor: Binding<Workout.Exercise.Reps?>? = nil
     @State private var distanceEditor: Binding<Distance?>? = nil
     @State private var durationEditor: Binding<Workout.Exercise.Duration?>? = nil
+    
+    @State private var showDeleteConfirmation: Bool = false
+    
+    private func deleteExerciseGroup() {
+        if let workoutSection = workoutSection, let exerciseGroup = exerciseGroup {
+            workoutSection.removeAll(exercises: exerciseGroup.exercises)
+            presentation.wrappedValue.dismiss()
+        }
+    }
     
     init(for exerciseGroup: ExerciseGroup, in workoutSectionId: Workout.Section.ID) {
         self.exerciseId = exerciseGroup.id
@@ -102,6 +112,13 @@ struct ExerciseGroupDetailView: View {
                 set: { durationEditor?.wrappedValue = $0 }
             ), mode: .duration)
         }
+        .confirmationDialog(
+            "Are you sure you want to delete this exercise?",
+            isPresented: $showDeleteConfirmation,
+            titleVisibility: .visible) {
+                Button("Delete It!", role: .destructive, action: deleteExerciseGroup)
+                Button("Cancel", role: .cancel) { }
+            }
     }
     
     @ToolbarContentBuilder private func Toolbar() -> some ToolbarContent {
@@ -129,7 +146,11 @@ struct ExerciseGroupDetailView: View {
     
     @ViewBuilder private func MenuButton() -> some View {
         Menu {
-            //TODO: MVP: Add delete functionality
+            Button(role: .destructive) {
+                showDeleteConfirmation = true
+            } label: {
+                LabeledContent("Delete") { Image(systemName: "trash")}
+            }
         } label: {
             Image(systemName: "ellipsis")
                 .foregroundStyle(Color.accentColor)

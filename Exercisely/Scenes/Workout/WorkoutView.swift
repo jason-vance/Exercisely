@@ -130,10 +130,13 @@ struct WorkoutView: View {
     private func deleteExerciseGroups(_ offsets: IndexSet, in section: Workout.Section) {
         for offset in offsets {
             let group = section.groupedExercises[offset]
-            
-            for section in workout?.sortedSections ?? [] {
-                section.removeAll(exercises: group.exercises)
-            }
+            deleteExerciseGroup(group)
+        }
+    }
+    
+    private func deleteExerciseGroup(_ group: ExerciseGroup) {
+        for section in workout?.sortedSections ?? [] {
+            section.removeAll(exercises: group.exercises)
         }
     }
     
@@ -289,6 +292,13 @@ struct WorkoutView: View {
         Section {
             ForEach(section.groupedExercises) { exerciseGroup in
                 WorkoutViewExerciseRow(exerciseGroup, in: section)
+                    .contextMenu {
+                        Button(role: .destructive) {
+                            deleteExerciseGroup(exerciseGroup)
+                        } label: {
+                            LabeledContent("Delete") { Image(systemName: "trash")}
+                        }
+                    }
             }
             .onDelete { deleteExerciseGroups($0, in: section) }
             if currentSection == section {
