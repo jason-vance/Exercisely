@@ -8,7 +8,6 @@
 import SwiftUI
 import SwiftData
 
-//TODO: MVP: Add warning to editing a drop set or superset
 //TODO: MVP: Add exercise name to sets if superset
 
 //TODO: Fix deleting the first exercise will dismiss the view

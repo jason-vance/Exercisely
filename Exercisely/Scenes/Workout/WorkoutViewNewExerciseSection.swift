@@ -115,6 +115,8 @@ struct WorkoutViewNewExerciseSection: View {
     @State private var duration: Workout.Exercise.Duration? = nil
     @State private var rest: Workout.Exercise.Duration? = nil
     
+    @State private var showSupersetInfo: Bool = false
+    
     // .navigationDestination cannot be inside of a lazy container.
     // So, I have to use these props to reach back outside of the
     // List on WorkoutView.
@@ -348,13 +350,27 @@ struct WorkoutViewNewExerciseSection: View {
     
     @ViewBuilder private func AddTypeMenu() -> some View {
         if let addType = addType {
-            Menu {
-                ForEach(availableAddTypeOptions, id: \.self) { addType in
-                    Button(addType.menuTitle) { self.addType = addType }
+            HStack {
+                Menu {
+                    ForEach(availableAddTypeOptions, id: \.self) { addType in
+                        Button(addType.menuTitle) { self.addType = addType }
+                    }
+                } label: {
+                    Text(addType.menuTitle)
+                        .fieldButton()
                 }
-            } label: {
-                Text(addType.menuTitle)
-                    .fieldButton()
+                Spacer()
+                let showSuperSetInfoIcon = addType == .startSuperset || addType == .continueSuperset
+                Button {
+                    showSupersetInfo = true
+                } label: {
+                    Image(systemName: "info.circle")
+                        .foregroundStyle(Color.accentColor)
+                }
+                .buttonStyle(PlainButtonStyle())
+                .opacity(showSuperSetInfoIcon ? 1 : 0)
+                .disabled(!showSuperSetInfoIcon)
+                .alert("Your exercises might look a little weird as you progress through your superset.\n\nBut, don't worry!\n\nIt will all look fine in the end.", isPresented: $showSupersetInfo) {}
             }
             .workoutExerciseRow()
         }
