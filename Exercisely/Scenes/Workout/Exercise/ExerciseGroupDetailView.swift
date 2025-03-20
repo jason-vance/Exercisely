@@ -9,6 +9,10 @@ import SwiftUI
 import SwiftData
 
 //TODO: MVP: Add ability to edit exercises in an ExerciseGroup
+
+//TODO: Fix deleting the first exercise will dismiss the view
+// ^^ The exerciseId is based on the first workout, so it won't be
+//  able to find the right exerciseGroup (see justDeletedTheLastExerciseInTheGroup)
 struct ExerciseGroupDetailView: View {
     
     @Environment(\.presentationMode) var presentation
