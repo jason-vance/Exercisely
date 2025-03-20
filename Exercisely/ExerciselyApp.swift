@@ -8,7 +8,6 @@
 import SwiftUI
 import SwiftData
 
-//TODO: MVP: Try to get everything onto one screen if possible
 @main
 struct ExerciselyApp: App {
     var sharedModelContainer: ModelContainer = {
