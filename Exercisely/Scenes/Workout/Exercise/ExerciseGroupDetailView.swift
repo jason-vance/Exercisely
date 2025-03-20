@@ -8,7 +8,8 @@
 import SwiftUI
 import SwiftData
 
-//TODO: MVP: Add ability to edit exercises in an ExerciseGroup
+//TODO: MVP: Add warning to editing a drop set or superset
+//TODO: MVP: Add exercise name to sets if superset
 
 //TODO: Fix deleting the first exercise will dismiss the view
 // ^^ The exerciseId is based on the first workout, so it won't be
@@ -80,30 +81,8 @@ struct ExerciseGroupDetailView: View {
     var body: some View {
         List {
             if let exerciseGroup = exerciseGroup  {
-                if let workoutSection = workoutSection {
-                    WorkoutViewExerciseRow(exerciseGroup, in: workoutSection)
-                        .disabled(true)
-                }
-                ForEach(exerciseGroup.exercises.indices, id: \.self) { index in
-                    var exercise = exerciseGroup.exercises[index]
-                    NavigationLinkNoChevron {
-                        ExerciseDetailView(.init(get: { exercise }, set: { exercise = $0 }))
-                    } label: {
-                        ExerciseRow(exercise, at: index)
-                            .contextMenu {
-                                Button(role: .destructive) {
-                                    deleteExercises([exercise])
-                                } label: {
-                                    LabeledContent("Delete") { Image(systemName: "trash") }
-                                }
-                            }
-                    }
-                    .workoutExerciseRow()
-                }
-                .onDelete { deleteExercises($0, in: exerciseGroup)}
-                if let lastExercise = exerciseGroup.exercises.last {
-                    AddExerciseRow(lastExercise)
-                }
+                ExerciseGroupSection(exerciseGroup)
+                SetsSection(exerciseGroup)
             }
         }
         .listDefaultModifiers()
@@ -156,6 +135,49 @@ struct ExerciseGroupDetailView: View {
         }
     }
     
+    @ViewBuilder private func ExerciseGroupSection(_ exerciseGroup: ExerciseGroup) -> some View {
+        if let workoutSection = workoutSection {
+            WorkoutViewExerciseRow(exerciseGroup, in: workoutSection)
+                .disabled(true)
+        }
+        Group {
+            switch exerciseGroup {
+            case .set:
+                EmptyView()
+            case .dropSet:
+                Text("Note: Changing the weight of a set may remove the \"Drop Set\" classification")
+            case .superset:
+                Text("Note: Removing an exercise from a superset may remove the \"Superset\" classification.")
+            }
+        }
+        .padding(.horizontal)
+        .workoutExerciseRow()
+        .font(.caption)
+    }
+    
+    @ViewBuilder private func SetsSection(_ exerciseGroup: ExerciseGroup) -> some View {
+            ForEach(exerciseGroup.exercises.indices, id: \.self) { index in
+                var exercise = exerciseGroup.exercises[index]
+                NavigationLinkNoChevron {
+                    ExerciseDetailView(.init(get: { exercise }, set: { exercise = $0 }))
+                } label: {
+                    ExerciseRow(exercise, at: index)
+                        .contextMenu {
+                            Button(role: .destructive) {
+                                deleteExercises([exercise])
+                            } label: {
+                                LabeledContent("Delete") { Image(systemName: "trash") }
+                            }
+                        }
+                }
+                .workoutExerciseRow()
+            }
+            .onDelete { deleteExercises($0, in: exerciseGroup)}
+            if let lastExercise = exerciseGroup.exercises.last {
+                AddExerciseRow(lastExercise)
+            }
+    }
+    
     @ViewBuilder private func ExerciseRow(_ exercise: Workout.Exercise, at index: Int) -> some View {
         HStack {
             Image(systemName: "\(index + 1).circle")
@@ -179,17 +201,19 @@ struct ExerciseGroupDetailView: View {
 }
 
 #Preview {
+    let section = Workout.Section.sampleWorkout
+    
     NavigationStack {
         ExerciseGroupDetailView(
-            for: Workout.Section.sampleWorkout.groupedExercises[0],
-            in: Workout.Section.sampleWorkout.id
+            for: section.groupedExercises[0],
+            in: section.id
         )
     }
     .modelContainer(for: Workout.self, inMemory: true) { result in
         switch result {
         case .success(let modelContainer):
             let context = modelContainer.mainContext
-            context.insert(Workout.Section.sampleWorkout)
+            context.insert(section)
         case .failure(let error):
             print("Error: \(error)")
         }

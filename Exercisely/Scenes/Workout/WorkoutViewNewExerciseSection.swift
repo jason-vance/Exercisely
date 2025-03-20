@@ -8,6 +8,7 @@
 import SwiftUI
 import SwiftData
 
+//TODO: Show what you did the last time you logged this exercise
 struct WorkoutViewNewExerciseSection: View {
     
     @Environment(\.modelContext) private var modelContext
