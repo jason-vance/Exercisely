@@ -8,8 +8,6 @@
 import SwiftUI
 import SwiftData
 
-//TODO: MVP: Add exercise name to sets if superset
-
 //TODO: Fix deleting the first exercise will dismiss the view
 // ^^ The exerciseId is based on the first workout, so it won't be
 //  able to find the right exerciseGroup (see justDeletedTheLastExerciseInTheGroup)
@@ -28,6 +26,13 @@ struct ExerciseGroupDetailView: View {
     
     private var exerciseGroup: ExerciseGroup? {
         workoutSection?.groupedExercises.first(where: { $0.contains(exerciseId) })
+    }
+    
+    private var showExerciseName: Bool {
+        switch exerciseGroup {
+        case .superset: return true
+        default: return false
+        }
     }
 
     @State private var showDeleteConfirmation: Bool = false
@@ -180,7 +185,17 @@ struct ExerciseGroupDetailView: View {
     @ViewBuilder private func ExerciseRow(_ exercise: Workout.Exercise, at index: Int) -> some View {
         HStack {
             Image(systemName: "\(index + 1).circle")
-            ExerciseRowCommonMetrics([exercise])
+            VStack {
+                if showExerciseName {
+                    HStack {
+                        Text(exercise.name.formatted())
+                            .multilineTextAlignment(.leading)
+                        Spacer(minLength: 0)
+                    }
+                    .font(.headline)
+                }
+                ExerciseRowCommonMetrics([exercise])
+            }
         }
         .workoutExerciseRow()
     }
