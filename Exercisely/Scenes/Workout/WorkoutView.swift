@@ -8,6 +8,7 @@
 import SwiftUI
 import SwiftData
 
+//TODO: Dismiss keyboard on scroll
 struct WorkoutView: View {
     
     private let newExerciseSectionId: String = "newExerciseSectionId"

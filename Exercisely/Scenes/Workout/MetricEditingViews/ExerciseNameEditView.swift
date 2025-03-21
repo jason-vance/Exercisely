@@ -8,6 +8,8 @@
 import SwiftUI
 import SwiftData
 
+//TODO: Save and dismiss on return key
+//TODO: Dismiss keyboard on scroll
 struct ExerciseNameEditView: View {
     
     @Environment(\.presentationMode) var presentation
