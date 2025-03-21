@@ -22,7 +22,7 @@ class Workout {
     }
 
     @Relationship(deleteRule: .cascade)
-    private var sections: [Section]
+    var sections: [Section]
     
     
     init(date: SimpleDate = .today) {

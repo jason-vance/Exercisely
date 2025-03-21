@@ -20,6 +20,9 @@ extension Workout {
         var rest: Duration?
         var order: Int
         
+        @Relationship(inverse: \Workout.Section.exercises)
+        var workoutSection: Workout.Section?
+        
         init?(
             name: Name,
             weight: Weight? = nil,

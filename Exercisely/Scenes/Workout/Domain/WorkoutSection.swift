@@ -15,8 +15,11 @@ extension Workout {
         var name: String
         var order: Int
         
+        @Relationship(inverse: \Workout.sections)
+        var workout: Workout?
+        
         @Relationship(deleteRule: .cascade)
-        private var exercises: [Exercise]
+        var exercises: [Exercise]
         
         
         init(name: String, order: Int = 0) {
