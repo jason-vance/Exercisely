@@ -42,21 +42,45 @@ extension View {
             .padding(.horizontal, .padding)
             .padding(.vertical, .padding / 2)
             .background {
-                RoundedRectangle(cornerRadius: .buttonCornerRadius, style: .continuous)
+                ZStack {
+                    RoundedRectangle(cornerRadius: .buttonCornerRadius, style: .continuous)
+                        .foregroundStyle(Color.background)
+                    RoundedRectangle(cornerRadius: .buttonCornerRadius, style: .continuous)
+                        .stroke(style: .init(lineWidth: 1))
+                        .foregroundStyle(Color.accentColor)
+                }
+            }
+    }
+    
+    func toolbarCircleButton() -> some View {
+        self
+            .font(.caption)
+            .foregroundColor(Color.text)
+            .frame(width: 24, height: 24)
+            .background {
+                Circle()
                     .stroke(style: .init(lineWidth: 1))
                     .foregroundStyle(Color.accentColor)
             }
     }
     
-    func toolbarButton() -> some View {
+    func fabButton(diminished: Bool = false) -> some View {
         self
-            .font(.caption)
+            .font(diminished ? .subheadline : .title)
             .foregroundColor(Color.text)
-            .padding(.padding / 3)
+            .frame(
+                width: diminished ? 36 : 64,
+                height: diminished ? 36 : 64
+            )
             .background {
-                Circle()
-                    .stroke(style: .init(lineWidth: 1))
-                    .foregroundStyle(Color.accentColor)
+                ZStack {
+                    Circle()
+                        .foregroundStyle(Color.background)
+                        .shadow(color: Color.text.opacity(diminished ? 0 : 0.33), radius: 4)
+                    Circle()
+                        .stroke(style: .init(lineWidth: 1))
+                        .foregroundStyle(Color.accentColor)
+                }
             }
     }
     

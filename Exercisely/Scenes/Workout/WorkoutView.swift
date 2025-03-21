@@ -8,7 +8,6 @@
 import SwiftUI
 import SwiftData
 
-//TODO: Dismiss keyboard on scroll
 struct WorkoutView: View {
     
     private let newExerciseSectionId: String = "newExerciseSectionId"
@@ -17,9 +16,11 @@ struct WorkoutView: View {
     
     @Query private var workouts: [Workout]
     
-    @FocusState private var isWorkoutFocusInFocus: Bool
     @State private var workoutFocusString: String = ""
     @State private var date: SimpleDate = .today
+    
+    @FocusState private var isWorkoutFocusInFocus: Bool
+    @State private var showNewExerciseControls: Bool = false
     
     @State private var showSectionOptions: Workout.Section? = nil {
         didSet {
@@ -103,11 +104,16 @@ struct WorkoutView: View {
         currentSection?.sortedExercises.last
     }
     
+    private var hidePlayPauseWorkoutButton: Bool {
+        isWorkoutFocusInFocus || workout?.sections.isEmpty ?? true
+    }
+    
     private func addNewSectionToWorkout() {
         withAnimation(.snappy) {
             workout?.append(section: .init(name: newWorkoutSectionName))
             showAddSection = false
             newWorkoutSectionName = ""
+            showNewExerciseControls = true
         }
     }
     
@@ -156,6 +162,8 @@ struct WorkoutView: View {
                             WorkoutSection(section)
                         }
                         AddSectionToWorkoutButton()
+                        Spacer(minLength: 64)
+                            .workoutExerciseRow()
                     }
                 }
                 .listDefaultModifiers()
@@ -163,7 +171,7 @@ struct WorkoutView: View {
                 .onAppear { scrollToNewExerciseSection(proxy) }
                 .onChange(of: currentExercise) { scrollToNewExerciseSection(proxy) }
             }
-            if let section = currentSection, !isWorkoutFocusInFocus {
+            if let section = currentSection, !isWorkoutFocusInFocus, showNewExerciseControls {
                 WorkoutViewNewExerciseSection(
                     workoutSectionId: section.id,
                     weightEditor: $weightEditor,
@@ -174,8 +182,14 @@ struct WorkoutView: View {
                 )
             }
         }
+        .overlay(alignment: .bottomLeading) {
+            PlayPauseWorkoutButton()
+                .padding()
+        }
+        .animation(.snappy, value: isWorkoutFocusInFocus)
         .animation(.snappy, value: workout)
         .animation(.snappy, value: showSectionOptions)
+        .animation(.snappy, value: showNewExerciseControls)
         .toolbar { Toolbar() }
         .toolbarTitleDisplayMode(.inline)
         .alert(
@@ -252,6 +266,61 @@ struct WorkoutView: View {
         }
     }
     
+    @ViewBuilder private func PlayPauseWorkoutButton() -> some View {
+        Button {
+            showNewExerciseControls.toggle()
+        } label: {
+            Image(systemName: showNewExerciseControls ? "pause" : "play")
+                .contentTransition(.symbolEffect(.replace, options: .speed(2)))
+                .fabButton(diminished: showNewExerciseControls)
+        }
+        .disabled(hidePlayPauseWorkoutButton)
+        .opacity(hidePlayPauseWorkoutButton ? 0 : 1)
+    }
+    
+    @ViewBuilder private func DateButton() -> some View {
+        HStack {
+            DecrementDateButton()
+            Button {
+                
+            } label: {
+                Text(date.formatted())
+                    .fieldButton()
+            }
+            .overlay{
+                DatePicker(
+                    "",
+                    selection: .init(
+                        get: { date.toDate() ?? .now },
+                        set: { date = SimpleDate(date: $0)! }
+                    ),
+                    displayedComponents: [.date]
+                )
+                .blendMode(.destinationOver) //MARK: use this extension to keep the clickable functionality
+            }
+            .padding(.horizontal)
+            IncrementDateButton()
+        }
+    }
+    
+    @ViewBuilder private func DecrementDateButton() -> some View {
+        Button {
+            date = date.adding(days: -1)
+        } label: {
+            Image(systemName: "chevron.backward")
+                .toolbarCircleButton()
+        }
+    }
+    
+    @ViewBuilder private func IncrementDateButton() -> some View {
+        Button {
+            date = date.adding(days: 1)
+        } label: {
+            Image(systemName: "chevron.forward")
+                .toolbarCircleButton()
+        }
+    }
+    
     @ViewBuilder private func WorkoutFocusSection() -> some View {
         Section {
             VStack {
@@ -280,50 +349,6 @@ struct WorkoutView: View {
             }
         } header: {
             SectionHeader("Focus")
-        }
-    }
-    
-    @ViewBuilder private func DateButton() -> some View {
-        HStack {
-            DecrementDateButton()
-            Button {
-                
-            } label: {
-                Text(date.formatted())
-                    .fieldButton()
-            }
-            .overlay{
-                DatePicker(
-                    "",
-                    selection: .init(
-                        get: { date.toDate() ?? .now },
-                        set: { date = SimpleDate(date: $0)! }
-                    ),
-                    displayedComponents: [.date]
-                )
-                .blendMode(.destinationOver) //MARK: use this extension to keep the clickable functionality
-            }
-            IncrementDateButton()
-        }
-    }
-    
-    @ViewBuilder private func DecrementDateButton() -> some View {
-        Button {
-            date = date.adding(days: -1)
-        } label: {
-            Image(systemName: "chevron.backward")
-                .toolbarButton()
-                .padding(.trailing)
-        }
-    }
-    
-    @ViewBuilder private func IncrementDateButton() -> some View {
-        Button {
-            date = date.adding(days: 1)
-        } label: {
-            Image(systemName: "chevron.forward")
-                .toolbarButton()
-                .padding(.leading)
         }
     }
     
