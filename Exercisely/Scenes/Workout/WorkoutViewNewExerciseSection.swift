@@ -9,6 +9,9 @@ import SwiftUI
 import SwiftData
 
 //TODO: Show what you did the last time you logged this exercise
+//TODO: Add a quick clear button to each metric
+//TODO: Maybe the + stepper should still be available even when the metric is nil
+//TODO: Auto change to start new exercise if name changes to something new/unexpected
 struct WorkoutViewNewExerciseSection: View {
     
     @Environment(\.modelContext) private var modelContext
@@ -106,7 +109,7 @@ struct WorkoutViewNewExerciseSection: View {
         workoutSections.first(where: { $0.id == workoutSectionId })
     }
     
-    @State private var addType: AddType? = nil
+    @State private var addType: AddType = .startNewExercise
 
     @State private var name: Workout.Exercise.Name? = nil
     @State private var weight: Weight? = nil
@@ -185,19 +188,26 @@ struct WorkoutViewNewExerciseSection: View {
                     return .continueSet
                 }
             }()
+            
+            clearFields()
             initializeFields()
         }
+    }
+    
+    private func clearFields() {
+        name = nil
+        weight = nil
+        reps = nil
+        distance = nil
+        duration = nil
+        rest = nil
     }
     
     //TODO: Make a setting for default rest value
     private func initializeFields() {
         switch addType {
         case .startNewExercise:
-            name = nil
-            weight = nil
-            reps = nil
-            distance = nil
-            duration = nil
+            name = name == previousExercise?.name ? nil : name
             rest = defaultRest // So users don't accidentally start a drop set
             break
         case .continueSet:
@@ -212,12 +222,7 @@ struct WorkoutViewNewExerciseSection: View {
 
                 break
         case .startSuperset:
-            name = nil
-            weight = nil
-            reps = nil
-            distance = nil
-            duration = nil
-            rest = nil
+            name = name == previousExercise?.name ? nil : name
             break
         case .continueSuperset:
             let setExercise = pendingSuperset?.expectedNextExercise
@@ -231,12 +236,8 @@ struct WorkoutViewNewExerciseSection: View {
             
             break
         case .startDropSet:
-            name = nil
-            weight = nil
-            reps = nil
-            distance = nil
-            duration = nil
-            rest = nil
+            name = name == previousExercise?.name ? nil : name
+            self.rest = nil
             break
         case .continueDropSet:
             let setExercise = workoutSection?.sortedExercises.last
@@ -248,8 +249,6 @@ struct WorkoutViewNewExerciseSection: View {
             self.duration = setExercise?.duration
             self.rest = nil
             
-            break
-        case .none:
             break
         }
     }
@@ -290,7 +289,7 @@ struct WorkoutViewNewExerciseSection: View {
     
     private var isNameFieldDisabled: Bool {
         switch addType {
-        case .startNewExercise, .startDropSet, .startSuperset, .none:
+        case .startNewExercise, .startDropSet, .startSuperset:
         return false
         case .continueSet, .continueDropSet:
         return true
@@ -305,30 +304,36 @@ struct WorkoutViewNewExerciseSection: View {
     
     private func onChangeAddType(old: AddType?, new: AddType?) {
         guard old != new else { return }
+        
         initializeFields()
     }
     
     private func onChangePreviousExercise(old: Workout.Exercise?, new: Workout.Exercise?) {
-        guard old !== new || addType == nil else { return }
-        guard let exerciseGroup = currentExerciseGroup, let new = new else {
+        guard old !== new else { return }
+        guard
+            let exerciseGroup = currentExerciseGroup,
+            !exerciseGroup.exercises.isEmpty,
+            let new = new
+        else {
             addType = .startNewExercise
+            clearFields()
             return
         }
-
-        if let pendingSuperset = pendingSuperset, pendingSuperset.exercises.contains(new) {
+        
+        if pendingSuperset != nil && pendingSuperset!.exercises.contains(new) {
             addType = .continueSuperset
-        } else {
-            switch exerciseGroup {
-            case .dropSet:
-                addType = .continueDropSet
-            default:
-                addType = addType == nil ? .continueSet : addType
-            }
+        }
+        
+        switch exerciseGroup {
+        case .dropSet:
+            addType = .continueDropSet
+        default:
+            break
         }
     }
     
     var body: some View {
-        Section {
+        VStack(spacing: 0) {
             AddTypeMenu()
             NameField()
             WeightField()
@@ -339,6 +344,9 @@ struct WorkoutViewNewExerciseSection: View {
             AddExerciseButton()
         }
         .foregroundStyle(Color.text)
+        .padding()
+        .overlined(lineHeight: 0.5)
+        .background(Color.background)
         .animation(.snappy, value: weight)
         .animation(.snappy, value: reps)
         .animation(.snappy, value: distance)
@@ -349,49 +357,46 @@ struct WorkoutViewNewExerciseSection: View {
     }
     
     @ViewBuilder private func AddTypeMenu() -> some View {
-        if let addType = addType {
-            HStack {
-                Menu {
-                    ForEach(availableAddTypeOptions, id: \.self) { addType in
-                        Button(addType.menuTitle) { self.addType = addType }
-                    }
-                } label: {
-                    Text(addType.menuTitle)
-                        .fieldButton()
+        HStack {
+            Menu {
+                ForEach(availableAddTypeOptions, id: \.self) { addType in
+                    Button(addType.menuTitle) { self.addType = addType }
                 }
-                Spacer()
-                let showSuperSetInfoIcon = addType == .startSuperset || addType == .continueSuperset
-                Button {
-                    showSupersetInfo = true
-                } label: {
-                    Image(systemName: "info.circle")
-                        .foregroundStyle(Color.accentColor)
-                }
-                .buttonStyle(PlainButtonStyle())
-                .opacity(showSuperSetInfoIcon ? 1 : 0)
-                .disabled(!showSuperSetInfoIcon)
-                .alert("Your exercises might look a little weird as you progress through your superset.\n\nBut, don't worry!\n\nIt will all look fine in the end.", isPresented: $showSupersetInfo) {}
+            } label: {
+                Text(addType.menuTitle)
+                    .fieldButton()
             }
-            .workoutExerciseRow()
+            Spacer()
+            let showSuperSetInfoIcon = addType == .startSuperset || addType == .continueSuperset
+            Button {
+                showSupersetInfo = true
+            } label: {
+                Image(systemName: "info.circle")
+                    .foregroundStyle(Color.accentColor)
+            }
+            .buttonStyle(PlainButtonStyle())
+            .opacity(showSuperSetInfoIcon ? 1 : 0)
+            .disabled(!showSuperSetInfoIcon)
+            .alert("Your exercises might look a little weird as you progress through your superset.\n\nBut, don't worry!\n\nIt will all look fine in the end.", isPresented: $showSupersetInfo) {}
         }
     }
     
     @ViewBuilder private func NameField() -> some View {
-        NavigationLinkNoChevron {
-            ExerciseNameEditView(name: $name)
-        } label: {
-            HStack {
-                Text("Name")
-                    .fieldLabel()
-                Spacer(minLength: 0)
+        HStack {
+            Text("Name")
+                .fieldLabel()
+            Spacer(minLength: 0)
+            NavigationLink {
+                ExerciseNameEditView(name: $name)
+            } label: {
                 Text(name?.formatted() ?? Workout.Exercise.Name.prompt.formatted())
                     .opacity(name == nil ? 0.35 : 1)
                     .fieldButton()
                     .underlined(canSaveExercise || hasName ? Color.accentColor : Color.red)
             }
+            .disabled(isNameFieldDisabled)
         }
-        .workoutExerciseRow()
-        .disabled(isNameFieldDisabled)
+        .fieldRow()
     }
     
     //TODO: Is there a way to share this view code (see ExerciseDetailView)
@@ -403,16 +408,18 @@ struct WorkoutViewNewExerciseSection: View {
             Spacer()
             if weight != nil {
                 HStack {
-                    Button("-\(weightStepValue.formatted())") {
+                    Button {
                         weight = weight?.subtracting(weightStepValue)
+                    } label: {
+                        Text("-\(weightStepValue.formatted())")
+                            .buttonDefaultModifiers()
                     }
-                    .buttonDefaultModifiers()
-                    .buttonStyle(PlainButtonStyle())
-                    Button("+\(weightStepValue.formatted())") {
+                    Button {
                         weight = weight?.adding(weightStepValue)
+                    } label: {
+                        Text("+\(weightStepValue.formatted())")
+                            .buttonDefaultModifiers()
                     }
-                    .buttonDefaultModifiers()
-                    .buttonStyle(PlainButtonStyle())
                 }
             }
             Button {
@@ -421,9 +428,8 @@ struct WorkoutViewNewExerciseSection: View {
                 Text(weight?.formatted() ?? "N/A")
                     .fieldButton()
             }
-            .buttonStyle(PlainButtonStyle())
         }
-        .workoutExerciseRow()
+        .fieldRow()
     }
     
     @ViewBuilder private func RepsField() -> some View {
@@ -433,16 +439,18 @@ struct WorkoutViewNewExerciseSection: View {
             Spacer()
             if reps != nil {
                 HStack {
-                    Button("-\(repsStepValue.formatted())") {
+                    Button {
                         reps = reps?.subtracting(repsStepValue)
+                    } label: {
+                        Text("-\(repsStepValue.formatted())")
+                            .buttonDefaultModifiers()
                     }
-                    .buttonDefaultModifiers()
-                    .buttonStyle(PlainButtonStyle())
-                    Button("+\(repsStepValue.formatted())") {
+                    Button {
                         reps = reps?.adding(repsStepValue)
+                    } label: {
+                        Text("+\(repsStepValue.formatted())")
+                            .buttonDefaultModifiers()
                     }
-                    .buttonDefaultModifiers()
-                    .buttonStyle(PlainButtonStyle())
                 }
             }
             Button {
@@ -452,9 +460,8 @@ struct WorkoutViewNewExerciseSection: View {
                     .fieldButton()
                     .underlined(canSaveExercise || hasMetrics ? Color.accentColor : Color.red)
             }
-            .buttonStyle(PlainButtonStyle())
         }
-        .workoutExerciseRow()
+        .fieldRow()
     }
     
     @ViewBuilder private func DistanceField() -> some View {
@@ -464,16 +471,18 @@ struct WorkoutViewNewExerciseSection: View {
             Spacer()
             if distance != nil {
                 HStack {
-                    Button("-\(distanceStepValue.formatted())") {
+                    Button {
                         distance = distance?.subtracting(distanceStepValue)
+                    } label: {
+                        Text("-\(distanceStepValue.formatted())")
+                            .buttonDefaultModifiers()
                     }
-                    .buttonDefaultModifiers()
-                    .buttonStyle(PlainButtonStyle())
-                    Button("+\(distanceStepValue.formatted())") {
+                    Button {
                         distance = distance?.adding(distanceStepValue)
+                    } label: {
+                        Text("+\(distanceStepValue.formatted())")
+                            .buttonDefaultModifiers()
                     }
-                    .buttonDefaultModifiers()
-                    .buttonStyle(PlainButtonStyle())
                 }
             }
             Button {
@@ -483,9 +492,8 @@ struct WorkoutViewNewExerciseSection: View {
                     .fieldButton()
                     .underlined(canSaveExercise || hasMetrics ? Color.accentColor : Color.red)
             }
-            .buttonStyle(PlainButtonStyle())
         }
-        .workoutExerciseRow()
+        .fieldRow()
     }
     
     @ViewBuilder private func DurationField() -> some View {
@@ -495,16 +503,18 @@ struct WorkoutViewNewExerciseSection: View {
             Spacer()
             if duration != nil {
                 HStack {
-                    Button("-\(durationStepValue.formatted())") {
+                    Button {
                         duration = duration?.subtracting(durationStepValue)
+                    } label: {
+                        Text("-\(durationStepValue.formatted())")
+                            .buttonDefaultModifiers()
                     }
-                    .buttonDefaultModifiers()
-                    .buttonStyle(PlainButtonStyle())
-                    Button("+\(durationStepValue.formatted())") {
+                    Button {
                         duration = duration?.adding(durationStepValue)
+                    } label: {
+                        Text("+\(durationStepValue.formatted())")
+                            .buttonDefaultModifiers()
                     }
-                    .buttonDefaultModifiers()
-                    .buttonStyle(PlainButtonStyle())
                 }
             }
             Button {
@@ -514,9 +524,8 @@ struct WorkoutViewNewExerciseSection: View {
                     .fieldButton()
                     .underlined(canSaveExercise || hasMetrics ? Color.accentColor : Color.red)
             }
-            .buttonStyle(PlainButtonStyle())
         }
-        .workoutExerciseRow()
+        .fieldRow()
     }
     
     //TODO: Should I add tooltips to each of these fields to explain exactly what they are
@@ -528,16 +537,18 @@ struct WorkoutViewNewExerciseSection: View {
             Spacer()
             if rest != nil {
                 HStack {
-                    Button("-\(restStepValue.formatted())") {
+                    Button {
                         rest = rest?.subtracting(restStepValue)
+                    } label: {
+                        Text("-\(restStepValue.formatted())")
+                            .buttonDefaultModifiers()
                     }
-                    .buttonDefaultModifiers()
-                    .buttonStyle(PlainButtonStyle())
-                    Button("+\(restStepValue.formatted())") {
+                    Button {
                         rest = rest?.adding(restStepValue)
+                    } label: {
+                        Text("+\(restStepValue.formatted())")
+                            .buttonDefaultModifiers()
                     }
-                    .buttonDefaultModifiers()
-                    .buttonStyle(PlainButtonStyle())
                 }
             }
             Button {
@@ -547,14 +558,13 @@ struct WorkoutViewNewExerciseSection: View {
                     .fieldButton()
                     .underlined()
             }
-            .buttonStyle(PlainButtonStyle())
             .disabled(isRestFieldDisabled)
         }
-        .workoutExerciseRow()
+        .fieldRow()
     }
     
     @ViewBuilder private func AddExerciseButton() -> some View {
-        if let addType = addType, let workoutSection = workoutSection {
+        if let workoutSection = workoutSection {
             HStack {
                 Spacer()
                 Button {
@@ -567,12 +577,17 @@ struct WorkoutViewNewExerciseSection: View {
                 .disabled(exerciseToSave == nil)
                 .animation(.snappy, value: addType)
             }
-            .workoutExerciseRow()
+            .fieldRow()
         }
     }
 }
 
 fileprivate extension View {
+    func fieldRow() -> some View {
+        self
+            .frame(minHeight: 44)
+    }
+    
     func fieldLabel() -> some View {
         self
             .font(.subheadline)
@@ -581,34 +596,31 @@ fileprivate extension View {
 
 #Preview {
     NavigationStack {
-        List {
-            Section {
-                WorkoutViewNewExerciseSection(
-                    workoutSectionId: Workout.Section.sampleWorkout.id,
-                    weightEditor: .init(
-                        get: { .init(get: { nil }, set: { _ in })},
-                        set: { _ in }
-                    ),
-                    repsEditor: .init(
-                        get: { .init(get: { nil }, set: { _ in })},
-                        set: { _ in }
-                    ),
-                    distanceEditor: .init(
-                        get: { .init(get: { nil }, set: { _ in })},
-                        set: { _ in }
-                    ),
-                    durationEditor: .init(
-                        get: { .init(get: { nil }, set: { _ in })},
-                        set: { _ in }
-                    ),
-                    restEditor: .init(
-                        get: { .init(get: { nil }, set: { _ in })},
-                        set: { _ in }
-                    )
-                
+        VStack {
+            Spacer()
+            WorkoutViewNewExerciseSection(
+                workoutSectionId: Workout.Section.sampleWorkout.id,
+                weightEditor: .init(
+                    get: { .init(get: { nil }, set: { _ in })},
+                    set: { _ in }
+                ),
+                repsEditor: .init(
+                    get: { .init(get: { nil }, set: { _ in })},
+                    set: { _ in }
+                ),
+                distanceEditor: .init(
+                    get: { .init(get: { nil }, set: { _ in })},
+                    set: { _ in }
+                ),
+                durationEditor: .init(
+                    get: { .init(get: { nil }, set: { _ in })},
+                    set: { _ in }
+                ),
+                restEditor: .init(
+                    get: { .init(get: { nil }, set: { _ in })},
+                    set: { _ in }
                 )
-            }
+            )
         }
-        .listDefaultModifiers()
     }
 }

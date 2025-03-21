@@ -10,6 +10,7 @@ import SwiftData
 
 //TODO: Save and dismiss on return key
 //TODO: Dismiss keyboard on scroll
+//TODO: Put name field above list instead of inside it
 struct ExerciseNameEditView: View {
     
     @Environment(\.presentationMode) var presentation

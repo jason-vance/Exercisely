@@ -140,23 +140,37 @@ struct WorkoutView: View {
     }
     
     private func scrollToNewExerciseSection(_ proxy: ScrollViewProxy) {
-        proxy.scrollTo(newExerciseSectionId, anchor: .top)
+        withAnimation(.snappy) {
+            proxy.scrollTo(newExerciseSectionId, anchor: .top)
+        }
     }
     
     var body: some View {
-        ScrollViewReader { proxy in
-            List {
-                if let workout = workout {
-                    WorkoutFocusSection()
-                    ForEach(workout.sortedSections) { section in
-                        WorkoutSection(section)
+        VStack(spacing: 0) {
+            ScrollViewReader { proxy in
+                List {
+                    if let workout = workout {
+                        WorkoutFocusSection()
+                        ForEach(workout.sortedSections) { section in
+                            WorkoutSection(section)
+                        }
+                        AddSectionToWorkoutButton()
                     }
-                    AddSectionToWorkoutButton()
                 }
+                .listDefaultModifiers()
+                .onAppear { scrollToNewExerciseSection(proxy) }
+                .onChange(of: currentExercise) { scrollToNewExerciseSection(proxy) }
             }
-            .listDefaultModifiers()
-            .onAppear { scrollToNewExerciseSection(proxy) }
-            .onChange(of: currentExercise) { scrollToNewExerciseSection(proxy) }
+            if let section = currentSection {
+                WorkoutViewNewExerciseSection(
+                    workoutSectionId: section.id,
+                    weightEditor: $weightEditor,
+                    repsEditor: $repsEditor,
+                    distanceEditor: $distanceEditor,
+                    durationEditor: $durationEditor,
+                    restEditor: $restEditor
+                )
+            }
         }
         .animation(.snappy, value: workout)
         .animation(.snappy, value: showSectionOptions)
@@ -300,17 +314,6 @@ struct WorkoutView: View {
                     }
             }
             .onDelete { deleteExerciseGroups($0, in: section) }
-            if currentSection == section {
-                WorkoutViewNewExerciseSection(
-                    workoutSectionId: section.id,
-                    weightEditor: $weightEditor,
-                    repsEditor: $repsEditor,
-                    distanceEditor: $distanceEditor,
-                    durationEditor: $durationEditor,
-                    restEditor: $restEditor
-                )
-                .id(newExerciseSectionId)
-            }
         } header: {
             HStack {
                 Button {
@@ -338,7 +341,6 @@ struct WorkoutView: View {
     
     @ViewBuilder private func AddSectionToWorkoutButton() -> some View {
         Section {
-        } header: {
             Button {
                 showAddSection = true
             } label: {
@@ -346,6 +348,8 @@ struct WorkoutView: View {
             }
             .foregroundStyle(Color.accent)
             .workoutSectionHeader()
+            .workoutExerciseRow()
+            .id(newExerciseSectionId)
         }
     }
 }

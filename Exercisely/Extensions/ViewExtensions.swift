@@ -19,11 +19,11 @@ extension View {
             }
     }
     
-    func overlined(_ color: Color = Color.accentColor) -> some View {
+    func overlined(_ color: Color = Color.accentColor, lineHeight: CGFloat = 1) -> some View {
         self
             .overlay(alignment: .top) {
                 Rectangle()
-                    .frame(height: 1)
+                    .frame(height: lineHeight)
                     .foregroundStyle(color)
             }
     }
@@ -64,6 +64,7 @@ extension View {
     func workoutSectionHeader() -> some View {
         self
             .font(.title3)
+            .textCase(.uppercase)
             .multilineTextAlignment(.leading)
             .foregroundStyle(Color.text)
     }
