@@ -77,6 +77,21 @@ final class SimpleDate {
         let calendar = Calendar.current
         return calendar.date(from: components)
     }
+    
+    func adding(days value: Int) -> SimpleDate {
+        let date = self.toDate()!
+        return .init(date: Calendar.current.date(byAdding: .day, value: value, to: date)!)!
+    }
+    
+    func adding(months value: Int) -> SimpleDate {
+        let date = self.toDate()!
+        return .init(date: Calendar.current.date(byAdding: .month, value: value, to: date)!)!
+    }
+    
+    func adding(years value: Int) -> SimpleDate {
+        let date = self.toDate()!
+        return .init(date: Calendar.current.date(byAdding: .year, value: value, to: date)!)!
+    }
 }
 
 extension SimpleDate {

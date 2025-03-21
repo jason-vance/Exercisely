@@ -62,4 +62,26 @@ struct SimpleDateTests {
         #expect(SimpleDate.endOfYear(containing: SimpleDate(rawValue: 20241101)!) == SimpleDate(rawValue: 20241231))
         #expect(SimpleDate.endOfYear(containing: SimpleDate(rawValue: 20241231)!) == SimpleDate(rawValue: 20241231))
     }
+    
+    @Test
+    func addingWorksCorrectly() {
+        let endOf2024 = SimpleDate(year: 2024, month: 12, day: 31)!
+        let startOf2025 = endOf2024.adding(days: 1)
+        let endOfJan2025 = endOf2024.adding(months: 1)
+        let endOf2025 = endOf2024.adding(years: 1)
+        
+        let newYearsEveEve2024 = endOf2024.adding(days: -1)
+        let endOfNov2024 = endOf2024.adding(months: -1)
+        let endOf2023 = endOf2024.adding(years: -1)
+        
+        #expect(startOf2025 == SimpleDate(year: 2025, month: 1, day: 1))
+        #expect(endOfJan2025 == SimpleDate(year: 2025, month: 1, day: 31))
+        #expect(endOf2025 == SimpleDate(year: 2025, month: 12, day: 31))
+        
+        #expect(newYearsEveEve2024 == SimpleDate(year: 2024, month: 12, day: 30))
+        #expect(endOfNov2024 == SimpleDate(year: 2024, month: 11, day: 30))
+        #expect(endOf2023 == SimpleDate(year: 2023, month: 12, day: 31))
+
+        
+    }
 }

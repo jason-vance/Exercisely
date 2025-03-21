@@ -48,6 +48,18 @@ extension View {
             }
     }
     
+    func toolbarButton() -> some View {
+        self
+            .font(.caption)
+            .foregroundColor(Color.text)
+            .padding(.padding / 3)
+            .background {
+                Circle()
+                    .stroke(style: .init(lineWidth: 1))
+                    .foregroundStyle(Color.accentColor)
+            }
+    }
+    
     func fieldButton() -> some View {
         self
             .foregroundStyle(Color.text)

@@ -17,6 +17,7 @@ struct WorkoutView: View {
     
     @Query private var workouts: [Workout]
     
+    @FocusState private var isWorkoutFocusInFocus: Bool
     @State private var workoutFocusString: String = ""
     @State private var date: SimpleDate = .today
     
@@ -158,10 +159,11 @@ struct WorkoutView: View {
                     }
                 }
                 .listDefaultModifiers()
+                .scrollDismissesKeyboard(.automatic)
                 .onAppear { scrollToNewExerciseSection(proxy) }
                 .onChange(of: currentExercise) { scrollToNewExerciseSection(proxy) }
             }
-            if let section = currentSection {
+            if let section = currentSection, !isWorkoutFocusInFocus {
                 WorkoutViewNewExerciseSection(
                     workoutSectionId: section.id,
                     weightEditor: $weightEditor,
@@ -245,7 +247,7 @@ struct WorkoutView: View {
     }
     
     @ToolbarContentBuilder private func Toolbar() -> some ToolbarContent {
-        ToolbarItem(placement: .primaryAction) {
+        ToolbarItem(placement: .principal) {
             DateButton()
         }
     }
@@ -257,6 +259,7 @@ struct WorkoutView: View {
                     text: $workoutFocusString,
                     label: { Text(Workout.Focus.prompt.formatted()) }
                 )
+                .focused($isWorkoutFocusInFocus)
                 .submitLabel(.done)
                 .fieldButton()
                 
@@ -281,22 +284,46 @@ struct WorkoutView: View {
     }
     
     @ViewBuilder private func DateButton() -> some View {
-        Button {
-            
-        } label: {
-            Text(date.formatted())
-                .fieldButton()
+        HStack {
+            DecrementDateButton()
+            Button {
+                
+            } label: {
+                Text(date.formatted())
+                    .fieldButton()
+            }
+            .overlay{
+                DatePicker(
+                    "",
+                    selection: .init(
+                        get: { date.toDate() ?? .now },
+                        set: { date = SimpleDate(date: $0)! }
+                    ),
+                    displayedComponents: [.date]
+                )
+                .blendMode(.destinationOver) //MARK: use this extension to keep the clickable functionality
+            }
+            IncrementDateButton()
         }
-        .overlay{
-            DatePicker(
-                "",
-                selection: .init(
-                    get: { date.toDate() ?? .now },
-                    set: { date = SimpleDate(date: $0)! }
-                ),
-                displayedComponents: [.date]
-            )
-            .blendMode(.destinationOver) //MARK: use this extension to keep the clickable functionality
+    }
+    
+    @ViewBuilder private func DecrementDateButton() -> some View {
+        Button {
+            date = date.adding(days: -1)
+        } label: {
+            Image(systemName: "chevron.backward")
+                .toolbarButton()
+                .padding(.trailing)
+        }
+    }
+    
+    @ViewBuilder private func IncrementDateButton() -> some View {
+        Button {
+            date = date.adding(days: 1)
+        } label: {
+            Image(systemName: "chevron.forward")
+                .toolbarButton()
+                .padding(.leading)
         }
     }
     
