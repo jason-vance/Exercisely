@@ -162,8 +162,10 @@ struct WorkoutView: View {
                             WorkoutSection(section)
                         }
                         AddSectionToWorkoutButton()
-                        Spacer(minLength: 64)
-                            .workoutExerciseRow()
+                        if !showNewExerciseControls {
+                            Spacer(minLength: 64)
+                                .workoutExerciseRow()
+                        }
                     }
                 }
                 .listDefaultModifiers()
