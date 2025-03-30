@@ -8,10 +8,9 @@
 import SwiftUI
 import SwiftData
 
-//TODO: Dismiss keyboard on scroll
 //TODO: Put name field above list instead of inside it
-//TODO: Selecting a suggestion should dismiss this view
 //TODO: Autocapitalize words
+//TODO: Dismiss keyboard on scroll
 struct ExerciseNameEditView: View {
     
     @Environment(\.presentationMode) var presentation
@@ -139,6 +138,7 @@ struct ExerciseNameEditView: View {
     @ViewBuilder private func Suggestion(_ suggestion: Workout.Exercise.Name) -> some View {
         Button {
             nameString = suggestion.formatted()
+            saveExerciseName()
         } label: {
             Text(suggestion.formatted())
                 .buttonDefaultModifiers()
