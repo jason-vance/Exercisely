@@ -43,6 +43,12 @@ class Workout {
     var sortedSections: [Section] {
         sections.sorted(by: { $0.order < $1.order })
     }
+    
+    func getExercises(named name: Exercise.Name) -> [Exercise] {
+        sortedSections.reduce(into: []) { exercises, section in
+            exercises.append(contentsOf: section.getExercises(named: name))
+        }
+    }
 }
 
 extension Workout {

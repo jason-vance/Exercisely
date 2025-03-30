@@ -65,6 +65,10 @@ extension Workout {
         var groupedExercises: [ExerciseGroup] {
             ExerciseGroup.group(exercises: sortedExercises)
         }
+        
+        func getExercises(named name: Exercise.Name) -> [Exercise] {
+            exercises.filter { $0.name == name }
+        }
     }
 }
 

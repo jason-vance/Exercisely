@@ -8,7 +8,6 @@
 import SwiftUI
 import SwiftData
 
-//TODO: Show what you did the last time you logged this exercise
 //TODO: Add a quick clear button to each metric
 //TODO: Maybe the + stepper should still be available even when the metric is nil
 //TODO: Auto change to start new exercise if name changes to something new/unexpected
@@ -109,6 +108,29 @@ struct WorkoutViewNewExerciseSection: View {
         workoutSections.first(where: { $0.id == workoutSectionId })
     }
     
+    @Query private var workouts: [Workout]
+    
+    private var previousExerciseWithSameName: Workout.Exercise? {
+        let startNewAddTypes: [AddType] = [.startNewExercise, .startDropSet, .startSuperset]
+        guard startNewAddTypes.contains(addType) else {
+            return nil
+        }
+        
+        guard let name = name else {
+            return nil
+        }
+        
+        guard let workout = (workouts
+            .sorted { $0.date > $1.date }
+            .first(where: { $0.getExercises(named: name).count > 0 }))
+        else {
+            return nil
+        }
+           
+        // I'm assuming the first set is the one that we're interested in
+        return workout.getExercises(named: name).first
+    }
+    
     @State private var addType: AddType = .startNewExercise
 
     @State private var name: Workout.Exercise.Name? = nil
@@ -207,7 +229,7 @@ struct WorkoutViewNewExerciseSection: View {
     private func initializeFields() {
         switch addType {
         case .startNewExercise:
-            name = name == previousExercise?.name ? nil : name
+            name = name == previousExerciseFromThisWorkout?.name ? nil : name
             rest = defaultRest // So users don't accidentally start a drop set
             break
         case .continueSet:
@@ -222,7 +244,7 @@ struct WorkoutViewNewExerciseSection: View {
 
                 break
         case .startSuperset:
-            name = name == previousExercise?.name ? nil : name
+            name = name == previousExerciseFromThisWorkout?.name ? nil : name
             break
         case .continueSuperset:
             let setExercise = pendingSuperset?.expectedNextExercise
@@ -236,7 +258,7 @@ struct WorkoutViewNewExerciseSection: View {
             
             break
         case .startDropSet:
-            name = name == previousExercise?.name ? nil : name
+            name = name == previousExerciseFromThisWorkout?.name ? nil : name
             self.rest = nil
             break
         case .continueDropSet:
@@ -253,7 +275,7 @@ struct WorkoutViewNewExerciseSection: View {
         }
     }
     
-    private var previousExercise: Workout.Exercise? {
+    private var previousExerciseFromThisWorkout: Workout.Exercise? {
         workoutSection?.sortedExercises.last
     }
     
@@ -353,7 +375,7 @@ struct WorkoutViewNewExerciseSection: View {
         .animation(.snappy, value: duration)
         .animation(.snappy, value: rest)
         .onChange(of: addType, initial: true) { onChangeAddType(old: $0, new: $1) }
-        .onChange(of: previousExercise, initial: true) { onChangePreviousExercise(old: $0, new: $1) }
+        .onChange(of: previousExerciseFromThisWorkout, initial: true) { onChangePreviousExercise(old: $0, new: $1) }
     }
     
     @ViewBuilder private func AddTypeMenu() -> some View {
@@ -403,8 +425,21 @@ struct WorkoutViewNewExerciseSection: View {
     //TODO: Add settings to change these stepper values
     @ViewBuilder private func WeightField() -> some View {
         HStack {
-            Text("Weight")
-                .fieldLabel()
+            VStack(spacing: 0) {
+                HStack {
+                    Text("Weight")
+                        .fieldLabel()
+                    Spacer()
+                }
+                if let previous = previousExerciseWithSameName?.weight {
+                    HStack {
+                        Text("(prev: \(previous.formatted()))")
+                            .previousExerciseHint()
+                        Spacer()
+                    }
+                    .onAppear { weight = previous }
+                }
+            }
             Spacer()
             if weight != nil {
                 HStack {
@@ -434,8 +469,21 @@ struct WorkoutViewNewExerciseSection: View {
     
     @ViewBuilder private func RepsField() -> some View {
         HStack {
-            Text("Reps")
-                .fieldLabel()
+            VStack(spacing: 0) {
+                HStack {
+                    Text("Reps")
+                        .fieldLabel()
+                    Spacer()
+                }
+                if let previous = previousExerciseWithSameName?.reps {
+                    HStack {
+                        Text("(prev: \(previous.formatted()))")
+                            .previousExerciseHint()
+                        Spacer()
+                    }
+                    .onAppear { reps = previous }
+                }
+            }
             Spacer()
             if reps != nil {
                 HStack {
@@ -466,8 +514,21 @@ struct WorkoutViewNewExerciseSection: View {
     
     @ViewBuilder private func DistanceField() -> some View {
         HStack {
-            Text("Distance")
-                .fieldLabel()
+            VStack(spacing: 0) {
+                HStack {
+                    Text("Distance")
+                        .fieldLabel()
+                    Spacer()
+                }
+                if let previous = previousExerciseWithSameName?.distance {
+                    HStack {
+                        Text("(prev: \(previous.formatted()))")
+                            .previousExerciseHint()
+                        Spacer()
+                    }
+                    .onAppear { distance = previous }
+                }
+            }
             Spacer()
             if distance != nil {
                 HStack {
@@ -498,8 +559,21 @@ struct WorkoutViewNewExerciseSection: View {
     
     @ViewBuilder private func DurationField() -> some View {
         HStack {
-            Text("Duration")
-                .fieldLabel()
+            VStack(spacing: 0) {
+                HStack {
+                    Text("Duration")
+                        .fieldLabel()
+                    Spacer()
+                }
+                if let previous = previousExerciseWithSameName?.duration {
+                    HStack {
+                        Text("(prev: \(previous.formatted()))")
+                            .previousExerciseHint()
+                        Spacer()
+                    }
+                    .onAppear { duration = previous }
+                }
+            }
             Spacer()
             if duration != nil {
                 HStack {
@@ -532,8 +606,21 @@ struct WorkoutViewNewExerciseSection: View {
     // ^^ In case its confusing to users
     @ViewBuilder private func RestField() -> some View {
         HStack {
-            Text("Rest")
-                .fieldLabel()
+            VStack(spacing: 0) {
+                HStack {
+                    Text("Rest")
+                        .fieldLabel()
+                    Spacer()
+                }
+                if let previous = previousExerciseWithSameName?.rest {
+                    HStack {
+                        Text("(prev: \(previous.formatted()))")
+                            .previousExerciseHint()
+                        Spacer()
+                    }
+                    .onAppear { rest = previous }
+                }
+            }
             Spacer()
             if rest != nil {
                 HStack {
@@ -591,6 +678,13 @@ fileprivate extension View {
     func fieldLabel() -> some View {
         self
             .font(.subheadline)
+    }
+    
+    func previousExerciseHint() -> some View {
+        self
+            .font(.footnote)
+            .bold()
+            .opacity(0.5)
     }
 }
 
