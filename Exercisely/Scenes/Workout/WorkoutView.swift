@@ -326,6 +326,7 @@ struct WorkoutView: View {
     @ViewBuilder private func WorkoutFocusSection() -> some View {
         Section {
             VStack {
+                //TODO: Autocapitalize words
                 TextField(
                     text: $workoutFocusString,
                     label: { Text(Workout.Focus.prompt.formatted()) }
