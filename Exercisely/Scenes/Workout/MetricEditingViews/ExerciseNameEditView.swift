@@ -8,9 +8,8 @@
 import SwiftUI
 import SwiftData
 
-//TODO: Put name field above list instead of inside it
-//TODO: Autocapitalize words
-//TODO: Dismiss keyboard on scroll
+//TODO: (?)Put name field above list instead of inside it
+//TODO: (?)Dismiss keyboard on scroll
 struct ExerciseNameEditView: View {
     
     @Environment(\.presentationMode) var presentation
@@ -106,6 +105,7 @@ struct ExerciseNameEditView: View {
                         label: { Text(Workout.Exercise.Name.prompt.formatted()) }
                     )
                     .submitLabel(.done)
+                    .autocapitalization(.words)
                     .onSubmit { saveExerciseName() }
                     .focused($focus)
                     .fieldButton()
