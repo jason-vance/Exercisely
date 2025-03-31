@@ -10,7 +10,6 @@ import SwiftData
 
 //TODO: Add a quick clear button to each metric
 //TODO: Auto change to start new exercise if name changes to something new/unexpected
-//TODO: Make sure that previous exercise metrics come from before the current date
 struct WorkoutViewNewExerciseSection: View {
     
     @Environment(\.modelContext) private var modelContext
@@ -110,11 +109,12 @@ struct WorkoutViewNewExerciseSection: View {
             return nil
         }
         
-        guard let name = name else {
+        guard let name = name, let currentWorkout = self.workoutSection?.workout else {
             return nil
         }
         
         guard let workout = (workouts
+            .filter { $0.date < currentWorkout.date }
             .sorted { $0.date > $1.date }
             .first(where: { $0.getExercises(named: name).count > 0 }))
         else {
