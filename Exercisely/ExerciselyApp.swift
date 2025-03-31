@@ -32,9 +32,9 @@ struct ExerciselyApp: App {
                         WorkoutView()
                     }
                 }
-                Tab("Settings", systemImage: "gearshape") {
+                Tab("Profile", systemImage: "person.crop.circle") {
                     NavigationStack {
-                        SettingsView()
+                        ProfileView()
                     }
                 }
             }

@@ -1,5 +1,5 @@
 //
-//  SettingsView.swift
+//  ProfileView.swift
 //  Exercisely
 //
 //  Created by Jason Vance on 3/30/25.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SettingsView: View {
+struct ProfileView: View {
     
     @AppStorage("UserSex") var userSex: UserSex = .unknown
     @AppStorage("birthdateRawValue") var birthdateRawValue: Int = -1
@@ -41,7 +41,7 @@ struct SettingsView: View {
     
     @ToolbarContentBuilder private func Toolbar() -> some ToolbarContent {
         ToolbarItem(placement: .principal) {
-            Text("Settings")
+            Text("Profile")
                 .bold(true)
                 .foregroundStyle(Color.text)
         }
@@ -99,6 +99,6 @@ struct SettingsView: View {
 
 #Preview {
     NavigationStack {
-        SettingsView()
+        ProfileView()
     }
 }
