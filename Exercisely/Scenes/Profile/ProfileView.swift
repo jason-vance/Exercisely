@@ -7,7 +7,11 @@
 
 import SwiftUI
 
-//TODO: Make setting for default rest value
+//TODO: Make setting for default distance unit
+//TODO: Make setting for default weight unit
+//TODO: Make setting for default duration unit
+//TODO: Make setting for default rest unit
+//TODO: Make setting for default rest (the rest value that's used on 'add a set')
 struct ProfileView: View {
     
     @StateObject private var userSettings = UserSettings()

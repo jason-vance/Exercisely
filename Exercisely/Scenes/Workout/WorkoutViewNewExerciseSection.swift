@@ -9,7 +9,6 @@ import SwiftUI
 import SwiftData
 
 //TODO: Add a quick clear button to each metric
-//TODO: Maybe the + stepper should still be available even when the metric is nil
 //TODO: Auto change to start new exercise if name changes to something new/unexpected
 struct WorkoutViewNewExerciseSection: View {
     
@@ -436,20 +435,18 @@ struct WorkoutViewNewExerciseSection: View {
             }
             Spacer()
             if weight != nil {
-                HStack {
-                    Button {
-                        weight = weight?.subtracting(userSettings.weightStepperValue)
-                    } label: {
-                        Text("-\(userSettings.weightStepperValue.formatted())")
-                            .buttonDefaultModifiers()
-                    }
-                    Button {
-                        weight = weight?.adding(userSettings.weightStepperValue)
-                    } label: {
-                        Text("+\(userSettings.weightStepperValue.formatted())")
-                            .buttonDefaultModifiers()
-                    }
+                Button {
+                    weight = weight?.subtracting(userSettings.weightStepperValue)
+                } label: {
+                    Text("-\(userSettings.weightStepperValue.formatted())")
+                        .buttonDefaultModifiers()
                 }
+            }
+            Button {
+                weight = weight?.adding(userSettings.weightStepperValue) ?? .init(value: userSettings.weightStepperValue, unit: .pounds)
+            } label: {
+                Text("+\(userSettings.weightStepperValue.formatted())")
+                    .buttonDefaultModifiers()
             }
             Button {
                 weightEditor = $weight
@@ -480,20 +477,18 @@ struct WorkoutViewNewExerciseSection: View {
             }
             Spacer()
             if reps != nil {
-                HStack {
-                    Button {
-                        reps = reps?.subtracting(userSettings.repsStepperValue)
-                    } label: {
-                        Text("-\(userSettings.repsStepperValue.formatted())")
-                            .buttonDefaultModifiers()
-                    }
-                    Button {
-                        reps = reps?.adding(userSettings.repsStepperValue)
-                    } label: {
-                        Text("+\(userSettings.repsStepperValue.formatted())")
-                            .buttonDefaultModifiers()
-                    }
+                Button {
+                    reps = reps?.subtracting(userSettings.repsStepperValue)
+                } label: {
+                    Text("-\(userSettings.repsStepperValue.formatted())")
+                        .buttonDefaultModifiers()
                 }
+            }
+            Button {
+                reps = reps?.adding(userSettings.repsStepperValue) ?? .init(userSettings.repsStepperValue)
+            } label: {
+                Text("+\(userSettings.repsStepperValue.formatted())")
+                    .buttonDefaultModifiers()
             }
             Button {
                 repsEditor = $reps
@@ -525,20 +520,18 @@ struct WorkoutViewNewExerciseSection: View {
             }
             Spacer()
             if distance != nil {
-                HStack {
-                    Button {
-                        distance = distance?.subtracting(userSettings.distanceStepperValue)
-                    } label: {
-                        Text("-\(userSettings.distanceStepperValue.formatted())")
-                            .buttonDefaultModifiers()
-                    }
-                    Button {
-                        distance = distance?.adding(userSettings.distanceStepperValue)
-                    } label: {
-                        Text("+\(userSettings.distanceStepperValue.formatted())")
-                            .buttonDefaultModifiers()
-                    }
+                Button {
+                    distance = distance?.subtracting(userSettings.distanceStepperValue)
+                } label: {
+                    Text("-\(userSettings.distanceStepperValue.formatted())")
+                        .buttonDefaultModifiers()
                 }
+            }
+            Button {
+                distance = distance?.adding(userSettings.distanceStepperValue) ?? .init(value: userSettings.distanceStepperValue, unit: .miles)
+            } label: {
+                Text("+\(userSettings.distanceStepperValue.formatted())")
+                    .buttonDefaultModifiers()
             }
             Button {
                 distanceEditor = $distance
@@ -570,20 +563,18 @@ struct WorkoutViewNewExerciseSection: View {
             }
             Spacer()
             if duration != nil {
-                HStack {
-                    Button {
-                        duration = duration?.subtracting(userSettings.durationStepperValue)
-                    } label: {
-                        Text("-\(userSettings.durationStepperValue.formatted())")
-                            .buttonDefaultModifiers()
-                    }
-                    Button {
-                        duration = duration?.adding(userSettings.durationStepperValue)
-                    } label: {
-                        Text("+\(userSettings.durationStepperValue.formatted())")
-                            .buttonDefaultModifiers()
-                    }
+                Button {
+                    duration = duration?.subtracting(userSettings.durationStepperValue)
+                } label: {
+                    Text("-\(userSettings.durationStepperValue.formatted())")
+                        .buttonDefaultModifiers()
                 }
+            }
+            Button {
+                duration = duration?.adding(userSettings.durationStepperValue) ?? .init(value: userSettings.durationStepperValue, unit: .seconds)
+            } label: {
+                Text("+\(userSettings.durationStepperValue.formatted())")
+                    .buttonDefaultModifiers()
             }
             Button {
                 durationEditor = $duration
@@ -617,20 +608,18 @@ struct WorkoutViewNewExerciseSection: View {
             }
             Spacer()
             if rest != nil {
-                HStack {
-                    Button {
-                        rest = rest?.subtracting(userSettings.restStepperValue)
-                    } label: {
-                        Text("-\(userSettings.restStepperValue.formatted())")
-                            .buttonDefaultModifiers()
-                    }
-                    Button {
-                        rest = rest?.adding(userSettings.restStepperValue)
-                    } label: {
-                        Text("+\(userSettings.restStepperValue.formatted())")
-                            .buttonDefaultModifiers()
-                    }
+                Button {
+                    rest = rest?.subtracting(userSettings.restStepperValue)
+                } label: {
+                    Text("-\(userSettings.restStepperValue.formatted())")
+                        .buttonDefaultModifiers()
                 }
+            }
+            Button {
+                rest = rest?.adding(userSettings.restStepperValue) ?? .init(value: userSettings.restStepperValue, unit: .seconds)
+            } label: {
+                Text("+\(userSettings.restStepperValue.formatted())")
+                    .buttonDefaultModifiers()
             }
             Button {
                 restEditor = $rest
