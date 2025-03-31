@@ -10,6 +10,12 @@ import SwiftUI
 
 extension View {
     
+    func navigationBarTitle() -> some View {
+        self
+            .bold(true)
+            .foregroundStyle(Color.text)
+    }
+    
     func underlined(_ color: Color = Color.accentColor) -> some View {
         self
             .overlay(alignment: .bottom) {

@@ -132,17 +132,22 @@ struct ProfileView: View {
     }
     
     @ViewBuilder private func RepsStepperValue() -> some View {
-        HStack {
-            Text("Reps Stepper Value")
-                .fieldLabel()
-            Spacer()
-            TextField(
-                "Reps Stepper Value",
-                value: $userSettings.repsStepperValue,
-                formatter: decimalFormatter
+        NavigationLinkNoChevron {
+            IntEditView(
+                int: .init(
+                    get: { userSettings.repsStepperValue },
+                    set: { if let new = $0 { userSettings.repsStepperValue = new } }
+                ),
+                navigationBarTitle: "Reps Stepper Value"
             )
-            .multilineTextAlignment(.trailing)
-            .fieldButton()
+        } label: {
+            HStack {
+                Text("Reps Stepper Value")
+                    .fieldLabel()
+                Spacer()
+                Text(userSettings.repsStepperValue.formatted())
+                .fieldButton()
+            }
         }
         .workoutExerciseRow()
     }
