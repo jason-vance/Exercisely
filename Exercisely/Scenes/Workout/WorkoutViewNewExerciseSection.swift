@@ -10,6 +10,7 @@ import SwiftData
 
 //TODO: Add a quick clear button to each metric
 //TODO: Auto change to start new exercise if name changes to something new/unexpected
+//TODO: Make sure that previous exercise metrics come from before the current date
 struct WorkoutViewNewExerciseSection: View {
     
     @Environment(\.modelContext) private var modelContext
@@ -129,7 +130,11 @@ struct WorkoutViewNewExerciseSection: View {
     @StateObject private var userSettings = UserSettings()
 
     @State private var name: Workout.Exercise.Name? = nil
-    @State private var weight: Weight? = nil
+    @State private var weight: Weight? = nil {
+        willSet {
+            print("willSet")
+        }
+    }
     @State private var reps: Workout.Exercise.Reps? = nil
     @State private var distance: Distance? = nil
     @State private var duration: Workout.Exercise.Duration? = nil
@@ -348,6 +353,16 @@ struct WorkoutViewNewExerciseSection: View {
         }
     }
     
+    private func onChangePreviousExerciseWithSameName(old: Workout.Exercise?, new: Workout.Exercise?) {
+        guard old !== new, let new = new else { return }
+
+        weight = new.weight
+        reps = new.reps
+        distance = new.distance
+        duration = new.duration
+        rest = new.rest
+    }
+    
     var body: some View {
         VStack(spacing: 0) {
             AddTypeMenu()
@@ -370,6 +385,7 @@ struct WorkoutViewNewExerciseSection: View {
         .animation(.snappy, value: rest)
         .onChange(of: addType, initial: true) { onChangeAddType(old: $0, new: $1) }
         .onChange(of: previousExerciseFromThisWorkout, initial: true) { onChangePreviousExercise(old: $0, new: $1) }
+        .onChange(of: previousExerciseWithSameName) { onChangePreviousExerciseWithSameName(old: $0, new: $1) }
     }
     
     @ViewBuilder private func AddTypeMenu() -> some View {
@@ -430,7 +446,6 @@ struct WorkoutViewNewExerciseSection: View {
                             .previousExerciseHint()
                         Spacer()
                     }
-                    .onAppear { weight = previous }
                 }
             }
             Spacer()
@@ -472,7 +487,6 @@ struct WorkoutViewNewExerciseSection: View {
                             .previousExerciseHint()
                         Spacer()
                     }
-                    .onAppear { reps = previous }
                 }
             }
             Spacer()
@@ -515,7 +529,6 @@ struct WorkoutViewNewExerciseSection: View {
                             .previousExerciseHint()
                         Spacer()
                     }
-                    .onAppear { distance = previous }
                 }
             }
             Spacer()
@@ -558,7 +571,6 @@ struct WorkoutViewNewExerciseSection: View {
                             .previousExerciseHint()
                         Spacer()
                     }
-                    .onAppear { duration = previous }
                 }
             }
             Spacer()
@@ -603,7 +615,6 @@ struct WorkoutViewNewExerciseSection: View {
                             .previousExerciseHint()
                         Spacer()
                     }
-                    .onAppear { rest = previous }
                 }
             }
             Spacer()
