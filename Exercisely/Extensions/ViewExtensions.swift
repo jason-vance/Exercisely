@@ -84,6 +84,11 @@ extension View {
             }
     }
     
+    func fieldLabel() -> some View {
+        self
+            .font(.subheadline)
+    }
+    
     func fieldButton() -> some View {
         self
             .foregroundStyle(Color.text)

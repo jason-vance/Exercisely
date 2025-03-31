@@ -366,13 +366,6 @@ struct ExerciseDetailView: View {
     }
 }
 
-fileprivate extension View {
-    func fieldLabel() -> some View {
-        self
-            .font(.subheadline)
-    }
-}
-
 #Preview {
     var exercise = Workout.Exercise.sampleTurkishGetUp
     

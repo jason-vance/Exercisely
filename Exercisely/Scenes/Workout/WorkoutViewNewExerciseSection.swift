@@ -675,11 +675,6 @@ fileprivate extension View {
             .frame(minHeight: 44)
     }
     
-    func fieldLabel() -> some View {
-        self
-            .font(.subheadline)
-    }
-    
     func previousExerciseHint() -> some View {
         self
             .font(.footnote)
