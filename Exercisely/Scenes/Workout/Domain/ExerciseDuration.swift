@@ -60,6 +60,13 @@ extension Workout.Exercise {
             self.unit = unit
         }
         
+        init?(value: Double, unit: Data) {
+            guard let unit = try? JSONDecoder().decode(Unit.self, from: unit) else {
+                return nil
+            }
+            self.init(value: value, unit: unit)
+        }
+        
         static func seconds(_ value: Double) -> Self? {
             .init(value: value, unit: .seconds)
         }

@@ -53,12 +53,6 @@ struct WorkoutViewNewExerciseSection: View {
         .init(value: 90, unit: .seconds)!
     }
     
-    private let weightStepValue: Double = 5
-    private let repsStepValue: Int = 1
-    private let distanceStepValue: Double = 1
-    private let durationStepValue: Double = 5
-    private let restStepValue: Double = 5
-
     private enum AddType: CaseIterable {
         case startNewExercise
         case continueSet
@@ -132,6 +126,8 @@ struct WorkoutViewNewExerciseSection: View {
     }
     
     @State private var addType: AddType = .startNewExercise
+    
+    @StateObject private var userSettings = UserSettings()
 
     @State private var name: Workout.Exercise.Name? = nil
     @State private var weight: Weight? = nil
@@ -225,7 +221,6 @@ struct WorkoutViewNewExerciseSection: View {
         rest = nil
     }
     
-    //TODO: Make a setting for default rest value
     private func initializeFields() {
         switch addType {
         case .startNewExercise:
@@ -265,8 +260,8 @@ struct WorkoutViewNewExerciseSection: View {
             let setExercise = workoutSection?.sortedExercises.last
             
             self.name = setExercise?.name
-            self.weight = setExercise?.weight?.subtracting(weightStepValue)
-            self.reps = setExercise?.reps?.subtracting(repsStepValue)
+            self.weight = setExercise?.weight?.subtracting(userSettings.weightStepperValue)
+            self.reps = setExercise?.reps?.subtracting(userSettings.repsStepperValue)
             self.distance = setExercise?.distance
             self.duration = setExercise?.duration
             self.rest = nil
@@ -422,7 +417,6 @@ struct WorkoutViewNewExerciseSection: View {
     }
     
     //TODO: Is there a way to share this view code (see ExerciseDetailView)
-    //TODO: Add settings to change these stepper values
     @ViewBuilder private func WeightField() -> some View {
         HStack {
             VStack(spacing: 0) {
@@ -444,15 +438,15 @@ struct WorkoutViewNewExerciseSection: View {
             if weight != nil {
                 HStack {
                     Button {
-                        weight = weight?.subtracting(weightStepValue)
+                        weight = weight?.subtracting(userSettings.weightStepperValue)
                     } label: {
-                        Text("-\(weightStepValue.formatted())")
+                        Text("-\(userSettings.weightStepperValue.formatted())")
                             .buttonDefaultModifiers()
                     }
                     Button {
-                        weight = weight?.adding(weightStepValue)
+                        weight = weight?.adding(userSettings.weightStepperValue)
                     } label: {
-                        Text("+\(weightStepValue.formatted())")
+                        Text("+\(userSettings.weightStepperValue.formatted())")
                             .buttonDefaultModifiers()
                     }
                 }
@@ -488,15 +482,15 @@ struct WorkoutViewNewExerciseSection: View {
             if reps != nil {
                 HStack {
                     Button {
-                        reps = reps?.subtracting(repsStepValue)
+                        reps = reps?.subtracting(userSettings.repsStepperValue)
                     } label: {
-                        Text("-\(repsStepValue.formatted())")
+                        Text("-\(userSettings.repsStepperValue.formatted())")
                             .buttonDefaultModifiers()
                     }
                     Button {
-                        reps = reps?.adding(repsStepValue)
+                        reps = reps?.adding(userSettings.repsStepperValue)
                     } label: {
-                        Text("+\(repsStepValue.formatted())")
+                        Text("+\(userSettings.repsStepperValue.formatted())")
                             .buttonDefaultModifiers()
                     }
                 }
@@ -533,15 +527,15 @@ struct WorkoutViewNewExerciseSection: View {
             if distance != nil {
                 HStack {
                     Button {
-                        distance = distance?.subtracting(distanceStepValue)
+                        distance = distance?.subtracting(userSettings.distanceStepperValue)
                     } label: {
-                        Text("-\(distanceStepValue.formatted())")
+                        Text("-\(userSettings.distanceStepperValue.formatted())")
                             .buttonDefaultModifiers()
                     }
                     Button {
-                        distance = distance?.adding(distanceStepValue)
+                        distance = distance?.adding(userSettings.distanceStepperValue)
                     } label: {
-                        Text("+\(distanceStepValue.formatted())")
+                        Text("+\(userSettings.distanceStepperValue.formatted())")
                             .buttonDefaultModifiers()
                     }
                 }
@@ -578,15 +572,15 @@ struct WorkoutViewNewExerciseSection: View {
             if duration != nil {
                 HStack {
                     Button {
-                        duration = duration?.subtracting(durationStepValue)
+                        duration = duration?.subtracting(userSettings.durationStepperValue)
                     } label: {
-                        Text("-\(durationStepValue.formatted())")
+                        Text("-\(userSettings.durationStepperValue.formatted())")
                             .buttonDefaultModifiers()
                     }
                     Button {
-                        duration = duration?.adding(durationStepValue)
+                        duration = duration?.adding(userSettings.durationStepperValue)
                     } label: {
-                        Text("+\(durationStepValue.formatted())")
+                        Text("+\(userSettings.durationStepperValue.formatted())")
                             .buttonDefaultModifiers()
                     }
                 }
@@ -625,15 +619,15 @@ struct WorkoutViewNewExerciseSection: View {
             if rest != nil {
                 HStack {
                     Button {
-                        rest = rest?.subtracting(restStepValue)
+                        rest = rest?.subtracting(userSettings.restStepperValue)
                     } label: {
-                        Text("-\(restStepValue.formatted())")
+                        Text("-\(userSettings.restStepperValue.formatted())")
                             .buttonDefaultModifiers()
                     }
                     Button {
-                        rest = rest?.adding(restStepValue)
+                        rest = rest?.adding(userSettings.restStepperValue)
                     } label: {
-                        Text("+\(restStepValue.formatted())")
+                        Text("+\(userSettings.restStepperValue.formatted())")
                             .buttonDefaultModifiers()
                     }
                 }

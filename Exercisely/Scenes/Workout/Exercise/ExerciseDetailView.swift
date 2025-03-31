@@ -9,13 +9,9 @@ import SwiftUI
 
 struct ExerciseDetailView: View {
     
-    private let weightStepValue: Double = 5
-    private let repsStepValue: Int = 1
-    private let distanceStepValue: Double = 1
-    private let durationStepValue: Double = 5
-    private let restStepValue: Double = 5
-    
     @Environment(\.presentationMode) var presentation
+    
+    @StateObject private var userSettings = UserSettings()
     
     @Binding var exercise: Workout.Exercise
     @State private var weight: Weight? = nil
@@ -208,7 +204,6 @@ struct ExerciseDetailView: View {
     }
     
     //TODO: Is there a way to share this view code (see WorkoutViewNewExerciseSection)
-    //TODO: Add settings to change these stepper values
     @ViewBuilder private func WeightField() -> some View {
         HStack {
             Text("Weight")
@@ -216,13 +211,13 @@ struct ExerciseDetailView: View {
             Spacer()
             if weight != nil {
                 HStack {
-                    Button("-\(weightStepValue.formatted())") {
-                        weight = weight?.subtracting(weightStepValue)
+                    Button("-\(userSettings.weightStepperValue.formatted())") {
+                        weight = weight?.subtracting(userSettings.weightStepperValue)
                     }
                     .buttonDefaultModifiers()
                     .buttonStyle(PlainButtonStyle())
-                    Button("+\(weightStepValue.formatted())") {
-                        weight = weight?.adding(weightStepValue)
+                    Button("+\(userSettings.weightStepperValue.formatted())") {
+                        weight = weight?.adding(userSettings.weightStepperValue)
                     }
                     .buttonDefaultModifiers()
                     .buttonStyle(PlainButtonStyle())
@@ -246,13 +241,13 @@ struct ExerciseDetailView: View {
             Spacer()
             if reps != nil {
                 HStack {
-                    Button("-\(repsStepValue.formatted())") {
-                        reps = reps?.subtracting(repsStepValue)
+                    Button("-\(userSettings.repsStepperValue.formatted())") {
+                        reps = reps?.subtracting(userSettings.repsStepperValue)
                     }
                     .buttonDefaultModifiers()
                     .buttonStyle(PlainButtonStyle())
-                    Button("+\(repsStepValue.formatted())") {
-                        reps = reps?.adding(repsStepValue)
+                    Button("+\(userSettings.repsStepperValue.formatted())") {
+                        reps = reps?.adding(userSettings.repsStepperValue)
                     }
                     .buttonDefaultModifiers()
                     .buttonStyle(PlainButtonStyle())
@@ -277,13 +272,13 @@ struct ExerciseDetailView: View {
             Spacer()
             if distance != nil {
                 HStack {
-                    Button("-\(distanceStepValue.formatted())") {
-                        distance = distance?.subtracting(distanceStepValue)
+                    Button("-\(userSettings.distanceStepperValue.formatted())") {
+                        distance = distance?.subtracting(userSettings.distanceStepperValue)
                     }
                     .buttonDefaultModifiers()
                     .buttonStyle(PlainButtonStyle())
-                    Button("+\(distanceStepValue.formatted())") {
-                        distance = distance?.adding(distanceStepValue)
+                    Button("+\(userSettings.distanceStepperValue.formatted())") {
+                        distance = distance?.adding(userSettings.distanceStepperValue)
                     }
                     .buttonDefaultModifiers()
                     .buttonStyle(PlainButtonStyle())
@@ -308,13 +303,13 @@ struct ExerciseDetailView: View {
             Spacer()
             if duration != nil {
                 HStack {
-                    Button("-\(durationStepValue.formatted())") {
-                        duration = duration?.subtracting(durationStepValue)
+                    Button("-\(userSettings.durationStepperValue.formatted())") {
+                        duration = duration?.subtracting(userSettings.durationStepperValue)
                     }
                     .buttonDefaultModifiers()
                     .buttonStyle(PlainButtonStyle())
-                    Button("+\(durationStepValue.formatted())") {
-                        duration = duration?.adding(durationStepValue)
+                    Button("+\(userSettings.durationStepperValue.formatted())") {
+                        duration = duration?.adding(userSettings.durationStepperValue)
                     }
                     .buttonDefaultModifiers()
                     .buttonStyle(PlainButtonStyle())
@@ -341,13 +336,13 @@ struct ExerciseDetailView: View {
             Spacer()
             if rest != nil {
                 HStack {
-                    Button("-\(restStepValue.formatted())") {
-                        rest = rest?.subtracting(restStepValue)
+                    Button("-\(userSettings.restStepperValue.formatted())") {
+                        rest = rest?.subtracting(userSettings.restStepperValue)
                     }
                     .buttonDefaultModifiers()
                     .buttonStyle(PlainButtonStyle())
-                    Button("+\(restStepValue.formatted())") {
-                        rest = rest?.adding(restStepValue)
+                    Button("+\(userSettings.restStepperValue.formatted())") {
+                        rest = rest?.adding(userSettings.restStepperValue)
                     }
                     .buttonDefaultModifiers()
                     .buttonStyle(PlainButtonStyle())

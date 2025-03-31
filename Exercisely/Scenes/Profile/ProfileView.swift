@@ -7,31 +7,32 @@
 
 import SwiftUI
 
+//TODO: Make the exercise settings fields look better (blue lines are too long)
+//TODO: Make setting for default rest value
 struct ProfileView: View {
     
-    @AppStorage("UserSex") var userSex: UserSex = .unknown
-    @AppStorage("birthdateRawValue") var birthdateRawValue: Int = -1
+    @StateObject private var userSettings = UserSettings()
     
     private var birthdateBinding: Binding<Date> {
         .init {
-            BirthDate(rawValue: birthdateRawValue)?.date.toDate() ?? .now
+            BirthDate(rawValue: userSettings.birthdateRawValue)?.date.toDate() ?? .now
         } set: { newValue in
             if let simpleDate = SimpleDate(date: newValue), let birthDate = BirthDate(date: simpleDate) {
-                birthdateRawValue = Int(birthDate.date.rawValue)
+                userSettings.birthdateRawValue = Int(birthDate.date.rawValue)
             } else {
-                birthdateRawValue = -1
+                userSettings.birthdateRawValue = -1
             }
         }
-
     }
     
     private var birthdayText: String {
-        BirthDate(rawValue: birthdateRawValue)?.formatted() ?? "N/A"
+        BirthDate(rawValue: userSettings.birthdateRawValue)?.formatted() ?? "N/A"
     }
-
+    
     var body: some View {
         List {
             PersonalSettingsSection()
+            ExerciseSettingsSection()
         }
         .listDefaultModifiers()
         .scrollDismissesKeyboard(.automatic)
@@ -63,10 +64,10 @@ struct ProfileView: View {
             Spacer()
             Menu {
                 ForEach(UserSex.allCases, id: \.self) { sex in
-                    Button(sex.rawValue) { userSex = sex }
+                    Button(sex.rawValue) { userSettings.userSex = sex }
                 }
             } label: {
-                Text(userSex.rawValue)
+                Text(userSettings.userSex.rawValue)
                     .fieldButton()
             }
         }
@@ -92,6 +93,104 @@ struct ProfileView: View {
                 )
                 .blendMode(.destinationOver) //MARK: use this extension to keep the clickable functionality
             }
+        }
+        .workoutExerciseRow()
+    }
+    
+    @ViewBuilder private func ExerciseSettingsSection() -> some View {
+        Section {
+            WeightStepperValue()
+            RepsStepperValue()
+            DistanceStepperValue()
+            DurationStepperValue()
+            RestStepperValue()
+        } header: {
+            SectionHeader("Exercise Settings")
+        }
+    }
+    
+    let decimalFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        return formatter
+    }()
+    
+    @ViewBuilder private func WeightStepperValue() -> some View {
+        HStack {
+            Text("Weight Stepper Value")
+                .fieldLabel()
+            Spacer()
+            TextField(
+                "Weight Stepper Value",
+                value: $userSettings.weightStepperValue,
+                formatter: decimalFormatter
+            )
+            .multilineTextAlignment(.trailing)
+            .fieldButton()
+        }
+        .workoutExerciseRow()
+    }
+    
+    @ViewBuilder private func RepsStepperValue() -> some View {
+        HStack {
+            Text("Reps Stepper Value")
+                .fieldLabel()
+            Spacer()
+            TextField(
+                "Reps Stepper Value",
+                value: $userSettings.repsStepperValue,
+                formatter: decimalFormatter
+            )
+            .multilineTextAlignment(.trailing)
+            .fieldButton()
+        }
+        .workoutExerciseRow()
+    }
+    
+    @ViewBuilder private func DistanceStepperValue() -> some View {
+        HStack {
+            Text("Distance Stepper Value")
+                .fieldLabel()
+            Spacer()
+            TextField(
+                "Distance Stepper Value",
+                value: $userSettings.distanceStepperValue,
+                formatter: decimalFormatter
+            )
+            .multilineTextAlignment(.trailing)
+            .fieldButton()
+        }
+        .workoutExerciseRow()
+    }
+    
+    @ViewBuilder private func DurationStepperValue() -> some View {
+        HStack {
+            Text("Duration Stepper Value")
+                .fieldLabel()
+            Spacer()
+            TextField(
+                "Duration Stepper Value",
+                value: $userSettings.durationStepperValue,
+                formatter: decimalFormatter
+            )
+            .multilineTextAlignment(.trailing)
+            .fieldButton()
+        }
+        .workoutExerciseRow()
+    }
+    
+    @ViewBuilder private func RestStepperValue() -> some View {
+        HStack {
+            Text("Rest Stepper Value")
+                .fieldLabel()
+            Spacer()
+            TextField(
+                "Rest Stepper Value",
+                value: $userSettings.restStepperValue,
+                formatter: decimalFormatter
+            )
+            .multilineTextAlignment(.trailing)
+            .fieldButton()
         }
         .workoutExerciseRow()
     }
