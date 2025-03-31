@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-//TODO: Make the exercise settings fields look better (blue lines are too long)
 //TODO: Make setting for default rest value
 struct ProfileView: View {
     
@@ -116,17 +115,22 @@ struct ProfileView: View {
     }()
     
     @ViewBuilder private func WeightStepperValue() -> some View {
-        HStack {
-            Text("Weight Stepper Value")
-                .fieldLabel()
-            Spacer()
-            TextField(
-                "Weight Stepper Value",
-                value: $userSettings.weightStepperValue,
-                formatter: decimalFormatter
+        NavigationLinkNoChevron {
+            DoubleEditView(
+                double: .init(
+                    get: { userSettings.weightStepperValue },
+                    set: { if let new = $0 { userSettings.weightStepperValue = new } }
+                ),
+                navigationBarTitle: "Weight Stepper Value"
             )
-            .multilineTextAlignment(.trailing)
-            .fieldButton()
+        } label: {
+            HStack {
+                Text("Weight Stepper Value")
+                    .fieldLabel()
+                Spacer()
+                Text(userSettings.weightStepperValue.formatted())
+                .fieldButton()
+            }
         }
         .workoutExerciseRow()
     }
@@ -153,49 +157,66 @@ struct ProfileView: View {
     }
     
     @ViewBuilder private func DistanceStepperValue() -> some View {
-        HStack {
-            Text("Distance Stepper Value")
-                .fieldLabel()
-            Spacer()
-            TextField(
-                "Distance Stepper Value",
-                value: $userSettings.distanceStepperValue,
-                formatter: decimalFormatter
+        NavigationLinkNoChevron {
+            DoubleEditView(
+                double: .init(
+                    get: { userSettings.distanceStepperValue },
+                    set: { if let new = $0 { userSettings.distanceStepperValue = new } }
+                ),
+                navigationBarTitle: "Distance Stepper Value"
             )
-            .multilineTextAlignment(.trailing)
-            .fieldButton()
+        } label: {
+            HStack {
+                Text("Distance Stepper Value")
+                    .fieldLabel()
+                Spacer()
+                Text(userSettings.distanceStepperValue.formatted())
+                .fieldButton()
+            }
         }
         .workoutExerciseRow()
     }
     
     @ViewBuilder private func DurationStepperValue() -> some View {
-        HStack {
-            Text("Duration Stepper Value")
-                .fieldLabel()
-            Spacer()
-            TextField(
-                "Duration Stepper Value",
-                value: $userSettings.durationStepperValue,
-                formatter: decimalFormatter
+        NavigationLinkNoChevron {
+            DoubleEditView(
+                double: .init(
+                    get: { userSettings.durationStepperValue },
+                    set: { if let new = $0 { userSettings.durationStepperValue = new } }
+                ),
+                navigationBarTitle: "Duration Stepper Value"
             )
-            .multilineTextAlignment(.trailing)
-            .fieldButton()
+        } label: {
+            HStack {
+                Text("Duration Stepper Value")
+                    .fieldLabel()
+                Spacer()
+                Text(userSettings.durationStepperValue.formatted())
+                .multilineTextAlignment(.trailing)
+                .fieldButton()
+            }
         }
         .workoutExerciseRow()
     }
     
     @ViewBuilder private func RestStepperValue() -> some View {
-        HStack {
-            Text("Rest Stepper Value")
-                .fieldLabel()
-            Spacer()
-            TextField(
-                "Rest Stepper Value",
-                value: $userSettings.restStepperValue,
-                formatter: decimalFormatter
+        NavigationLinkNoChevron {
+            DoubleEditView(
+                double: .init(
+                    get: { userSettings.restStepperValue },
+                    set: { if let new = $0 { userSettings.restStepperValue = new } }
+                ),
+                navigationBarTitle: "Rest Stepper Value"
             )
-            .multilineTextAlignment(.trailing)
-            .fieldButton()
+        } label: {
+            HStack {
+                Text("Rest Stepper Value")
+                    .fieldLabel()
+                Spacer()
+                Text(userSettings.restStepperValue.formatted())
+                .multilineTextAlignment(.trailing)
+                .fieldButton()
+            }
         }
         .workoutExerciseRow()
     }
