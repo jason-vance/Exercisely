@@ -26,8 +26,17 @@ struct ExerciselyApp: App {
 
     var body: some Scene {
         WindowGroup {
-            NavigationStack {
-                WorkoutView()
+            TabView {
+                Tab("Workout", systemImage: "figure.strengthtraining.traditional") {
+                    NavigationStack {
+                        WorkoutView()
+                    }
+                }
+                Tab("Settings", systemImage: "gearshape") {
+                    NavigationStack {
+                        SettingsView()
+                    }
+                }
             }
             .foregroundStyle(Color.text)
             .background(Color.background)
