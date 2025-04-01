@@ -8,7 +8,6 @@
 import SwiftUI
 import SwiftData
 
-//TODO: Only scroll to bottom when new exercise controls is open
 struct WorkoutView: View {
     
     private let newExerciseSectionId: String = "newExerciseSectionId"
@@ -149,6 +148,8 @@ struct WorkoutView: View {
     }
     
     private func scrollToNewExerciseSection(_ proxy: ScrollViewProxy) {
+        guard showNewExerciseControls else { return }
+        
         withAnimation(.snappy) {
             proxy.scrollTo(newExerciseSectionId, anchor: .top)
         }
@@ -172,6 +173,7 @@ struct WorkoutView: View {
                 .scrollDismissesKeyboard(.automatic)
                 .onAppear { scrollToNewExerciseSection(proxy) }
                 .onChange(of: currentExercise) { scrollToNewExerciseSection(proxy) }
+                .onChange(of: showNewExerciseControls) { scrollToNewExerciseSection(proxy) }
             }
             if let section = currentSection, !isWorkoutFocusInFocus, showNewExerciseControls {
                 WorkoutViewNewExerciseSection(
