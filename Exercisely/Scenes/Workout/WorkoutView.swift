@@ -8,7 +8,6 @@
 import SwiftUI
 import SwiftData
 
-//TODO: WorkoutFocus might not be getting saved if entered before any sections are added
 //TODO: Only scroll to bottom when new exercise controls is open
 struct WorkoutView: View {
     
@@ -89,17 +88,18 @@ struct WorkoutView: View {
         )
     }
 
-    var workout: Workout? {
+    var workout: Workout {
         if let workout = workouts.first(where: { $0.date == date }) {
             return workout
         }
         
-        modelContext.insert(Workout(date: date))
-        return nil
+        let workout = Workout(date: date)
+        modelContext.insert(workout)
+        return workout
     }
     
     var currentSection: Workout.Section? {
-        workout?.sortedSections.last
+        workout.sortedSections.last
     }
     
     var currentExercise: Workout.Exercise? {
@@ -107,12 +107,12 @@ struct WorkoutView: View {
     }
     
     private var hidePlayPauseWorkoutButton: Bool {
-        isWorkoutFocusInFocus || workout?.sections.isEmpty ?? true
+        isWorkoutFocusInFocus || workout.sections.isEmpty
     }
     
     private func addNewSectionToWorkout() {
         withAnimation(.snappy) {
-            workout?.append(section: .init(name: newWorkoutSectionName))
+            workout.append(section: .init(name: newWorkoutSectionName))
             showAddSection = false
             newWorkoutSectionName = ""
             showNewExerciseControls = true
@@ -122,7 +122,7 @@ struct WorkoutView: View {
     private func removeSectionFromWorkout() {
         withAnimation(.snappy) {
             guard let sectionToDelete = sectionToDelete else { return }
-            workout?.remove(section: sectionToDelete)
+            workout.remove(section: sectionToDelete)
             self.sectionToDelete = nil
             showSectionOptions = nil
         }
@@ -143,7 +143,7 @@ struct WorkoutView: View {
     }
     
     private func deleteExerciseGroup(_ group: ExerciseGroup) {
-        for section in workout?.sortedSections ?? [] {
+        for section in workout.sortedSections {
             section.removeAll(exercises: group.exercises)
         }
     }
@@ -158,16 +158,14 @@ struct WorkoutView: View {
         VStack(spacing: 0) {
             ScrollViewReader { proxy in
                 List {
-                    if let workout = workout {
-                        WorkoutFocusSection()
-                        ForEach(workout.sortedSections) { section in
-                            WorkoutSection(section)
-                        }
-                        AddSectionToWorkoutButton()
-                        if !showNewExerciseControls {
-                            Spacer(minLength: 64)
-                                .workoutExerciseRow()
-                        }
+                    WorkoutFocusSection()
+                    ForEach(workout.sortedSections) { section in
+                        WorkoutSection(section)
+                    }
+                    AddSectionToWorkoutButton()
+                    if !showNewExerciseControls {
+                        Spacer(minLength: 64)
+                            .workoutExerciseRow()
                     }
                 }
                 .listDefaultModifiers()
@@ -345,12 +343,10 @@ struct WorkoutView: View {
             }
             .workoutExerciseRow()
             .onChange(of: workoutFocusString) { _, newValue in
-                if let workout = workout {
-                    workout.focus = .init(newValue)
-                }
+                workout.focus = .init(newValue)
             }
             .onChange(of: workout, initial: true) { _, newValue in
-                workoutFocusString = newValue?.focus?.formatted() ?? ""
+                workoutFocusString = newValue.focus?.formatted() ?? ""
             }
         } header: {
             SectionHeader("Focus")
