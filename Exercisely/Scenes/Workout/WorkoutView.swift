@@ -8,6 +8,8 @@
 import SwiftUI
 import SwiftData
 
+//TODO: WorkoutFocus might not be getting saved if entered before any sections are added
+//TODO: Only scroll to bottom when new exercise controls is open
 struct WorkoutView: View {
     
     private let newExerciseSectionId: String = "newExerciseSectionId"

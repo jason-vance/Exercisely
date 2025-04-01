@@ -10,6 +10,7 @@ import SwiftData
 
 //TODO: Add a quick clear button to each metric
 //TODO: Auto change to start new exercise if name changes to something new/unexpected
+//TODO: Allow name change when in add/continue (then change to start new exercise, see above TODO)
 struct WorkoutViewNewExerciseSection: View {
     
     @Environment(\.modelContext) private var modelContext
@@ -130,11 +131,7 @@ struct WorkoutViewNewExerciseSection: View {
     @StateObject private var userSettings = UserSettings()
 
     @State private var name: Workout.Exercise.Name? = nil
-    @State private var weight: Weight? = nil {
-        willSet {
-            print("willSet")
-        }
-    }
+    @State private var weight: Weight? = nil
     @State private var reps: Workout.Exercise.Reps? = nil
     @State private var distance: Distance? = nil
     @State private var duration: Workout.Exercise.Duration? = nil
