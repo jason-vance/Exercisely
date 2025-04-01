@@ -34,48 +34,12 @@ struct ExerciseDetailView: View {
     }
     private var canSaveExercise: Bool { exerciseToSave != nil }
     private var hasMetrics: Bool { reps != nil || distance != nil || duration != nil }
-    
-    // .navigationDestination cannot be inside of a lazy container.
-    // So, I have to use these props to let ExerciseSetQuickAddControls
-    // reach back outside to the List in this view.
-    @State private var weightEditor: Binding<Weight?>? = nil
-    @State private var repsEditor: Binding<Workout.Exercise.Reps?>? = nil
-    @State private var distanceEditor: Binding<Distance?>? = nil
-    @State private var durationEditor: Binding<Workout.Exercise.Duration?>? = nil
-    @State private var restEditor: Binding<Workout.Exercise.Duration?>? = nil
-    
-    private var showWeightEditor: Binding<Bool> {
-        .init(
-            get: { weightEditor != nil },
-            set: { isPresented in weightEditor = isPresented ? weightEditor : nil }
-        )
-    }
-    private var showRepsEditor: Binding<Bool> {
-        .init(
-            get: { repsEditor != nil },
-            set: { isPresented in repsEditor = isPresented ? repsEditor : nil }
-        )
-    }
-    private var showDistanceEditor: Binding<Bool> {
-        .init(
-            get: { distanceEditor != nil },
-            set: { isPresented in distanceEditor = isPresented ? distanceEditor : nil }
-        )
-    }
-    private var showDurationEditor: Binding<Bool> {
-        .init(
-            get: { durationEditor != nil },
-            set: { isPresented in durationEditor = isPresented ? durationEditor : nil }
-        )
-    }
-    private var showRestEditor: Binding<Bool> {
-        .init(
-            get: { restEditor != nil },
-            set: { isPresented in restEditor = isPresented ? restEditor : nil }
-        )
-    }
-    
-    
+        
+    @State private var showWeightEditor: Bool = false
+    @State private var showRepsEditor: Bool = false
+    @State private var showDistanceEditor: Bool = false
+    @State private var showDurationEditor: Bool = false
+    @State private var showRestEditor: Bool = false
     
     init(_ exercise: Binding<Workout.Exercise>) {
         self._exercise = exercise
@@ -138,35 +102,20 @@ struct ExerciseDetailView: View {
         .animation(.snappy, value: duration)
         .animation(.snappy, value: rest)
         .onAppear { prepopulateFields() }
-        .navigationDestination(isPresented: showWeightEditor) {
-            ExerciseWeightEditView(weight: .init(
-                get: { weightEditor?.wrappedValue },
-                set: { weightEditor?.wrappedValue = $0 }
-            ))
+        .navigationDestination(isPresented: $showWeightEditor) {
+            ExerciseWeightEditView(weight: $weight)
         }
-        .navigationDestination(isPresented: showRepsEditor) {
-            ExerciseRepsEditView(reps: .init(
-                get: { repsEditor?.wrappedValue },
-                set: { repsEditor?.wrappedValue = $0 }
-            ))
+        .navigationDestination(isPresented: $showRepsEditor) {
+            ExerciseRepsEditView(reps: $reps)
         }
-        .navigationDestination(isPresented: showDistanceEditor) {
-            ExerciseDistanceEditView(distance: .init(
-                get: { distanceEditor?.wrappedValue },
-                set: { distanceEditor?.wrappedValue = $0 }
-            ))
+        .navigationDestination(isPresented: $showDistanceEditor) {
+            ExerciseDistanceEditView(distance: $distance)
         }
-        .navigationDestination(isPresented: showDurationEditor) {
-            ExerciseDurationEditView(duration: .init(
-                get: { durationEditor?.wrappedValue },
-                set: { durationEditor?.wrappedValue = $0 }
-            ), mode: .duration)
+        .navigationDestination(isPresented: $showDurationEditor) {
+            ExerciseDurationEditView(duration: $duration, mode: .duration)
         }
-        .navigationDestination(isPresented: showRestEditor) {
-            ExerciseDurationEditView(duration: .init(
-                get: { restEditor?.wrappedValue },
-                set: { restEditor?.wrappedValue = $0 }
-            ), mode: .rest)
+        .navigationDestination(isPresented: $showRestEditor) {
+            ExerciseDurationEditView(duration: $rest, mode: .rest)
         }
     }
     
@@ -224,7 +173,7 @@ struct ExerciseDetailView: View {
                 }
             }
             Button {
-                weightEditor = $weight
+                showWeightEditor = true
             } label: {
                 Text(weight?.formatted() ?? "N/A")
                     .fieldButton()
@@ -254,7 +203,7 @@ struct ExerciseDetailView: View {
                 }
             }
             Button {
-                repsEditor = $reps
+                showRepsEditor = true
             } label: {
                 Text(reps?.formatted() ?? "N/A")
                     .fieldButton()
@@ -285,7 +234,7 @@ struct ExerciseDetailView: View {
                 }
             }
             Button {
-                distanceEditor = $distance
+                showDistanceEditor = true
             } label: {
                 Text(distance?.formatted() ?? "N/A")
                     .fieldButton()
@@ -316,7 +265,7 @@ struct ExerciseDetailView: View {
                 }
             }
             Button {
-                durationEditor = $duration
+                showDurationEditor = true
             } label: {
                 Text(duration?.formatted() ?? "N/A")
                     .fieldButton()
@@ -349,7 +298,7 @@ struct ExerciseDetailView: View {
                 }
             }
             Button {
-                restEditor = $rest
+                showRestEditor = true
             } label: {
                 Text(rest?.formatted() ?? "N/A")
                     .fieldButton()
