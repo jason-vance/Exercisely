@@ -107,7 +107,8 @@
             "recommendedMinSets": 3,
             "recommendedMaxSets": 5,
             "associatedExercises": ["Dumbbell Fly", "Push-Up", "Chest Press", "Cable Crossover"],
-            "searchTags": ["bench press", "barbell", "chest", "upper body", "compound", "strength"]
+            "searchTags": ["bench press", "barbell", "chest", "upper body", "compound", "strength"],
+            "youtubeShortUrl": "https://www.youtube.com/shorts/_FkbD0FhgVE"
         },
         {
             "name": "Deadlift",
@@ -154,7 +155,8 @@
             "recommendedMinSets": 3,
             "recommendedMaxSets": 5,
             "associatedExercises": ["Barbell Back Squat", "Good Morning", "Hyperextensions"],
-            "searchTags": ["deadlift", "barbell", "lower body", "back", "compound", "strength"]
+            "searchTags": ["deadlift", "barbell", "lower body", "back", "compound", "strength"],
+            "youtubeShortUrl": "https://youtube.com/shorts/ZaTM37cfiDs?si=E6ngHco0XiROS_Yh"
         },
         {
             "name": "Pull-Up",
@@ -197,7 +199,8 @@
             "recommendedMinSets": 3,
             "recommendedMaxSets": 5,
             "associatedExercises": ["Lat Pulldown", "Inverted Row", "Bicep Curl"],
-            "searchTags": ["pull-up", "bodyweight", "upper body", "back", "arms", "lat"]
+            "searchTags": ["pull-up", "bodyweight", "upper body", "back", "arms", "lat"],
+            "youtubeShortUrl": "https://youtube.com/shorts/Oi3bW9nQmGI?si=cQ65CB98EecGG2kM"
         },
         {
             "name": "Push-Up",
@@ -240,7 +243,8 @@
             "recommendedMinSets": 3,
             "recommendedMaxSets": 5,
             "associatedExercises": ["Bench Press", "Dips", "Plank"],
-            "searchTags": ["push-up", "bodyweight", "chest", "upper body", "strength"]
+            "searchTags": ["push-up", "bodyweight", "chest", "upper body", "strength"],
+            "youtubeShortUrl": "https://youtube.com/shorts/At8PRTDDhrU?si=m688Dpz-sYovPLBp"
         },
         {
             "name": "Dumbbell Shoulder Press",
@@ -281,7 +285,8 @@
             "recommendedMinSets": 3,
             "recommendedMaxSets": 5,
             "associatedExercises": ["Lateral Raise", "Push-Up", "Barbell Shoulder Press"],
-            "searchTags": ["shoulder press", "dumbbell", "shoulders", "upper body", "compound", "strength"]
+            "searchTags": ["shoulder press", "dumbbell", "shoulders", "upper body", "compound", "strength"],
+            "youtubeShortUrl": "https://youtube.com/shorts/E9ShwbwZ1zw?si=K-jsHk6rxW8yjWn0"
         },
         {
             "name": "Bent-Over Row",
@@ -323,7 +328,8 @@
             "recommendedMinSets": 3,
             "recommendedMaxSets": 5,
             "associatedExercises": ["Pull-Up", "Deadlift", "Lat Pulldown"],
-            "searchTags": ["bent-over row", "barbell row", "back", "compound", "strength", "upper body"]
+            "searchTags": ["bent-over row", "barbell row", "back", "compound", "strength", "upper body"],
+            "youtubeShortUrl": "https://youtube.com/shorts/Nqh7q3zDCoQ?si=5SQH8QKKetMfqPSJ"
         },
         {
             "name": "Plank",
@@ -366,7 +372,8 @@
             "recommendedMinSets": 3,
             "recommendedMaxSets": 5,
             "associatedExercises": ["Push-Up", "Crunch", "Mountain Climber"],
-            "searchTags": ["plank", "core", "isometric", "abs", "stability", "bodyweight"]
+            "searchTags": ["plank", "core", "isometric", "abs", "stability", "bodyweight"],
+            "youtubeShortUrl": "https://youtube.com/shorts/v25dawSzRTM?si=3gqoj1LTsEKngiGk"
         },
         {
             "name": "Overhead Squat",
@@ -409,7 +416,8 @@
             "recommendedMinSets": 3,
             "recommendedMaxSets": 4,
             "associatedExercises": ["Front Squat", "Barbell Back Squat", "Push Press"],
-            "searchTags": ["overhead squat", "advanced", "compound", "strength", "squat", "shoulders", "lower body"]
+            "searchTags": ["overhead squat", "advanced", "compound", "strength", "squat", "shoulders", "lower body"],
+            "youtubeShortUrl": "https://youtube.com/shorts/sFBi347A118?si=-onQ0DzjO038KxzW"
         },
         {
             "name": "Romanian Deadlift",
@@ -450,7 +458,8 @@
             "recommendedMinSets": 3,
             "recommendedMaxSets": 4,
             "associatedExercises": ["Deadlift", "Good Morning", "Glute Bridge"],
-            "searchTags": ["romanian deadlift", "rdl", "hamstrings", "glutes", "posterior chain", "compound", "strength"]
+            "searchTags": ["romanian deadlift", "rdl", "hamstrings", "glutes", "posterior chain", "compound", "strength"],
+            "youtubeShortUrl": "https://youtube.com/shorts/5rIqP63yWFg?si=2RdLjqnDUbJ1TJnN"
         },
         {
             "name": "Walking Lunge",
@@ -491,7 +500,8 @@
             "recommendedMinSets": 2,
             "recommendedMaxSets": 4,
             "associatedExercises": ["Squat", "Step-Up", "Glute Bridge"],
-            "searchTags": ["walking lunge", "lunge", "lower body", "legs", "compound", "strength"]
+            "searchTags": ["walking lunge", "lunge", "lower body", "legs", "compound", "strength"],
+            "youtubeShortUrl": "https://youtube.com/shorts/xPzikhQSEAs?si=GTzdxIm4EtVg4U_q"
         },
         {
             "name": "Leg Press",
@@ -530,7 +540,8 @@
             "recommendedMinSets": 3,
             "recommendedMaxSets": 4,
             "associatedExercises": ["Squat", "Walking Lunge"],
-            "searchTags": ["leg press", "machine", "legs", "lower body", "compound", "strength"]
+            "searchTags": ["leg press", "machine", "legs", "lower body", "compound", "strength"],
+            "youtubeShortUrl": "https://youtube.com/shorts/nDh_BlnLCGc?si=MfmPFkYDzm_LyqQx"
         },
         {
             "name": "Cable Chest Fly",
@@ -571,7 +582,8 @@
             "recommendedMinSets": 3,
             "recommendedMaxSets": 4,
             "associatedExercises": ["Barbell Bench Press", "Dumbbell Chest Press"],
-            "searchTags": ["cable chest fly", "chest", "isolation", "strength", "cable fly"]
+            "searchTags": ["cable chest fly", "chest", "isolation", "strength", "cable fly"],
+            "youtubeShortUrl": "https://youtube.com/shorts/4rzubG1aoAM?si=V1bTns-Mb1L75jOM"
         },
         {
             "name": "Tricep Dips",
@@ -611,11 +623,12 @@
             "recommendedMinSets": 3,
             "recommendedMaxSets": 4,
             "associatedExercises": ["Push-Up", "Close-Grip Bench Press"],
-            "searchTags": ["tricep dips", "bodyweight", "triceps", "upper body", "strength"]
+            "searchTags": ["tricep dips", "bodyweight", "triceps", "upper body", "strength"],
+            "youtubeShortUrl": "https://youtube.com/shorts/SpSE_A5L-YA?si=N_1eEekST9FTfEn9"
         },
         {
-            "name": "Bicep Curl",
-            "alternateNames": ["Dumbbell Curl"],
+            "name": "Dumbbell Curl",
+            "alternateNames": ["Bicep Curl"],
             "musclesWorkedPrimary": ["Biceps"],
             "musclesWorkedSecondary": ["Forearms"],
             "bodyAreasTargeted": ["Arms"],
@@ -653,7 +666,8 @@
             "recommendedMinSets": 3,
             "recommendedMaxSets": 4,
             "associatedExercises": ["Chin-Up", "Preacher Curl"],
-            "searchTags": ["bicep curl", "dumbbell", "arms", "isolation", "strength"]
+            "searchTags": ["bicep curl", "dumbbell", "arms", "isolation", "strength"],
+            "youtubeShortUrl": "https://youtube.com/shorts/PuaJzTatIJM?si=sQGdDJAmPfBXCGEs"
         },
         {
             "name": "Dumbbell Lateral Raise",
@@ -693,7 +707,8 @@
             "recommendedMinSets": 3,
             "recommendedMaxSets": 4,
             "associatedExercises": ["Dumbbell Shoulder Press", "Front Raise"],
-            "searchTags": ["lateral raise", "shoulders", "dumbbell", "isolation", "strength"]
+            "searchTags": ["lateral raise", "shoulders", "dumbbell", "isolation", "strength"],
+            "youtubeShortUrl": "https://youtube.com/shorts/xyK8UiC-BUw?si=d8BxXmtLACjeQ-uI"
         },
         {
             "name": "Incline Dumbbell Bench Press",
@@ -733,7 +748,8 @@
             "recommendedMinSets": 3,
             "recommendedMaxSets": 4,
             "associatedExercises": ["Barbell Bench Press", "Dumbbell Chest Fly"],
-            "searchTags": ["incline bench press", "chest", "dumbbell", "upper chest", "compound"]
+            "searchTags": ["incline bench press", "chest", "dumbbell", "upper chest", "compound"],
+            "youtubeShortUrl": "https://youtube.com/shorts/5orOHJL2qS4?si=k2aX6HHgxewCObWR"
         },
         {
             "name": "Seated Cable Row",
@@ -773,7 +789,8 @@
             "recommendedMinSets": 3,
             "recommendedMaxSets": 4,
             "associatedExercises": ["Bent-Over Row", "Lat Pulldown"],
-            "searchTags": ["seated row", "cable row", "back", "compound", "strength"]
+            "searchTags": ["seated row", "cable row", "back", "compound", "strength"],
+            "youtubeShortUrl": "https://youtube.com/shorts/qD1WZ5pSuvk?si=TbH6AunPso94ilNL"
         },
         {
             "name": "Leg Extension",
@@ -810,7 +827,8 @@
             "recommendedMinSets": 3,
             "recommendedMaxSets": 4,
             "associatedExercises": ["Leg Press", "Squat"],
-            "searchTags": ["leg extension", "quads", "isolation", "strength", "legs"]
+            "searchTags": ["leg extension", "quads", "isolation", "strength", "legs"],
+            "youtubeShortUrl": "https://youtube.com/shorts/d3d2yz7V26c?si=9PNlKrwFK0lpxtPA"
         },
         {
             "name": "Seated Leg Curl",
@@ -847,7 +865,8 @@
             "recommendedMinSets": 3,
             "recommendedMaxSets": 4,
             "associatedExercises": ["Romanian Deadlift", "Glute Ham Raise"],
-            "searchTags": ["leg curl", "hamstrings", "isolation", "strength", "legs"]
+            "searchTags": ["leg curl", "hamstrings", "isolation", "strength", "legs"],
+            "youtubeShortUrl": "https://youtube.com/shorts/aakNLjjm4Qo?si=20pGzljfF7Waf-kT"
         },
         {
             "name": "Hip Thrust",
@@ -888,7 +907,8 @@
             "recommendedMinSets": 3,
             "recommendedMaxSets": 5,
             "associatedExercises": ["Glute Bridge", "Romanian Deadlift"],
-            "searchTags": ["hip thrust", "glutes", "lower body", "compound", "strength"]
+            "searchTags": ["hip thrust", "glutes", "lower body", "compound", "strength"],
+            "youtubeShortUrl": "https://youtube.com/shorts/W86oVlnLqY4?si=y_ISQf1U-XCgpzY8"
         },
         {
             "name": "Kettlebell Swing",
@@ -928,7 +948,8 @@
             "recommendedMinSets": 3,
             "recommendedMaxSets": 5,
             "associatedExercises": ["Hip Thrust", "Deadlift", "Squat"],
-            "searchTags": ["kettlebell swing", "glutes", "hamstrings", "cardio", "compound"]
+            "searchTags": ["kettlebell swing", "glutes", "hamstrings", "cardio", "compound"],
+            "youtubeShortUrl": "https://youtube.com/shorts/n1df4ASFeZU?si=DT_nfMBKkA19ar51"
         },
         {
             "name": "Burpee",
@@ -969,7 +990,8 @@
             "recommendedMinSets": 3,
             "recommendedMaxSets": 5,
             "associatedExercises": ["Push-Up", "Squat", "Jumping Jack"],
-            "searchTags": ["burpee", "bodyweight", "cardio", "full body", "compound"]
+            "searchTags": ["burpee", "bodyweight", "cardio", "full body", "compound"],
+            "youtubeShortUrl": "https://youtube.com/shorts/zlYA1SENYG4?si=4okHEnMfaQ1zUG4-"
         },
         {
             "name": "Cable Woodchop",
@@ -1010,7 +1032,8 @@
             "recommendedMinSets": 3,
             "recommendedMaxSets": 4,
             "associatedExercises": ["Russian Twist", "Plank with Rotation"],
-            "searchTags": ["cable woodchop", "core", "obliques", "isolation", "strength"]
+            "searchTags": ["cable woodchop", "core", "obliques", "isolation", "strength"],
+            "youtubeShortUrl": "https://youtube.com/shorts/OcmCcvmOlQ0?si=7nazTWIAsF_25SCT"
         }
     ]
 }
