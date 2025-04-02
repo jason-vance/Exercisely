@@ -38,6 +38,7 @@ extension View {
         self
             .listStyle(.grouped)
             .scrollContentBackground(.hidden)
+            .foregroundStyle(Color.text)
             .background(Color.background)
     }
     
@@ -114,6 +115,14 @@ extension View {
             .textCase(.uppercase)
             .multilineTextAlignment(.leading)
             .foregroundStyle(Color.text)
+    }
+    
+    func librarySectionHeader() -> some View {
+        self
+            .textCase(.uppercase)
+            .multilineTextAlignment(.leading)
+            .foregroundStyle(Color.text)
+            .opacity(0.65)
     }
     
     func workoutExerciseRow() -> some View {

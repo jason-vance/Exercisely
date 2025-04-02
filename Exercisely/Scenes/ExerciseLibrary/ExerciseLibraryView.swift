@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+//TODO: Add more than just exercises to the library (routines, concepts, equipment, etc)
 struct ExerciseLibraryView: View {
     
     @State private var exerciseLibrary: ExerciseLibrary? = nil
@@ -91,8 +92,12 @@ struct ExerciseLibraryView: View {
     //TODO: RELEASE: Navigate to ExerciseEntryDetailView
     //TODO: Show why the search result appears (ie. muscles: glutes)
     @ViewBuilder private func ExerciseEntryRow(_ entry: ExerciseEntry) -> some View {
-        Text(entry.name)
-            .workoutExerciseRow()
+        NavigationLinkNoChevron {
+            ExerciseEntryDetailView(entry: entry)
+        } label: {
+            Text(entry.name)
+        }
+        .workoutExerciseRow()
     }
 }
 
