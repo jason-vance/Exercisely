@@ -35,4 +35,5 @@ struct ExerciseEntry: Codable, Equatable {
     let recommendedMaxSets: Int
     let associatedExercises: [String]
     let searchTags: [String]
+    let youtubeShortUrl: String?
 }

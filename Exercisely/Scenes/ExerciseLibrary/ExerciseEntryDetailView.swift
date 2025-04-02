@@ -8,7 +8,6 @@
 import SwiftUI
 
 //TODO: Add a muscle map/diagram that shows the muscles worked
-//TODO: Add a video
 //TODO: Re-order and make it look better (consolidate sets/reps)
 //TODO: Add links to associated exercises
 //TODO: Add links to muscles worked
@@ -23,6 +22,7 @@ struct ExerciseEntryDetailView: View {
     
     var body: some View {
         List {
+            YouTubeShortSection()
             AssociatedExercisesSection()
             RecommendedRepsSection()
             RecommendedSetsSection()
@@ -60,6 +60,18 @@ struct ExerciseEntryDetailView: View {
             presentationMode.wrappedValue.dismiss()
         }) {
             Image(systemName: "chevron.left")
+        }
+    }
+    
+    @ViewBuilder private func YouTubeShortSection() -> some View {
+        if let youtubeShortUrl = entry.youtubeShortUrl {
+            Section {
+                YouTubeShortView(youtubeShortUrl: youtubeShortUrl)
+                    .workoutExerciseRow()
+            } header: {
+                Text("Video Guide")
+                    .librarySectionHeader()
+            }
         }
     }
     
