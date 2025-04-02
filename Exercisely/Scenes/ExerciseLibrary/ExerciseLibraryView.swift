@@ -18,9 +18,18 @@ struct ExerciseLibraryView: View {
     //TODO: Check more than just the name for searching
     //TODO: Sort by relevance when searching
     private var exercises: [ExerciseEntry] {
-        exerciseLibrary?.exercises
+        guard let exercises = exerciseLibrary?.exercises else {
+            return []
+        }
+        
+        return exercises
             .sorted { $0.name < $1.name }
-            .filter { $0.name.lowercased().contains(searchText.lowercased()) } ?? []
+            .filter {
+                guard !searchText.isEmpty else {
+                    return true
+                }
+                return $0.name.lowercased().contains(searchText.lowercased())
+            }
     }
 
     private func loadExerciseLibrary() {
@@ -37,7 +46,7 @@ struct ExerciseLibraryView: View {
         VStack(spacing: 0) {
             SearchBar()
             List {
-                ForEach(exerciseLibrary?.exercises ?? [], id: \.name) { exercise in
+                ForEach(exercises, id: \.name) { exercise in
                     ExerciseEntryRow(exercise)
                 }
             }
