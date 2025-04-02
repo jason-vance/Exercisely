@@ -13,7 +13,9 @@ struct WebView: UIViewRepresentable {
     let html: String
     
     func makeUIView(context: Context) -> WKWebView {
-        return WKWebView()
+        let webview = WKWebView()
+        webview.isOpaque = false
+        return webview
     }
     
     func updateUIView(_ uiView: WKWebView, context: Context) {

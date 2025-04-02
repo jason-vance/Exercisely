@@ -8,7 +8,7 @@
 import SwiftUI
 
 //TODO: Add a muscle map/diagram that shows the muscles worked
-//TODO: Re-order and make it look better (consolidate sets/reps)
+//TODO: Make it look better (ie. consolidate sets/reps)
 //TODO: Add links to associated exercises
 //TODO: Add links to muscles worked
 //TODO: Add links to exercise types
@@ -16,33 +16,34 @@ import SwiftUI
 //TODO: Add links to body areas
 struct ExerciseEntryDetailView: View {
     
+    private enum DetailTab: String, CaseIterable, RawRepresentable {
+        case howTo = "How-To"
+        case video = "Video"
+        case info = "Info"
+    }
+    
     @Environment(\.presentationMode) var presentationMode
     
     public let entry: ExerciseEntry
     
+    @State private var selection: DetailTab = .howTo
+    
     var body: some View {
-        List {
-            YouTubeShortSection()
-            AssociatedExercisesSection()
-            RecommendedRepsSection()
-            RecommendedSetsSection()
-            SafetyWarningsSection()
-            VariationsSection()
-            TrainerTipsSection()
-            CommonMistakesSection()
-            DifficultySection()
-            ExerciseTypeSection()
-            EquipmentSection()
-            AlternativeNamesSection()
-            PrimaryMusclesWorkedSection()
-            SecondaryMusclesWorkedSection()
-            BodyAreasTargetedSection()
-            PerformanceStepsSection()
+        VStack(spacing: 0) {
+            Picker("Selected Page", selection: $selection) {
+                ForEach(DetailTab.allCases, id: \.self) { tab in
+                    Text(tab.rawValue)
+                }
+            }
+            .pickerStyle(.segmented)
+            .padding()
+            .background(Color.background)
+            DetailTabView()
         }
-        .listDefaultModifiers()
         .toolbar { Toolbar() }
         .toolbarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden()
+        .animation(.snappy, value: selection)
     }
     
     @ToolbarContentBuilder private func Toolbar() -> some ToolbarContent {
@@ -63,16 +64,49 @@ struct ExerciseEntryDetailView: View {
         }
     }
     
-    @ViewBuilder private func YouTubeShortSection() -> some View {
-        if let youtubeShortUrl = entry.youtubeShortUrl {
-            Section {
-                YouTubeShortView(youtubeShortUrl: youtubeShortUrl)
-                    .workoutExerciseRow()
-            } header: {
-                Text("Video Guide")
-                    .librarySectionHeader()
-            }
+    @ViewBuilder private func DetailTabView() -> some View {
+        ZStack {
+            HowToTab()
+                .zIndex(selection == .howTo ? 1 : 0)
+                .opacity(selection == .howTo ? 1 : 0)
+            VideoTab()
+                .zIndex(selection == .video ? 1 : 0)
+                .opacity(selection == .video ? 1 : 0)
+            InfoTab()
+                .zIndex(selection == .info ? 1 : 0)
+                .opacity(selection == .info ? 1 : 0)
         }
+    }
+    
+    @ViewBuilder private func VideoTab() -> some View {
+        YouTubeShortView(youtubeShortUrl: entry.youtubeShortUrl!)
+    }
+    
+    @ViewBuilder private func HowToTab() -> some View {
+        List {
+            PerformanceStepsSection()
+            TrainerTipsSection()
+            CommonMistakesSection()
+            SafetyWarningsSection()
+        }
+        .listDefaultModifiers()
+    }
+    
+    @ViewBuilder private func InfoTab() -> some View {
+        List {
+            RecommendedRepsSection()
+            RecommendedSetsSection()
+            DifficultySection()
+            ExerciseTypeSection()
+            EquipmentSection()
+            PrimaryMusclesWorkedSection()
+            SecondaryMusclesWorkedSection()
+            BodyAreasTargetedSection()
+            VariationsSection()
+            AlternativeNamesSection()
+            AssociatedExercisesSection()
+        }
+        .listDefaultModifiers()
     }
     
     @ViewBuilder private func AssociatedExercisesSection() -> some View {

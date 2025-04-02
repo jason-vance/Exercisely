@@ -20,7 +20,7 @@ struct YouTubeShortView: View {
     
     private var html: String {
         """
-        <iframe allowtransparency="true" style="background: #00000000;" 
+        <iframe allowtransparency="true" style="background: #000;" 
         width="100%" height="100%"
         src="\(youtubeShortUrl)"
         title="YouTube video player"
