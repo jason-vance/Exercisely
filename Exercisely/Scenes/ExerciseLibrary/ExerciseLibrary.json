@@ -62,6 +62,311 @@
                 "quads"
             ],
             "youtubeShortUrl": "https://youtube.com/shorts/1rLzHVL50OA?si=OwG_AFZTcUaMtq_m"
+        },
+        {
+            "name": "Barbell Bench Press",
+            "alternateNames": ["Bench Press"],
+            "musclesWorkedPrimary": ["Pectorals"],
+            "musclesWorkedSecondary": ["Triceps", "Anterior Deltoids", "Upper Back"],
+            "bodyAreasTargeted": ["Upper Body", "Chest", "Arms"],
+            "performanceSteps": [
+                "Lie on a flat bench with feet firmly on the ground.",
+                "Grip the barbell slightly wider than shoulder-width apart.",
+                "Lift the bar off the rack and hold it straight above your chest.",
+                "Lower the bar slowly until it touches your mid-chest.",
+                "Press the bar back up to the starting position."
+            ],
+            "equipment": ["Barbell", "Bench", "Weight Plates"],
+            "exerciseType": ["Strength", "Compound"],
+            "difficulty": "Intermediate",
+            "commonMistakes": [
+                "Bouncing the bar off the chest",
+                "Arching the back excessively",
+                "Using too narrow a grip",
+                "Lifting the hips off the bench"
+            ],
+            "trainerTips": [
+                "Keep your shoulder blades retracted.",
+                "Maintain a slight arch in the lower back without lifting your hips.",
+                "Control the descent of the bar.",
+                "Engage your core throughout the movement."
+            ],
+            "variations": [
+                "Incline Bench Press",
+                "Decline Bench Press",
+                "Dumbbell Bench Press",
+                "Close-Grip Bench Press"
+            ],
+            "safetyWarnings": [
+                "Use a spotter when lifting heavy.",
+                "Ensure the bench and rack are secure.",
+                "Avoid bouncing the bar off your chest."
+            ],
+            "recommendedMinReps": 6,
+            "recommendedMaxReps": 12,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 5,
+            "associatedExercises": ["Dumbbell Fly", "Push-Up", "Chest Press", "Cable Crossover"],
+            "searchTags": ["bench press", "barbell", "chest", "upper body", "compound", "strength"]
+        },
+        {
+            "name": "Deadlift",
+            "alternateNames": ["Conventional Deadlift"],
+            "musclesWorkedPrimary": ["Hamstrings", "Glutes", "Erector Spinae"],
+            "musclesWorkedSecondary": ["Quadriceps", "Traps", "Forearms"],
+            "bodyAreasTargeted": ["Lower Body", "Back"],
+            "performanceSteps": [
+                "Stand with your mid-foot under the barbell.",
+                "Bend at the hips and knees, and grip the bar with hands shoulder-width apart.",
+                "Keep your back flat and chest up.",
+                "Drive through your heels and extend your hips and knees to lift the bar.",
+                "Stand tall at the top with your shoulders back.",
+                "Lower the bar back to the ground in a controlled manner."
+            ],
+            "equipment": ["Barbell", "Weight Plates"],
+            "exerciseType": ["Strength", "Compound"],
+            "difficulty": "Intermediate",
+            "commonMistakes": [
+                "Rounding the back",
+                "Lifting with the back instead of legs and hips",
+                "Jerking the bar off the ground",
+                "Overextending at the top"
+            ],
+            "trainerTips": [
+                "Keep the bar as close to your body as possible.",
+                "Maintain a neutral spine throughout the movement.",
+                "Focus on engaging your glutes and hamstrings.",
+                "Breathe properly – exhale during the lift."
+            ],
+            "variations": [
+                "Sumo Deadlift",
+                "Romanian Deadlift",
+                "Trap Bar Deadlift",
+                "Stiff-Leg Deadlift"
+            ],
+            "safetyWarnings": [
+                "Warm up thoroughly before heavy lifting.",
+                "Avoid rounding your back to prevent injury.",
+                "Use proper lifting technique."
+            ],
+            "recommendedMinReps": 3,
+            "recommendedMaxReps": 8,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 5,
+            "associatedExercises": ["Barbell Back Squat", "Good Morning", "Hyperextensions"],
+            "searchTags": ["deadlift", "barbell", "lower body", "back", "compound", "strength"]
+        },
+        {
+            "name": "Pull-Up",
+            "alternateNames": [],
+            "musclesWorkedPrimary": ["Latissimus Dorsi"],
+            "musclesWorkedSecondary": ["Biceps", "Middle Back", "Shoulders"],
+            "bodyAreasTargeted": ["Upper Body", "Back", "Arms"],
+            "performanceSteps": [
+                "Grab the pull-up bar with an overhand grip, hands slightly wider than shoulder-width.",
+                "Hang with arms fully extended and engage your core.",
+                "Pull yourself upward until your chin passes the bar.",
+                "Lower yourself back to the starting position in a controlled manner.",
+                "Repeat for the desired number of reps."
+            ],
+            "equipment": ["Pull-Up Bar"],
+            "exerciseType": ["Strength", "Bodyweight", "Compound"],
+            "difficulty": "Intermediate",
+            "commonMistakes": [
+                "Using momentum instead of muscle strength",
+                "Not achieving full range of motion",
+                "Allowing the body to swing"
+            ],
+            "trainerTips": [
+                "Focus on squeezing your shoulder blades together.",
+                "Maintain control throughout the movement.",
+                "Engage your core to minimize swinging."
+            ],
+            "variations": [
+                "Chin-Up",
+                "Neutral Grip Pull-Up",
+                "Assisted Pull-Up",
+                "Weighted Pull-Up"
+            ],
+            "safetyWarnings": [
+                "Ensure the pull-up bar is securely installed.",
+                "Warm up your shoulders to avoid strain."
+            ],
+            "recommendedMinReps": 3,
+            "recommendedMaxReps": 12,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 5,
+            "associatedExercises": ["Lat Pulldown", "Inverted Row", "Bicep Curl"],
+            "searchTags": ["pull-up", "bodyweight", "upper body", "back", "arms", "lat"]
+        },
+        {
+            "name": "Push-Up",
+            "alternateNames": ["Press-Up"],
+            "musclesWorkedPrimary": ["Pectorals"],
+            "musclesWorkedSecondary": ["Triceps", "Anterior Deltoids", "Core"],
+            "bodyAreasTargeted": ["Upper Body", "Chest", "Arms", "Core"],
+            "performanceSteps": [
+                "Start in a plank position with hands slightly wider than shoulder-width apart.",
+                "Lower your body until your chest nearly touches the floor.",
+                "Keep your elbows at a 45-degree angle.",
+                "Push back up to the starting position.",
+                "Repeat while keeping your body straight."
+            ],
+            "equipment": ["None"],
+            "exerciseType": ["Strength", "Bodyweight", "Compound"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Dropping the hips or piking too high",
+                "Flaring elbows too wide",
+                "Incomplete range of motion"
+            ],
+            "trainerTips": [
+                "Keep your core engaged throughout.",
+                "Maintain a straight line from head to heels.",
+                "Focus on controlled movement."
+            ],
+            "variations": [
+                "Knee Push-Up",
+                "Incline Push-Up",
+                "Decline Push-Up",
+                "Diamond Push-Up"
+            ],
+            "safetyWarnings": [
+                "Avoid if you have wrist injuries without modifications.",
+                "Perform on a stable surface."
+            ],
+            "recommendedMinReps": 8,
+            "recommendedMaxReps": 20,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 5,
+            "associatedExercises": ["Bench Press", "Dips", "Plank"],
+            "searchTags": ["push-up", "bodyweight", "chest", "upper body", "strength"]
+        },
+        {
+            "name": "Dumbbell Shoulder Press",
+            "alternateNames": ["Overhead Press"],
+            "musclesWorkedPrimary": ["Deltoids"],
+            "musclesWorkedSecondary": ["Triceps", "Upper Chest", "Core"],
+            "bodyAreasTargeted": ["Shoulders", "Upper Body", "Arms"],
+            "performanceSteps": [
+                "Sit or stand with a dumbbell in each hand at shoulder height.",
+                "Press the dumbbells upward until your arms are fully extended.",
+                "Slowly lower the weights back to shoulder height.",
+                "Repeat for the desired number of reps, keeping your core tight."
+            ],
+            "equipment": ["Dumbbells"],
+            "exerciseType": ["Strength", "Compound"],
+            "difficulty": "Intermediate",
+            "commonMistakes": [
+                "Arching the back excessively",
+                "Using momentum to lift the weights",
+                "Not engaging the core"
+            ],
+            "trainerTips": [
+                "Keep your core engaged for stability.",
+                "Use a controlled movement throughout the exercise.",
+                "Avoid locking out your elbows at the top."
+            ],
+            "variations": [
+                "Seated Dumbbell Press",
+                "Arnold Press",
+                "Military Press"
+            ],
+            "safetyWarnings": [
+                "Ensure proper form to avoid shoulder strain.",
+                "Do not lift weights that compromise form."
+            ],
+            "recommendedMinReps": 8,
+            "recommendedMaxReps": 12,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 5,
+            "associatedExercises": ["Lateral Raise", "Push-Up", "Barbell Shoulder Press"],
+            "searchTags": ["shoulder press", "dumbbell", "shoulders", "upper body", "compound", "strength"]
+        },
+        {
+            "name": "Bent-Over Row",
+            "alternateNames": ["Barbell Row"],
+            "musclesWorkedPrimary": ["Latissimus Dorsi", "Rhomboids"],
+            "musclesWorkedSecondary": ["Biceps", "Middle Back", "Posterior Deltoids"],
+            "bodyAreasTargeted": ["Back", "Arms"],
+            "performanceSteps": [
+                "Stand with feet shoulder-width apart, holding a barbell with an overhand grip.",
+                "Bend your knees slightly and hinge forward at the hips until your torso is nearly parallel to the floor.",
+                "Pull the barbell towards your lower chest while squeezing your shoulder blades together.",
+                "Lower the barbell back to the starting position with control.",
+                "Repeat for the desired number of reps."
+            ],
+            "equipment": ["Barbell", "Weight Plates"],
+            "exerciseType": ["Strength", "Compound"],
+            "difficulty": "Intermediate",
+            "commonMistakes": [
+                "Rounding the back",
+                "Using momentum to lift the weight",
+                "Shrugging shoulders instead of engaging the back muscles"
+            ],
+            "trainerTips": [
+                "Keep your back flat and core engaged.",
+                "Focus on pulling with your back muscles rather than your arms.",
+                "Control the weight on the way down."
+            ],
+            "variations": [
+                "Dumbbell Row",
+                "T-Bar Row",
+                "Seated Cable Row"
+            ],
+            "safetyWarnings": [
+                "Maintain a neutral spine to prevent injury.",
+                "Avoid using weights that force you to compromise form."
+            ],
+            "recommendedMinReps": 8,
+            "recommendedMaxReps": 12,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 5,
+            "associatedExercises": ["Pull-Up", "Deadlift", "Lat Pulldown"],
+            "searchTags": ["bent-over row", "barbell row", "back", "compound", "strength", "upper body"]
+        },
+        {
+            "name": "Plank",
+            "alternateNames": ["Front Hold"],
+            "musclesWorkedPrimary": ["Core"],
+            "musclesWorkedSecondary": ["Shoulders", "Glutes", "Lower Back"],
+            "bodyAreasTargeted": ["Core", "Abs", "Back"],
+            "performanceSteps": [
+                "Start in a push-up position, then lower your forearms to the ground.",
+                "Keep your elbows directly under your shoulders.",
+                "Maintain a straight line from your head to your heels.",
+                "Hold this position while keeping your core engaged.",
+                "Breathe steadily throughout the duration of the hold."
+            ],
+            "equipment": ["None"],
+            "exerciseType": ["Isometric", "Core"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Dropping the hips or raising them too high",
+                "Holding tension only in the arms",
+                "Not engaging the core properly"
+            ],
+            "trainerTips": [
+                "Focus on tightening your abs and glutes.",
+                "Maintain a neutral neck position by looking slightly ahead.",
+                "Breathe continuously to maintain stability."
+            ],
+            "variations": [
+                "Side Plank",
+                "Plank with Leg Lift",
+                "Plank Jacks",
+                "Extended Plank"
+            ],
+            "safetyWarnings": [
+                "Avoid if you have lower back issues without modifications.",
+                "Stop if you experience any pain."
+            ],
+            "recommendedMinReps": 1,
+            "recommendedMaxReps": 1,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 5,
+            "associatedExercises": ["Push-Up", "Crunch", "Mountain Climber"],
+            "searchTags": ["plank", "core", "isometric", "abs", "stability", "bodyweight"]
         }
     ]
 }

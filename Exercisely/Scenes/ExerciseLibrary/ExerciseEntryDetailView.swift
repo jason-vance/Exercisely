@@ -31,7 +31,7 @@ struct ExerciseEntryDetailView: View {
     var body: some View {
         VStack(spacing: 0) {
             Picker("Selected Page", selection: $selection) {
-                ForEach(DetailTab.allCases, id: \.self) { tab in
+                ForEach(DetailTab.allCases.filter { $0 != .video || entry.youtubeShortUrl != nil }, id: \.self) { tab in
                     Text(tab.rawValue)
                 }
             }
@@ -69,9 +69,11 @@ struct ExerciseEntryDetailView: View {
             HowToTab()
                 .zIndex(selection == .howTo ? 1 : 0)
                 .opacity(selection == .howTo ? 1 : 0)
-            VideoTab()
-                .zIndex(selection == .video ? 1 : 0)
-                .opacity(selection == .video ? 1 : 0)
+            if entry.youtubeShortUrl != nil {
+                VideoTab()
+                    .zIndex(selection == .video ? 1 : 0)
+                    .opacity(selection == .video ? 1 : 0)
+            }
             InfoTab()
                 .zIndex(selection == .info ? 1 : 0)
                 .opacity(selection == .info ? 1 : 0)
