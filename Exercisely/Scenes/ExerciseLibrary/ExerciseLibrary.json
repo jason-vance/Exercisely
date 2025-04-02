@@ -367,6 +367,650 @@
             "recommendedMaxSets": 5,
             "associatedExercises": ["Push-Up", "Crunch", "Mountain Climber"],
             "searchTags": ["plank", "core", "isometric", "abs", "stability", "bodyweight"]
+        },
+        {
+            "name": "Overhead Squat",
+            "alternateNames": ["Military Squat", "OHS"],
+            "musclesWorkedPrimary": ["Quadriceps", "Glutes", "Shoulders"],
+            "musclesWorkedSecondary": ["Hamstrings", "Core", "Upper Back"],
+            "bodyAreasTargeted": ["Lower Body", "Shoulders", "Core"],
+            "performanceSteps": [
+                "Stand with feet shoulder-width apart holding a barbell overhead with arms fully extended.",
+                "Ensure your grip is secure and elbows locked.",
+                "Slowly squat down by bending at the knees and hips, keeping the barbell stable overhead.",
+                "Lower until your thighs are parallel to the floor (or lower if mobility allows).",
+                "Drive through your heels to return to standing, maintaining a stable overhead position."
+            ],
+            "equipment": ["Barbell", "Weight Plates", "Squat Rack"],
+            "exerciseType": ["Strength", "Compound"],
+            "difficulty": "Advanced",
+            "commonMistakes": [
+                "Losing balance during the movement",
+                "Allowing the bar to drift forward",
+                "Incomplete range of motion",
+                "Rounding the back"
+            ],
+            "trainerTips": [
+                "Keep your core tight and maintain an upright torso.",
+                "Focus on a stable overhead position.",
+                "Start with lighter weights to master the form."
+            ],
+            "variations": [
+                "Dumbbell Overhead Squat",
+                "Kettlebell Overhead Squat"
+            ],
+            "safetyWarnings": [
+                "Do not perform if you have shoulder or back injuries.",
+                "Warm up thoroughly.",
+                "Use spotters or safety equipment if needed."
+            ],
+            "recommendedMinReps": 3,
+            "recommendedMaxReps": 8,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 4,
+            "associatedExercises": ["Front Squat", "Barbell Back Squat", "Push Press"],
+            "searchTags": ["overhead squat", "advanced", "compound", "strength", "squat", "shoulders", "lower body"]
+        },
+        {
+            "name": "Romanian Deadlift",
+            "alternateNames": ["RDL"],
+            "musclesWorkedPrimary": ["Hamstrings", "Glutes"],
+            "musclesWorkedSecondary": ["Lower Back", "Core", "Forearms"],
+            "bodyAreasTargeted": ["Lower Body", "Posterior Chain"],
+            "performanceSteps": [
+                "Stand with feet hip-width apart holding a barbell in front of your thighs.",
+                "Keep a slight bend in your knees and hinge at the hips while keeping your back straight.",
+                "Lower the barbell along your legs until you feel a stretch in your hamstrings.",
+                "Return to standing by driving your hips forward and squeezing your glutes."
+            ],
+            "equipment": ["Barbell", "Weight Plates"],
+            "exerciseType": ["Strength", "Compound"],
+            "difficulty": "Intermediate",
+            "commonMistakes": [
+                "Using too much knee bend",
+                "Rounding the back",
+                "Lowering the bar too far",
+                "Lifting primarily with the lower back"
+            ],
+            "trainerTips": [
+                "Keep the bar close to your body.",
+                "Focus on the hip hinge movement.",
+                "Maintain a neutral spine throughout."
+            ],
+            "variations": [
+                "Dumbbell Romanian Deadlift",
+                "Single-Leg Romanian Deadlift"
+            ],
+            "safetyWarnings": [
+                "Avoid rounding your back to prevent injury.",
+                "Use a weight that allows proper form."
+            ],
+            "recommendedMinReps": 6,
+            "recommendedMaxReps": 12,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 4,
+            "associatedExercises": ["Deadlift", "Good Morning", "Glute Bridge"],
+            "searchTags": ["romanian deadlift", "rdl", "hamstrings", "glutes", "posterior chain", "compound", "strength"]
+        },
+        {
+            "name": "Walking Lunge",
+            "alternateNames": ["Forward Lunge"],
+            "musclesWorkedPrimary": ["Quadriceps", "Glutes"],
+            "musclesWorkedSecondary": ["Hamstrings", "Calves", "Core"],
+            "bodyAreasTargeted": ["Lower Body", "Legs"],
+            "performanceSteps": [
+                "Stand upright with feet hip-width apart, optionally holding dumbbells.",
+                "Step forward with one leg and lower your hips until both knees are bent at about 90 degrees.",
+                "Push through your front heel to bring the back leg forward into the next lunge.",
+                "Continue moving forward in a walking motion."
+            ],
+            "equipment": ["Dumbbells (optional)"],
+            "exerciseType": ["Strength", "Compound"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Allowing the knee to extend past the toes",
+                "Leaning forward too much",
+                "Not engaging the core"
+            ],
+            "trainerTips": [
+                "Keep your torso upright.",
+                "Step long enough to maintain 90-degree angles at the knees.",
+                "Engage your core for balance."
+            ],
+            "variations": [
+                "Reverse Lunge",
+                "Stationary Lunge",
+                "Lateral Lunge"
+            ],
+            "safetyWarnings": [
+                "Perform on a flat, stable surface.",
+                "Modify if you have knee issues."
+            ],
+            "recommendedMinReps": 10,
+            "recommendedMaxReps": 20,
+            "recommendedMinSets": 2,
+            "recommendedMaxSets": 4,
+            "associatedExercises": ["Squat", "Step-Up", "Glute Bridge"],
+            "searchTags": ["walking lunge", "lunge", "lower body", "legs", "compound", "strength"]
+        },
+        {
+            "name": "Leg Press",
+            "alternateNames": [],
+            "musclesWorkedPrimary": ["Quadriceps", "Glutes"],
+            "musclesWorkedSecondary": ["Hamstrings", "Calves"],
+            "bodyAreasTargeted": ["Lower Body", "Legs"],
+            "performanceSteps": [
+                "Sit on the leg press machine with your feet shoulder-width apart on the platform.",
+                "Release the safety handles and lower the platform towards your chest.",
+                "Push the platform away by extending your legs without locking your knees.",
+                "Return to the starting position in a controlled manner."
+            ],
+            "equipment": ["Leg Press Machine"],
+            "exerciseType": ["Strength", "Compound"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Allowing the knees to collapse inward",
+                "Using too much weight",
+                "Locking the knees at the extension"
+            ],
+            "trainerTips": [
+                "Keep your back and head against the seat.",
+                "Push through your heels for stability.",
+                "Maintain controlled movement throughout."
+            ],
+            "variations": [
+                "Single-Leg Press"
+            ],
+            "safetyWarnings": [
+                "Do not lock your knees to avoid joint strain.",
+                "Ensure proper machine setup before use."
+            ],
+            "recommendedMinReps": 10,
+            "recommendedMaxReps": 15,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 4,
+            "associatedExercises": ["Squat", "Walking Lunge"],
+            "searchTags": ["leg press", "machine", "legs", "lower body", "compound", "strength"]
+        },
+        {
+            "name": "Cable Chest Fly",
+            "alternateNames": ["Cable Fly", "Chest Fly"],
+            "musclesWorkedPrimary": ["Pectorals"],
+            "musclesWorkedSecondary": ["Anterior Deltoids", "Stabilizer Muscles"],
+            "bodyAreasTargeted": ["Chest", "Upper Body"],
+            "performanceSteps": [
+                "Stand facing a cable machine with handles set at chest height.",
+                "Grasp a handle in each hand and step forward to create tension.",
+                "With a slight bend in your elbows, bring your hands together in front of your chest.",
+                "Slowly allow the cables to pull your arms back to the starting position.",
+                "Repeat with controlled movement."
+            ],
+            "equipment": ["Cable Machine", "Handles"],
+            "exerciseType": ["Isolation", "Strength"],
+            "difficulty": "Intermediate",
+            "commonMistakes": [
+                "Using excessive weight",
+                "Relying on momentum",
+                "Overextending the arms"
+            ],
+            "trainerTips": [
+                "Focus on squeezing the chest at the peak contraction.",
+                "Maintain a slight bend in your elbows throughout.",
+                "Control the return phase of the movement."
+            ],
+            "variations": [
+                "Incline Cable Fly",
+                "Decline Cable Fly"
+            ],
+            "safetyWarnings": [
+                "Ensure the cable machine is properly set up.",
+                "Avoid overloading the weight stack."
+            ],
+            "recommendedMinReps": 10,
+            "recommendedMaxReps": 15,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 4,
+            "associatedExercises": ["Barbell Bench Press", "Dumbbell Chest Press"],
+            "searchTags": ["cable chest fly", "chest", "isolation", "strength", "cable fly"]
+        },
+        {
+            "name": "Tricep Dips",
+            "alternateNames": [],
+            "musclesWorkedPrimary": ["Triceps"],
+            "musclesWorkedSecondary": ["Chest", "Shoulders"],
+            "bodyAreasTargeted": ["Arms", "Upper Body"],
+            "performanceSteps": [
+                "Position yourself on parallel bars or place your hands on a bench behind you.",
+                "Lower your body by bending your elbows until your upper arms are parallel to the floor.",
+                "Push back up to the starting position by fully extending your arms.",
+                "Repeat with controlled movement."
+            ],
+            "equipment": ["Parallel Bars", "Bench (alternative)"],
+            "exerciseType": ["Bodyweight", "Strength"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Dropping too low causing shoulder strain",
+                "Flared elbows",
+                "Using momentum instead of muscle control"
+            ],
+            "trainerTips": [
+                "Keep your elbows close to your body.",
+                "Perform the movement slowly and with control.",
+                "Use an assisted dip machine if necessary to build strength."
+            ],
+            "variations": [
+                "Bench Dip",
+                "Weighted Dip"
+            ],
+            "safetyWarnings": [
+                "Avoid if you have existing shoulder issues.",
+                "Maintain proper form to prevent strain."
+            ],
+            "recommendedMinReps": 8,
+            "recommendedMaxReps": 15,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 4,
+            "associatedExercises": ["Push-Up", "Close-Grip Bench Press"],
+            "searchTags": ["tricep dips", "bodyweight", "triceps", "upper body", "strength"]
+        },
+        {
+            "name": "Bicep Curl",
+            "alternateNames": ["Dumbbell Curl"],
+            "musclesWorkedPrimary": ["Biceps"],
+            "musclesWorkedSecondary": ["Forearms"],
+            "bodyAreasTargeted": ["Arms"],
+            "performanceSteps": [
+                "Stand with a dumbbell in each hand, arms fully extended at your sides.",
+                "Keeping your elbows stationary, curl the weights while contracting your biceps.",
+                "Raise the weights until your biceps are fully contracted and the dumbbells reach shoulder level.",
+                "Slowly lower the weights back to the starting position.",
+                "Repeat for the desired number of reps."
+            ],
+            "equipment": ["Dumbbells"],
+            "exerciseType": ["Isolation", "Strength"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Swinging the body to lift the weights",
+                "Using momentum rather than muscle contraction",
+                "Not fully extending the arms at the bottom"
+            ],
+            "trainerTips": [
+                "Keep your elbows fixed at your sides.",
+                "Focus on a slow and controlled motion.",
+                "Choose a weight that allows you to maintain proper form."
+            ],
+            "variations": [
+                "Barbell Curl",
+                "Hammer Curl",
+                "Cable Curl"
+            ],
+            "safetyWarnings": [
+                "Avoid locking your elbows at the bottom.",
+                "Use proper form to prevent injury."
+            ],
+            "recommendedMinReps": 8,
+            "recommendedMaxReps": 15,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 4,
+            "associatedExercises": ["Chin-Up", "Preacher Curl"],
+            "searchTags": ["bicep curl", "dumbbell", "arms", "isolation", "strength"]
+        },
+        {
+            "name": "Dumbbell Lateral Raise",
+            "alternateNames": ["Side Lateral Raise"],
+            "musclesWorkedPrimary": ["Lateral Deltoids"],
+            "musclesWorkedSecondary": ["Anterior Deltoids", "Trapezius"],
+            "bodyAreasTargeted": ["Shoulders", "Upper Body"],
+            "performanceSteps": [
+                "Stand with a dumbbell in each hand at your sides.",
+                "With a slight bend in your elbows, lift the weights out to the sides until they reach shoulder level.",
+                "Slowly lower the dumbbells back to your sides in a controlled manner.",
+                "Repeat for the desired number of reps."
+            ],
+            "equipment": ["Dumbbells"],
+            "exerciseType": ["Isolation", "Strength"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Using momentum to lift the weights",
+                "Lifting too high and shrugging the shoulders",
+                "Not controlling the descent"
+            ],
+            "trainerTips": [
+                "Keep a slight bend in the elbows.",
+                "Focus on engaging your lateral deltoids.",
+                "Avoid swinging your body to generate momentum."
+            ],
+            "variations": [
+                "Seated Lateral Raise",
+                "Cable Lateral Raise"
+            ],
+            "safetyWarnings": [
+                "Avoid using excessive weight to prevent shoulder injuries.",
+                "Maintain proper form throughout the exercise."
+            ],
+            "recommendedMinReps": 10,
+            "recommendedMaxReps": 15,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 4,
+            "associatedExercises": ["Dumbbell Shoulder Press", "Front Raise"],
+            "searchTags": ["lateral raise", "shoulders", "dumbbell", "isolation", "strength"]
+        },
+        {
+            "name": "Incline Dumbbell Bench Press",
+            "alternateNames": ["Incline Bench Press"],
+            "musclesWorkedPrimary": ["Upper Pectorals"],
+            "musclesWorkedSecondary": ["Triceps", "Anterior Deltoids"],
+            "bodyAreasTargeted": ["Chest", "Upper Body"],
+            "performanceSteps": [
+                "Sit on an incline bench (30-45°) with a dumbbell in each hand.",
+                "Lie back and position the dumbbells at chest level with palms facing forward.",
+                "Press the dumbbells upward until your arms are fully extended.",
+                "Slowly lower them back to the starting position with control."
+            ],
+            "equipment": ["Dumbbells", "Incline Bench"],
+            "exerciseType": ["Strength", "Compound"],
+            "difficulty": "Intermediate",
+            "commonMistakes": [
+                "Using weights that are too heavy",
+                "Excessive arching of the back",
+                "Allowing dumbbells to drift inward"
+            ],
+            "trainerTips": [
+                "Keep a controlled motion throughout the exercise.",
+                "Maintain a slight bend in your elbows.",
+                "Focus on squeezing the chest at the top of the movement."
+            ],
+            "variations": [
+                "Incline Barbell Bench Press",
+                "Flat Dumbbell Bench Press"
+            ],
+            "safetyWarnings": [
+                "Ensure the bench is stable and secure.",
+                "Use weights that allow you to maintain proper form."
+            ],
+            "recommendedMinReps": 8,
+            "recommendedMaxReps": 12,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 4,
+            "associatedExercises": ["Barbell Bench Press", "Dumbbell Chest Fly"],
+            "searchTags": ["incline bench press", "chest", "dumbbell", "upper chest", "compound"]
+        },
+        {
+            "name": "Seated Cable Row",
+            "alternateNames": [],
+            "musclesWorkedPrimary": ["Latissimus Dorsi", "Rhomboids"],
+            "musclesWorkedSecondary": ["Biceps", "Middle Back", "Posterior Deltoids"],
+            "bodyAreasTargeted": ["Back", "Arms"],
+            "performanceSteps": [
+                "Sit facing a cable row machine with your feet firmly braced.",
+                "Grasp the handle with both hands, keeping your back straight.",
+                "Pull the handle toward your torso while squeezing your shoulder blades together.",
+                "Slowly extend your arms back to the starting position."
+            ],
+            "equipment": ["Cable Machine", "Rowing Handle"],
+            "exerciseType": ["Strength", "Compound"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Using momentum instead of muscle contraction",
+                "Leaning back excessively",
+                "Shrugging the shoulders during the row"
+            ],
+            "trainerTips": [
+                "Maintain a neutral spine and engage your core.",
+                "Focus on pulling with your back muscles rather than your arms.",
+                "Avoid jerking the weight; keep the movement smooth."
+            ],
+            "variations": [
+                "Wide-Grip Seated Row",
+                "Close-Grip Row"
+            ],
+            "safetyWarnings": [
+                "Do not use excessive weight to prevent strain on your back.",
+                "Ensure proper posture throughout the exercise."
+            ],
+            "recommendedMinReps": 10,
+            "recommendedMaxReps": 15,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 4,
+            "associatedExercises": ["Bent-Over Row", "Lat Pulldown"],
+            "searchTags": ["seated row", "cable row", "back", "compound", "strength"]
+        },
+        {
+            "name": "Leg Extension",
+            "alternateNames": [],
+            "musclesWorkedPrimary": ["Quadriceps"],
+            "musclesWorkedSecondary": [],
+            "bodyAreasTargeted": ["Legs", "Quadriceps"],
+            "performanceSteps": [
+                "Sit on the leg extension machine with your legs under the padded lever.",
+                "Adjust the pad so it rests just above your feet.",
+                "Extend your legs until they are almost fully straight.",
+                "Slowly lower the weight back to the starting position."
+            ],
+            "equipment": ["Leg Extension Machine"],
+            "exerciseType": ["Isolation", "Strength"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Using too heavy a weight",
+                "Allowing your lower back to lift off the seat"
+            ],
+            "trainerTips": [
+                "Focus on contracting your quadriceps.",
+                "Avoid locking your knees at full extension."
+            ],
+            "variations": [
+                "Single-Leg Extension"
+            ],
+            "safetyWarnings": [
+                "Do not overextend your knees.",
+                "Adjust the machine properly to suit your body."
+            ],
+            "recommendedMinReps": 10,
+            "recommendedMaxReps": 15,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 4,
+            "associatedExercises": ["Leg Press", "Squat"],
+            "searchTags": ["leg extension", "quads", "isolation", "strength", "legs"]
+        },
+        {
+            "name": "Seated Leg Curl",
+            "alternateNames": ["Leg Curl"],
+            "musclesWorkedPrimary": ["Hamstrings"],
+            "musclesWorkedSecondary": [],
+            "bodyAreasTargeted": ["Legs", "Hamstrings"],
+            "performanceSteps": [
+                "Sit on a leg curl machine with your legs extended and the pad resting on your lower calves.",
+                "Pull your legs back by bending your knees until the pad nears your hamstrings.",
+                "Slowly return to the starting position with control."
+            ],
+            "equipment": ["Leg Curl Machine"],
+            "exerciseType": ["Isolation", "Strength"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Using too heavy a weight",
+                "Relying on momentum to pull the weight"
+            ],
+            "trainerTips": [
+                "Focus on squeezing your hamstrings at the peak of the movement.",
+                "Control both the lifting and lowering phases."
+            ],
+            "variations": [
+                "Lying Leg Curl",
+                "Standing Leg Curl"
+            ],
+            "safetyWarnings": [
+                "Ensure the machine is adjusted to your size.",
+                "Avoid using excessive weight."
+            ],
+            "recommendedMinReps": 10,
+            "recommendedMaxReps": 15,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 4,
+            "associatedExercises": ["Romanian Deadlift", "Glute Ham Raise"],
+            "searchTags": ["leg curl", "hamstrings", "isolation", "strength", "legs"]
+        },
+        {
+            "name": "Hip Thrust",
+            "alternateNames": ["Glute Bridge (Weighted)"],
+            "musclesWorkedPrimary": ["Glutes"],
+            "musclesWorkedSecondary": ["Hamstrings", "Core"],
+            "bodyAreasTargeted": ["Glutes", "Lower Body"],
+            "performanceSteps": [
+                "Sit on the ground with your upper back against a bench.",
+                "Roll a barbell over your legs so it rests above your hips.",
+                "Bend your knees with your feet flat on the floor.",
+                "Thrust your hips upward by squeezing your glutes until your body forms a straight line.",
+                "Pause briefly at the top, then lower your hips back down."
+            ],
+            "equipment": ["Barbell", "Bench", "Weight Plates"],
+            "exerciseType": ["Strength", "Compound"],
+            "difficulty": "Intermediate",
+            "commonMistakes": [
+                "Not achieving full hip extension",
+                "Overextending the lower back",
+                "Using momentum instead of glute activation"
+            ],
+            "trainerTips": [
+                "Focus on squeezing your glutes at the top.",
+                "Keep your chin tucked to maintain a neutral spine.",
+                "Start with lighter weights to perfect your form."
+            ],
+            "variations": [
+                "Single-Leg Hip Thrust",
+                "Banded Hip Thrust"
+            ],
+            "safetyWarnings": [
+                "Ensure the bench is stable.",
+                "Avoid using excessive weight if form is compromised."
+            ],
+            "recommendedMinReps": 8,
+            "recommendedMaxReps": 12,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 5,
+            "associatedExercises": ["Glute Bridge", "Romanian Deadlift"],
+            "searchTags": ["hip thrust", "glutes", "lower body", "compound", "strength"]
+        },
+        {
+            "name": "Kettlebell Swing",
+            "alternateNames": [],
+            "musclesWorkedPrimary": ["Glutes", "Hamstrings"],
+            "musclesWorkedSecondary": ["Core", "Shoulders"],
+            "bodyAreasTargeted": ["Lower Body", "Core"],
+            "performanceSteps": [
+                "Stand with your feet shoulder-width apart holding a kettlebell with both hands.",
+                "Hinge at your hips and slightly bend your knees to swing the kettlebell between your legs.",
+                "Thrust your hips forward and swing the kettlebell up to chest level.",
+                "Allow the kettlebell to swing back down and repeat the movement."
+            ],
+            "equipment": ["Kettlebell"],
+            "exerciseType": ["Strength", "Cardio", "Compound"],
+            "difficulty": "Intermediate",
+            "commonMistakes": [
+                "Using too much arm strength instead of hinging at the hips",
+                "Squatting instead of performing a hip hinge",
+                "Overextending the lower back"
+            ],
+            "trainerTips": [
+                "Focus on driving the movement with your hips.",
+                "Keep your core engaged throughout the swing.",
+                "Allow the kettlebell to swing naturally."
+            ],
+            "variations": [
+                "Single-Arm Kettlebell Swing",
+                "American Kettlebell Swing"
+            ],
+            "safetyWarnings": [
+                "Maintain proper form to avoid back strain.",
+                "Use an appropriate weight."
+            ],
+            "recommendedMinReps": 15,
+            "recommendedMaxReps": 25,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 5,
+            "associatedExercises": ["Hip Thrust", "Deadlift", "Squat"],
+            "searchTags": ["kettlebell swing", "glutes", "hamstrings", "cardio", "compound"]
+        },
+        {
+            "name": "Burpee",
+            "alternateNames": [],
+            "musclesWorkedPrimary": ["Full Body"],
+            "musclesWorkedSecondary": ["Chest", "Arms", "Legs", "Core"],
+            "bodyAreasTargeted": ["Full Body"],
+            "performanceSteps": [
+                "Stand upright with your feet shoulder-width apart.",
+                "Drop into a squat position and place your hands on the floor.",
+                "Kick your feet back into a plank position.",
+                "Perform a push-up (optional), then quickly return your feet to the squat position.",
+                "Explosively jump upward and repeat the sequence."
+            ],
+            "equipment": ["None"],
+            "exerciseType": ["Bodyweight", "Cardio", "Compound"],
+            "difficulty": "Intermediate",
+            "commonMistakes": [
+                "Rushing the movement and losing form",
+                "Not fully extending during the jump",
+                "Poor push-up technique"
+            ],
+            "trainerTips": [
+                "Focus on smooth transitions between each step.",
+                "Keep your core tight throughout the movement.",
+                "Pace yourself to maintain proper form."
+            ],
+            "variations": [
+                "Burpee with Push-Up",
+                "Burpee with Tuck Jump"
+            ],
+            "safetyWarnings": [
+                "Avoid if you have joint issues.",
+                "Perform on a stable surface."
+            ],
+            "recommendedMinReps": 10,
+            "recommendedMaxReps": 20,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 5,
+            "associatedExercises": ["Push-Up", "Squat", "Jumping Jack"],
+            "searchTags": ["burpee", "bodyweight", "cardio", "full body", "compound"]
+        },
+        {
+            "name": "Cable Woodchop",
+            "alternateNames": ["Rotational Cable Chop"],
+            "musclesWorkedPrimary": ["Obliques"],
+            "musclesWorkedSecondary": ["Core", "Shoulders"],
+            "bodyAreasTargeted": ["Core", "Abdominals"],
+            "performanceSteps": [
+                "Stand side-on to a cable machine with your feet shoulder-width apart.",
+                "Grasp the cable handle with both hands and position it at one side of your body.",
+                "Pull the handle diagonally across your body from high to low (or low to high), rotating your torso as you move.",
+                "Return slowly to the starting position and repeat.",
+                "Switch sides after completing the set."
+            ],
+            "equipment": ["Cable Machine", "Handle"],
+            "exerciseType": ["Isolation", "Strength"],
+            "difficulty": "Intermediate",
+            "commonMistakes": [
+                "Using momentum rather than controlled movement",
+                "Over-rotating the torso",
+                "Not engaging the core fully"
+            ],
+            "trainerTips": [
+                "Focus on slow and controlled movements.",
+                "Engage your core throughout the exercise.",
+                "Maintain a stable stance to support the rotation."
+            ],
+            "variations": [
+                "Low to High Woodchop",
+                "High to Low Woodchop"
+            ],
+            "safetyWarnings": [
+                "Ensure the cable machine is secure.",
+                "Avoid using excessive weight that compromises form."
+            ],
+            "recommendedMinReps": 10,
+            "recommendedMaxReps": 15,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 4,
+            "associatedExercises": ["Russian Twist", "Plank with Rotation"],
+            "searchTags": ["cable woodchop", "core", "obliques", "isolation", "strength"]
         }
     ]
 }

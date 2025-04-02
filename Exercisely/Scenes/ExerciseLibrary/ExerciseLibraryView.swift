@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+//TODO: Add filtering (by muscles, body areas, equipment, exerciseType, difficulty, etc)
 //TODO: Add more than just exercises to the library (routines, concepts, equipment, etc)
 struct ExerciseLibraryView: View {
     
@@ -98,7 +99,6 @@ struct ExerciseLibraryView: View {
         .background(Color.background)
     }
     
-    //TODO: RELEASE: Navigate to ExerciseEntryDetailView
     //TODO: Show why the search result appears (ie. muscles: glutes)
     @ViewBuilder private func ExerciseEntryRow(_ entry: ExerciseEntry) -> some View {
         NavigationLinkNoChevron {
