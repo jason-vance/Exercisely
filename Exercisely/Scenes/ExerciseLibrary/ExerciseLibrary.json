@@ -1,0 +1,66 @@
+{
+    "exercises": [
+        {
+            "name": "Barbell Back Squat",
+            "alternateNames": ["Back Squat", "Traditional Squat"],
+            "musclesWorkedPrimary": ["Quadriceps", "Glutes"],
+            "musclesWorkedSecondary": ["Hamstrings", "Erector Spinae", "Core", "Calves"],
+            "bodyAreasTargeted": ["Lower Body", "Glutes", "Legs", "Core"],
+            "performanceSteps": [
+                "Position a barbell at upper trap level in a squat rack.",
+                "Step under the bar, set it across your upper traps, and grip it slightly wider than shoulder-width.",
+                "Brace your core, lift the bar off the rack, and step back into a stable stance with feet shoulder-width apart.",
+                "Initiate the squat by pushing your hips back and bending your knees.",
+                "Lower your body until your thighs are at least parallel to the floor (or deeper, if mobility allows).",
+                "Drive through your heels and extend your hips and knees to return to the starting position.",
+                "Repeat for the desired number of reps, maintaining a neutral spine and tight core throughout."
+            ],
+            "equipment": ["Barbell", "Squat Rack", "Weight Plates"],
+            "exerciseType": ["Strength", "Compound"],
+            "difficulty": "Intermediate",
+            "commonMistakes": [
+                "Letting the knees cave inward during the lift",
+                "Leaning too far forward",
+                "Lifting the heels off the ground",
+                "Not reaching sufficient depth",
+                "Allowing the spine to round under load"
+            ],
+            "trainerTips": [
+                "Keep your chest up and your core tight throughout the movement.",
+                "Screw your feet into the floor to engage your glutes.",
+                "Drive through your heels when standing up.",
+                "Use a spotter or safety bars if lifting heavy.",
+                "Focus on smooth, controlled movement rather than speed."
+            ],
+            "variations": [
+                "Front Squat",
+                "Goblet Squat",
+                "Box Squat",
+                "Pause Squat",
+                "Safety Bar Squat"
+            ],
+            "safetyWarnings": [
+                "Always warm up before heavy sets.",
+                "Use proper form to avoid lower back or knee injuries.",
+                "Don't lift without spotters or safety bars if going near max effort.",
+                "Avoid excessive forward lean if mobility is limited."
+            ],
+            "recommendedMinReps": 5,
+            "recommendedMaxReps": 12,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 5,
+            "associatedExercises": ["Front Squat", "Deadlift", "Lunges", "Romanian Deadlift"],
+            "searchTags": [
+                "squat",
+                "barbell",
+                "legs",
+                "glutes",
+                "compound",
+                "strength",
+                "lower body",
+                "core",
+                "quads"
+            ]
+        }
+    ]
+}

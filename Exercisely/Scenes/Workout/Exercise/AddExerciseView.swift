@@ -73,8 +73,7 @@ struct AddExerciseView: View {
     @ToolbarContentBuilder private func Toolbar() -> some ToolbarContent {
         ToolbarItem(placement: .principal) {
             Text("Add Exercise")
-                .bold(true)
-                .foregroundStyle(Color.text)
+                .navigationBarTitle()
         }
         ToolbarItem(placement: .topBarLeading) {
             CancelButton()

@@ -67,8 +67,7 @@ struct ExerciseNameEditView: View {
     @ToolbarContentBuilder private func Toolbar() -> some ToolbarContent {
         ToolbarItem(placement: .principal) {
             Text("Exercise Name")
-                .bold(true)
-                .foregroundStyle(Color.text)
+                .navigationBarTitle()
         }
         ToolbarItem(placement: .topBarLeading) {
             CancelButton()

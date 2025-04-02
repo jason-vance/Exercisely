@@ -53,8 +53,7 @@ struct ExerciseWeightEditView: View {
     @ToolbarContentBuilder private func Toolbar() -> some ToolbarContent {
         ToolbarItem(placement: .principal) {
             Text("Exercise Weight")
-                .bold(true)
-                .foregroundStyle(Color.text)
+                .navigationBarTitle()
         }
         ToolbarItem(placement: .topBarLeading) {
             CancelButton()

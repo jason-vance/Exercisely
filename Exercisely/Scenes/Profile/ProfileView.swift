@@ -46,8 +46,7 @@ struct ProfileView: View {
     @ToolbarContentBuilder private func Toolbar() -> some ToolbarContent {
         ToolbarItem(placement: .principal) {
             Text("Profile")
-                .bold(true)
-                .foregroundStyle(Color.text)
+                .navigationBarTitle()
         }
     }
     

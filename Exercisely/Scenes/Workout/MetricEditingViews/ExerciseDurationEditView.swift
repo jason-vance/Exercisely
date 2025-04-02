@@ -60,8 +60,7 @@ struct ExerciseDurationEditView: View {
     @ToolbarContentBuilder private func Toolbar() -> some ToolbarContent {
         ToolbarItem(placement: .principal) {
             Text(mode == .duration ? "Exercise Duration" : "Rest Between Sets")
-                .bold(true)
-                .foregroundStyle(Color.text)
+                .navigationBarTitle()
         }
         ToolbarItem(placement: .topBarLeading) {
             CancelButton()

@@ -122,8 +122,7 @@ struct ExerciseDetailView: View {
     @ToolbarContentBuilder private func Toolbar() -> some ToolbarContent {
         ToolbarItem(placement: .principal) {
             Text(exercise.name.formatted())
-                .bold(true)
-                .foregroundStyle(Color.text)
+                .navigationBarTitle()
         }
         ToolbarItem(placement: .topBarLeading) {
             BackButton()

@@ -32,6 +32,11 @@ struct ExerciselyApp: App {
                         WorkoutView()
                     }
                 }
+                Tab("Library", systemImage: "book.closed") {
+                    NavigationStack {
+                        ExerciseLibraryView()
+                    }
+                }
                 Tab("Profile", systemImage: "person.crop.circle") {
                     NavigationStack {
                         ProfileView()
