@@ -9,6 +9,7 @@ import SwiftUI
 
 //TODO: Add filtering (by muscles, body areas, equipment, exerciseType, difficulty, etc)
 //TODO: Add more than just exercises to the library (routines, concepts, equipment, etc)
+//TODO: Add ability to request an exercise be added (via email or something)
 struct ExerciseLibraryView: View {
     
     @State private var exerciseLibrary: ExerciseLibrary? = nil
