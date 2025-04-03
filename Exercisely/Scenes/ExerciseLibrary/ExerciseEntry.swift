@@ -29,10 +29,12 @@ struct ExerciseEntry: Codable, Equatable {
     let trainerTips: [String]
     let variations: [String]
     let safetyWarnings: [String]
-    let recommendedMinReps: Int
-    let recommendedMaxReps: Int
     let recommendedMinSets: Int
     let recommendedMaxSets: Int
+    let recommendedMinReps: Int?
+    let recommendedMaxReps: Int?
+    let recommendedMinDuration: Int?
+    let recommendedMaxDuration: Int?
     let associatedExercises: [String]
     let searchTags: [String]
     let youtubeShortUrl: String?

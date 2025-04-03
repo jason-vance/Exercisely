@@ -1941,6 +1941,1919 @@
             "associatedExercises": ["Romanian Deadlift", "Lying Leg Curl"],
             "searchTags": ["glute ham raise", "ghr", "hamstrings", "glutes", "isolation", "strength"],
             "youtubeShortUrl": "https://youtube.com/shorts/gK5MIYPDfoQ?si=gh0SMrt-9G2J3ApU"
+        },
+        {
+            "name": "Arm Swings",
+            "alternateNames": [],
+            "musclesWorkedPrimary": ["Shoulders"],
+            "musclesWorkedSecondary": ["Chest", "Upper Back"],
+            "bodyAreasTargeted": ["Upper Body", "Shoulders"],
+            "performanceSteps": [
+                "Stand upright with your feet shoulder-width apart.",
+                "Swing your arms forward and backward in a controlled motion, crossing them briefly in front of your chest.",
+                "Focus on achieving a full range of motion to warm up your shoulder joints.",
+                "Repeat for the desired number of reps."
+            ],
+            "equipment": ["None"],
+            "exerciseType": ["Dynamic Warm-Up", "Mobility"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Using jerky, uncontrolled movements",
+                "Not swinging through a full range of motion"
+            ],
+            "trainerTips": [
+                "Perform slowly at first to feel the movement.",
+                "Gradually increase speed as your muscles warm up."
+            ],
+            "variations": [],
+            "safetyWarnings": [
+                "Ensure you have enough space to swing your arms safely."
+            ],
+            "recommendedMinReps": 15,
+            "recommendedMaxReps": 30,
+            "recommendedMinDuration": 20,
+            "recommendedMaxDuration": 30,
+            "recommendedMinSets": 1,
+            "recommendedMaxSets": 1,
+            "associatedExercises": ["Arm Circles"],
+            "searchTags": ["arm swings", "warm-up", "shoulder mobility", "dynamic stretching"]
+        },
+        {
+            "name": "Arm Circles",
+            "alternateNames": [],
+            "musclesWorkedPrimary": ["Shoulders"],
+            "musclesWorkedSecondary": ["Upper Back"],
+            "bodyAreasTargeted": ["Upper Body", "Shoulders"],
+            "performanceSteps": [
+                "Stand with your arms extended out to your sides at shoulder height.",
+                "Slowly make small circles with your arms, gradually increasing the diameter.",
+                "After a set, reverse the direction of the circles.",
+                "Repeat for the desired number of reps in each direction."
+            ],
+            "equipment": ["None"],
+            "exerciseType": ["Dynamic Warm-Up", "Mobility"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Moving too quickly, which reduces the effectiveness",
+                "Not keeping the arms extended throughout"
+            ],
+            "trainerTips": [
+                "Keep the movements smooth and controlled.",
+                "Focus on engaging your shoulder muscles during the rotation."
+            ],
+            "variations": [],
+            "safetyWarnings": [
+                "Perform on a flat, stable surface to maintain balance."
+            ],
+            "recommendedMinReps": 10,
+            "recommendedMaxReps": 20,
+            "recommendedMinDuration": 20,
+            "recommendedMaxDuration": 30,
+            "recommendedMinSets": 1,
+            "recommendedMaxSets": 1,
+            "associatedExercises": ["Arm Swings"],
+            "searchTags": ["arm circles", "warm-up", "shoulder mobility", "dynamic stretching"]
+        },
+        {
+            "name": "Ball Rollouts",
+            "alternateNames": ["Stability Ball Rollout"],
+            "musclesWorkedPrimary": ["Core", "Abdominals"],
+            "musclesWorkedSecondary": ["Lower Back"],
+            "bodyAreasTargeted": ["Core", "Abs"],
+            "performanceSteps": [
+                "Kneel on a mat and place your forearms on a stability ball.",
+                "Engage your core and slowly roll the ball forward, extending your body.",
+                "Stop when you feel a stretch in your core, then use your abs to pull the ball back to the starting position.",
+                "Repeat for the desired number of reps."
+            ],
+            "equipment": ["Stability Ball"],
+            "exerciseType": ["Isolation", "Core"],
+            "difficulty": "Intermediate",
+            "commonMistakes": [
+                "Letting your lower back sag",
+                "Rolling out too far and losing control"
+            ],
+            "trainerTips": [
+                "Keep your core engaged throughout the entire movement.",
+                "Control both the extension and return phases."
+            ],
+            "variations": [],
+            "safetyWarnings": [
+                "Do not overextend if you have lower back issues.",
+                "Ensure the ball is properly inflated."
+            ],
+            "recommendedMinReps": 10,
+            "recommendedMaxReps": 15,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 4,
+            "associatedExercises": ["Ab Wheel Rollout"],
+            "searchTags": ["ball rollout", "stability ball", "core", "abs", "isolation"]
+        },
+        {
+            "name": "Bent-Over Rear Delt Flys",
+            "alternateNames": ["Reverse Fly", "Bent-Over Reverse Fly"],
+            "musclesWorkedPrimary": ["Rear Deltoids"],
+            "musclesWorkedSecondary": ["Upper Back", "Trapezius"],
+            "bodyAreasTargeted": ["Shoulders", "Upper Back"],
+            "performanceSteps": [
+                "Stand with your feet hip-width apart and hinge forward at the hips with a slight bend in your knees.",
+                "Hold a pair of dumbbells with your palms facing each other.",
+                "Keeping a slight bend in your elbows, raise the dumbbells out to the sides until they are in line with your shoulders.",
+                "Pause at the top, then slowly lower the weights back down."
+            ],
+            "equipment": ["Dumbbells"],
+            "exerciseType": ["Isolation", "Strength"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Using momentum instead of controlled movement",
+                "Not maintaining a slight bend in the elbows",
+                "Lifting too heavy and compromising form"
+            ],
+            "trainerTips": [
+                "Focus on squeezing your rear delts at the top of the movement.",
+                "Use a manageable weight to ensure proper form."
+            ],
+            "variations": [],
+            "safetyWarnings": [
+                "Avoid swinging your body to lift the weights."
+            ],
+            "recommendedMinReps": 10,
+            "recommendedMaxReps": 15,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 4,
+            "associatedExercises": ["Dumbbell Lateral Raise", "Cable Face Pull"],
+            "searchTags": ["bent-over rear delt flys", "reverse fly", "rear delts", "shoulders", "isolation", "strength"]
+        },
+        {
+            "name": "Bulgarian Split Squats",
+            "alternateNames": ["Rear-Foot Elevated Split Squat"],
+            "musclesWorkedPrimary": ["Quadriceps", "Glutes"],
+            "musclesWorkedSecondary": ["Hamstrings", "Calves", "Core"],
+            "bodyAreasTargeted": ["Lower Body", "Legs", "Glutes"],
+            "performanceSteps": [
+                "Stand a few feet in front of a bench or step.",
+                "Place one foot behind you on the bench.",
+                "Lower your body by bending your front knee while keeping your torso upright.",
+                "Push through your front heel to return to the starting position.",
+                "Repeat for the desired reps before switching legs."
+            ],
+            "equipment": ["Bench or Step"],
+            "exerciseType": ["Strength", "Compound"],
+            "difficulty": "Intermediate",
+            "commonMistakes": [
+                "Leaning too far forward",
+                "Allowing the front knee to cave inward",
+                "Not reaching full range of motion"
+            ],
+            "trainerTips": [
+                "Keep your torso upright and engage your core.",
+                "Focus on driving through your front heel.",
+                "Start with bodyweight before adding weights."
+            ],
+            "variations": [],
+            "safetyWarnings": [
+                "Ensure the bench or step is stable.",
+                "Maintain proper knee alignment to avoid injury."
+            ],
+            "recommendedMinReps": 8,
+            "recommendedMaxReps": 12,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 4,
+            "associatedExercises": ["Step-Up", "Lunge"],
+            "searchTags": ["Bulgarian split squat", "rear-foot elevated squat", "legs", "glutes", "lower body", "compound", "strength"]
+        },
+        {
+            "name": "Butt Kicks",
+            "alternateNames": [],
+            "musclesWorkedPrimary": ["Hamstrings"],
+            "musclesWorkedSecondary": ["Glutes", "Calves"],
+            "bodyAreasTargeted": ["Lower Body"],
+            "performanceSteps": [
+                "Stand upright and begin jogging in place.",
+                "Kick your heels up toward your glutes with each step.",
+                "Maintain a quick, rhythmic pace while keeping your core engaged.",
+                "Perform for the desired number of reps or duration."
+            ],
+            "equipment": ["None"],
+            "exerciseType": ["Cardio", "Dynamic Warm-Up"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Overstriding or making exaggerated movements",
+                "Losing control of the rhythm"
+            ],
+            "trainerTips": [
+                "Keep the movements light and quick.",
+                "Focus on maintaining proper form throughout."
+            ],
+            "variations": [],
+            "safetyWarnings": [
+                "Perform on a flat, stable surface to prevent tripping."
+            ],
+            "recommendedMinReps": 20,
+            "recommendedMaxReps": 30,
+            "recommendedMinDuration": 20,
+            "recommendedMaxDuration": 30,
+            "recommendedMinSets": 1,
+            "recommendedMaxSets": 1,
+            "associatedExercises": ["High Knees"],
+            "searchTags": ["butt kicks", "cardio", "warm-up", "hamstrings", "dynamic stretching"]
+        },
+        {
+            "name": "Cable Overhead Tricep Extensions",
+            "alternateNames": ["Cable Tricep Extension"],
+            "musclesWorkedPrimary": ["Triceps"],
+            "musclesWorkedSecondary": [],
+            "bodyAreasTargeted": ["Arms", "Triceps"],
+            "performanceSteps": [
+                "Stand facing away from a cable machine with a handle attached to a high pulley.",
+                "Grasp the handle with both hands and step forward to create tension.",
+                "Extend your arms overhead, keeping your elbows close to your head.",
+                "Slowly lower the handle behind your head by bending your elbows.",
+                "Extend your arms back to the starting position in a controlled manner."
+            ],
+            "equipment": ["Cable Machine", "Handle Attachment"],
+            "exerciseType": ["Isolation", "Strength"],
+            "difficulty": "Intermediate",
+            "commonMistakes": [
+                "Allowing the elbows to flare out",
+                "Using too heavy a weight",
+                "Relying on momentum instead of controlled movement"
+            ],
+            "trainerTips": [
+                "Keep your core engaged for stability.",
+                "Perform the movement slowly and focus on triceps contraction.",
+                "Maintain proper posture throughout."
+            ],
+            "variations": [],
+            "safetyWarnings": [
+                "Ensure proper cable setup to avoid injury.",
+                "Do not use excessive weight that compromises form."
+            ],
+            "recommendedMinReps": 10,
+            "recommendedMaxReps": 15,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 4,
+            "associatedExercises": ["Cable Tricep Pushdown", "Skull Crushers"],
+            "searchTags": ["cable overhead tricep extension", "triceps", "isolation", "cable exercise", "arms"]
+        },
+        {
+            "name": "Cable Face Pulls",
+            "alternateNames": [],
+            "musclesWorkedPrimary": ["Rear Deltoids"],
+            "musclesWorkedSecondary": ["Upper Back", "Trapezius"],
+            "bodyAreasTargeted": ["Shoulders", "Upper Back"],
+            "performanceSteps": [
+                "Attach a rope handle to a cable machine set at upper chest level.",
+                "Stand facing the machine and grasp the rope with both hands.",
+                "Pull the rope toward your face while flaring your elbows out and squeezing your shoulder blades together.",
+                "Pause at the peak contraction, then slowly return to the starting position.",
+                "Repeat for the desired number of reps."
+            ],
+            "equipment": ["Cable Machine", "Rope Attachment"],
+            "exerciseType": ["Isolation", "Strength"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Using too heavy a weight",
+                "Shrugging the shoulders instead of engaging the rear delts",
+                "Not controlling the movement"
+            ],
+            "trainerTips": [
+                "Focus on controlled movements and a strong squeeze at the top.",
+                "Keep your torso stable and avoid leaning back.",
+                "Maintain a neutral spine throughout the exercise."
+            ],
+            "variations": [],
+            "safetyWarnings": [
+                "Avoid using excessive weight to prevent shoulder strain.",
+                "Ensure the cable is securely attached before beginning."
+            ],
+            "recommendedMinReps": 12,
+            "recommendedMaxReps": 15,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 4,
+            "associatedExercises": ["Bent-Over Rear Delt Flys", "Dumbbell Shoulder Press"],
+            "searchTags": ["cable face pulls", "face pull", "rear delts", "shoulders", "isolation", "upper back"]
+        },
+        {
+            "name": "Cable Pallof Press",
+            "alternateNames": ["Pallof Press"],
+            "musclesWorkedPrimary": ["Core"],
+            "musclesWorkedSecondary": ["Obliques", "Shoulders"],
+            "bodyAreasTargeted": ["Core", "Abs"],
+            "performanceSteps": [
+                "Stand perpendicular to a cable machine with your feet shoulder-width apart.",
+                "Grasp the handle with one hand at chest level.",
+                "Step away from the machine to create tension, then press the handle straight out in front of you.",
+                "Hold briefly while resisting rotation, then slowly return to the starting position."
+            ],
+            "equipment": ["Cable Machine"],
+            "exerciseType": ["Isolation", "Core"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Allowing your torso to rotate",
+                "Leaning too far into the cable",
+                "Using too heavy a weight"
+            ],
+            "trainerTips": [
+                "Keep your hips square to the cable machine.",
+                "Focus on steady, controlled movements.",
+                "Use a manageable resistance to maintain proper form."
+            ],
+            "variations": ["Single-Arm Pallof Press"],
+            "safetyWarnings": [
+                "Avoid excessive weight to protect your lower back and hips."
+            ],
+            "recommendedMinReps": 10,
+            "recommendedMaxReps": 20,
+            "recommendedMinSets": 2,
+            "recommendedMaxSets": 4,
+            "associatedExercises": ["Plank", "Side Plank"],
+            "searchTags": ["cable pallof press", "pallof press", "core", "anti-rotation", "stability"]
+        },
+        {
+            "name": "Cable Tricep Push Downs",
+            "alternateNames": [],
+            "musclesWorkedPrimary": ["Triceps"],
+            "musclesWorkedSecondary": ["Forearms"],
+            "bodyAreasTargeted": ["Arms", "Triceps"],
+            "performanceSteps": [
+                "Stand facing a cable machine with feet shoulder-width apart.",
+                "Grasp the handle with an overhand grip, keeping your elbows close to your sides.",
+                "Push the handle downward until your arms are fully extended.",
+                "Slowly return to the starting position with control."
+            ],
+            "equipment": ["Cable Machine", "Tricep Bar or Rope Attachment"],
+            "exerciseType": ["Isolation", "Strength"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Using momentum instead of controlled movement",
+                "Flaring elbows outwards",
+                "Selecting too heavy a weight"
+            ],
+            "trainerTips": [
+                "Keep your elbows fixed close to your body throughout the exercise.",
+                "Focus on contracting your triceps during the pushdown."
+            ],
+            "variations": [],
+            "safetyWarnings": [
+                "Avoid excessive weight to maintain proper form and prevent injury."
+            ],
+            "recommendedMinReps": 10,
+            "recommendedMaxReps": 15,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 4,
+            "associatedExercises": ["Skull Crushers", "Close-Grip Bench Press"],
+            "searchTags": ["cable tricep push downs", "triceps", "arms", "isolation", "strength"]
+        },
+        {
+            "name": "Cat-Cow Stretch",
+            "alternateNames": [],
+            "musclesWorkedPrimary": ["Spinal Extensors", "Abdominals"],
+            "musclesWorkedSecondary": [],
+            "bodyAreasTargeted": ["Back", "Core", "Spine"],
+            "performanceSteps": [
+                "Start on your hands and knees with a neutral spine.",
+                "For the 'Cat' position, exhale and round your back, tucking your chin toward your chest.",
+                "For the 'Cow' position, inhale, arch your back, and lift your head and tailbone toward the ceiling.",
+                "Alternate slowly between these positions, syncing each movement with your breath."
+            ],
+            "equipment": ["None"],
+            "exerciseType": ["Mobility", "Stretch"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Moving too quickly",
+                "Not synchronizing breath with movement"
+            ],
+            "trainerTips": [
+                "Focus on the articulation of your spine.",
+                "Move slowly and deliberately, feeling the stretch in each phase."
+            ],
+            "variations": [],
+            "safetyWarnings": [
+                "Avoid if you experience severe back pain."
+            ],
+            "recommendedMinReps": 5,
+            "recommendedMaxReps": 10,
+            "recommendedMinSets": 1,
+            "recommendedMaxSets": 2,
+            "associatedExercises": ["Child's Pose", "Downward Dog"],
+            "searchTags": ["cat-cow stretch", "spinal mobility", "stretch", "yoga", "back"]
+        },
+        {
+            "name": "Chest Support Dumbbell Rows",
+            "alternateNames": ["Incline Dumbbell Row"],
+            "musclesWorkedPrimary": ["Upper Back", "Rhomboids"],
+            "musclesWorkedSecondary": ["Biceps", "Rear Deltoids"],
+            "bodyAreasTargeted": ["Back", "Arms"],
+            "performanceSteps": [
+                "Lie face down on an incline bench set at about a 45° angle.",
+                "Hold a dumbbell in each hand with your arms fully extended.",
+                "Row the weights upward by squeezing your shoulder blades together, keeping your elbows close to your body.",
+                "Lower the weights slowly back to the starting position and repeat."
+            ],
+            "equipment": ["Incline Bench", "Dumbbells"],
+            "exerciseType": ["Compound", "Strength"],
+            "difficulty": "Intermediate",
+            "commonMistakes": [
+                "Using momentum to lift the weights",
+                "Lifting the weights too high",
+                "Not maintaining a controlled movement"
+            ],
+            "trainerTips": [
+                "Focus on squeezing your shoulder blades at the top of the movement.",
+                "Maintain a stable position on the bench to isolate the back muscles."
+            ],
+            "variations": [],
+            "safetyWarnings": [
+                "Ensure the bench is secure and use appropriate weights."
+            ],
+            "recommendedMinReps": 8,
+            "recommendedMaxReps": 12,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 4,
+            "associatedExercises": ["Bent-Over Row", "Inverted Row"],
+            "searchTags": ["chest support dumbbell rows", "incline dumbbell row", "upper back", "dumbbell row", "strength"]
+        },
+        {
+            "name": "Child's Pose with Side Reach",
+            "alternateNames": [],
+            "musclesWorkedPrimary": ["Latissimus Dorsi", "Obliques"],
+            "musclesWorkedSecondary": ["Core", "Shoulders"],
+            "bodyAreasTargeted": ["Back", "Core", "Hips"],
+            "performanceSteps": [
+                "Begin in Child's Pose with your knees wide and arms extended forward.",
+                "Slowly walk your hands to one side, deepening the stretch along the opposite side of your torso.",
+                "Hold the position for several deep breaths, then return to center and repeat on the other side."
+            ],
+            "equipment": ["Yoga Mat"],
+            "exerciseType": ["Stretch", "Mobility"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Rushing through the stretch",
+                "Not holding the position long enough"
+            ],
+            "trainerTips": [
+                "Focus on deep, controlled breathing.",
+                "Allow your muscles to relax into the stretch for maximum benefit."
+            ],
+            "variations": ["Traditional Child's Pose"],
+            "safetyWarnings": [
+                "Avoid if you have knee or lower back issues."
+            ],
+            "recommendedMinDuration": 30,
+            "recommendedMaxDuration": 60,
+            "recommendedMinSets": 2,
+            "recommendedMaxSets": 3,
+            "associatedExercises": ["Cat-Cow Stretch", "Downward Dog"],
+            "searchTags": ["child's pose with side reach", "yoga", "stretch", "mobility", "core", "back"]
+        },
+        {
+            "name": "Cossack Squats",
+            "alternateNames": [],
+            "musclesWorkedPrimary": ["Quadriceps", "Glutes"],
+            "musclesWorkedSecondary": ["Adductors", "Hamstrings"],
+            "bodyAreasTargeted": ["Legs", "Lower Body", "Inner Thighs"],
+            "performanceSteps": [
+                "Stand with your feet significantly wider than shoulder-width apart.",
+                "Shift your weight to one leg and squat down while keeping the opposite leg straight.",
+                "Keep your chest upright and push your hips back during the descent.",
+                "Return to the starting position and repeat on the opposite side."
+            ],
+            "equipment": ["None"],
+            "exerciseType": ["Strength", "Mobility"],
+            "difficulty": "Intermediate",
+            "commonMistakes": [
+                "Not keeping the straight leg fully extended",
+                "Losing balance",
+                "Dropping the chest forward"
+            ],
+            "trainerTips": [
+                "Engage your core for balance.",
+                "Focus on a controlled movement and proper knee alignment."
+            ],
+            "variations": ["Assisted Cossack Squat (using a support)"],
+            "safetyWarnings": [
+                "Avoid if you have knee issues and ensure a stable surface."
+            ],
+            "recommendedMinReps": 8,
+            "recommendedMaxReps": 12,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 4,
+            "associatedExercises": ["Side Lunge", "Sumo Squat"],
+            "searchTags": ["cossack squats", "lower body", "mobility", "legs", "squat", "adductors"]
+        },
+        {
+            "name": "Couch Stretch",
+            "alternateNames": [],
+            "musclesWorkedPrimary": ["Hip Flexors"],
+            "musclesWorkedSecondary": ["Quadriceps"],
+            "bodyAreasTargeted": ["Hips", "Legs"],
+            "performanceSteps": [
+                "Kneel facing away from a couch or wall.",
+                "Place one foot on the couch behind you so that your knee is on the floor.",
+                "Shift your weight forward until you feel a stretch in the front of your hip and thigh.",
+                "Hold the stretch for 20-30 seconds, then switch sides."
+            ],
+            "equipment": ["Couch or Wall", "Yoga Mat (optional)"],
+            "exerciseType": ["Stretch", "Mobility"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Rushing into the stretch",
+                "Not maintaining proper posture during the hold"
+            ],
+            "trainerTips": [
+                "Keep your torso upright and breathe deeply.",
+                "Ease into the stretch gradually."
+            ],
+            "variations": ["Standing Couch Stretch"],
+            "safetyWarnings": [
+                "Avoid if you have knee or hip issues."
+            ],
+            "recommendedMinDuration": 20,
+            "recommendedMaxDuration": 30,
+            "recommendedMinSets": 2,
+            "recommendedMaxSets": 3,
+            "associatedExercises": ["Lunge Stretch", "Pigeon Pose"],
+            "searchTags": ["couch stretch", "hip flexor stretch", "lower body", "mobility", "stretch"]
+        },
+        {
+            "name": "Deep Hold Squat",
+            "alternateNames": ["Assisted Deep Squat Hold"],
+            "musclesWorkedPrimary": ["Quadriceps", "Glutes"],
+            "musclesWorkedSecondary": ["Hamstrings", "Core"],
+            "bodyAreasTargeted": ["Lower Body", "Legs", "Glutes", "Core"],
+            "performanceSteps": [
+                "Stand with your feet slightly wider than shoulder-width apart.",
+                "Lower yourself into a deep squat position, ensuring your heels remain on the ground.",
+                "Hold the squat position at the bottom for as long as possible while maintaining proper form.",
+                "Slowly return to a standing position when ready."
+            ],
+            "equipment": ["None"],
+            "exerciseType": ["Isometric", "Strength"],
+            "difficulty": "Intermediate",
+            "commonMistakes": [
+                "Letting the knees cave inward",
+                "Rounding the back",
+                "Lifting the heels off the ground"
+            ],
+            "trainerTips": [
+                "Keep your core engaged and chest up.",
+                "Maintain steady, deep breathing during the hold.",
+                "Work within your flexibility limits to avoid strain."
+            ],
+            "variations": ["Wall-Assisted Deep Squat Hold"],
+            "safetyWarnings": [
+                "Avoid if you experience knee pain.",
+                "Stop the hold if your form begins to deteriorate."
+            ],
+            "recommendedMinDuration": 30,
+            "recommendedMaxDuration": 60,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 5,
+            "associatedExercises": ["Goblet Squat", "Box Squat"],
+            "searchTags": ["deep hold squat", "squat hold", "isometric", "legs", "lower body", "glutes"]
+        },
+        {
+            "name": "Dumbbell Arnold Press",
+            "alternateNames": ["Arnold Press"],
+            "musclesWorkedPrimary": ["Deltoids"],
+            "musclesWorkedSecondary": ["Triceps", "Upper Chest"],
+            "bodyAreasTargeted": ["Shoulders", "Upper Body"],
+            "performanceSteps": [
+                "Sit or stand holding a pair of dumbbells with palms facing you at shoulder level.",
+                "Begin the movement by pressing the dumbbells upward while rotating your palms outward.",
+                "Continue pressing until your arms are fully extended overhead.",
+                "Reverse the motion by rotating your palms inward as you lower the weights back to the starting position."
+            ],
+            "equipment": ["Dumbbells"],
+            "exerciseType": ["Strength", "Compound"],
+            "difficulty": "Intermediate",
+            "commonMistakes": [
+                "Using momentum instead of controlled movement",
+                "Not rotating fully through the motion",
+                "Using weights that are too heavy"
+            ],
+            "trainerTips": [
+                "Focus on smooth, controlled rotations.",
+                "Maintain a tight core throughout the movement.",
+                "Choose a weight that allows you to complete the full range of motion with proper form."
+            ],
+            "variations": [],
+            "safetyWarnings": [
+                "Avoid using excessive weight to prevent shoulder strain."
+            ],
+            "recommendedMinReps": 8,
+            "recommendedMaxReps": 12,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 4,
+            "associatedExercises": ["Dumbbell Shoulder Press", "Lateral Raise"],
+            "searchTags": ["dumbbell arnold press", "arnold press", "shoulders", "deltoids", "upper body", "compound"]
+        },
+        {
+            "name": "Dumbbell Overhead Tricep Extensions",
+            "alternateNames": [],
+            "musclesWorkedPrimary": ["Triceps"],
+            "musclesWorkedSecondary": [],
+            "bodyAreasTargeted": ["Arms"],
+            "performanceSteps": [
+                "Stand or sit holding a single dumbbell with both hands overhead.",
+                "Keep your elbows close to your head as you slowly lower the weight behind you.",
+                "Extend your arms to return to the starting position while focusing on triceps contraction.",
+                "Repeat the movement for the desired number of reps."
+            ],
+            "equipment": ["Dumbbell"],
+            "exerciseType": ["Isolation", "Strength"],
+            "difficulty": "Intermediate",
+            "commonMistakes": [
+                "Flaring elbows outwards",
+                "Using too heavy a weight",
+                "Relying on momentum rather than muscle control"
+            ],
+            "trainerTips": [
+                "Keep your elbows steady and close to your head.",
+                "Focus on a controlled, slow movement to maximize triceps engagement.",
+                "Choose a manageable weight to maintain proper form."
+            ],
+            "variations": [],
+            "safetyWarnings": [
+                "Avoid excessive weight to prevent shoulder and elbow strain."
+            ],
+            "recommendedMinReps": 10,
+            "recommendedMaxReps": 15,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 4,
+            "associatedExercises": ["Cable Tricep Extensions", "Skull Crushers"],
+            "searchTags": ["dumbbell overhead tricep extensions", "tricep extension", "arms", "isolation", "triceps"]
+        },
+        {
+            "name": "Dumbbell Floor Press",
+            "alternateNames": [],
+            "musclesWorkedPrimary": ["Pectorals"],
+            "musclesWorkedSecondary": ["Triceps", "Anterior Deltoids"],
+            "bodyAreasTargeted": ["Chest", "Arms", "Upper Body"],
+            "performanceSteps": [
+                "Lie on the floor with a dumbbell in each hand, keeping your elbows at a 45-degree angle.",
+                "Press the dumbbells upward until your arms are fully extended.",
+                "Slowly lower the weights until your upper arms gently touch the floor.",
+                "Repeat for the desired number of reps while maintaining controlled movement."
+            ],
+            "equipment": ["Dumbbells"],
+            "exerciseType": ["Strength", "Compound"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Flaring elbows excessively",
+                "Not lowering fully, limiting the range of motion",
+                "Using too heavy a weight which compromises form"
+            ],
+            "trainerTips": [
+                "Focus on a slow, controlled descent and press.",
+                "Keep your elbows at a 45-degree angle to protect your shoulders.",
+                "Select an appropriate weight that lets you complete each rep with proper form."
+            ],
+            "variations": [],
+            "safetyWarnings": [
+                "Ensure you use a controlled motion to avoid shoulder strain."
+            ],
+            "recommendedMinReps": 8,
+            "recommendedMaxReps": 12,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 4,
+            "associatedExercises": ["Bench Press", "Push-Up"],
+            "searchTags": ["dumbbell floor press", "chest", "dumbbell press", "upper body", "strength"]
+        },
+        {
+            "name": "Farmer's Walk",
+            "alternateNames": [],
+            "musclesWorkedPrimary": ["Grip", "Forearms"],
+            "musclesWorkedSecondary": ["Trapezius", "Shoulders", "Core", "Legs"],
+            "bodyAreasTargeted": ["Full Body", "Grip", "Forearms"],
+            "performanceSteps": [
+                "Stand upright holding a heavy dumbbell or kettlebell in each hand.",
+                "Walk a set distance or for a designated time while keeping your posture upright.",
+                "Maintain a strong grip and engage your core to stabilize your body.",
+                "Rest briefly between sets and repeat for the desired number of rounds."
+            ],
+            "equipment": ["Dumbbells or Kettlebells"],
+            "exerciseType": ["Strength", "Functional"],
+            "difficulty": "Intermediate",
+            "commonMistakes": [
+                "Rushing and sacrificing posture",
+                "Losing grip stability",
+                "Allowing the weights to pull you off balance"
+            ],
+            "trainerTips": [
+                "Keep your core engaged and shoulders back.",
+                "Walk steadily and focus on maintaining proper form.",
+                "Choose weights that challenge your grip without compromising your walk."
+            ],
+            "variations": ["Single-Arm Farmer's Walk", "Heavy Farmers Carry"],
+            "safetyWarnings": [
+                "Ensure you have ample space and a secure environment to perform the exercise."
+            ],
+            "recommendedMinDuration": 20,
+            "recommendedMaxDuration": 30,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 5,
+            "associatedExercises": ["Deadlift", "Shrug"],
+            "searchTags": ["farmer's walk", "loaded carry", "grip strength", "functional", "full body"]
+        },
+        {
+            "name": "Forearm Stretch",
+            "alternateNames": [],
+            "musclesWorkedPrimary": ["Forearms"],
+            "musclesWorkedSecondary": [],
+            "bodyAreasTargeted": ["Forearms", "Wrists"],
+            "performanceSteps": [
+                "Extend one arm in front of you with your palm facing upward.",
+                "Using your opposite hand, gently pull your fingers back toward your forearm until a stretch is felt.",
+                "Hold the stretch for 20-30 seconds before switching arms.",
+                "Repeat if necessary for both arms."
+            ],
+            "equipment": ["None"],
+            "exerciseType": ["Stretch", "Mobility"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Pulling too hard and causing discomfort",
+                "Not holding the stretch long enough"
+            ],
+            "trainerTips": [
+                "Stretch gently and steadily.",
+                "Focus on relaxing the forearm muscles during the hold."
+            ],
+            "variations": ["Wrist Flexor Stretch"],
+            "safetyWarnings": [
+                "Avoid overstretching to prevent muscle strain."
+            ],
+            "recommendedMinDuration": 20,
+            "recommendedMaxDuration": 30,
+            "recommendedMinSets": 2,
+            "recommendedMaxSets": 3,
+            "associatedExercises": ["Wrist Stretch"],
+            "searchTags": ["forearm stretch", "wrist stretch", "mobility", "stretch", "flexibility"]
+        },
+        {
+            "name": "Goblet Squats",
+            "alternateNames": [],
+            "musclesWorkedPrimary": ["Quadriceps", "Glutes"],
+            "musclesWorkedSecondary": ["Hamstrings", "Core"],
+            "bodyAreasTargeted": ["Lower Body", "Legs", "Glutes", "Core"],
+            "performanceSteps": [
+                "Stand with your feet shoulder-width apart while holding a dumbbell or kettlebell close to your chest.",
+                "Lower into a squat by bending your knees and pushing your hips back, keeping your chest upright.",
+                "Descend until your thighs are parallel to the floor (or lower if your flexibility allows).",
+                "Drive through your heels to return to the starting position and repeat."
+            ],
+            "equipment": ["Dumbbell or Kettlebell"],
+            "exerciseType": ["Strength", "Compound"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Allowing the knees to collapse inward",
+                "Rounding the back",
+                "Not squatting deep enough"
+            ],
+            "trainerTips": [
+                "Focus on keeping your chest up and core engaged.",
+                "Drive through your heels to activate your glutes.",
+                "Perform the movement slowly to maintain proper form."
+            ],
+            "variations": [],
+            "safetyWarnings": [
+                "Ensure proper form to avoid knee or lower back injury."
+            ],
+            "recommendedMinReps": 10,
+            "recommendedMaxReps": 15,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 4,
+            "associatedExercises": ["Barbell Squat", "Lunge"],
+            "searchTags": ["goblet squat", "squat", "lower body", "legs", "glutes", "compound"]
+        },
+        {
+            "name": "Hammer Curls",
+            "alternateNames": [],
+            "musclesWorkedPrimary": ["Biceps", "Brachialis"],
+            "musclesWorkedSecondary": ["Forearms"],
+            "bodyAreasTargeted": ["Arms"],
+            "performanceSteps": [
+                "Stand with a dumbbell in each hand, keeping your palms facing each other.",
+                "Curl the weights upward by bending your elbows while keeping your upper arms stationary.",
+                "Squeeze your biceps at the top of the movement.",
+                "Slowly lower the dumbbells back to the starting position and repeat."
+            ],
+            "equipment": ["Dumbbells"],
+            "exerciseType": ["Isolation", "Strength"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Swinging the weights using momentum",
+                "Using weights that are too heavy",
+                "Not controlling the eccentric phase"
+            ],
+            "trainerTips": [
+                "Keep your elbows fixed at your sides.",
+                "Focus on a slow, controlled movement for maximum muscle activation.",
+                "Select a weight that allows proper form throughout the exercise."
+            ],
+            "variations": [],
+            "safetyWarnings": [
+                "Avoid excessive weight to prevent form breakdown and injury."
+            ],
+            "recommendedMinReps": 10,
+            "recommendedMaxReps": 15,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 4,
+            "associatedExercises": ["Bicep Curl", "Preacher Curl"],
+            "searchTags": ["hammer curls", "biceps", "arms", "isolation", "strength"]
+        },
+        {
+            "name": "Hamstring Stretch",
+            "alternateNames": [],
+            "musclesWorkedPrimary": ["Hamstrings"],
+            "musclesWorkedSecondary": [],
+            "bodyAreasTargeted": ["Legs", "Hamstrings"],
+            "performanceSteps": [
+                "Sit on the floor with one leg extended straight and the other leg bent so that the sole of the foot rests against your inner thigh.",
+                "Lean forward from your hips toward the extended leg, keeping your back straight.",
+                "Hold the stretch for 20-30 seconds, then switch legs and repeat.",
+                "Focus on a steady, controlled movement while maintaining proper posture."
+            ],
+            "equipment": ["None"],
+            "exerciseType": ["Stretch", "Mobility"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Rounding the back during the stretch",
+                "Bouncing or overstretching"
+            ],
+            "trainerTips": [
+                "Keep the stretch steady and avoid bouncing.",
+                "Focus on a gentle pull in the hamstring, not pain."
+            ],
+            "variations": ["Standing Hamstring Stretch"],
+            "safetyWarnings": [
+                "Avoid overstretching to prevent muscle strain."
+            ],
+            "recommendedMinDuration": 20,
+            "recommendedMaxDuration": 30,
+            "recommendedMinSets": 2,
+            "recommendedMaxSets": 3,
+            "associatedExercises": ["Quad Stretch", "Calf Stretch"],
+            "searchTags": ["hamstring stretch", "stretch", "mobility", "flexibility", "legs"]
+        },
+        {
+            "name": "Hamstring Walkouts",
+            "alternateNames": [],
+            "musclesWorkedPrimary": ["Hamstrings", "Glutes"],
+            "musclesWorkedSecondary": ["Lower Back", "Core"],
+            "bodyAreasTargeted": ["Legs", "Hamstrings"],
+            "performanceSteps": [
+                "Lie on your back with your knees bent and feet flat on the floor.",
+                "Slowly walk your hands forward, extending your arms while keeping your hips on the floor.",
+                "Once fully extended, walk your hands back to the starting position."
+            ],
+            "equipment": ["None"],
+            "exerciseType": ["Bodyweight", "Core", "Strength"],
+            "difficulty": "Intermediate",
+            "commonMistakes": [
+                "Lifting the hips off the floor",
+                "Using momentum rather than controlled movement"
+            ],
+            "trainerTips": [
+                "Keep your core engaged to maintain proper form.",
+                "Move slowly to maximize hamstring tension."
+            ],
+            "variations": [],
+            "safetyWarnings": ["Perform on a padded surface if necessary."],
+            "recommendedMinReps": 8,
+            "recommendedMaxReps": 15,
+            "recommendedMinSets": 2,
+            "recommendedMaxSets": 3,
+            "associatedExercises": ["Glute Bridge", "Hamstring Stretch"],
+            "searchTags": ["hamstring walkouts", "hamstrings", "core", "bodyweight"]
+        },
+        {
+            "name": "Hanging Knee Raises",
+            "alternateNames": [],
+            "musclesWorkedPrimary": ["Abdominals"],
+            "musclesWorkedSecondary": ["Hip Flexors"],
+            "bodyAreasTargeted": ["Core", "Abs"],
+            "performanceSteps": [
+                "Hang from a pull-up bar with an overhand grip.",
+                "Bend your knees and raise them toward your chest by contracting your abdominal muscles.",
+                "Slowly lower your knees back to the starting position with control."
+            ],
+            "equipment": ["Pull-Up Bar"],
+            "exerciseType": ["Bodyweight", "Core"],
+            "difficulty": "Beginner to Intermediate",
+            "commonMistakes": [
+                "Swinging the body excessively",
+                "Not controlling the descent"
+            ],
+            "trainerTips": [
+                "Focus on slow, controlled movements.",
+                "Engage your core throughout the exercise."
+            ],
+            "variations": ["Progression to Hanging Leg Raises"],
+            "safetyWarnings": ["Ensure a secure grip on the bar."],
+            "recommendedMinReps": 8,
+            "recommendedMaxReps": 15,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 4,
+            "associatedExercises": ["Hanging Leg Raises", "Plank"],
+            "searchTags": ["hanging knee raises", "core", "abs", "bodyweight"]
+        },
+        {
+            "name": "Hanging Leg Raises",
+            "alternateNames": [],
+            "musclesWorkedPrimary": ["Abdominals"],
+            "musclesWorkedSecondary": ["Hip Flexors", "Obliques"],
+            "bodyAreasTargeted": ["Core", "Abs"],
+            "performanceSteps": [
+                "Hang from a pull-up bar with a firm grip.",
+                "Keep your legs straight and slowly raise them until they are parallel to the ground.",
+                "Lower your legs back down with control."
+            ],
+            "equipment": ["Pull-Up Bar"],
+            "exerciseType": ["Bodyweight", "Core"],
+            "difficulty": "Intermediate",
+            "commonMistakes": [
+                "Swinging the body to generate momentum",
+                "Not controlling the descent"
+            ],
+            "trainerTips": [
+                "Focus on engaging your core.",
+                "Perform the movement slowly to maintain tension."
+            ],
+            "variations": ["Hanging Knee Raises (for beginners)"],
+            "safetyWarnings": ["Ensure a secure grip on the bar."],
+            "recommendedMinReps": 6,
+            "recommendedMaxReps": 12,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 4,
+            "associatedExercises": ["Hanging Knee Raises", "Plank"],
+            "searchTags": ["hanging leg raises", "core", "abs", "bodyweight"]
+        },
+        {
+            "name": "High Knees",
+            "alternateNames": [],
+            "musclesWorkedPrimary": ["Hip Flexors", "Quadriceps"],
+            "musclesWorkedSecondary": ["Core", "Calves"],
+            "bodyAreasTargeted": ["Legs", "Cardio"],
+            "performanceSteps": [
+                "Stand upright with your feet hip-width apart.",
+                "Run in place while driving your knees as high as possible with each step.",
+                "Maintain a brisk pace and keep an upright posture."
+            ],
+            "equipment": ["None"],
+            "exerciseType": ["Cardio", "Dynamic Warm-Up"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Not lifting the knees high enough",
+                "Slouching or losing form",
+                "Moving too quickly without control"
+            ],
+            "trainerTips": [
+                "Focus on lifting your knees high.",
+                "Engage your core to stabilize your posture.",
+                "Keep a consistent, steady pace."
+            ],
+            "variations": ["High Knees with Twist"],
+            "safetyWarnings": [
+                "Perform on a non-slip surface.",
+                "Warm up properly before high-intensity cardio."
+            ],
+            "recommendedMinSets": 1,
+            "recommendedMaxSets": 1,
+            "associatedExercises": ["Butt Kicks", "Jumping Jacks"],
+            "searchTags": ["high knees", "cardio", "warm-up", "dynamic"],
+            "recommendedMinDuration": 30,
+            "recommendedMaxDuration": 60
+        },
+        {
+            "name": "Hip Bridges",
+            "alternateNames": ["Glute Bridge"],
+            "musclesWorkedPrimary": ["Glutes"],
+            "musclesWorkedSecondary": ["Hamstrings", "Core"],
+            "bodyAreasTargeted": ["Lower Body", "Glutes", "Core"],
+            "performanceSteps": [
+                "Lie on your back with your knees bent and feet flat on the floor.",
+                "Lift your hips by squeezing your glutes and engaging your core until your body forms a straight line from shoulders to knees.",
+                "Hold briefly at the top, then slowly lower your hips back down."
+            ],
+            "equipment": ["None"],
+            "exerciseType": ["Bodyweight", "Isolation", "Strength"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Overarching the lower back",
+                "Lifting too quickly"
+            ],
+            "trainerTips": [
+                "Focus on squeezing your glutes at the top.",
+                "Keep your core engaged throughout the movement."
+            ],
+            "variations": ["Single-Leg Hip Bridge"],
+            "safetyWarnings": ["Avoid if you experience lower back pain."],
+            "recommendedMinReps": 10,
+            "recommendedMaxReps": 15,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 4,
+            "associatedExercises": ["Glute Bridge", "Hip Thrust"],
+            "searchTags": ["hip bridges", "glute bridge", "glutes", "lower body", "core"]
+        },
+        {
+            "name": "Hip CARs",
+            "alternateNames": ["Hip Controlled Articular Rotations"],
+            "musclesWorkedPrimary": ["Hip Joint Stabilizers"],
+            "musclesWorkedSecondary": ["Hip Flexors", "Glutes"],
+            "bodyAreasTargeted": ["Hips", "Lower Body"],
+            "performanceSteps": [
+                "Stand or kneel with a neutral spine.",
+                "Slowly rotate your hip through its full range of motion, focusing on control.",
+                "Pause at the extreme end of the rotation to feel the joint's articulation.",
+                "Perform several controlled rotations on each side."
+            ],
+            "equipment": ["None"],
+            "exerciseType": ["Mobility", "Joint Health"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Moving too quickly",
+                "Not fully controlling the rotation"
+            ],
+            "trainerTips": [
+                "Move slowly and deliberately to maximize joint mobility.",
+                "Focus on feeling the full range of motion in your hip."
+            ],
+            "variations": [],
+            "safetyWarnings": ["Avoid if you experience hip pain."],
+            "recommendedMinReps": 5,
+            "recommendedMaxReps": 10,
+            "recommendedMinSets": 1,
+            "recommendedMaxSets": 2,
+            "associatedExercises": ["Hip Flexor Stretch"],
+            "searchTags": ["hip CARs", "controlled articular rotations", "hips", "mobility"],
+            "recommendedMinDuration": 3,
+            "recommendedMaxDuration": 5
+        },
+        {
+            "name": "Hip Flexor Stretch",
+            "alternateNames": [],
+            "musclesWorkedPrimary": ["Hip Flexors"],
+            "musclesWorkedSecondary": ["Quadriceps"],
+            "bodyAreasTargeted": ["Hips", "Legs"],
+            "performanceSteps": [
+                "Kneel on one knee with the other foot in front, forming a 90-degree angle.",
+                "Push your hips forward until you feel a stretch in the front of the hip on the kneeling side.",
+                "Hold the stretch steadily, then switch sides."
+            ],
+            "equipment": ["None", "Yoga Mat (optional)"],
+            "exerciseType": ["Stretch", "Mobility"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Leaning too far forward",
+                "Not keeping your torso upright"
+            ],
+            "trainerTips": [
+                "Keep your core engaged and your back straight.",
+                "Hold the stretch steadily and avoid bouncing."
+            ],
+            "variations": ["Standing Hip Flexor Stretch"],
+            "safetyWarnings": ["Avoid if you have knee issues."],
+            "recommendedMinSets": 2,
+            "recommendedMaxSets": 3,
+            "associatedExercises": ["Couch Stretch", "Pigeon Pose"],
+            "searchTags": ["hip flexor stretch", "stretch", "mobility", "hips"],
+            "recommendedMinDuration": 20,
+            "recommendedMaxDuration": 60
+        },
+        {
+            "name": "Hollow Body Hold",
+            "alternateNames": [],
+            "musclesWorkedPrimary": ["Core", "Abdominals"],
+            "musclesWorkedSecondary": ["Hip Flexors"],
+            "bodyAreasTargeted": ["Core", "Abs"],
+            "performanceSteps": [
+                "Lie on your back and engage your core.",
+                "Lift your legs and shoulders off the floor while keeping your lower back pressed to the ground.",
+                "Hold the hollow body position while breathing steadily.",
+                "Maintain the hold for the desired duration."
+            ],
+            "equipment": ["None", "Mat (optional)"],
+            "exerciseType": ["Isometric", "Core"],
+            "difficulty": "Advanced",
+            "commonMistakes": [
+                "Allowing your lower back to arch",
+                "Not engaging your core sufficiently"
+            ],
+            "trainerTips": [
+                "Focus on keeping your lower back pressed to the floor.",
+                "Breathe steadily and maintain a strong core engagement."
+            ],
+            "variations": ["Hollow Body Rock"],
+            "safetyWarnings": ["Stop if you experience lower back pain."],
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 5,
+            "associatedExercises": ["Plank", "Ab Wheel Rollout"],
+            "searchTags": ["hollow body hold", "core", "isometric", "abs", "advanced"],
+            "recommendedMinDuration": 20,
+            "recommendedMaxDuration": 60
+        },
+        {
+            "name": "Lat Hang Stretch",
+            "alternateNames": [],
+            "musclesWorkedPrimary": ["Latissimus Dorsi"],
+            "musclesWorkedSecondary": ["Shoulders", "Upper Back"],
+            "bodyAreasTargeted": ["Upper Body", "Back"],
+            "performanceSteps": [
+                "Hang from a pull-up bar with your arms fully extended.",
+                "Allow your body to relax and feel a gentle stretch through your lats.",
+                "Focus on deep breathing to enhance the stretch.",
+                "Hold the position for the desired duration, then carefully release."
+            ],
+            "equipment": ["Pull-Up Bar"],
+            "exerciseType": ["Stretch", "Mobility"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Over-swinging or using momentum",
+                "Straining instead of relaxing into the stretch"
+            ],
+            "trainerTips": [
+                "Relax your shoulders and breathe deeply throughout the hold.",
+                "Avoid swinging to maintain a static stretch."
+            ],
+            "variations": [],
+            "safetyWarnings": [
+                "Ensure your grip is secure.",
+                "Do not hang for too long if you experience shoulder discomfort."
+            ],
+            "recommendedMinSets": 2,
+            "recommendedMaxSets": 3,
+            "associatedExercises": ["Dead Hang", "Pull-Up"],
+            "searchTags": ["lat hang stretch", "stretch", "latissimus dorsi", "upper body", "mobility"],
+            "recommendedMinDuration": 20,
+            "recommendedMaxDuration": 60
+        },
+        {
+            "name": "Lateral Lunges",
+            "alternateNames": ["Side Lunges"],
+            "musclesWorkedPrimary": ["Quadriceps", "Glutes"],
+            "musclesWorkedSecondary": ["Adductors", "Hamstrings"],
+            "bodyAreasTargeted": ["Lower Body", "Legs"],
+            "performanceSteps": [
+                "Stand with your feet hip-width apart.",
+                "Step laterally with one leg while keeping the other leg straight.",
+                "Bend the stepping leg to lower your body into a side lunge.",
+                "Push back to the starting position and alternate sides."
+            ],
+            "equipment": ["None"],
+            "exerciseType": ["Strength", "Compound", "Mobility"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Leaning forward excessively",
+                "Not pushing the hips back properly"
+            ],
+            "trainerTips": [
+                "Keep your chest up and move in a controlled manner.",
+                "Focus on proper knee alignment during the lunge."
+            ],
+            "variations": ["Weighted Lateral Lunges"],
+            "safetyWarnings": [
+                "Ensure a stable surface to prevent falls.",
+                "Maintain proper form to avoid knee strain."
+            ],
+            "recommendedMinReps": 10,
+            "recommendedMaxReps": 15,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 4,
+            "associatedExercises": ["Step-Up", "Forward Lunge"],
+            "searchTags": ["lateral lunges", "side lunges", "legs", "lower body", "mobility"]
+        },
+        {
+            "name": "Hamstring Curls",
+            "alternateNames": ["Leg Curls"],
+            "musclesWorkedPrimary": ["Hamstrings"],
+            "musclesWorkedSecondary": [],
+            "bodyAreasTargeted": ["Legs", "Hamstrings"],
+            "performanceSteps": [
+                "Lie face down on a hamstring curl machine.",
+                "Position your ankles under the padded lever.",
+                "Curl your legs upward by contracting your hamstrings.",
+                "Slowly lower the weight back to the starting position."
+            ],
+            "equipment": ["Hamstring Curl Machine"],
+            "exerciseType": ["Isolation", "Strength"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Using momentum to lift the weight",
+                "Allowing the hips to lift off the pad"
+            ],
+            "trainerTips": [
+                "Focus on a slow, controlled motion.",
+                "Keep your hips stable on the machine."
+            ],
+            "variations": ["Seated Hamstring Curl"],
+            "safetyWarnings": [
+                "Avoid overloading the machine to prevent strain.",
+                "Ensure proper adjustment for your body size."
+            ],
+            "recommendedMinReps": 10,
+            "recommendedMaxReps": 15,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 4,
+            "associatedExercises": ["Romanian Deadlift", "Leg Extension"],
+            "searchTags": ["hamstring curls", "leg curls", "hamstrings", "isolation", "strength"]
+        },
+        {
+            "name": "Mid Row",
+            "alternateNames": ["Mid-Grip Row"],
+            "musclesWorkedPrimary": ["Middle Back", "Rhomboids"],
+            "musclesWorkedSecondary": ["Biceps", "Rear Deltoids"],
+            "bodyAreasTargeted": ["Back", "Arms"],
+            "performanceSteps": [
+                "Sit at a cable row machine with your feet secured and back straight.",
+                "Grab the mid-handle with both hands.",
+                "Pull the handle towards your torso while squeezing your shoulder blades together.",
+                "Slowly extend your arms back to the starting position."
+            ],
+            "equipment": ["Cable Machine", "Rowing Handle"],
+            "exerciseType": ["Strength", "Compound"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Using momentum instead of muscle contraction",
+                "Rounding the back during the row"
+            ],
+            "trainerTips": [
+                "Engage your back muscles and maintain a neutral spine.",
+                "Keep your core tight to support proper posture."
+            ],
+            "variations": ["Seated Cable Row", "T-Bar Row"],
+            "safetyWarnings": [
+                "Ensure proper form to avoid lower back injury."
+            ],
+            "recommendedMinReps": 10,
+            "recommendedMaxReps": 15,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 4,
+            "associatedExercises": ["Lat Pulldown", "Inverted Row"],
+            "searchTags": ["mid row", "cable row", "back", "compound", "strength"]
+        },
+        {
+            "name": "Neck Mobility Stretch",
+            "alternateNames": ["Neck Stretch"],
+            "musclesWorkedPrimary": ["Neck Muscles"],
+            "musclesWorkedSecondary": [],
+            "bodyAreasTargeted": ["Neck", "Upper Back"],
+            "performanceSteps": [
+                "Sit or stand with a straight spine.",
+                "Slowly tilt your head to one side, bringing your ear toward your shoulder.",
+                "Hold briefly, then gently rotate your head in a circular motion.",
+                "Repeat in both directions."
+            ],
+            "equipment": ["None"],
+            "exerciseType": ["Stretch", "Mobility"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Moving too quickly",
+                "Overstretching the neck"
+            ],
+            "trainerTips": [
+                "Perform the stretch slowly and gently.",
+                "Avoid any jerky movements that might strain the neck."
+            ],
+            "variations": [],
+            "safetyWarnings": [
+                "Do not force the neck beyond its comfortable range."
+            ],
+            "recommendedMinSets": 2,
+            "recommendedMaxSets": 3,
+            "associatedExercises": ["Shoulder Shrugs", "Upper Back Stretch"],
+            "searchTags": ["neck mobility stretch", "neck stretch", "mobility", "flexibility"],
+            "recommendedMinDuration": 20,
+            "recommendedMaxDuration": 60
+        },
+        {
+            "name": "Overhead Shoulder Stretch",
+            "alternateNames": [],
+            "musclesWorkedPrimary": ["Shoulders"],
+            "musclesWorkedSecondary": ["Upper Back"],
+            "bodyAreasTargeted": ["Shoulders", "Upper Body"],
+            "performanceSteps": [
+                "Stand or sit upright.",
+                "Reach one arm overhead and bend at the elbow to touch the opposite shoulder blade.",
+                "Use your other hand to gently push the elbow downward to deepen the stretch.",
+                "Hold for the desired duration and then switch arms."
+            ],
+            "equipment": ["None"],
+            "exerciseType": ["Stretch", "Mobility"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Overstretching or using too much force",
+                "Lifting the shoulder excessively"
+            ],
+            "trainerTips": [
+                "Keep the stretch gentle and focus on deep breathing.",
+                "Avoid forcing the stretch beyond comfort."
+            ],
+            "variations": [],
+            "safetyWarnings": [
+                "Avoid overstretching to prevent shoulder strain."
+            ],
+            "recommendedMinSets": 2,
+            "recommendedMaxSets": 3,
+            "associatedExercises": ["Child's Pose", "Chest Stretch"],
+            "searchTags": ["overhead shoulder stretch", "shoulder", "stretch", "mobility"],
+            "recommendedMinDuration": 20,
+            "recommendedMaxDuration": 60
+        },
+        {
+            "name": "Pectoral Flys",
+            "alternateNames": ["Chest Flys"],
+            "musclesWorkedPrimary": ["Pectorals"],
+            "musclesWorkedSecondary": ["Anterior Deltoids"],
+            "bodyAreasTargeted": ["Chest", "Upper Body"],
+            "performanceSteps": [
+                "Lie on a flat bench with a dumbbell in each hand, palms facing each other.",
+                "With a slight bend in your elbows, lower the weights out to the sides in a wide arc.",
+                "Squeeze your chest to bring the dumbbells together above your chest.",
+                "Slowly lower the weights back to the starting position and repeat."
+            ],
+            "equipment": ["Dumbbells", "Bench"],
+            "exerciseType": ["Isolation", "Strength"],
+            "difficulty": "Intermediate",
+            "commonMistakes": [
+                "Using weights that are too heavy",
+                "Locking out elbows",
+                "Overextending the arms during the movement"
+            ],
+            "trainerTips": [
+                "Maintain a slight bend in your elbows throughout the exercise.",
+                "Focus on contracting your chest at the peak of the movement."
+            ],
+            "variations": ["Incline Pectoral Flys", "Cable Chest Flys"],
+            "safetyWarnings": [
+                "Avoid using weights that compromise your form."
+            ],
+            "recommendedMinReps": 10,
+            "recommendedMaxReps": 15,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 4,
+            "associatedExercises": ["Chest Press", "Dumbbell Fly"],
+            "searchTags": ["pectoral flys", "chest flys", "chest", "isolation", "strength"]
+        },
+        {
+            "name": "Pigeon Pose",
+            "alternateNames": [],
+            "musclesWorkedPrimary": ["Glutes", "Hip Rotators"],
+            "musclesWorkedSecondary": ["Hip Flexors"],
+            "bodyAreasTargeted": ["Hips", "Glutes", "Lower Back"],
+            "performanceSteps": [
+                "Begin in a tabletop position, then bring one knee forward and place it behind your wrist.",
+                "Extend the opposite leg straight back, keeping your hips square.",
+                "Lower your torso over your front leg to deepen the stretch.",
+                "Hold the pose for the desired duration while breathing deeply, then switch sides."
+            ],
+            "equipment": ["Yoga Mat"],
+            "exerciseType": ["Stretch", "Mobility"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Allowing the hips to twist",
+                "Not keeping the hips square"
+            ],
+            "trainerTips": [
+                "Maintain a square hip alignment.",
+                "Focus on deep, steady breathing to enhance the stretch."
+            ],
+            "variations": ["Modified Pigeon Pose (with a bolster)"],
+            "safetyWarnings": [
+                "Avoid if you experience knee or hip pain.",
+                "Ease into the stretch gradually."
+            ],
+            "recommendedMinSets": 2,
+            "recommendedMaxSets": 3,
+            "associatedExercises": ["Child's Pose", "Hip Flexor Stretch"],
+            "searchTags": ["pigeon pose", "yoga", "stretch", "hips", "glutes", "mobility"],
+            "recommendedMinDuration": 30,
+            "recommendedMaxDuration": 90
+        },
+        {
+            "name": "Plank Shoulder Taps",
+            "alternateNames": [],
+            "musclesWorkedPrimary": ["Core"],
+            "musclesWorkedSecondary": ["Shoulders", "Obliques"],
+            "bodyAreasTargeted": ["Core", "Shoulders"],
+            "performanceSteps": [
+                "Start in a high plank position with your arms fully extended and hands under your shoulders.",
+                "Without letting your hips sway, lift one hand and tap the opposite shoulder.",
+                "Return the hand to the plank position and alternate sides for the desired number of reps."
+            ],
+            "equipment": ["None"],
+            "exerciseType": ["Bodyweight", "Core", "Stability"],
+            "difficulty": "Intermediate",
+            "commonMistakes": [
+                "Allowing hips to rotate or sag",
+                "Using momentum rather than control"
+            ],
+            "trainerTips": [
+                "Engage your core and keep your hips as still as possible.",
+                "Perform each tap slowly to maintain proper form."
+            ],
+            "variations": ["Modified Plank Shoulder Taps (knees on ground)"],
+            "safetyWarnings": [
+                "Stop if you experience any shoulder discomfort."
+            ],
+            "recommendedMinReps": 10,
+            "recommendedMaxReps": 20,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 4,
+            "associatedExercises": ["Plank", "Mountain Climbers"],
+            "searchTags": ["plank shoulder taps", "core", "shoulders", "stability", "bodyweight"]
+        },
+        {
+            "name": "Reverse Lunges",
+            "alternateNames": ["Backward Lunges"],
+            "musclesWorkedPrimary": ["Quadriceps", "Glutes"],
+            "musclesWorkedSecondary": ["Hamstrings", "Calves"],
+            "bodyAreasTargeted": ["Lower Body", "Legs", "Glutes"],
+            "performanceSteps": [
+                "Stand tall with feet hip-width apart.",
+                "Step backward with one leg and lower your body until both knees are bent at about 90 degrees.",
+                "Ensure your front knee stays in line with your toes.",
+                "Push through the front heel to return to the starting position and repeat on the other side."
+            ],
+            "equipment": ["None"],
+            "exerciseType": ["Strength", "Compound"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Letting the front knee extend too far forward",
+                "Leaning forward excessively"
+            ],
+            "trainerTips": [
+                "Keep your torso upright and core engaged.",
+                "Step back with control and maintain proper knee alignment."
+            ],
+            "variations": ["Weighted Reverse Lunges"],
+            "safetyWarnings": [
+                "Be cautious with knee alignment, especially if you have knee issues."
+            ],
+            "recommendedMinReps": 10,
+            "recommendedMaxReps": 15,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 4,
+            "associatedExercises": ["Forward Lunge", "Bulgarian Split Squat"],
+            "searchTags": ["reverse lunge", "backward lunge", "legs", "lower body", "compound"]
+        },
+        {
+            "name": "Scapular Pull-Ups",
+            "alternateNames": [],
+            "musclesWorkedPrimary": ["Scapular Stabilizers"],
+            "musclesWorkedSecondary": ["Upper Back"],
+            "bodyAreasTargeted": ["Back", "Shoulders"],
+            "performanceSteps": [
+                "Hang from a pull-up bar with your arms fully extended and a firm grip.",
+                "Without bending your elbows, pull your shoulder blades down and together to lift your body slightly.",
+                "Pause briefly at the top, then slowly release back to a full hang.",
+                "Repeat for the desired number of reps."
+            ],
+            "equipment": ["Pull-Up Bar"],
+            "exerciseType": ["Bodyweight", "Isolation"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Bending the elbows during the movement",
+                "Using momentum rather than focusing on scapular retraction"
+            ],
+            "trainerTips": [
+                "Focus on initiating the movement with your scapula, keeping your arms straight.",
+                "Perform the exercise slowly to fully engage the stabilizers."
+            ],
+            "variations": [],
+            "safetyWarnings": [
+                "Ensure your grip is secure to avoid slipping."
+            ],
+            "recommendedMinReps": 8,
+            "recommendedMaxReps": 15,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 4,
+            "associatedExercises": ["Pull-Up", "Inverted Row"],
+            "searchTags": ["scapular pull-ups", "scapular retraction", "upper back", "bodyweight", "isolation"]
+        },
+        {
+            "name": "Seated Calf Raises",
+            "alternateNames": [],
+            "musclesWorkedPrimary": ["Soleus"],
+            "musclesWorkedSecondary": ["Gastrocnemius"],
+            "bodyAreasTargeted": ["Calves"],
+            "performanceSteps": [
+                "Sit on a seated calf raise machine or bench with your knees at a 90-degree angle.",
+                "Place the padded lever on your thighs or knees.",
+                "Raise your heels by contracting your calf muscles, hold briefly at the top, then slowly lower your heels back down."
+            ],
+            "equipment": ["Seated Calf Raise Machine", "Bench", "Weights"],
+            "exerciseType": ["Isolation", "Strength"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Using excessive weight",
+                "Not achieving a full range of motion"
+            ],
+            "trainerTips": [
+                "Perform the movement slowly and control both the raise and the lowering phases.",
+                "Focus on squeezing your calves at the top."
+            ],
+            "variations": [],
+            "safetyWarnings": [
+                "Avoid overloading the machine to prevent knee strain."
+            ],
+            "recommendedMinReps": 12,
+            "recommendedMaxReps": 20,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 5,
+            "associatedExercises": ["Standing Calf Raises"],
+            "searchTags": ["seated calf raises", "calves", "isolation", "strength"]
+        },
+        {
+            "name": "Seated Forward Fold",
+            "alternateNames": ["Seated Forward Bend", "Seated Hamstring Stretch"],
+            "musclesWorkedPrimary": ["Hamstrings"],
+            "musclesWorkedSecondary": ["Lower Back", "Calves"],
+            "bodyAreasTargeted": ["Legs", "Hamstrings", "Back"],
+            "performanceSteps": [
+                "Sit on the floor with your legs extended straight in front of you.",
+                "Keep your back straight as you hinge at the hips and reach toward your feet.",
+                "Hold the position, feeling a stretch along your hamstrings and lower back."
+            ],
+            "equipment": ["None", "Yoga Mat (optional)"],
+            "exerciseType": ["Stretch", "Mobility"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Rounding the back excessively",
+                "Bouncing during the stretch"
+            ],
+            "trainerTips": [
+                "Keep your spine long and move into the stretch gradually.",
+                "Focus on deep, controlled breathing."
+            ],
+            "variations": ["Wide-Legged Seated Forward Fold"],
+            "safetyWarnings": [
+                "Avoid if you experience back pain."
+            ],
+            "recommendedMinSets": 2,
+            "recommendedMaxSets": 3,
+            "associatedExercises": ["Hamstring Stretch"],
+            "searchTags": ["seated forward fold", "seated forward bend", "hamstring stretch", "mobility", "stretch"],
+            "recommendedMinDuration": 30,
+            "recommendedMaxDuration": 90
+        },
+        {
+            "name": "Shoulder CARs",
+            "alternateNames": ["Shoulder Controlled Articular Rotations"],
+            "musclesWorkedPrimary": ["Shoulder Joint Stabilizers"],
+            "musclesWorkedSecondary": ["Deltoids"],
+            "bodyAreasTargeted": ["Shoulders", "Upper Body"],
+            "performanceSteps": [
+                "Stand or sit with a straight posture.",
+                "Slowly rotate your shoulder through its full range of motion in a controlled manner.",
+                "Perform several rotations in one direction before switching to the other."
+            ],
+            "equipment": ["None"],
+            "exerciseType": ["Mobility", "Joint Health"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Moving too quickly",
+                "Not fully articulating the joint"
+            ],
+            "trainerTips": [
+                "Focus on slow, deliberate movements to maximize joint health.",
+                "Maintain control throughout the entire rotation."
+            ],
+            "variations": [],
+            "safetyWarnings": [
+                "Avoid if you experience shoulder pain."
+            ],
+            "recommendedMinReps": 5,
+            "recommendedMaxReps": 10,
+            "recommendedMinSets": 1,
+            "recommendedMaxSets": 2,
+            "associatedExercises": ["Hip CARs"],
+            "searchTags": ["shoulder CARs", "controlled articular rotations", "shoulders", "mobility", "joint health"],
+            "recommendedMinDuration": 1,
+            "recommendedMaxDuration": 2
+        },
+        {
+            "name": "Single Leg RDLs",
+            "alternateNames": ["Single-Leg Romanian Deadlift"],
+            "musclesWorkedPrimary": ["Hamstrings", "Glutes"],
+            "musclesWorkedSecondary": ["Lower Back", "Core"],
+            "bodyAreasTargeted": ["Lower Body", "Legs", "Glutes"],
+            "performanceSteps": [
+                "Stand on one leg with a slight bend in the knee.",
+                "Hold a dumbbell or kettlebell in the opposite hand.",
+                "Hinge at your hips while extending the free leg behind you, lowering the weight toward the ground.",
+                "Return to the upright position by engaging your hamstrings and glutes."
+            ],
+            "equipment": ["Dumbbell or Kettlebell"],
+            "exerciseType": ["Strength", "Compound"],
+            "difficulty": "Intermediate",
+            "commonMistakes": [
+                "Losing balance or rounding the back",
+                "Overextending the free leg"
+            ],
+            "trainerTips": [
+                "Keep your core engaged and maintain a neutral spine.",
+                "Perform the movement slowly to ensure balance and proper form."
+            ],
+            "variations": [
+                "Bodyweight Single Leg RDL"
+            ],
+            "safetyWarnings": [
+                "Ensure you perform the exercise on a stable surface."
+            ],
+            "recommendedMinReps": 8,
+            "recommendedMaxReps": 12,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 4,
+            "associatedExercises": ["Romanian Deadlift", "Glute Bridge"],
+            "searchTags": ["single leg rdl", "single-leg rdl", "hamstrings", "glutes", "lower body", "balance"]
+        },
+        {
+            "name": "Skater Jumps",
+            "alternateNames": [],
+            "musclesWorkedPrimary": ["Legs", "Glutes"],
+            "musclesWorkedSecondary": ["Adductors", "Core"],
+            "bodyAreasTargeted": ["Lower Body", "Legs", "Glutes"],
+            "performanceSteps": [
+                "Start in an athletic stance with knees slightly bent.",
+                "Jump laterally to one side, landing softly on the opposite leg while swinging the free leg behind for balance.",
+                "Immediately jump to the other side in a fluid, skating motion.",
+                "Maintain a steady rhythm and engage your core throughout."
+            ],
+            "equipment": ["None"],
+            "exerciseType": ["Plyometric", "Cardio", "Bodyweight"],
+            "difficulty": "Intermediate",
+            "commonMistakes": [
+                "Landing too harshly",
+                "Losing balance",
+                "Not keeping the core engaged"
+            ],
+            "trainerTips": [
+                "Focus on soft, controlled landings.",
+                "Keep your movements fluid and engage your core for stability.",
+                "Warm up properly before performing plyometric exercises."
+            ],
+            "variations": ["Weighted Skater Jumps"],
+            "safetyWarnings": [
+                "Perform on a non-slip surface to prevent injury."
+            ],
+            "recommendedMinReps": 10,
+            "recommendedMaxReps": 20,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 4,
+            "associatedExercises": ["Lateral Lunges", "High Knees"],
+            "searchTags": ["skater jumps", "plyometrics", "cardio", "legs", "bodyweight"]
+        },
+        {
+            "name": "Standing Calf Raises",
+            "alternateNames": [],
+            "musclesWorkedPrimary": ["Gastrocnemius", "Soleus"],
+            "musclesWorkedSecondary": [],
+            "bodyAreasTargeted": ["Calves"],
+            "performanceSteps": [
+                "Stand on an elevated platform with your heels hanging off the edge.",
+                "Push through the balls of your feet to raise your body upward, contracting your calf muscles.",
+                "Hold briefly at the top, then slowly lower your heels below the platform level.",
+                "Repeat for the desired number of reps."
+            ],
+            "equipment": ["Calf Raise Machine", "Smith Machine", "Step"],
+            "exerciseType": ["Isolation", "Strength"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Not achieving full range of motion",
+                "Bouncing at the bottom",
+                "Lifting too quickly"
+            ],
+            "trainerTips": [
+                "Focus on a controlled movement both upward and downward.",
+                "Ensure a full stretch at the bottom.",
+                "Keep your core engaged for stability."
+            ],
+            "variations": ["Weighted Standing Calf Raises", "Bodyweight Calf Raises"],
+            "safetyWarnings": [
+                "Perform on a stable surface to avoid falls.",
+                "Do not overload if you're new to the exercise."
+            ],
+            "recommendedMinReps": 12,
+            "recommendedMaxReps": 20,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 5,
+            "associatedExercises": ["Seated Calf Raises"],
+            "searchTags": ["standing calf raises", "calves", "isolation", "strength"]
+        },
+        {
+            "name": "Thoracic Spine Rotations",
+            "alternateNames": ["Thoracic Rotations"],
+            "musclesWorkedPrimary": ["Thoracic Spine", "Back Muscles"],
+            "musclesWorkedSecondary": ["Obliques"],
+            "bodyAreasTargeted": ["Upper Back", "Core"],
+            "performanceSteps": [
+                "Sit on the floor with your legs crossed or in a comfortable seated position.",
+                "Place your hands on your shoulders.",
+                "Slowly rotate your upper body to one side as far as comfortable, keeping your lower body stable.",
+                "Return to center and rotate to the opposite side.",
+                "Repeat for the desired number of repetitions."
+            ],
+            "equipment": ["None"],
+            "exerciseType": ["Mobility", "Stretch"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Rotating too quickly",
+                "Using the arms instead of engaging the torso"
+            ],
+            "trainerTips": [
+                "Focus on controlled, slow movements.",
+                "Keep your lower body stable while rotating your upper body."
+            ],
+            "variations": [],
+            "safetyWarnings": [
+                "Do not force the rotation if you experience discomfort."
+            ],
+            "recommendedMinReps": 8,
+            "recommendedMaxReps": 15,
+            "recommendedMinSets": 2,
+            "recommendedMaxSets": 3,
+            "associatedExercises": ["Cat-Cow Stretch"],
+            "searchTags": ["thoracic spine rotations", "upper back mobility", "spine", "stretch"]
+        },
+        {
+            "name": "Tricep Stretch",
+            "alternateNames": [],
+            "musclesWorkedPrimary": ["Triceps"],
+            "musclesWorkedSecondary": [],
+            "bodyAreasTargeted": ["Arms"],
+            "performanceSteps": [
+                "Raise one arm overhead and bend at the elbow so that your hand reaches down toward your opposite shoulder blade.",
+                "Use your other hand to gently push the elbow to deepen the stretch.",
+                "Hold the stretch for the desired duration, then switch arms."
+            ],
+            "equipment": ["None"],
+            "exerciseType": ["Stretch", "Mobility"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Pulling too hard on the elbow",
+                "Bouncing during the stretch"
+            ],
+            "trainerTips": [
+                "Hold the stretch gently and steadily.",
+                "Focus on deep, controlled breathing."
+            ],
+            "variations": [],
+            "safetyWarnings": [
+                "Avoid overstretching to prevent muscle strain."
+            ],
+            "recommendedMinSets": 2,
+            "recommendedMaxSets": 3,
+            "associatedExercises": ["Overhead Shoulder Stretch"],
+            "searchTags": ["tricep stretch", "arm stretch", "flexibility", "mobility"],
+            "recommendedMinDuration": 20,
+            "recommendedMaxDuration": 60
+        },
+        {
+            "name": "Turkish Get-Ups",
+            "alternateNames": [],
+            "musclesWorkedPrimary": ["Core", "Shoulders"],
+            "musclesWorkedSecondary": ["Glutes", "Legs", "Chest"],
+            "bodyAreasTargeted": ["Full Body", "Core"],
+            "performanceSteps": [
+                "Lie on your back holding a kettlebell in one hand with your arm fully extended.",
+                "Bend the knee on the same side as the kettlebell while keeping the opposite leg straight.",
+                "Use your free hand to push yourself up into a sitting position.",
+                "Continue rising into a standing position while keeping the kettlebell overhead.",
+                "Reverse the steps to return to the starting position."
+            ],
+            "equipment": ["Kettlebell"],
+            "exerciseType": ["Strength", "Compound"],
+            "difficulty": "Advanced",
+            "commonMistakes": [
+                "Losing control of the kettlebell",
+                "Not keeping the kettlebell stable overhead",
+                "Rushing the movement"
+            ],
+            "trainerTips": [
+                "Focus on controlled transitions between positions.",
+                "Engage your core throughout the movement.",
+                "Start with a lighter kettlebell until you master the form."
+            ],
+            "variations": [],
+            "safetyWarnings": [
+                "Ensure adequate space to complete the movement safely.",
+                "Avoid if you have shoulder or back injuries."
+            ],
+            "recommendedMinReps": 3,
+            "recommendedMaxReps": 5,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 5,
+            "associatedExercises": ["Turkish Get-Ups (Progression)"],
+            "searchTags": ["turkish get-ups", "get-ups", "full body", "kettlebell", "strength", "compound"]
+        },
+        {
+            "name": "Wall Slides",
+            "alternateNames": [],
+            "musclesWorkedPrimary": ["Shoulders", "Upper Back"],
+            "musclesWorkedSecondary": ["Rotator Cuff"],
+            "bodyAreasTargeted": ["Shoulders", "Upper Body"],
+            "performanceSteps": [
+                "Stand with your back against a wall and your arms in a 'W' position, elbows bent.",
+                "Slide your arms upward, maintaining contact with the wall, until they form a 'Y' shape.",
+                "Slowly lower your arms back to the starting position.",
+                "Repeat with controlled, smooth motions."
+            ],
+            "equipment": ["Wall"],
+            "exerciseType": ["Mobility", "Stretch"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Lifting the arms off the wall",
+                "Moving too quickly"
+            ],
+            "trainerTips": [
+                "Keep your arms and back in full contact with the wall.",
+                "Perform the movement slowly to maximize mobility benefits."
+            ],
+            "variations": [],
+            "safetyWarnings": [
+                "Ensure you have enough space and that the wall is stable."
+            ],
+            "recommendedMinReps": 10,
+            "recommendedMaxReps": 15,
+            "recommendedMinSets": 2,
+            "recommendedMaxSets": 3,
+            "associatedExercises": ["Shoulder CARs"],
+            "searchTags": ["wall slides", "shoulder mobility", "stretch", "upper body", "rotator cuff"]
+        },
+        {
+            "name": "Wall Chest Stretch",
+            "alternateNames": [],
+            "musclesWorkedPrimary": ["Pectorals"],
+            "musclesWorkedSecondary": ["Anterior Deltoids"],
+            "bodyAreasTargeted": ["Chest", "Upper Body"],
+            "performanceSteps": [
+                "Stand facing a wall and place your forearm against it with your elbow at shoulder height.",
+                "Step away from the wall until you feel a stretch in your chest.",
+                "Hold the position while maintaining an upright posture, then switch sides."
+            ],
+            "equipment": ["Wall"],
+            "exerciseType": ["Stretch", "Mobility"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Rushing the stretch",
+                "Not maintaining a tall posture"
+            ],
+            "trainerTips": [
+                "Hold the stretch steadily and focus on relaxing your chest muscles.",
+                "Keep your shoulder down and away from your ear."
+            ],
+            "variations": [],
+            "safetyWarnings": [
+                "Avoid overstretching to prevent shoulder strain."
+            ],
+            "recommendedMinSets": 2,
+            "recommendedMaxSets": 3,
+            "associatedExercises": ["Wall Lat Stretch"],
+            "searchTags": ["wall chest stretch", "chest stretch", "upper body", "stretch", "mobility"],
+            "recommendedMinDuration": 20,
+            "recommendedMaxDuration": 60
+        },
+        {
+            "name": "Wall Lat Stretch",
+            "alternateNames": [],
+            "musclesWorkedPrimary": ["Latissimus Dorsi"],
+            "musclesWorkedSecondary": ["Shoulders"],
+            "bodyAreasTargeted": ["Back", "Shoulders"],
+            "performanceSteps": [
+                "Stand facing a wall and place your hands on the wall at shoulder height.",
+                "Step back with one foot and lean into the stretch, feeling it along your lats.",
+                "Hold the stretch while keeping your posture upright, then adjust your distance to deepen the stretch as needed."
+            ],
+            "equipment": ["Wall"],
+            "exerciseType": ["Stretch", "Mobility"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Rounding the back",
+                "Not engaging the core for support"
+            ],
+            "trainerTips": [
+                "Keep your core engaged and your back straight.",
+                "Adjust your distance from the wall to find a comfortable stretch."
+            ],
+            "variations": [],
+            "safetyWarnings": [
+                "Avoid overstretching and ensure you maintain a stable position."
+            ],
+            "recommendedMinSets": 2,
+            "recommendedMaxSets": 3,
+            "associatedExercises": ["Wall Chest Stretch"],
+            "searchTags": ["wall lat stretch", "lat stretch", "stretch", "mobility", "upper body"],
+            "recommendedMinDuration": 20,
+            "recommendedMaxDuration": 60
         }
     ]
 }
+
+
+
+
+
+
+

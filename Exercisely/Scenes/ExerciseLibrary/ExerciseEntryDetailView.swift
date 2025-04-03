@@ -97,6 +97,7 @@ struct ExerciseEntryDetailView: View {
     @ViewBuilder private func InfoTab() -> some View {
         List {
             RecommendedRepsSection()
+            RecommendedDurationSection()
             RecommendedSetsSection()
             DifficultySection()
             ExerciseTypeSection()
@@ -124,37 +125,61 @@ struct ExerciseEntryDetailView: View {
             }
         }
     }
-
     
     @ViewBuilder private func RecommendedRepsSection() -> some View {
-        Section {
-            VStack {
-                if entry.recommendedMinReps != entry.recommendedMaxReps {
-                    Text("\(entry.recommendedMinReps)-\(entry.recommendedMaxReps)")
-                } else {
-                    Text("\(entry.recommendedMinReps)")
+        if let minReps = entry.recommendedMinReps, minReps > 1 {
+            Section {
+                VStack {
+                    if let maxReps = entry.recommendedMaxReps, minReps != maxReps {
+                        Text("\(minReps)-\(maxReps)")
+                    } else {
+                        Text("\(minReps)")
+                    }
                 }
+                .workoutExerciseRow()
+            } header: {
+                Text("Recommended Reps")
+                    .librarySectionHeader()
             }
-            .workoutExerciseRow()
-        } header: {
-            Text("Recommended Reps")
-                .librarySectionHeader()
+        }
+    }
+    
+    @ViewBuilder private func RecommendedDurationSection() -> some View {
+        if let minDur = entry.recommendedMinDuration, minDur > 1 {
+            Section {
+                VStack {
+                    if let maxDur = entry.recommendedMaxDuration, minDur != maxDur {
+                        Text("\(minDur)-\(maxDur)secs")
+                    } else {
+                        Text("\(minDur)secs")
+                    }
+                }
+                .workoutExerciseRow()
+            } header: {
+                Text("Recommended Duration")
+                    .librarySectionHeader()
+            }
         }
     }
     
     @ViewBuilder private func RecommendedSetsSection() -> some View {
-        Section {
-            VStack {
-                if entry.recommendedMinSets != entry.recommendedMaxSets {
-                    Text("\(entry.recommendedMinSets)-\(entry.recommendedMaxSets)")
-                } else {
-                    Text("\(entry.recommendedMinSets)")
+        let minSets = entry.recommendedMinSets
+        let maxSets = entry.recommendedMaxSets
+
+        if minSets > 1 {
+            Section {
+                VStack {
+                    if minSets != maxSets {
+                        Text("\(minSets)-\(maxSets)")
+                    } else {
+                        Text("\(minSets)")
+                    }
                 }
+                .workoutExerciseRow()
+            } header: {
+                Text("Recommended Sets")
+                    .librarySectionHeader()
             }
-            .workoutExerciseRow()
-        } header: {
-            Text("Recommended Sets")
-                .librarySectionHeader()
         }
     }
     
