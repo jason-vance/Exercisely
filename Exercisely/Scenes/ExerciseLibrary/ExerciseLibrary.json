@@ -215,7 +215,7 @@
                 "Push back up to the starting position.",
                 "Repeat while keeping your body straight."
             ],
-            "equipment": ["None"],
+            "equipment": [],
             "exerciseType": ["Strength", "Bodyweight", "Compound"],
             "difficulty": "Beginner",
             "commonMistakes": [
@@ -344,7 +344,7 @@
                 "Hold this position while keeping your core engaged.",
                 "Breathe steadily throughout the duration of the hold."
             ],
-            "equipment": ["None"],
+            "equipment": [],
             "exerciseType": ["Isometric", "Core"],
             "difficulty": "Beginner",
             "commonMistakes": [
@@ -964,7 +964,7 @@
                 "Perform a push-up (optional), then quickly return your feet to the squat position.",
                 "Explosively jump upward and repeat the sequence."
             ],
-            "equipment": ["None"],
+            "equipment": [],
             "exerciseType": ["Bodyweight", "Cardio", "Compound"],
             "difficulty": "Intermediate",
             "commonMistakes": [
@@ -1233,7 +1233,7 @@
                 "Quickly switch legs in a running motion while maintaining a strong plank position.",
                 "Keep your core engaged and your hips level throughout the movement."
             ],
-            "equipment": ["None"],
+            "equipment": [],
             "exerciseType": ["Cardio", "Bodyweight", "Core"],
             "difficulty": "Beginner to Intermediate",
             "commonMistakes": [
@@ -1310,7 +1310,7 @@
                 "Hold the position briefly at the top, then slowly lower your hips back down.",
                 "Repeat the movement for the desired number of reps."
             ],
-            "equipment": ["None"],
+            "equipment": [],
             "exerciseType": ["Bodyweight", "Isolation"],
             "difficulty": "Beginner",
             "commonMistakes": [
@@ -1629,7 +1629,7 @@
                 "Engage your core and lift your upper back off the ground, curling your shoulders toward your pelvis.",
                 "Pause at the top and then slowly lower back down."
             ],
-            "equipment": ["None"],
+            "equipment": [],
             "exerciseType": ["Isolation", "Core"],
             "difficulty": "Beginner",
             "commonMistakes": [
@@ -1954,7 +1954,7 @@
                 "Focus on achieving a full range of motion to warm up your shoulder joints.",
                 "Repeat for the desired number of reps."
             ],
-            "equipment": ["None"],
+            "equipment": [],
             "exerciseType": ["Dynamic Warm-Up", "Mobility"],
             "difficulty": "Beginner",
             "commonMistakes": [
@@ -1990,7 +1990,7 @@
                 "After a set, reverse the direction of the circles.",
                 "Repeat for the desired number of reps in each direction."
             ],
-            "equipment": ["None"],
+            "equipment": [],
             "exerciseType": ["Dynamic Warm-Up", "Mobility"],
             "difficulty": "Beginner",
             "commonMistakes": [
@@ -2134,7 +2134,7 @@
                 "Maintain a quick, rhythmic pace while keeping your core engaged.",
                 "Perform for the desired number of reps or duration."
             ],
-            "equipment": ["None"],
+            "equipment": [],
             "exerciseType": ["Cardio", "Dynamic Warm-Up"],
             "difficulty": "Beginner",
             "commonMistakes": [
@@ -2317,7 +2317,7 @@
                 "For the 'Cow' position, inhale, arch your back, and lift your head and tailbone toward the ceiling.",
                 "Alternate slowly between these positions, syncing each movement with your breath."
             ],
-            "equipment": ["None"],
+            "equipment": [],
             "exerciseType": ["Mobility", "Stretch"],
             "difficulty": "Beginner",
             "commonMistakes": [
@@ -2419,7 +2419,7 @@
                 "Keep your chest upright and push your hips back during the descent.",
                 "Return to the starting position and repeat on the opposite side."
             ],
-            "equipment": ["None"],
+            "equipment": [],
             "exerciseType": ["Strength", "Mobility"],
             "difficulty": "Intermediate",
             "commonMistakes": [
@@ -2488,7 +2488,7 @@
                 "Hold the squat position at the bottom for as long as possible while maintaining proper form.",
                 "Slowly return to a standing position when ready."
             ],
-            "equipment": ["None"],
+            "equipment": [],
             "exerciseType": ["Isometric", "Strength"],
             "difficulty": "Intermediate",
             "commonMistakes": [
@@ -2669,7 +2669,7 @@
                 "Hold the stretch for 20-30 seconds before switching arms.",
                 "Repeat if necessary for both arms."
             ],
-            "equipment": ["None"],
+            "equipment": [],
             "exerciseType": ["Stretch", "Mobility"],
             "difficulty": "Beginner",
             "commonMistakes": [
@@ -2775,7 +2775,7 @@
                 "Hold the stretch for 20-30 seconds, then switch legs and repeat.",
                 "Focus on a steady, controlled movement while maintaining proper posture."
             ],
-            "equipment": ["None"],
+            "equipment": [],
             "exerciseType": ["Stretch", "Mobility"],
             "difficulty": "Beginner",
             "commonMistakes": [
@@ -2808,7 +2808,7 @@
                 "Slowly walk your hands forward, extending your arms while keeping your hips on the floor.",
                 "Once fully extended, walk your hands back to the starting position."
             ],
-            "equipment": ["None"],
+            "equipment": [],
             "exerciseType": ["Bodyweight", "Core", "Strength"],
             "difficulty": "Intermediate",
             "commonMistakes": [
@@ -2901,7 +2901,7 @@
                 "Run in place while driving your knees as high as possible with each step.",
                 "Maintain a brisk pace and keep an upright posture."
             ],
-            "equipment": ["None"],
+            "equipment": [],
             "exerciseType": ["Cardio", "Dynamic Warm-Up"],
             "difficulty": "Beginner",
             "commonMistakes": [
@@ -2937,7 +2937,7 @@
                 "Lift your hips by squeezing your glutes and engaging your core until your body forms a straight line from shoulders to knees.",
                 "Hold briefly at the top, then slowly lower your hips back down."
             ],
-            "equipment": ["None"],
+            "equipment": [],
             "exerciseType": ["Bodyweight", "Isolation", "Strength"],
             "difficulty": "Beginner",
             "commonMistakes": [
@@ -2969,7 +2969,7 @@
                 "Pause at the extreme end of the rotation to feel the joint's articulation.",
                 "Perform several controlled rotations on each side."
             ],
-            "equipment": ["None"],
+            "equipment": [],
             "exerciseType": ["Mobility", "Joint Health"],
             "difficulty": "Beginner",
             "commonMistakes": [
@@ -3002,7 +3002,7 @@
                 "Push your hips forward until you feel a stretch in the front of the hip on the kneeling side.",
                 "Hold the stretch steadily, then switch sides."
             ],
-            "equipment": ["None", "Yoga Mat (optional)"],
+            "equipment": ["Yoga Mat (optional)"],
             "exerciseType": ["Stretch", "Mobility"],
             "difficulty": "Beginner",
             "commonMistakes": [
@@ -3034,7 +3034,7 @@
                 "Hold the hollow body position while breathing steadily.",
                 "Maintain the hold for the desired duration."
             ],
-            "equipment": ["None", "Mat (optional)"],
+            "equipment": ["Mat (optional)"],
             "exerciseType": ["Isometric", "Core"],
             "difficulty": "Advanced",
             "commonMistakes": [
@@ -3101,7 +3101,7 @@
                 "Bend the stepping leg to lower your body into a side lunge.",
                 "Push back to the starting position and alternate sides."
             ],
-            "equipment": ["None"],
+            "equipment": [],
             "exerciseType": ["Strength", "Compound", "Mobility"],
             "difficulty": "Beginner",
             "commonMistakes": [
@@ -3205,7 +3205,7 @@
                 "Hold briefly, then gently rotate your head in a circular motion.",
                 "Repeat in both directions."
             ],
-            "equipment": ["None"],
+            "equipment": [],
             "exerciseType": ["Stretch", "Mobility"],
             "difficulty": "Beginner",
             "commonMistakes": [
@@ -3239,7 +3239,7 @@
                 "Use your other hand to gently push the elbow downward to deepen the stretch.",
                 "Hold for the desired duration and then switch arms."
             ],
-            "equipment": ["None"],
+            "equipment": [],
             "exerciseType": ["Stretch", "Mobility"],
             "difficulty": "Beginner",
             "commonMistakes": [
@@ -3342,7 +3342,7 @@
                 "Without letting your hips sway, lift one hand and tap the opposite shoulder.",
                 "Return the hand to the plank position and alternate sides for the desired number of reps."
             ],
-            "equipment": ["None"],
+            "equipment": [],
             "exerciseType": ["Bodyweight", "Core", "Stability"],
             "difficulty": "Intermediate",
             "commonMistakes": [
@@ -3376,7 +3376,7 @@
                 "Ensure your front knee stays in line with your toes.",
                 "Push through the front heel to return to the starting position and repeat on the other side."
             ],
-            "equipment": ["None"],
+            "equipment": [],
             "exerciseType": ["Strength", "Compound"],
             "difficulty": "Beginner",
             "commonMistakes": [
@@ -3476,7 +3476,7 @@
                 "Keep your back straight as you hinge at the hips and reach toward your feet.",
                 "Hold the position, feeling a stretch along your hamstrings and lower back."
             ],
-            "equipment": ["None", "Yoga Mat (optional)"],
+            "equipment": ["Yoga Mat (optional)"],
             "exerciseType": ["Stretch", "Mobility"],
             "difficulty": "Beginner",
             "commonMistakes": [
@@ -3509,7 +3509,7 @@
                 "Slowly rotate your shoulder through its full range of motion in a controlled manner.",
                 "Perform several rotations in one direction before switching to the other."
             ],
-            "equipment": ["None"],
+            "equipment": [],
             "exerciseType": ["Mobility", "Joint Health"],
             "difficulty": "Beginner",
             "commonMistakes": [
@@ -3581,7 +3581,7 @@
                 "Immediately jump to the other side in a fluid, skating motion.",
                 "Maintain a steady rhythm and engage your core throughout."
             ],
-            "equipment": ["None"],
+            "equipment": [],
             "exerciseType": ["Plyometric", "Cardio", "Bodyweight"],
             "difficulty": "Intermediate",
             "commonMistakes": [
@@ -3655,7 +3655,7 @@
                 "Return to center and rotate to the opposite side.",
                 "Repeat for the desired number of repetitions."
             ],
-            "equipment": ["None"],
+            "equipment": [],
             "exerciseType": ["Mobility", "Stretch"],
             "difficulty": "Beginner",
             "commonMistakes": [
@@ -3688,7 +3688,7 @@
                 "Use your other hand to gently push the elbow to deepen the stretch.",
                 "Hold the stretch for the desired duration, then switch arms."
             ],
-            "equipment": ["None"],
+            "equipment": [],
             "exerciseType": ["Stretch", "Mobility"],
             "difficulty": "Beginner",
             "commonMistakes": [
