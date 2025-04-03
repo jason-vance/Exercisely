@@ -1034,6 +1034,307 @@
             "associatedExercises": ["Russian Twist", "Plank with Rotation"],
             "searchTags": ["cable woodchop", "core", "obliques", "isolation", "strength"],
             "youtubeShortUrl": "https://youtube.com/shorts/OcmCcvmOlQ0?si=7nazTWIAsF_25SCT"
+        },
+        {
+          "name": "Dumbbell Fly",
+          "alternateNames": ["Chest Fly"],
+          "musclesWorkedPrimary": ["Pectorals"],
+          "musclesWorkedSecondary": ["Anterior Deltoids", "Stabilizer Muscles"],
+          "bodyAreasTargeted": ["Chest", "Upper Body"],
+          "performanceSteps": [
+            "Lie on a flat bench holding a dumbbell in each hand above your chest with palms facing each other.",
+            "With a slight bend in your elbows, slowly lower your arms out to the sides in a wide arc until you feel a stretch in your chest.",
+            "Bring the dumbbells back together by contracting your chest muscles.",
+            "Repeat for the desired number of reps, keeping the motion controlled."
+          ],
+          "equipment": ["Dumbbells", "Flat Bench"],
+          "exerciseType": ["Isolation", "Strength"],
+          "difficulty": "Intermediate",
+          "commonMistakes": [
+            "Dropping elbows too low",
+            "Using weights that are too heavy",
+            "Lack of control during the movement"
+          ],
+          "trainerTips": [
+            "Keep a slight bend in your elbows throughout the exercise.",
+            "Focus on squeezing your chest at the top of the movement.",
+            "Control the descent to maximize muscle engagement."
+          ],
+          "variations": ["Incline Dumbbell Fly", "Decline Dumbbell Fly"],
+          "safetyWarnings": [
+            "Avoid lowering the weights too far to protect your shoulder joints.",
+            "Maintain controlled movement to prevent injury."
+          ],
+          "recommendedMinReps": 8,
+          "recommendedMaxReps": 15,
+          "recommendedMinSets": 3,
+          "recommendedMaxSets": 4,
+          "associatedExercises": ["Barbell Bench Press", "Cable Chest Fly"],
+          "searchTags": ["dumbbell fly", "chest fly", "chest", "isolation", "strength"],
+          "youtubeShortUrl": "https://youtube.com/shorts/rk8YayRoTRQ?si=fF2D43nwbcn6aYqN"
+        },
+        {
+          "name": "Sumo Deadlift",
+          "alternateNames": [],
+          "musclesWorkedPrimary": ["Quadriceps", "Glutes", "Adductors"],
+          "musclesWorkedSecondary": ["Hamstrings", "Lower Back", "Calves"],
+          "bodyAreasTargeted": ["Lower Body", "Inner Thighs", "Glutes"],
+          "performanceSteps": [
+            "Stand with a wide stance, toes turned out slightly, and grip the barbell with your hands inside your legs.",
+            "Keep your back flat and engage your core before initiating the lift.",
+            "Lift the bar by extending your knees and hips, keeping the bar close to your body.",
+            "Lower the bar back down with control while maintaining proper form."
+          ],
+          "equipment": ["Barbell", "Weight Plates"],
+          "exerciseType": ["Strength", "Compound"],
+          "difficulty": "Intermediate",
+          "commonMistakes": [
+            "Rounding the back",
+            "Incorrect foot positioning",
+            "Overextending at the top"
+          ],
+          "trainerTips": [
+            "Focus on keeping the bar close to your body.",
+            "Engage your glutes and inner thighs throughout the lift.",
+            "Ensure your wide stance is stable before lifting."
+          ],
+          "variations": ["Conventional Deadlift", "Trap Bar Deadlift"],
+          "safetyWarnings": [
+            "Maintain a neutral spine to avoid lower back injuries.",
+            "Start with a lighter weight to master the technique."
+          ],
+          "recommendedMinReps": 3,
+          "recommendedMaxReps": 8,
+          "recommendedMinSets": 3,
+          "recommendedMaxSets": 5,
+          "associatedExercises": ["Deadlift", "Romanian Deadlift"],
+          "searchTags": ["sumo deadlift", "deadlift", "lower body", "compound", "strength"],
+          "youtubeShortUrl": "https://youtube.com/shorts/e7oLkRlT2CQ?si=75DDrknsHRiWDjsA"
+        },
+        {
+          "name": "Lying Leg Curl",
+          "alternateNames": [],
+          "musclesWorkedPrimary": ["Hamstrings"],
+          "musclesWorkedSecondary": [],
+          "bodyAreasTargeted": ["Legs", "Hamstrings"],
+          "performanceSteps": [
+            "Lie face down on the leg curl machine with the pad positioned just above your ankles.",
+            "Curl your legs upward toward your glutes by contracting your hamstrings.",
+            "Pause briefly at the top of the movement.",
+            "Slowly lower the weight back to the starting position and repeat."
+          ],
+          "equipment": ["Leg Curl Machine"],
+          "exerciseType": ["Isolation", "Strength"],
+          "difficulty": "Beginner",
+          "commonMistakes": [
+            "Lifting the hips off the bench",
+            "Using momentum instead of muscle contraction"
+          ],
+          "trainerTips": [
+            "Keep your hips firmly pressed against the bench.",
+            "Perform the movement slowly to maximize hamstring engagement."
+          ],
+          "variations": ["Seated Leg Curl"],
+          "safetyWarnings": [
+            "Ensure the machine is adjusted correctly to your body.",
+            "Avoid using excessive weight."
+          ],
+          "recommendedMinReps": 10,
+          "recommendedMaxReps": 15,
+          "recommendedMinSets": 3,
+          "recommendedMaxSets": 4,
+          "associatedExercises": ["Romanian Deadlift", "Seated Leg Curl"],
+          "searchTags": ["lying leg curl", "hamstrings", "leg curl", "isolation", "strength"],
+          "youtubeShortUrl": "https://youtube.com/shorts/6vml6AeQM2s?si=LMiZEB2cT2LvNj5r"
+        },
+        {
+          "name": "Reverse Hyperextension",
+          "alternateNames": [],
+          "musclesWorkedPrimary": ["Glutes", "Hamstrings"],
+          "musclesWorkedSecondary": ["Lower Back", "Core"],
+          "bodyAreasTargeted": ["Posterior Chain", "Lower Body"],
+          "performanceSteps": [
+            "Lie face down on a reverse hyperextension machine with your hips positioned at the edge.",
+            "Hold the handles for stability.",
+            "Lift your legs upward by contracting your glutes and hamstrings, keeping the movement controlled.",
+            "Lower your legs back down slowly and repeat."
+          ],
+          "equipment": ["Reverse Hyperextension Machine"],
+          "exerciseType": ["Strength", "Isolation"],
+          "difficulty": "Intermediate",
+          "commonMistakes": [
+            "Using momentum to swing the legs",
+            "Overextending at the top"
+          ],
+          "trainerTips": [
+            "Focus on a slow, controlled lift.",
+            "Squeeze your glutes at the top of the movement."
+          ],
+          "variations": ["Roman Chair Reverse Hyperextension"],
+          "safetyWarnings": [
+            "Ensure the machine is properly set up.",
+            "Avoid jerky movements to prevent injury."
+          ],
+          "recommendedMinReps": 10,
+          "recommendedMaxReps": 15,
+          "recommendedMinSets": 3,
+          "recommendedMaxSets": 4,
+          "associatedExercises": ["Hip Thrust", "Glute Bridge"],
+          "searchTags": ["reverse hyperextension", "glutes", "hamstrings", "lower back", "posterior chain", "strength"],
+          "youtubeShortUrl": "https://youtube.com/shorts/NAPMNd9RRxM?si=b6WEwCqOitIxGnBc"
+        },
+        {
+          "name": "Renegade Row",
+          "alternateNames": [],
+          "musclesWorkedPrimary": ["Back", "Core"],
+          "musclesWorkedSecondary": ["Biceps", "Shoulders"],
+          "bodyAreasTargeted": ["Upper Body", "Core"],
+          "performanceSteps": [
+            "Start in a high plank position with a dumbbell in each hand.",
+            "Stabilize your core and row one dumbbell upward by pulling your elbow toward the ceiling.",
+            "Lower the dumbbell back to the ground and alternate with the other side.",
+            "Keep your hips as still as possible throughout the exercise."
+          ],
+          "equipment": ["Dumbbells"],
+          "exerciseType": ["Strength", "Compound", "Bodyweight"],
+          "difficulty": "Advanced",
+          "commonMistakes": [
+            "Allowing the hips to rotate",
+            "Using excessive momentum",
+            "Dropping core stability"
+          ],
+          "trainerTips": [
+            "Engage your core before performing each row.",
+            "Keep your body in a straight line throughout.",
+            "Focus on slow, controlled movements for better balance."
+          ],
+          "variations": ["Modified Renegade Row (knees on the ground)"],
+          "safetyWarnings": [
+            "Avoid if you have shoulder or lower back issues.",
+            "Start with lighter weights until form is perfected."
+          ],
+          "recommendedMinReps": 8,
+          "recommendedMaxReps": 12,
+          "recommendedMinSets": 3,
+          "recommendedMaxSets": 4,
+          "associatedExercises": ["Plank", "Dumbbell Row"],
+          "searchTags": ["renegade row", "core", "dumbbell row", "upper body", "bodyweight", "compound"],
+          "youtubeShortUrl": "https://youtube.com/shorts/qmZJhocQVlM?si=Vam5mwiGOAH00q5p"
+        },
+        {
+          "name": "Mountain Climbers",
+          "alternateNames": [],
+          "musclesWorkedPrimary": ["Core"],
+          "musclesWorkedSecondary": ["Shoulders", "Legs"],
+          "bodyAreasTargeted": ["Full Body", "Core"],
+          "performanceSteps": [
+            "Start in a high plank position with your hands directly under your shoulders.",
+            "Drive one knee toward your chest while keeping the other leg extended.",
+            "Quickly switch legs in a running motion while maintaining a strong plank position.",
+            "Keep your core engaged and your hips level throughout the movement."
+          ],
+          "equipment": ["None"],
+          "exerciseType": ["Cardio", "Bodyweight", "Core"],
+          "difficulty": "Beginner to Intermediate",
+          "commonMistakes": [
+            "Dropping or raising the hips too much",
+            "Rushing through the movement and losing form"
+          ],
+          "trainerTips": [
+            "Maintain a consistent pace and focus on proper form.",
+            "Keep your core tight to stabilize your body.",
+            "Ensure you perform the movement on a non-slip surface."
+          ],
+          "variations": ["Slow Mountain Climbers", "Cross-Body Mountain Climbers"],
+          "safetyWarnings": [
+            "Stop if you experience any pain.",
+            "Ensure your workout surface is stable."
+          ],
+          "recommendedMinReps": 20,
+          "recommendedMaxReps": 40,
+          "recommendedMinSets": 3,
+          "recommendedMaxSets": 5,
+          "associatedExercises": ["Plank", "Burpee"],
+          "searchTags": ["mountain climbers", "cardio", "bodyweight", "core", "HIIT"],
+          "youtubeShortUrl": "https://youtube.com/shorts/K3Xt4QH4b-U?si=synrlKqXnFBxobII"
+        },
+        {
+          "name": "Russian Twist",
+          "alternateNames": [],
+          "musclesWorkedPrimary": ["Obliques"],
+          "musclesWorkedSecondary": ["Core"],
+          "bodyAreasTargeted": ["Core", "Abdominals"],
+          "performanceSteps": [
+            "Sit on the floor with your knees bent and feet lifted off the ground.",
+            "Lean back slightly to engage your core.",
+            "Hold your hands together (or a weight) in front of you.",
+            "Rotate your torso to one side and tap the floor, then twist to the other side.",
+            "Continue alternating sides in a controlled manner."
+          ],
+          "equipment": ["Optional: Medicine Ball or Dumbbell"],
+          "exerciseType": ["Isolation", "Core"],
+          "difficulty": "Beginner to Intermediate",
+          "commonMistakes": [
+            "Using excessive momentum",
+            "Not rotating fully",
+            "Relying on arm movement rather than core engagement"
+          ],
+          "trainerTips": [
+            "Focus on a slow, controlled rotation.",
+            "Engage your core to maximize the effect.",
+            "Maintain an upright posture during the movement."
+          ],
+          "variations": ["Weighted Russian Twist", "Seated Twist"],
+          "safetyWarnings": [
+            "Avoid if you have back issues.",
+            "Perform with controlled movements."
+          ],
+          "recommendedMinReps": 15,
+          "recommendedMaxReps": 25,
+          "recommendedMinSets": 3,
+          "recommendedMaxSets": 4,
+          "associatedExercises": ["Plank", "Bicycle Crunch"],
+          "searchTags": ["russian twist", "core", "obliques", "abdominals", "isolation"],
+          "youtubeShortUrl": "https://youtube.com/shorts/BA-uP_-bVE8?si=I2xRsmhsxGfbLPHm"
+        },
+        {
+          "name": "Glute Bridge",
+          "alternateNames": ["Hip Bridge"],
+          "musclesWorkedPrimary": ["Glutes"],
+          "musclesWorkedSecondary": ["Hamstrings", "Lower Back"],
+          "bodyAreasTargeted": ["Glutes", "Lower Body", "Core"],
+          "performanceSteps": [
+            "Lie on your back with your knees bent and feet flat on the floor.",
+            "Place your arms at your sides for stability.",
+            "Lift your hips off the ground by squeezing your glutes and pressing through your heels.",
+            "Hold the position briefly at the top, then slowly lower your hips back down.",
+            "Repeat the movement for the desired number of reps."
+          ],
+          "equipment": ["None"],
+          "exerciseType": ["Bodyweight", "Isolation"],
+          "difficulty": "Beginner",
+          "commonMistakes": [
+            "Lifting the hips too high",
+            "Using momentum rather than glute engagement",
+            "Overarching the lower back"
+          ],
+          "trainerTips": [
+            "Focus on squeezing your glutes at the top of the movement.",
+            "Keep your core engaged to protect your lower back.",
+            "Perform the movement slowly for maximum benefit."
+          ],
+          "variations": ["Single-Leg Glute Bridge", "Weighted Glute Bridge"],
+          "safetyWarnings": [
+            "Avoid if you experience lower back pain.",
+            "Perform on a stable surface."
+          ],
+          "recommendedMinReps": 10,
+          "recommendedMaxReps": 20,
+          "recommendedMinSets": 3,
+          "recommendedMaxSets": 4,
+          "associatedExercises": ["Hip Thrust", "Squat"],
+          "searchTags": ["glute bridge", "hip bridge", "glutes", "bodyweight", "isolation", "lower body"],
+          "youtubeShortUrl": "https://youtube.com/shorts/X_IGw8U_e38?si=3Gu84I1z_vXBoEtM"
         }
-    ]
+      ]
 }
