@@ -7,16 +7,17 @@
 
 import SwiftUI
 
-//TODO: Release: Ability to choose exercise
-//TODO: Chart metrics over time
-//TODO: Show relevant data (PBs, growth rate, etc)
+//TODO: Release: Chart metrics over time
+//TODO: Release: Show relevant data (PBs, growth rate, etc)
+//TODO: Release: Show previous times doing the exercise as sets, dropsets, etc
 //TODO: Chart projected future progress
 struct ExerciseProgressView: View {
     
     @State private var exerciseName: Workout.Exercise.Name? = nil
     
     var body: some View {
-        VStack(spacing: 0) {
+        List {
+            ExerciseNameField()
         }
         .toolbar { Toolbar() }
         .toolbarTitleDisplayMode(.inline)
@@ -31,6 +32,21 @@ struct ExerciseProgressView: View {
             Text("Exercise Progress")
                 .navigationBarTitle()
         }
+    }
+    
+    @ViewBuilder private func ExerciseNameField() -> some View {
+        NavigationLinkNoChevron {
+            ExerciseNameEditView(name: $exerciseName)
+        } label: {
+            HStack {
+                Text(exerciseName?.formatted() ?? "Choose an exercise to view...")
+                    .opacity(exerciseName == nil ? 0.35 : 1)
+                    .fieldButton()
+                    .underlined()
+                Spacer()
+            }
+        }
+        .workoutExerciseRow()
     }
 }
 
