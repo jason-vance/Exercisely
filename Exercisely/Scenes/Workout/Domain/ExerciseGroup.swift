@@ -25,12 +25,27 @@ extension ExerciseGroup: Identifiable {
         }
     }
     
-    var name: String {
+    var name: Workout.Exercise.Name? {
         switch self {
         case .set(let exercises):
-            return exercises.first?.name.formatted() ?? "Unnamed Set"
+            return exercises.first?.name
         case .dropSet(let exercises):
-            return exercises.first?.name.formatted() ?? "Unnamed Drop Set"
+            return exercises.first?.name
+        case .superset( _, _):
+            return nil
+        }
+    }
+    
+    var nameFormatted: String {
+        if let name = name {
+            return name.formatted()
+        }
+        
+        switch self {
+        case .set(_):
+            return "Unnamed Set"
+        case .dropSet(_):
+            return "Unnamed Drop Set"
         case .superset( _, let sequenceLength):
             return "Superset of \(sequenceLength) Exercises"
         }

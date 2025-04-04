@@ -23,6 +23,8 @@ extension Workout {
         @Relationship(inverse: \Workout.Section.exercises)
         var workoutSection: Workout.Section?
         
+        var date: SimpleDate? { workoutSection?.workout?.date }
+        
         init?(
             name: Name,
             weight: Weight? = nil,

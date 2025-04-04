@@ -127,7 +127,7 @@ struct WorkoutViewExerciseRow: View {
     @ViewBuilder private func ExerciseGroupName(_ exerciseGroup: ExerciseGroup) -> some View {
         HStack {
             Bullet()
-            Text(exerciseGroup.name)
+            Text(exerciseGroup.nameFormatted)
                 .multilineTextAlignment(.leading)
             Spacer(minLength: 0)
         }

@@ -6,19 +6,35 @@
 //
 
 import SwiftUI
+import SwiftData
 
 //TODO: Release: Chart metrics over time
 //TODO: Release: Show relevant data (PBs, growth rate, etc)
-//TODO: Release: Show previous times doing the exercise as sets, dropsets, etc
 //TODO: Chart projected future progress
 struct ExerciseProgressView: View {
     
     @State private var exerciseName: Workout.Exercise.Name? = nil
     
+    @Query private var workouts: [Workout]
+    
+    private var exerciseGroups: [ExerciseGroup] {
+        guard let exerciseName else {
+            return []
+        }
+        
+        return workouts
+            .reduce(into: []) { groups, workout in
+                groups.append(contentsOf: workout.getExerciseGroups(named: exerciseName))
+            }
+            .sorted { $0.exercises.first?.date ?? .today > $1.exercises.first?.date ?? .today }
+    }
+
     var body: some View {
         List {
             ExerciseNameField()
+            ExerciseGroupsSection()
         }
+        .listDefaultModifiers()
         .toolbar { Toolbar() }
         .toolbarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden()
@@ -47,6 +63,19 @@ struct ExerciseProgressView: View {
             }
         }
         .workoutExerciseRow()
+    }
+    
+    @ViewBuilder private func ExerciseGroupsSection() -> some View {
+        if !exerciseGroups.isEmpty {
+            Section {
+                ForEach(exerciseGroups, id: \.id) { group in
+                    ExerciseProgressExerciseGroupRow(group)
+                }
+            } header: {
+                Text("Exercise Groups")
+                    .librarySectionHeader()
+            }
+        }
     }
 }
 

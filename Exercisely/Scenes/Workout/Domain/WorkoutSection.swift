@@ -69,6 +69,11 @@ extension Workout {
         func getExercises(named name: Exercise.Name) -> [Exercise] {
             exercises.filter { $0.name == name }
         }
+        
+        func groupedExercises(named name: Exercise.Name) -> [ExerciseGroup] {
+            ExerciseGroup.group(exercises: sortedExercises)
+                .filter { $0.name == name }
+        }
     }
 }
 

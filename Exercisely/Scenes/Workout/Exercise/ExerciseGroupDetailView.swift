@@ -105,7 +105,7 @@ struct ExerciseGroupDetailView: View {
     
     @ToolbarContentBuilder private func Toolbar() -> some ToolbarContent {
         ToolbarItem(placement: .principal) {
-            Text(exerciseGroup?.name ?? "Exercise Detail")
+            Text(exerciseGroup?.nameFormatted ?? "Exercise Detail")
                 .navigationBarTitle()
         }
         ToolbarItem(placement: .topBarLeading) {

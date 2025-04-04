@@ -49,6 +49,12 @@ class Workout {
             exercises.append(contentsOf: section.getExercises(named: name))
         }
     }
+    
+    func getExerciseGroups(named name: Exercise.Name) -> [ExerciseGroup] {
+        sortedSections.reduce(into: []) { groups, section in
+            groups.append(contentsOf: section.groupedExercises(named: name))
+        }
+    }
 }
 
 extension Workout {
