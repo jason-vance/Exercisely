@@ -32,6 +32,11 @@ struct ExerciselyApp: App {
                         WorkoutView()
                     }
                 }
+                Tab("Progress", systemImage: "chart.bar.fill") {
+                    NavigationStack {
+                        ExerciseProgressView()
+                    }
+                }
                 Tab("Library", systemImage: "book.closed") {
                     NavigationStack {
                         ExerciseLibraryView()
