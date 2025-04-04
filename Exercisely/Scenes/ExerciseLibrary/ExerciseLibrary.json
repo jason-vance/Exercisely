@@ -3902,13 +3902,83 @@
             "recommendedMinDuration": 20,
             "recommendedMaxDuration": 60,
             "youtubeShortUrl": "https://youtube.com/shorts/AFmbbrIEuY0?si=uWbTppdsybyypg7j"
+        },
+        {
+            "name": "Single Arm Dumbbell Row",
+            "alternateNames": [],
+            "musclesWorkedPrimary": ["Latissimus Dorsi"],
+            "musclesWorkedSecondary": ["Biceps", "Upper Back", "Rear Deltoids"],
+            "bodyAreasTargeted": ["Back", "Arms"],
+            "performanceSteps": [
+                "Place one knee and the same-side hand on a bench for support.",
+                "Hold a dumbbell in your opposite hand with a neutral grip.",
+                "Row the dumbbell upward by pulling your elbow close to your body, squeezing your shoulder blades together.",
+                "Pause at the top and slowly lower the weight back down.",
+                "Repeat for the desired number of reps, then switch sides."
+            ],
+            "equipment": ["Dumbbell", "Bench"],
+            "exerciseType": ["Strength", "Isolation"],
+            "difficulty": "Intermediate",
+            "commonMistakes": [
+                "Using momentum or swinging the body",
+                "Rounding the back",
+                "Not squeezing the shoulder blades"
+            ],
+            "trainerTips": [
+                "Focus on controlled movement and a full range of motion.",
+                "Keep your core engaged for stability.",
+                "Select a weight that allows you to maintain proper form throughout the exercise."
+            ],
+            "variations": ["Two-Arm Dumbbell Row"],
+            "safetyWarnings": [
+                "Ensure the bench is stable and secure.",
+                "Avoid weights that compromise your form."
+            ],
+            "recommendedMinReps": 8,
+            "recommendedMaxReps": 12,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 4,
+            "associatedExercises": ["Bent-Over Row", "Inverted Row"],
+            "searchTags": ["single arm dumbbell row", "dumbbell row", "back", "lat", "isolation", "strength"],
+            "youtubeShortUrl": "https://youtube.com/shorts/ZggOv7gZeP8?si=W9aHQl7bdJIv1_H7"
+        },
+        {
+            "name": "Dumbbell Reverse Fly",
+            "alternateNames": ["Dumbbell Rear Delt Fly"],
+            "musclesWorkedPrimary": ["Rear Deltoids"],
+            "musclesWorkedSecondary": ["Upper Back", "Trapezius"],
+            "bodyAreasTargeted": ["Shoulders", "Upper Back"],
+            "performanceSteps": [
+                "Stand with your feet hip-width apart and hinge forward at the hips with a slight bend in your knees.",
+                "Hold a dumbbell in each hand with your arms hanging straight down.",
+                "With a slight bend in your elbows, raise your arms out to the sides until they are parallel to the ground, squeezing your shoulder blades together.",
+                "Pause briefly at the top, then slowly lower the dumbbells back to the starting position."
+            ],
+            "equipment": ["Dumbbells"],
+            "exerciseType": ["Isolation", "Strength"],
+            "difficulty": "Beginner",
+            "commonMistakes": [
+                "Using weights that are too heavy",
+                "Swinging the body to lift the weights",
+                "Rounding the back"
+            ],
+            "trainerTips": [
+                "Focus on contracting your rear deltoids.",
+                "Keep your movements slow and controlled.",
+                "Maintain a neutral spine throughout the exercise."
+            ],
+            "variations": ["Seated Reverse Fly"],
+            "safetyWarnings": [
+                "Avoid excessive weight to prevent shoulder strain.",
+                "Ensure proper form to minimize injury risk."
+            ],
+            "recommendedMinReps": 10,
+            "recommendedMaxReps": 15,
+            "recommendedMinSets": 3,
+            "recommendedMaxSets": 4,
+            "associatedExercises": ["Bent-Over Rear Delt Flys", "Cable Face Pulls"],
+            "searchTags": ["dumbbell reverse fly", "rear delt fly", "shoulders", "isolation", "strength"],
+            "youtubeShortUrl": "https://youtube.com/shorts/apcNuGp97sY?si=Em-1ZLiA13mI5L05"
         }
     ]
 }
-
-
-
-
-
-
-
