@@ -32,6 +32,7 @@ struct ExerciseProgressView: View {
     var body: some View {
         List {
             ExerciseNameField()
+            StatsSection()
             ExerciseGroupsSection()
         }
         .listDefaultModifiers()
@@ -63,6 +64,38 @@ struct ExerciseProgressView: View {
             }
         }
         .workoutExerciseRow()
+    }
+    
+    @ViewBuilder private func StatsSection() -> some View {
+        if !exerciseGroups.isEmpty {
+            Section {
+                PersonalBestWeightRow()
+            } header: {
+                Text("Stats")
+                    .librarySectionHeader()
+            }
+        }
+    }
+    
+    @ViewBuilder private func PersonalBestWeightRow() -> some View {
+        let best = exerciseGroups
+            .reduce(into: []) { exercises, group in
+                exercises.append(contentsOf: group.exercises)
+            }
+            .compactMap { $0.weight }
+            .max()
+        
+        
+        if let best = best {
+            HStack {
+                Text("Weight PB:")
+                    .fieldLabel()
+                Spacer()
+                Text(best.formatted())
+                    .bold()
+            }
+            .workoutExerciseRow()
+        }
     }
     
     @ViewBuilder private func ExerciseGroupsSection() -> some View {
