@@ -60,4 +60,10 @@ extension Workout.Exercise.Reps: Equatable {
     }
 }
 
+extension Workout.Exercise.Reps: Comparable {
+    public static func < (lhs: Workout.Exercise.Reps, rhs: Workout.Exercise.Reps) -> Bool {
+        lhs.count < rhs.count
+    }
+}
+
 extension Workout.Exercise.Reps: Codable { }

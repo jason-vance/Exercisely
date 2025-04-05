@@ -136,6 +136,15 @@ struct Distance {
     }
 }
 
+extension Distance: Comparable {
+    public static func < (lhs: Distance, rhs: Distance) -> Bool {
+        guard let converted = rhs.convert(to: lhs.unit) else {
+            return false
+        }
+        return lhs.value < converted.value
+    }
+}
+
 extension Distance: Equatable {
     static func == (lhs: Distance, rhs: Distance) -> Bool {
         guard let converted = rhs.convert(to: lhs.unit) else {

@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 //TODO: Release: Chart metrics over time
-//TODO: Release: Show relevant data (PBs, growth rate, etc)
+//TODO: Release: Show relevant data (growth rate, etc)
 //TODO: Chart projected future progress
 struct ExerciseProgressView: View {
     
@@ -32,7 +32,7 @@ struct ExerciseProgressView: View {
     var body: some View {
         List {
             ExerciseNameField()
-            StatsSection()
+            PersonalBestsSection(exerciseGroups: exerciseGroups)
             ExerciseGroupsSection()
         }
         .listDefaultModifiers()
@@ -66,18 +66,21 @@ struct ExerciseProgressView: View {
         .workoutExerciseRow()
     }
     
-    @ViewBuilder private func StatsSection() -> some View {
+    @ViewBuilder private func PersonalBestsSection(exerciseGroups: [ExerciseGroup]) -> some View {
         if !exerciseGroups.isEmpty {
             Section {
-                PersonalBestWeightRow()
+                PersonalBestWeightRow(exerciseGroups: exerciseGroups)
+                PersonalBestRepsRow(exerciseGroups: exerciseGroups)
+                PersonalBestDistanceRow(exerciseGroups: exerciseGroups)
+                PersonalBestDurationRow(exerciseGroups: exerciseGroups)
             } header: {
-                Text("Stats")
+                Text("Personal Bests")
                     .librarySectionHeader()
             }
         }
     }
     
-    @ViewBuilder private func PersonalBestWeightRow() -> some View {
+    @ViewBuilder private func PersonalBestWeightRow(exerciseGroups: [ExerciseGroup]) -> some View {
         let best = exerciseGroups
             .reduce(into: []) { exercises, group in
                 exercises.append(contentsOf: group.exercises)
@@ -88,7 +91,70 @@ struct ExerciseProgressView: View {
         
         if let best = best {
             HStack {
-                Text("Weight PB:")
+                Text("Weight")
+                    .fieldLabel()
+                Spacer()
+                Text(best.formatted())
+                    .bold()
+            }
+            .workoutExerciseRow()
+        }
+    }
+    
+    @ViewBuilder private func PersonalBestRepsRow(exerciseGroups: [ExerciseGroup]) -> some View {
+        let best = exerciseGroups
+            .reduce(into: []) { exercises, group in
+                exercises.append(contentsOf: group.exercises)
+            }
+            .compactMap { $0.reps }
+            .max()
+        
+        
+        if let best = best {
+            HStack {
+                Text("Reps")
+                    .fieldLabel()
+                Spacer()
+                Text(best.formatted())
+                    .bold()
+            }
+            .workoutExerciseRow()
+        }
+    }
+    
+    @ViewBuilder private func PersonalBestDistanceRow(exerciseGroups: [ExerciseGroup]) -> some View {
+        let best = exerciseGroups
+            .reduce(into: []) { exercises, group in
+                exercises.append(contentsOf: group.exercises)
+            }
+            .compactMap { $0.distance }
+            .max()
+        
+        
+        if let best = best {
+            HStack {
+                Text("Distance")
+                    .fieldLabel()
+                Spacer()
+                Text(best.formatted())
+                    .bold()
+            }
+            .workoutExerciseRow()
+        }
+    }
+    
+    @ViewBuilder private func PersonalBestDurationRow(exerciseGroups: [ExerciseGroup]) -> some View {
+        let best = exerciseGroups
+            .reduce(into: []) { exercises, group in
+                exercises.append(contentsOf: group.exercises)
+            }
+            .compactMap { $0.duration }
+            .max()
+        
+        
+        if let best = best {
+            HStack {
+                Text("Duration")
                     .fieldLabel()
                 Spacer()
                 Text(best.formatted())
