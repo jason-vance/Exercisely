@@ -157,10 +157,24 @@ struct ExerciseProgressView: View {
                 )
             }
         
-        ExerciseMetricChart(values: values)
-            .frame(height: 250)
-            .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-            .workoutExerciseRow()
+        ExerciseMetricChart(
+            values: values,
+            leftAxisFormatter: { value in
+                switch selectedMetric {
+                case .weight:
+                    return Weight(value: value, unit: userSettings.defaultWeightUnit).formatted()
+                case .reps:
+                    return Workout.Exercise.Reps(Int(value))?.formatted() ?? value.formatted()
+                case .distance:
+                    return Distance(value: value, unit: userSettings.defaultDistanceUnit)?.formatted() ?? value.formatted()
+                case .duration:
+                    return Workout.Exercise.Duration(value: value, unit: userSettings.defaultDurationUnit)?.formatted() ?? value.formatted()
+                }
+            }
+        )
+        .frame(height: 250)
+        .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+        .workoutExerciseRow()
     }
     
     @ViewBuilder private func ChartMenu() -> some View {

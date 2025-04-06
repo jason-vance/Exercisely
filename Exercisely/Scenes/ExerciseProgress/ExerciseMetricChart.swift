@@ -7,12 +7,11 @@
 
 import SwiftUI
 
-//TODO: RELEASE: Put units on the left axis
 //TODO: Allow interaction with the points
 //TODO: Add ability to change the dates
 struct ExerciseMetricChart: View {
     
-    private let leadingMargin: CGFloat = 24
+    private let leadingMargin: CGFloat = 38
     private let bottomMargin: CGFloat = 36
     private let bottomLabelWidth: CGFloat = 50
     
@@ -28,8 +27,17 @@ struct ExerciseMetricChart: View {
     
     @State private var minDate: SimpleDate = .today.adding(days: -56)
     @State private var maxDate: SimpleDate = .today
-    
+        
     let values: [Value]
+    private let leftAxisFormatter: (Double) -> String
+
+    init(
+        values: [Value],
+        leftAxisFormatter: @escaping (Double)->String = { value in value.formatted() }
+    ) {
+        self.values = values
+        self.leftAxisFormatter = leftAxisFormatter
+    }
     
     private var minValue: Double {
         let rawMin = values
@@ -134,21 +142,21 @@ struct ExerciseMetricChart: View {
     @ViewBuilder private func LeftAxis() -> some View {
         VStack {
             HStack {
-                Text(maxValue.formatted())
+                Text(leftAxisFormatter(maxValue))
                     .frame(width: leadingMargin, alignment: .trailing)
                 Rectangle()
                     .chartLine(displayScale: displayScale)
             }
             Spacer()
             HStack {
-                Text(((minValue + maxValue) / 2).rounded(.down).formatted())
+                Text(leftAxisFormatter(((minValue + maxValue) / 2).rounded(.down)))
                     .frame(width: leadingMargin, alignment: .trailing)
                 Rectangle()
                     .chartLine(displayScale: displayScale)
             }
             Spacer()
             HStack {
-                Text(minValue.formatted())
+                Text(leftAxisFormatter(minValue))
                     .frame(width: leadingMargin, alignment: .trailing)
                 Rectangle()
                     .chartLine(displayScale: displayScale)
@@ -180,6 +188,9 @@ fileprivate extension View {
         .init(date: .today.adding(days: -56), values: [0])
     ]
     
-    ExerciseMetricChart(values: values)
+    ExerciseMetricChart(
+        values: values,
+        leftAxisFormatter: { "\($0.formatted())s" }
+    )
         .frame(height: 300)
 }
