@@ -142,12 +142,33 @@ extension SimpleDate: Codable { }
 extension SimpleDate {
     enum SimpleDateFormat {
         case basicUiString
+        case abbreviatedMonthDay
     }
     
     func formatted(as format: SimpleDateFormat = .basicUiString) -> String {
+        guard let date = toDate() else {
+            return "<???>"
+        }
+        
         switch format {
         case .basicUiString:
-            return toDate()?.toBasicUiString() ?? "<???>"
+            return date.toBasicUiString()
+        case .abbreviatedMonthDay:
+            return date.formatted("MMM d")
         }
+    }
+    
+    func daysTo(_ other: SimpleDate) -> Int {
+        guard let date1 = toDate(), let date2 = other.toDate() else {
+            return Int.max
+        }
+        return Int(date1.distance(to: date2) / 86400)
+    }
+    
+    static func midDate(_ lhs: SimpleDate, _ rhs: SimpleDate) -> SimpleDate {
+        let min = min(lhs, rhs)
+        let max = max(lhs, rhs)
+        let halfDiff = min.daysTo(max) / 2
+        return min.adding(days: Int(halfDiff))
     }
 }

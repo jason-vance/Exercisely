@@ -20,4 +20,11 @@ extension Date {
         }
         return self.formatted(date: .abbreviated, time: .omitted)
     }
+    
+    func formatted(_ format: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        formatter.locale = Locale.current
+        return formatter.string(from: self)
+    }
 }

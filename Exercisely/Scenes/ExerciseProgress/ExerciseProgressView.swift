@@ -8,7 +8,6 @@
 import SwiftUI
 import SwiftData
 
-//TODO: Release: Chart metrics over time
 //TODO: Release: Show relevant data (growth rate, etc)
 //TODO: Chart projected future progress
 struct ExerciseProgressView: View {
@@ -30,8 +29,11 @@ struct ExerciseProgressView: View {
     }
 
     var body: some View {
+        let exerciseGroups = exerciseGroups
+        
         List {
             ExerciseNameField()
+            ChartSection(exerciseGroups: exerciseGroups)
             PersonalBestsSection(exerciseGroups: exerciseGroups)
             ExerciseGroupsSection()
         }
@@ -64,6 +66,26 @@ struct ExerciseProgressView: View {
             }
         }
         .workoutExerciseRow()
+    }
+    
+    //TODO: RELEASE: Change the metric that is charted
+    @ViewBuilder private func ChartSection(exerciseGroups: [ExerciseGroup]) -> some View {
+        if !exerciseGroups.isEmpty {
+            Section {
+                let values = exerciseGroups
+                    .map { group in
+                        ExerciseMetricChart.Value(
+                            date: group.exercises.first?.workoutSection?.workout?.date ?? .today,
+                            values: group.exercises.compactMap { $0.weight?.value }
+                        )
+                    }
+                
+                ExerciseMetricChart(values: values)
+                    .frame(height: 250)
+                    .workoutExerciseRow()
+                    .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+            }
+        }
     }
     
     @ViewBuilder private func PersonalBestsSection(exerciseGroups: [ExerciseGroup]) -> some View {
@@ -171,7 +193,7 @@ struct ExerciseProgressView: View {
                     ExerciseProgressExerciseGroupRow(group)
                 }
             } header: {
-                Text("Exercise Groups")
+                Text("History")
                     .librarySectionHeader()
             }
         }
