@@ -7,10 +7,6 @@
 
 import SwiftUI
 
-//TODO: Make setting for default distance unit
-//TODO: Make setting for default weight unit
-//TODO: Make setting for default duration unit
-//TODO: Make setting for default rest unit
 //TODO: Make setting for default rest (the rest value that's used on 'add a set')
 struct ProfileView: View {
     
@@ -35,6 +31,7 @@ struct ProfileView: View {
     var body: some View {
         List {
             PersonalSettingsSection()
+            UnitsSettingsSection()
             ExerciseSettingsSection()
         }
         .listDefaultModifiers()
@@ -94,6 +91,109 @@ struct ProfileView: View {
                     displayedComponents: [.date]
                 )
                 .blendMode(.destinationOver) //MARK: use this extension to keep the clickable functionality
+            }
+        }
+        .workoutExerciseRow()
+    }
+    
+    @ViewBuilder private func UnitsSettingsSection() -> some View {
+        Section {
+            WeightUnit()
+            DistanceUnit()
+            DurationUnit()
+            RestUnit()
+        } header: {
+            SectionHeader("Default Unit Settings")
+        }
+    }
+    
+    @ViewBuilder private func WeightUnit() -> some View {
+        HStack {
+            Text("Weight")
+                .fieldLabel()
+            Spacer()
+            Menu {
+                Button(Weight.Unit.pounds.formatted()) {
+                    userSettings.defaultWeightUnit = .pounds
+                }
+                Button(Weight.Unit.kilograms.formatted()) {
+                    userSettings.defaultWeightUnit = .kilograms
+                }
+            } label: {
+                Text(userSettings.defaultWeightUnit.formatted())
+                    .fieldButton()
+            }
+        }
+        .workoutExerciseRow()
+    }
+    
+    @ViewBuilder private func DistanceUnit() -> some View {
+        HStack {
+            Text("Distance")
+                .fieldLabel()
+            Spacer()
+            Menu {
+                Button(Distance.Unit.feet.formatted()) {
+                    userSettings.defaultDistanceUnit = .feet
+                }
+                Button(Distance.Unit.miles.formatted()) {
+                    userSettings.defaultDistanceUnit = .miles
+                }
+                Button(Distance.Unit.meters.formatted()) {
+                    userSettings.defaultDistanceUnit = .meters
+                }
+                Button(Distance.Unit.kilometers.formatted()) {
+                    userSettings.defaultDistanceUnit = .kilometers
+                }
+            } label: {
+                Text(userSettings.defaultDistanceUnit.formatted())
+                    .fieldButton()
+            }
+        }
+        .workoutExerciseRow()
+    }
+    
+    @ViewBuilder private func DurationUnit() -> some View {
+        HStack {
+            Text("Duration")
+                .fieldLabel()
+            Spacer()
+            Menu {
+                Button(Workout.Exercise.Duration.Unit.seconds.formatted()) {
+                    userSettings.defaultDurationUnit = .seconds
+                }
+                Button(Workout.Exercise.Duration.Unit.minutes.formatted()) {
+                    userSettings.defaultDurationUnit = .minutes
+                }
+                Button(Workout.Exercise.Duration.Unit.hours.formatted()) {
+                    userSettings.defaultDurationUnit = .hours
+                }
+            } label: {
+                Text(userSettings.defaultDurationUnit.formatted())
+                    .fieldButton()
+            }
+        }
+        .workoutExerciseRow()
+    }
+    
+    @ViewBuilder private func RestUnit() -> some View {
+        HStack {
+            Text("Rest")
+                .fieldLabel()
+            Spacer()
+            Menu {
+                Button(Workout.Exercise.Duration.Unit.seconds.formatted()) {
+                    userSettings.defaultRestUnit = .seconds
+                }
+                Button(Workout.Exercise.Duration.Unit.minutes.formatted()) {
+                    userSettings.defaultRestUnit = .minutes
+                }
+                Button(Workout.Exercise.Duration.Unit.hours.formatted()) {
+                    userSettings.defaultRestUnit = .hours
+                }
+            } label: {
+                Text(userSettings.defaultRestUnit.formatted())
+                    .fieldButton()
             }
         }
         .workoutExerciseRow()

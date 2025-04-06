@@ -455,7 +455,7 @@ struct WorkoutViewNewExerciseSection: View {
                 }
             }
             Button {
-                weight = weight?.adding(userSettings.weightStepperValue) ?? .init(value: userSettings.weightStepperValue, unit: .pounds)
+                weight = weight?.adding(userSettings.weightStepperValue) ?? .init(value: userSettings.weightStepperValue, unit: userSettings.defaultWeightUnit)
             } label: {
                 Text("+\(userSettings.weightStepperValue.formatted())")
                     .buttonDefaultModifiers()
@@ -538,7 +538,7 @@ struct WorkoutViewNewExerciseSection: View {
                 }
             }
             Button {
-                distance = distance?.adding(userSettings.distanceStepperValue) ?? .init(value: userSettings.distanceStepperValue, unit: .miles)
+                distance = distance?.adding(userSettings.distanceStepperValue) ?? .init(value: userSettings.distanceStepperValue, unit: userSettings.defaultDistanceUnit)
             } label: {
                 Text("+\(userSettings.distanceStepperValue.formatted())")
                     .buttonDefaultModifiers()
@@ -580,7 +580,7 @@ struct WorkoutViewNewExerciseSection: View {
                 }
             }
             Button {
-                duration = duration?.adding(userSettings.durationStepperValue) ?? .init(value: userSettings.durationStepperValue, unit: .seconds)
+                duration = duration?.adding(userSettings.durationStepperValue) ?? .init(value: userSettings.durationStepperValue, unit: userSettings.defaultDurationUnit)
             } label: {
                 Text("+\(userSettings.durationStepperValue.formatted())")
                     .buttonDefaultModifiers()
@@ -624,7 +624,7 @@ struct WorkoutViewNewExerciseSection: View {
                 }
             }
             Button {
-                rest = rest?.adding(userSettings.restStepperValue) ?? .init(value: userSettings.restStepperValue, unit: .seconds)
+                rest = rest?.adding(userSettings.restStepperValue) ?? .init(value: userSettings.restStepperValue, unit: userSettings.defaultRestUnit)
             } label: {
                 Text("+\(userSettings.restStepperValue.formatted())")
                     .buttonDefaultModifiers()

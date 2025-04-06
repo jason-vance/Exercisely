@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-//TODO: Release: Show relevant data (growth rate, etc)
+//TODO: Show relevant data (growth rate, etc)
 //TODO: Chart projected future progress
 struct ExerciseProgressView: View {
     
