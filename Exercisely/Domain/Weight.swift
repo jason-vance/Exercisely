@@ -79,7 +79,7 @@ struct Weight {
         }
     }
     
-    private func convert(to unit: Unit) -> Weight {
+    func convert(to unit: Unit) -> Weight {
         var convertedValue: Double = 0
         
         switch unit {

@@ -130,7 +130,7 @@ struct Distance {
         }
     }
     
-    private func convert(to unit: Unit) -> Distance? {
+    func convert(to unit: Unit) -> Distance? {
         let convertedValue = value * Self.conversionTable[self.unit]![unit]!
         return .init(value: convertedValue.rounded(to: Self.precision), unit: unit)
     }

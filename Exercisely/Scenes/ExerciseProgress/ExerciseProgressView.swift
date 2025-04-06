@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-//TODO: Show relevant data (growth rate, etc)
+//TODO: Show relevant data (sets, growth rate, etc)
 //TODO: Chart projected future progress
 struct ExerciseProgressView: View {
     
@@ -19,6 +19,8 @@ struct ExerciseProgressView: View {
         case duration = "Duration"
     }
     
+    @StateObject private var userSettings = UserSettings()
+
     @State private var exerciseName: Workout.Exercise.Name? = nil
     @State private var selectedMetric: ChartedMetric = .weight
     
@@ -139,17 +141,17 @@ struct ExerciseProgressView: View {
                 ExerciseMetricChart.Value(
                     date: group.exercises.first?.workoutSection?.workout?.date ?? .today,
                     values: group.exercises.compactMap {
-                        //TODO: RELEASE: Convert these to the same unit
+                        //TODO: Only convert these if necessary
                         switch selectedMetric {
                         case .weight:
-                            return $0.weight?.value
+                            return $0.weight?.convert(to: userSettings.defaultWeightUnit).value
                         case .reps:
                             guard let reps = $0.reps else { return nil }
                             return Double(reps.count)
                         case .distance:
-                            return $0.distance?.value
+                            return $0.distance?.convert(to: userSettings.defaultDistanceUnit)?.value
                         case .duration:
-                            return $0.duration?.value
+                            return $0.duration?.convert(to: userSettings.defaultDurationUnit)?.value
                         }
                     }
                 )

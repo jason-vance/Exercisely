@@ -132,7 +132,7 @@ extension Workout.Exercise {
             }
         }
         
-        private func convert(to unit: Unit) -> Duration? {
+        func convert(to unit: Unit) -> Duration? {
             let convertedValue = value * Self.conversionTable[self.unit]![unit]!
             return .init(value: convertedValue.rounded(to: Self.precision), unit: unit)
         }
