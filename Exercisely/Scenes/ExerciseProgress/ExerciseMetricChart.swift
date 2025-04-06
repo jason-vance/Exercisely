@@ -8,6 +8,8 @@
 import SwiftUI
 
 //TODO: RELEASE: Put units on the left axis
+//TODO: Allow interaction with the points
+//TODO: Add ability to change the dates
 struct ExerciseMetricChart: View {
     
     private let leadingMargin: CGFloat = 24
@@ -126,6 +128,7 @@ struct ExerciseMetricChart: View {
                 .offset(x: bottomLabelWidth / 3)
         }
         .font(.caption2)
+        .contentTransition(.numericText())
     }
     
     @ViewBuilder private func LeftAxis() -> some View {
@@ -152,6 +155,7 @@ struct ExerciseMetricChart: View {
             }
         }
         .font(.caption2)
+        .contentTransition(.numericText())
     }
 }
 
