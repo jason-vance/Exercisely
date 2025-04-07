@@ -100,7 +100,7 @@ struct ExerciseMetricChart: View {
             Capsule()
                 .frame(width: capsuleWidth, height: capsuleWidth + height)
                 .offset(
-                    x: leadingMargin + (CGFloat(day) * xOffsetPerDay) - (capsuleWidth / 2) - (totalWidth / 2),
+                    x: leadingMargin + (CGFloat(day) * xOffsetPerDay) - capsuleWidth - (totalWidth / 2),
                     y: totalHeight - ((height) + (unitsAboveMin * yOffsetPerUnit))
                 )
                 .foregroundStyle(Color.accentColor)

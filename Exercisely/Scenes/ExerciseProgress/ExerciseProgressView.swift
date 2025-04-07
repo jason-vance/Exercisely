@@ -12,6 +12,7 @@ import SwiftData
 //TODO: Chart projected future progress
 struct ExerciseProgressView: View {
     
+    //TODO: Add some kind of computed "effort" value
     enum ChartedMetric: String, CaseIterable {
         case weight = "Weight"
         case reps = "Reps"
