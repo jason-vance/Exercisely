@@ -547,7 +547,7 @@
             "name": "Cable Chest Fly",
             "alternateNames": ["Cable Fly", "Chest Fly"],
             "musclesWorkedPrimary": ["Pectorals"],
-            "musclesWorkedSecondary": ["Anterior Deltoids", "Stabilizer Muscles"],
+            "musclesWorkedSecondary": ["Anterior Deltoids", "Shoulder Joint Stabilizers"],
             "bodyAreasTargeted": ["Chest", "Upper Body"],
             "performanceSteps": [
                 "Stand facing a cable machine with handles set at chest height.",
@@ -1039,7 +1039,7 @@
             "name": "Dumbbell Fly",
             "alternateNames": ["Chest Fly"],
             "musclesWorkedPrimary": ["Pectorals"],
-            "musclesWorkedSecondary": ["Anterior Deltoids", "Stabilizer Muscles"],
+            "musclesWorkedSecondary": ["Anterior Deltoids", "Shoulder Joint Stabilizers"],
             "bodyAreasTargeted": ["Chest", "Upper Body"],
             "performanceSteps": [
                 "Lie on a flat bench holding a dumbbell in each hand above your chest with palms facing each other.",

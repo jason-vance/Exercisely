@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-//TODO: Add a muscle map/diagram that shows the muscles worked
 //TODO: Make it look better (ie. consolidate sets/reps)
 //TODO: Add links to associated exercises
 //TODO: Add links to muscles worked
@@ -96,20 +95,69 @@ struct ExerciseEntryDetailView: View {
     
     @ViewBuilder private func InfoTab() -> some View {
         List {
+            MuscleDiagramSection()
+            PrimaryMusclesWorkedSection()
+            SecondaryMusclesWorkedSection()
+            BodyAreasTargetedSection()
             RecommendedRepsSection()
             RecommendedDurationSection()
             RecommendedSetsSection()
             DifficultySection()
             ExerciseTypeSection()
             EquipmentSection()
-            PrimaryMusclesWorkedSection()
-            SecondaryMusclesWorkedSection()
-            BodyAreasTargetedSection()
             VariationsSection()
             AlternativeNamesSection()
             AssociatedExercisesSection()
         }
         .listDefaultModifiers()
+    }
+    
+    @ViewBuilder private func MuscleDiagramSection() -> some View {
+        if !entry.musclesWorkedPrimary.isEmpty || !entry.musclesWorkedSecondary.isEmpty {
+            Section {
+                MuscleDiagram(
+                    primaryMuscles: entry.musclesWorkedPrimary,
+                    secondaryMuscles: entry.musclesWorkedSecondary
+                )
+                .workoutExerciseRow()
+            }
+        }
+    }
+    
+    @ViewBuilder private func PrimaryMusclesWorkedSection() -> some View {
+        if !entry.musclesWorkedPrimary.isEmpty {
+            Section {
+                Text(entry.musclesWorkedPrimary.joined(separator: ", "))
+                    .workoutExerciseRow()
+            } header: {
+                Text("Primary Muscles Worked")
+                    .librarySectionHeader()
+            }
+        }
+    }
+    
+    @ViewBuilder private func SecondaryMusclesWorkedSection() -> some View {
+        if !entry.musclesWorkedSecondary.isEmpty {
+            Section {
+                Text(entry.musclesWorkedSecondary.joined(separator: ", "))
+                    .workoutExerciseRow()
+            } header: {
+                Text("Secondary Muscles Worked")
+                    .librarySectionHeader()
+            }
+        }
+    }
+    
+    @ViewBuilder private func BodyAreasTargetedSection() -> some View {
+        if !entry.bodyAreasTargeted.isEmpty {
+            Section {
+                Text(entry.bodyAreasTargeted.joined(separator: ", "))
+                    .workoutExerciseRow()
+            } header: {
+                Text("Body Areas Targeted")
+                    .librarySectionHeader()
+            }
+        }
     }
     
     @ViewBuilder private func AssociatedExercisesSection() -> some View {
@@ -268,42 +316,6 @@ struct ExerciseEntryDetailView: View {
                     .workoutExerciseRow()
             } header: {
                 Text("Alternative Names")
-                    .librarySectionHeader()
-            }
-        }
-    }
-    
-    @ViewBuilder private func PrimaryMusclesWorkedSection() -> some View {
-        if !entry.musclesWorkedPrimary.isEmpty {
-            Section {
-                Text(entry.musclesWorkedPrimary.joined(separator: ", "))
-                    .workoutExerciseRow()
-            } header: {
-                Text("Primary Muscles Worked")
-                    .librarySectionHeader()
-            }
-        }
-    }
-    
-    @ViewBuilder private func SecondaryMusclesWorkedSection() -> some View {
-        if !entry.musclesWorkedSecondary.isEmpty {
-            Section {
-                Text(entry.musclesWorkedSecondary.joined(separator: ", "))
-                    .workoutExerciseRow()
-            } header: {
-                Text("Secondary Muscles Worked")
-                    .librarySectionHeader()
-            }
-        }
-    }
-    
-    @ViewBuilder private func BodyAreasTargetedSection() -> some View {
-        if !entry.bodyAreasTargeted.isEmpty {
-            Section {
-                Text(entry.bodyAreasTargeted.joined(separator: ", "))
-                    .workoutExerciseRow()
-            } header: {
-                Text("Body Areas Targeted")
                     .librarySectionHeader()
             }
         }
