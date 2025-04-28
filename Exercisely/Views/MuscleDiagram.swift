@@ -28,6 +28,8 @@ struct MuscleDiagram: View {
             }
             Image("Outline")
                 .resizable()
+                .renderingMode(.template)
+                .foregroundStyle(Color.text)
         }
         .aspectRatio(1, contentMode: .fit)
     }

@@ -8,6 +8,7 @@
 import SwiftUI
 import SwiftData
 
+//TODO: RELEASE: Add exercises not in library
 @main
 struct ExerciselyApp: App {
     var sharedModelContainer: ModelContainer = {

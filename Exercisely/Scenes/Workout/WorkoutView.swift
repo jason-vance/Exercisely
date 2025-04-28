@@ -8,6 +8,7 @@
 import SwiftUI
 import SwiftData
 
+//TODO: RELEASE: Trim workout section name
 struct WorkoutView: View {
     
     private let newExerciseSectionId: String = "newExerciseSectionId"
