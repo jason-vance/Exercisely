@@ -75,7 +75,7 @@ struct ExerciseDetailView: View {
     var body: some View {
         List {
             if let exerciseToSave {
-                WorkoutViewExerciseRow(.set([exerciseToSave]), in: .init(name: ""))
+                WorkoutViewExerciseRow(.set([exerciseToSave]), in: .init(name: "-")!)
                     .disabled(true)
             } else {
                 Text("Sorry, these values are invalid")

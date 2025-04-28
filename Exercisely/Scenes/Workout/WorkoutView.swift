@@ -8,7 +8,6 @@
 import SwiftUI
 import SwiftData
 
-//TODO: RELEASE: Trim workout section name
 struct WorkoutView: View {
     
     private let newExerciseSectionId: String = "newExerciseSectionId"
@@ -114,8 +113,10 @@ struct WorkoutView: View {
     }
     
     private func addNewSectionToWorkout() {
+        guard let section = Workout.Section(name: newWorkoutSectionName) else { return }
+        
         withAnimation(.snappy) {
-            workout.append(section: .init(name: newWorkoutSectionName))
+            workout.append(section: section)
             showAddSection = false
             newWorkoutSectionName = ""
             showNewExerciseControls = true
@@ -132,7 +133,11 @@ struct WorkoutView: View {
     }
     
     private func renameSectionToRename() {
-        sectionToRename?.name = sectionRenameString
+        guard let sectionToRename else {
+            return
+        }
+        
+        sectionToRename.rename(sectionRenameString)
         self.sectionToRename = nil
         self.sectionRenameString = ""
         showSectionOptions = nil

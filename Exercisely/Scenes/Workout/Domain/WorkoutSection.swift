@@ -12,7 +12,7 @@ extension Workout {
     @Model
     class Section {
         
-        var name: String
+        private(set) var name: String
         var order: Int
         
         @Relationship(inverse: \Workout.sections)
@@ -22,8 +22,11 @@ extension Workout {
         var exercises: [Exercise]
         
         
-        init(name: String, order: Int = 0) {
-            self.name = name
+        init?(name: String, order: Int = 0) {
+            let sectionName = name.trimmingCharacters(in: .whitespacesAndNewlines)
+            guard !sectionName.isEmpty else { return nil }
+
+            self.name = sectionName
             self.order = order
             self.exercises = []
         }
@@ -48,6 +51,13 @@ extension Workout {
             
             exercise.order = existingExercise.order + 1
             exercises.append(exercise)
+        }
+        
+        func rename(_ newName: String) {
+            let sectionName = name.trimmingCharacters(in: .whitespacesAndNewlines)
+            guard !sectionName.isEmpty else { return }
+
+            self.name = sectionName
         }
         
         func remove(exercise: Exercise) {
@@ -83,47 +93,47 @@ extension Workout.Section {
     static var sampleWarmup: Workout.Section {
         let section = Workout.Section(name: "Warm-Up", order: 0)
         
-        section.append(exercise: .sampleTreadmill)
+        section!.append(exercise: .sampleTreadmill)
         
-        section.append(exercise: .sampleYtw)
-        section.append(exercise: .sampleArcherPress)
-        section.append(exercise: .sampleTrxChestStretch)
+        section!.append(exercise: .sampleYtw)
+        section!.append(exercise: .sampleArcherPress)
+        section!.append(exercise: .sampleTrxChestStretch)
         
-        section.append(exercise: .sampleYtw)
-        section.append(exercise: .sampleArcherPress)
-        section.append(exercise: .sampleTrxChestStretch)
+        section!.append(exercise: .sampleYtw)
+        section!.append(exercise: .sampleArcherPress)
+        section!.append(exercise: .sampleTrxChestStretch)
         
-        return section
+        return section!
     }
     
     static var sampleWorkout: Workout.Section {
         let section = Workout.Section(name: "Workout", order: 1)
         
-        section.append(exercise: .sampleTurkishGetUp)
-        section.append(exercise: .sampleTurkishGetUp)
-        section.append(exercise: .sampleTurkishGetUp)
+        section!.append(exercise: .sampleTurkishGetUp)
+        section!.append(exercise: .sampleTurkishGetUp)
+        section!.append(exercise: .sampleTurkishGetUp)
         
-        section.append(exercise: .sampleShoulderTouches)
-        section.append(exercise: .sampleShoulderTouches)
-        section.append(exercise: .sampleShoulderTouches)
-
-        section.append(exercise: .sampleKettlebellShoulderPress)
-        section.append(exercise: .sampleKettlebellShoulderPress)
-        section.append(exercise: .sampleKettlebellShoulderPress)
+        section!.append(exercise: .sampleShoulderTouches)
+        section!.append(exercise: .sampleShoulderTouches)
+        section!.append(exercise: .sampleShoulderTouches)
         
-        section.append(exercise: .sampleMachineShoulderPress)
-        section.append(exercise: .sampleMachineShoulderPress)
-
-        section.append(exercise: .sampleMachineUnderhandRow)
+        section!.append(exercise: .sampleKettlebellShoulderPress)
+        section!.append(exercise: .sampleKettlebellShoulderPress)
+        section!.append(exercise: .sampleKettlebellShoulderPress)
         
-        return section
+        section!.append(exercise: .sampleMachineShoulderPress)
+        section!.append(exercise: .sampleMachineShoulderPress)
+        
+        section!.append(exercise: .sampleMachineUnderhandRow)
+        
+        return section!
     }
     
     static var sampleCooldown: Workout.Section {
         let section = Workout.Section(name: "Cooldown", order: 2)
         
-        section.append(exercise: .sampleHike)
+        section!.append(exercise: .sampleHike)
         
-        return section
+        return section!
     }
 }
