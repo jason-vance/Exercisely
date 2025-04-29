@@ -3979,6 +3979,251 @@
             "associatedExercises": ["Bent-Over Rear Delt Flys", "Cable Face Pulls"],
             "searchTags": ["dumbbell reverse fly", "rear delt fly", "shoulders", "isolation", "strength"],
             "youtubeShortUrl": "https://youtube.com/shorts/apcNuGp97sY?si=Em-1ZLiA13mI5L05"
+        },
+        {
+          "name": "Deficit Deadlifts",
+          "alternateNames": [],
+          "musclesWorkedPrimary": ["Hamstrings", "Glutes", "Lower Back"],
+          "musclesWorkedSecondary": ["Quadriceps", "Core"],
+          "bodyAreasTargeted": ["Lower Body", "Back", "Core"],
+          "performanceSteps": [
+            "Stand on a small platform or plate to create a deficit.",
+            "Grip the barbell at shoulder-width and set your hips back.",
+            "Drive through your heels to lift the barbell, keeping your back flat and core engaged.",
+            "Lock out your hips at the top, then lower the bar with control."
+          ],
+          "equipment": ["Barbell", "Platform or Weight Plate"],
+          "exerciseType": ["Strength", "Compound"],
+          "difficulty": "Intermediate",
+          "commonMistakes": [
+            "Rounding the back",
+            "Starting with hips too high or too low"
+          ],
+          "trainerTips": [
+            "Focus on maintaining tension through your hamstrings and glutes.",
+            "Use a moderate deficit to maintain good form."
+          ],
+          "variations": ["Conventional Deadlift", "Snatch Grip Deadlift"],
+          "safetyWarnings": [
+            "Use proper form to protect your lower back."
+          ],
+          "recommendedMinReps": 4,
+          "recommendedMaxReps": 8,
+          "recommendedMinSets": 3,
+          "recommendedMaxSets": 5,
+          "associatedExercises": ["Romanian Deadlifts", "Sumo Deadlifts"],
+          "searchTags": ["deficit deadlift", "deadlifts", "hamstrings", "glutes", "compound", "strength"],
+          "youtubeShortUrl": "https://youtube.com/shorts/hgXpDt0TYZU?si=yU9ISr1VYxlQJi1V"
+        },
+        {
+          "name": "Cable Pull-Throughs",
+          "alternateNames": [],
+          "musclesWorkedPrimary": ["Glutes", "Hamstrings"],
+          "musclesWorkedSecondary": ["Lower Back", "Core"],
+          "bodyAreasTargeted": ["Glutes", "Hamstrings", "Lower Body"],
+          "performanceSteps": [
+            "Attach a rope handle to a low pulley.",
+            "Face away from the machine and hold the rope between your legs.",
+            "Hinge at your hips, letting the rope pull your hands backward between your legs.",
+            "Thrust your hips forward to return to standing, squeezing your glutes at the top."
+          ],
+          "equipment": ["Cable Machine", "Rope Attachment"],
+          "exerciseType": ["Strength", "Isolation"],
+          "difficulty": "Beginner",
+          "commonMistakes": [
+            "Squatting instead of hinging",
+            "Using your arms instead of hips"
+          ],
+          "trainerTips": [
+            "Focus on the hip hinge, not a squat.",
+            "Keep the cable tension consistent throughout the movement."
+          ],
+          "variations": ["Kettlebell Swing"],
+          "safetyWarnings": [
+            "Use moderate weight to maintain good form."
+          ],
+          "recommendedMinReps": 10,
+          "recommendedMaxReps": 15,
+          "recommendedMinSets": 3,
+          "recommendedMaxSets": 4,
+          "associatedExercises": ["Romanian Deadlifts", "Glute Bridges"],
+          "searchTags": ["cable pull-throughs", "glutes", "hamstrings", "lower body", "hip hinge"],
+          "youtubeShortUrl": "https://youtube.com/shorts/SuTI-n84ezA?si=UcFt5njeWH0bL-o1"
+        },
+        {
+          "name": "Seal Rows",
+          "alternateNames": [],
+          "musclesWorkedPrimary": ["Middle Back", "Latissimus Dorsi"],
+          "musclesWorkedSecondary": ["Rear Deltoids", "Biceps"],
+          "bodyAreasTargeted": ["Back", "Arms"],
+          "performanceSteps": [
+            "Lie face down on a flat bench with a barbell or dumbbells underneath you.",
+            "Grab the weight and row it toward your torso by squeezing your shoulder blades together.",
+            "Pause at the top, then lower the weight back down under control."
+          ],
+          "equipment": ["Flat Bench", "Barbell or Dumbbells"],
+          "exerciseType": ["Strength", "Isolation"],
+          "difficulty": "Intermediate",
+          "commonMistakes": [
+            "Using momentum to lift",
+            "Flaring elbows excessively"
+          ],
+          "trainerTips": [
+            "Keep your chest on the bench throughout the movement.",
+            "Focus on scapular retraction rather than pulling with your arms."
+          ],
+          "variations": ["Chest-Supported Dumbbell Rows"],
+          "safetyWarnings": [
+            "Ensure the bench height allows full range of motion."
+          ],
+          "recommendedMinReps": 8,
+          "recommendedMaxReps": 12,
+          "recommendedMinSets": 3,
+          "recommendedMaxSets": 4,
+          "associatedExercises": ["Bent-Over Rows", "Inverted Rows"],
+          "searchTags": ["seal rows", "back", "rows", "middle back", "strength"],
+          "youtubeShortUrl": "https://youtube.com/shorts/udXpPqWESq0?si=ugJmyArCxvd7hoJw"
+        },
+        {
+          "name": "Dumbbell Shrugs",
+          "alternateNames": [],
+          "musclesWorkedPrimary": ["Trapezius"],
+          "musclesWorkedSecondary": [],
+          "bodyAreasTargeted": ["Shoulders", "Upper Back"],
+          "performanceSteps": [
+            "Stand upright with a dumbbell in each hand at your sides.",
+            "Raise your shoulders as high as possible toward your ears.",
+            "Pause briefly at the top, then lower your shoulders back down."
+          ],
+          "equipment": ["Dumbbells"],
+          "exerciseType": ["Isolation", "Strength"],
+          "difficulty": "Beginner",
+          "commonMistakes": [
+            "Rolling the shoulders",
+            "Using momentum"
+          ],
+          "trainerTips": [
+            "Move straight up and down.",
+            "Focus on squeezing the traps at the top."
+          ],
+          "variations": ["Barbell Shrugs"],
+          "safetyWarnings": [
+            "Avoid rolling your shoulders to reduce joint stress."
+          ],
+          "recommendedMinReps": 12,
+          "recommendedMaxReps": 20,
+          "recommendedMinSets": 3,
+          "recommendedMaxSets": 5,
+          "associatedExercises": ["Farmer's Walk", "Upright Rows"],
+          "searchTags": ["dumbbell shrugs", "shrugs", "traps", "shoulders", "upper back", "strength"],
+          "youtubeShortUrl": "https://youtube.com/shorts/j2-RccWDhDo?si=OlgosGM6Vc-qmRzw"
+        },
+        {
+          "name": "Side Plank with Reach-Through",
+          "alternateNames": [],
+          "musclesWorkedPrimary": ["Obliques"],
+          "musclesWorkedSecondary": ["Core", "Shoulders"],
+          "bodyAreasTargeted": ["Core", "Shoulders"],
+          "performanceSteps": [
+            "Start in a side plank position with your top arm extended upward.",
+            "Rotate your torso and thread your top arm under your body.",
+            "Return to the starting side plank position and repeat."
+          ],
+          "equipment": ["None"],
+          "exerciseType": ["Core", "Bodyweight", "Stability"],
+          "difficulty": "Intermediate",
+          "commonMistakes": [
+            "Letting the hips drop",
+            "Rushing through the reach"
+          ],
+          "trainerTips": [
+            "Focus on moving slowly and controlling the twist.",
+            "Keep your hips lifted throughout the exercise."
+          ],
+          "variations": ["Standard Side Plank"],
+          "safetyWarnings": [
+            "Use a mat for comfort if needed."
+          ],
+          "recommendedMinReps": 8,
+          "recommendedMaxReps": 12,
+          "recommendedMinSets": 2,
+          "recommendedMaxSets": 4,
+          "associatedExercises": ["Plank Shoulder Taps", "Side Plank"],
+          "searchTags": ["side plank with reach through", "obliques", "core", "plank", "stability"],
+          "youtubeShortUrl": "https://youtube.com/shorts/egdPMsLJdNU?si=imAr-o38YabEf4vi"
+        },
+        {
+          "name": "Hollow Body Rockers",
+          "alternateNames": ["Hollow Body Rocks"],
+          "musclesWorkedPrimary": ["Abdominals"],
+          "musclesWorkedSecondary": ["Hip Flexors"],
+          "bodyAreasTargeted": ["Core"],
+          "performanceSteps": [
+            "Start in a hollow body position, balancing on your lower back with your arms and legs off the ground.",
+            "Rock gently forward and backward while maintaining the hollow shape.",
+            "Keep your core tight and avoid losing form during the motion."
+          ],
+          "equipment": ["None"],
+          "exerciseType": ["Core", "Bodyweight", "Isometric"],
+          "difficulty": "Advanced",
+          "commonMistakes": [
+            "Letting the lower back arch",
+            "Breaking the hollow position"
+          ],
+          "trainerTips": [
+            "Focus on keeping your core braced and tight.",
+            "Keep the movement small and controlled."
+          ],
+          "variations": ["Hollow Body Hold"],
+          "safetyWarnings": [
+            "Discontinue if lower back discomfort occurs."
+          ],
+          "recommendedMinReps": 10,
+          "recommendedMaxReps": 20,
+          "recommendedMinSets": 3,
+          "recommendedMaxSets": 5,
+          "associatedExercises": ["Hollow Body Hold", "Plank"],
+          "searchTags": ["hollow body rockers", "hollow body rocks", "core", "abs", "isometric"],
+          "recommendedMinDuration": 20,
+          "recommendedMaxDuration": 45,
+          "youtubeShortUrl": "https://youtube.com/shorts/tWZBamV2tjc?si=nVUm3QgAkzUdr5Ma"
+        },
+        {
+          "name": "Box Jumps",
+          "alternateNames": [],
+          "musclesWorkedPrimary": ["Quadriceps", "Glutes", "Calves"],
+          "musclesWorkedSecondary": ["Core"],
+          "bodyAreasTargeted": ["Legs", "Lower Body", "Core"],
+          "performanceSteps": [
+            "Stand in front of a sturdy box or platform.",
+            "Bend your knees and swing your arms backward to load your jump.",
+            "Explosively jump onto the box, landing softly with your knees slightly bent.",
+            "Stand tall, then step down carefully and repeat."
+          ],
+          "equipment": ["Plyometric Box"],
+          "exerciseType": ["Plyometric", "Strength", "Cardio"],
+          "difficulty": "Intermediate",
+          "commonMistakes": [
+            "Landing with stiff legs",
+            "Using an unstable box",
+            "Not absorbing impact properly"
+          ],
+          "trainerTips": [
+            "Focus on soft, controlled landings.",
+            "Engage your core for better balance."
+          ],
+          "variations": ["Step-Ups", "Broad Jumps"],
+          "safetyWarnings": [
+            "Always use a stable, non-slip box surface.",
+            "Start with lower boxes if you’re new to plyometrics."
+          ],
+          "recommendedMinReps": 5,
+          "recommendedMaxReps": 10,
+          "recommendedMinSets": 3,
+          "recommendedMaxSets": 5,
+          "associatedExercises": ["Skater Jumps", "Lateral Bounds"],
+          "searchTags": ["box jumps", "plyometrics", "explosive strength", "legs", "lower body"],
+          "youtubeShortUrl": "https://youtube.com/shorts/HJZh-12p6vg?si=DwFX73GAqd43DAwX"
         }
     ]
 }
