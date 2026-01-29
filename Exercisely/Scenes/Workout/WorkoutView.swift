@@ -21,6 +21,7 @@ struct WorkoutView: View {
     
     @State private var workoutFocusString: String = ""
     @State private var date: SimpleDate = .today
+    @State private var showDatePicker: Bool = false
     
     @FocusState private var isWorkoutFocusInFocus: Bool
     @State private var showNewExerciseControls: Bool = false
@@ -288,6 +289,20 @@ struct WorkoutView: View {
                 set: { restEditor?.wrappedValue = $0 }
             ), mode: .rest)
         }
+        .sheet(isPresented: $showDatePicker) {
+            DatePicker(
+                "Date",
+                selection: .init(
+                    get: { date.toDate() ?? .now },
+                    set: { date = SimpleDate(date: $0)! }
+                ),
+                displayedComponents: .date
+            )
+            .datePickerStyle(.graphical)
+            .padding(.horizontal)
+            .presentationDetents([.medium])
+            .presentationDragIndicator(.visible)
+        }
     }
     
     @ToolbarContentBuilder private func Toolbar() -> some ToolbarContent {
@@ -312,23 +327,12 @@ struct WorkoutView: View {
         HStack {
             DecrementDateButton()
             Button {
-                
+                showDatePicker = true
             } label: {
                 Text(date.formatted())
                     .fieldButton()
+                    .frame(minWidth: 120)
             }
-            .overlay{
-                DatePicker(
-                    "",
-                    selection: .init(
-                        get: { date.toDate() ?? .now },
-                        set: { date = SimpleDate(date: $0)! }
-                    ),
-                    displayedComponents: [.date]
-                )
-                .blendMode(.destinationOver) //MARK: use this extension to keep the clickable functionality
-            }
-            .padding(.horizontal)
             IncrementDateButton()
         }
     }
