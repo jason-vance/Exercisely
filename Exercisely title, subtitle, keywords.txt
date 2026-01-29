@@ -1,0 +1,11 @@
+Exercisely title, subtitle, keywords
+
+v1.4
+Exercisely
+No ads/bloat/in-app purchases
+workout,track,tracker,log,logger,hevy,fitbod,strong,gym,fitness,planner,lift,exercise,rep,muscle,set
+
+v1.5
+Exercisely: Simple Workout Log
+Exercise, Supersets, Drop Sets
+minimal,tracker,track,logger,hevy,fitbod,strong,gym,fitness,planner,lift,rep,muscle,set,gains,weight
