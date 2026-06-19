@@ -67,6 +67,27 @@ extension Workout {
         func removeAll(exercises: [Exercise]) {
             self.exercises.removeAll { exercises.map(\.id).contains($0.id) }
         }
+
+        func moveExerciseGroup(_ group: ExerciseGroup, to destination: Workout.Section) {
+            let exercises = group.exercises
+            removeAll(exercises: exercises)
+            for exercise in exercises {
+                destination.append(exercise: exercise)
+            }
+        }
+
+        func moveExerciseGroups(from source: IndexSet, to destination: Int) {
+            var groups = groupedExercises
+            groups.move(fromOffsets: source, toOffset: destination)
+
+            var order = 0
+            for group in groups {
+                for exercise in group.exercises {
+                    exercise.order = order
+                    order += 1
+                }
+            }
+        }
         
         var sortedExercises: [Exercise] {
             exercises.sorted(by: { $0.order < $1.order })

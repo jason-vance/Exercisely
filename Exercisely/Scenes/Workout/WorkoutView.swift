@@ -385,12 +385,25 @@ struct WorkoutView: View {
         }
     }
     
-    //TODO: Add ability to reorder exercises
     @ViewBuilder private func WorkoutSection(_ section: Workout.Section) -> some View {
         Section {
             ForEach(section.groupedExercises) { exerciseGroup in
                 WorkoutViewExerciseRow(exerciseGroup, in: section)
                     .contextMenu {
+                        let otherSections = workout.sortedSections.filter { $0.id != section.id }
+                        if !otherSections.isEmpty {
+                            Menu {
+                                ForEach(otherSections) { otherSection in
+                                    Button(otherSection.name) {
+                                        withAnimation(.snappy) {
+                                            section.moveExerciseGroup(exerciseGroup, to: otherSection)
+                                        }
+                                    }
+                                }
+                            } label: {
+                                Label("Move to...", systemImage: "arrow.right")
+                            }
+                        }
                         Button(role: .destructive) {
                             deleteExerciseGroup(exerciseGroup)
                         } label: {
@@ -399,6 +412,7 @@ struct WorkoutView: View {
                     }
             }
             .onDelete { deleteExerciseGroups($0, in: section) }
+            .onMove { section.moveExerciseGroups(from: $0, to: $1) }
         } header: {
             HStack {
                 Button {
