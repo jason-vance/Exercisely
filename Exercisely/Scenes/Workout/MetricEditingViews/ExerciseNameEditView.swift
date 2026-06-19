@@ -15,26 +15,41 @@ struct ExerciseNameEditView: View {
     @Environment(\.presentationMode) var presentation
     
     @Query private var exercises: [Workout.Exercise]
-    
+
     @Binding var name: Workout.Exercise.Name?
 
     @State private var nameString: String = ""
+    @State private var exerciseLibrary: ExerciseLibrary? = nil
     @FocusState private var focus: Bool
-    
+
     init(name: Binding<Workout.Exercise.Name?>) {
         self._name = name
     }
-    
+
     private var isNameInvalid: Bool {
         Workout.Exercise.Name(nameString) == nil
     }
-    
+
     private var suggestions: [Workout.Exercise.Name] {
-        let names = exercises.map { $0.name }
-        let uniqueNames = Set(names)
+        var uniqueNames = Set(exercises.map { $0.name })
+
+        if let libraryExercises = exerciseLibrary?.exercises {
+            for entry in libraryExercises {
+                if let name = Workout.Exercise.Name(entry.name) {
+                    uniqueNames.insert(name)
+                }
+            }
+        }
+
         return uniqueNames
             .filter { nameString.isEmpty || $0.formatted().lowercased().contains(nameString.lowercased()) }
             .sorted { $0.formatted() < $1.formatted() }
+    }
+
+    private func loadExerciseLibrary() {
+        Task {
+            self.exerciseLibrary = try? ExerciseLibrary.fromBundle()
+        }
     }
     
     private func saveExerciseName() {
@@ -59,6 +74,7 @@ struct ExerciseNameEditView: View {
         .toolbarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden()
         .animation(.snappy, value: nameString)
+        .onAppear { loadExerciseLibrary() }
         .onChange(of: name, initial: true) { _, newValue in
             nameString = newValue?.formatted() ?? ""
         }
