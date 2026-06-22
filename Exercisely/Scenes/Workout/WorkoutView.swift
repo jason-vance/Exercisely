@@ -109,6 +109,33 @@ struct WorkoutView: View {
         currentSection?.sortedExercises.last
     }
     
+    private static let defaultFocusSuggestions: [String] = [
+        "Upper Body",
+        "Lower Body",
+        "Full Body",
+        "Push",
+        "Pull",
+        "Legs",
+        "Back",
+        "Chest",
+        "Shoulders",
+        "Arms",
+        "Core",
+    ]
+
+    private var focusSuggestions: [String] {
+        var uniqueFocuses = Set(
+            workouts.compactMap { $0.focus?.formatted() }
+        )
+        for focus in Self.defaultFocusSuggestions {
+            uniqueFocuses.insert(focus)
+        }
+
+        return uniqueFocuses
+            .filter { workoutFocusString.isEmpty || $0.lowercased().contains(workoutFocusString.lowercased()) }
+            .sorted()
+    }
+
     private var hidePlayPauseWorkoutButton: Bool {
         isWorkoutFocusInFocus || workout.sections.isEmpty
     }
@@ -186,6 +213,9 @@ struct WorkoutView: View {
             ScrollViewReader { proxy in
                 List {
                     WorkoutFocusSection()
+                    if isWorkoutFocusInFocus && !focusSuggestions.isEmpty {
+                        FocusSuggestions()
+                    }
                     ForEach(workout.sortedSections) { section in
                         WorkoutSection(section)
                     }
@@ -223,30 +253,38 @@ struct WorkoutView: View {
         .onChange(of: scenePhase) { old, new in onChangeOf(scenePhase: new) }
         .toolbar { Toolbar() }
         .toolbarTitleDisplayMode(.inline)
-        .alert(
-            "What do you want to name this workout section?",
-            isPresented: $showAddSection
-        ) {
-            TextField(
-                text: $newWorkoutSectionName,
-                label: { Text("Warm-Up, Workout, etc...") }
+        .sheet(isPresented: $showAddSection) {
+            SectionNameEditView(
+                name: .init(
+                    get: { newWorkoutSectionName },
+                    set: { newName in
+                        newWorkoutSectionName = newName
+                        addNewSectionToWorkout()
+                    }
+                )
             )
-            Button("OK", action: addNewSectionToWorkout)
-            Button("Cancel", role: .cancel) { }
+            .foregroundStyle(Color.text)
+            .presentationDetents([.medium, .large])
+            .presentationDragIndicator(.visible)
         }
-        .alert(
-            "What do you want \"\(sectionToRename?.name ?? "")\" to be renamed to?",
+        .sheet(
             isPresented: .init(
                 get: { sectionToRename != nil },
                 set: { isPresented in sectionToRename = isPresented ? sectionToRename : nil }
             )
         ) {
-            TextField(
-                text: $sectionRenameString,
-                label: { Text("Warm-Up, Workout, etc...") }
+            SectionNameEditView(
+                name: .init(
+                    get: { sectionRenameString },
+                    set: { newName in
+                        sectionRenameString = newName
+                        renameSectionToRename()
+                    }
+                )
             )
-            Button("OK", action: renameSectionToRename)
-            Button("Cancel", role: .cancel) { }
+            .foregroundStyle(Color.text)
+            .presentationDetents([.medium, .large])
+            .presentationDragIndicator(.visible)
         }
         .confirmationDialog(
             "Are you sure you want to remove the \"\(sectionToDelete?.name ?? "")\" section and all of its exercises?",
@@ -385,6 +423,24 @@ struct WorkoutView: View {
         }
     }
     
+    @ViewBuilder private func FocusSuggestions() -> some View {
+        Section {
+            ForEach(focusSuggestions, id: \.self) { suggestion in
+                Button {
+                    workoutFocusString = suggestion
+                    workout.focus = .init(suggestion)
+                    isWorkoutFocusInFocus = false
+                } label: {
+                    Text(suggestion)
+                        .buttonDefaultModifiers()
+                }
+                .workoutExerciseRow()
+            }
+        } header: {
+            SectionHeader("Suggestions")
+        }
+    }
+
     @ViewBuilder private func WorkoutSection(_ section: Workout.Section) -> some View {
         Section {
             ForEach(section.groupedExercises) { exerciseGroup in
